@@ -1,0 +1,2245 @@
+﻿  videoPosePredictor3D.cpp
+D:\Code\C++\vnect_lib\3rdparty\include\Protobuf\include\google/protobuf/message_lite.h(247): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
+D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/util/io.hpp(53): warning C4244: “参数”: 从“uint64_t”转换到“int”，可能丢失数据
+d:\code\c++\vnect_lib\vnect_lib\include\mCaffePredictor.hpp(25): warning C4251: “mCaffePredictor::_net”: class“boost::shared_ptr<caffe::Net<float>>”需要有 dll 接口由 class“mCaffePredictor”的客户端使用
+d:\code\c++\vnect_lib\vnect_lib\include\mCaffePredictor.hpp(26): warning C4251: “mCaffePredictor::_mean”: class“cv::Mat”需要有 dll 接口由 class“mCaffePredictor”的客户端使用
+  D:\Code\C++\vnect_lib\3rdparty\include\opencv\include\opencv2/core/mat.hpp(780): note: 参见“cv::Mat”的声明
+d:\code\c++\vnect_lib\vnect_lib\include\mCaffePredictor.hpp(28): warning C4251: “mCaffePredictor::_input_size”: class“cv::Size_<int>”需要有 dll 接口由 class“mCaffePredictor”的客户端使用
+D:\Code\C++\vnect_lib\vnect_lib\include\vnectUtils.hpp(22): warning C4251: “mVNectUtils::_scales”: class“std::vector<float,std::allocator<_Ty>>”需要有 dll 接口由 class“mVNectUtils”的客户端使用
+          with
+          [
+              _Ty=float
+          ]
+D:\Code\C++\vnect_lib\vnect_lib\include\vnectUtils.hpp(23): warning C4251: “mVNectUtils::_box_size”: class“cv::Size_<int>”需要有 dll 接口由 class“mVNectUtils”的客户端使用
+D:\Code\C++\vnect_lib\vnect_lib\include\vnectUtils.hpp(25): warning C4251: “mVNectUtils::_crop_rect”: class“std::vector<int,std::allocator<_Ty>>”需要有 dll 接口由 class“mVNectUtils”的客户端使用
+          with
+          [
+              _Ty=int
+          ]
+D:\Code\C++\vnect_lib\vnect_lib\include\vnectUtils.hpp(26): warning C4251: “mVNectUtils::_pad_offset”: class“std::vector<int,std::allocator<_Ty>>”需要有 dll 接口由 class“mVNectUtils”的客户端使用
+          with
+          [
+              _Ty=int
+          ]
+D:\Code\C++\vnect_lib\vnect_lib\include\videoPosePredictor3D.h(8): warning C4251: “mVideoPosePredictor3D::model_path”: class“std::basic_string<char,std::char_traits<char>,std::allocator<char>>”需要有 dll 接口由 class“mVideoPosePredictor3D”的客户端使用
+D:\Code\C++\vnect_lib\vnect_lib\include\videoPosePredictor3D.h(9): warning C4251: “mVideoPosePredictor3D::prototxt_path”: class“std::basic_string<char,std::char_traits<char>,std::allocator<char>>”需要有 dll 接口由 class“mVideoPosePredictor3D”的客户端使用
+D:\Code\C++\vnect_lib\vnect_lib\include\videoPosePredictor3D.h(11): warning C4251: “mVideoPosePredictor3D::video”: class“cv::VideoCapture”需要有 dll 接口由 class“mVideoPosePredictor3D”的客户端使用
+  D:\Code\C++\vnect_lib\3rdparty\include\opencv\include\opencv2/videoio.hpp(602): note: 参见“cv::VideoCapture”的声明
+  mCaffePredictor.cpp
+D:\Code\C++\vnect_lib\3rdparty\include\Protobuf\include\google/protobuf/message_lite.h(247): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
+D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/util/io.hpp(53): warning C4244: “参数”: 从“uint64_t”转换到“int”，可能丢失数据
+D:\Code\C++\vnect_lib\vnect_lib\include\mCaffePredictor.hpp(25): warning C4251: “mCaffePredictor::_net”: class“boost::shared_ptr<caffe::Net<float>>”需要有 dll 接口由 class“mCaffePredictor”的客户端使用
+D:\Code\C++\vnect_lib\vnect_lib\include\mCaffePredictor.hpp(26): warning C4251: “mCaffePredictor::_mean”: class“cv::Mat”需要有 dll 接口由 class“mCaffePredictor”的客户端使用
+  D:\Code\C++\vnect_lib\3rdparty\include\opencv\include\opencv2/core/mat.hpp(780): note: 参见“cv::Mat”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\mCaffePredictor.hpp(28): warning C4251: “mCaffePredictor::_input_size”: class“cv::Size_<int>”需要有 dll 接口由 class“mCaffePredictor”的客户端使用
+D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/blob.hpp(74): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/blob.hpp(74): note: 编译类 模板 成员函数“int caffe::Blob<Dtype>::num_axes(void) const”时
+          with
+          [
+              Dtype=float
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/blob.hpp(140): note: 参见对正在编译的函数 模板 实例化“int caffe::Blob<Dtype>::num_axes(void) const”的引用
+          with
+          [
+              Dtype=float
+          ]
+  src\mCaffePredictor.cpp(18): note: 参见对正在编译的类 模板 实例化“caffe::Blob<Dtype>”的引用
+          with
+          [
+              Dtype=float
+          ]
+  Json.cpp
+src\Json.cpp(70): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+src\Json.cpp(71): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+src\Json.cpp(72): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+  vnectUtils.cpp
+D:\Code\C++\vnect_lib\3rdparty\include\Protobuf\include\google/protobuf/message_lite.h(247): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
+D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/util/io.hpp(53): warning C4244: “参数”: 从“uint64_t”转换到“int”，可能丢失数据
+d:\code\c++\vnect_lib\vnect_lib\include\mCaffePredictor.hpp(25): warning C4251: “mCaffePredictor::_net”: class“boost::shared_ptr<caffe::Net<float>>”需要有 dll 接口由 class“mCaffePredictor”的客户端使用
+d:\code\c++\vnect_lib\vnect_lib\include\mCaffePredictor.hpp(26): warning C4251: “mCaffePredictor::_mean”: class“cv::Mat”需要有 dll 接口由 class“mCaffePredictor”的客户端使用
+  D:\Code\C++\vnect_lib\3rdparty\include\opencv\include\opencv2/core/mat.hpp(780): note: 参见“cv::Mat”的声明
+d:\code\c++\vnect_lib\vnect_lib\include\mCaffePredictor.hpp(28): warning C4251: “mCaffePredictor::_input_size”: class“cv::Size_<int>”需要有 dll 接口由 class“mCaffePredictor”的客户端使用
+D:\Code\C++\vnect_lib\vnect_lib\include\vnectUtils.hpp(22): warning C4251: “mVNectUtils::_scales”: class“std::vector<float,std::allocator<_Ty>>”需要有 dll 接口由 class“mVNectUtils”的客户端使用
+          with
+          [
+              _Ty=float
+          ]
+D:\Code\C++\vnect_lib\vnect_lib\include\vnectUtils.hpp(23): warning C4251: “mVNectUtils::_box_size”: class“cv::Size_<int>”需要有 dll 接口由 class“mVNectUtils”的客户端使用
+D:\Code\C++\vnect_lib\vnect_lib\include\vnectUtils.hpp(25): warning C4251: “mVNectUtils::_crop_rect”: class“std::vector<int,std::allocator<_Ty>>”需要有 dll 接口由 class“mVNectUtils”的客户端使用
+          with
+          [
+              _Ty=int
+          ]
+D:\Code\C++\vnect_lib\vnect_lib\include\vnectUtils.hpp(26): warning C4251: “mVNectUtils::_pad_offset”: class“std::vector<int,std::allocator<_Ty>>”需要有 dll 接口由 class“mVNectUtils”的客户端使用
+          with
+          [
+              _Ty=int
+          ]
+src\vnectUtils.cpp(27): warning C4305: “参数”: 从“double”到“float”截断
+src\vnectUtils.cpp(28): warning C4305: “参数”: 从“double”到“float”截断
+src\vnectUtils.cpp(29): warning C4305: “参数”: 从“double”到“float”截断
+src\vnectUtils.cpp(30): warning C4305: “参数”: 从“double”到“float”截断
+src\vnectUtils.cpp(31): warning C4305: “参数”: 从“double”到“float”截断
+src\vnectUtils.cpp(32): warning C4305: “参数”: 从“double”到“float”截断
+src\vnectUtils.cpp(35): warning C4305: “参数”: 从“double”到“float”截断
+src\vnectUtils.cpp(36): warning C4305: “参数”: 从“double”到“float”截断
+src\vnectUtils.cpp(72): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+src\vnectUtils.cpp(75): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+src\vnectUtils.cpp(89): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+src\vnectUtils.cpp(92): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+src\vnectUtils.cpp(139): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+src\vnectUtils.cpp(140): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+src\vnectUtils.cpp(149): warning C4305: “初始化”: 从“double”到“float”截断
+src\vnectUtils.cpp(151): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+src\vnectUtils.cpp(165): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+src\vnectUtils.cpp(170): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+src\vnectUtils.cpp(174): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+src\vnectUtils.cpp(248): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+src\vnectUtils.cpp(261): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+src\vnectUtils.cpp(313): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+src\vnectUtils.cpp(395): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+src\vnectUtils.cpp(396): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+src\vnectUtils.cpp(399): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+src\vnectUtils.cpp(400): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+src\vnectUtils.cpp(413): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+src\vnectUtils.cpp(414): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+src\vnectUtils.cpp(415): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+src\vnectUtils.cpp(438): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+src\vnectUtils.cpp(439): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+src\vnectUtils.cpp(440): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+d:\code\c++\vnect_lib\vnect_lib\include\oneEuro.hpp(47): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+  d:\code\c++\vnect_lib\vnect_lib\include\oneEuro.hpp(38): note: 编译类 模板 成员函数“float one_euro_filter<float,double>::operator ()(T,timestamp_t)”时
+          with
+          [
+              T=float,
+              timestamp_t=double
+          ]
+  src\vnectUtils.cpp(399): note: 参见对正在编译的函数 模板 实例化“float one_euro_filter<float,double>::operator ()(T,timestamp_t)”的引用
+          with
+          [
+              T=float,
+              timestamp_t=double
+          ]
+  src\vnectUtils.cpp(27): note: 参见对正在编译的类 模板 实例化“one_euro_filter<float,double>”的引用
+d:\code\c++\vnect_lib\vnect_lib\include\oneEuro.hpp(50): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+d:\code\c++\vnect_lib\vnect_lib\include\oneEuro.hpp(58): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+  d:\code\c++\vnect_lib\vnect_lib\include\oneEuro.hpp(57): note: 编译类 模板 成员函数“float one_euro_filter<float,double>::alpha(T)”时
+          with
+          [
+              T=float
+          ]
+  d:\code\c++\vnect_lib\vnect_lib\include\oneEuro.hpp(49): note: 参见对正在编译的函数 模板 实例化“float one_euro_filter<float,double>::alpha(T)”的引用
+          with
+          [
+              T=float
+          ]
+d:\code\c++\vnect_lib\vnect_lib\include\oneEuro.hpp(59): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+d:\code\c++\vnect_lib\vnect_lib\include\oneEuro.hpp(60): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
+D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/blob.hpp(74): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/blob.hpp(74): note: 编译类 模板 成员函数“int caffe::Blob<Dtype>::num_axes(void) const”时
+          with
+          [
+              Dtype=float
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/blob.hpp(140): note: 参见对正在编译的函数 模板 实例化“int caffe::Blob<Dtype>::num_axes(void) const”的引用
+          with
+          [
+              Dtype=float
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/inner_product_layer.hpp(46): note: 参见对正在编译的类 模板 实例化“caffe::Blob<Dtype>”的引用
+          with
+          [
+              Dtype=float
+          ]
+  D:\Code\C++\vnect_lib\vnect_lib\include\head.h(22): note: 参见对正在编译的类 模板 实例化“caffe::InnerProductLayer<float>”的引用
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(21): warning C4661: “void caffe::InputLayer<float>::LayerSetUp(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/input_layer.hpp(23): note: 参见“caffe::InputLayer<float>::LayerSetUp”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(21): warning C4661: “void caffe::InputLayer<double>::LayerSetUp(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/input_layer.hpp(23): note: 参见“caffe::InputLayer<double>::LayerSetUp”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(22): warning C4661: “void caffe::InnerProductLayer<float>::LayerSetUp(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/inner_product_layer.hpp(23): note: 参见“caffe::InnerProductLayer<float>::LayerSetUp”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(22): warning C4661: “void caffe::InnerProductLayer<float>::Reshape(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/inner_product_layer.hpp(25): note: 参见“caffe::InnerProductLayer<float>::Reshape”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(22): warning C4661: “void caffe::InnerProductLayer<float>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/inner_product_layer.hpp(33): note: 参见“caffe::InnerProductLayer<float>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(22): warning C4661: “void caffe::InnerProductLayer<float>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/inner_product_layer.hpp(35): note: 参见“caffe::InnerProductLayer<float>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(22): warning C4661: “void caffe::InnerProductLayer<float>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/inner_product_layer.hpp(37): note: 参见“caffe::InnerProductLayer<float>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(22): warning C4661: “void caffe::InnerProductLayer<float>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/inner_product_layer.hpp(39): note: 参见“caffe::InnerProductLayer<float>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(22): warning C4661: “void caffe::InnerProductLayer<double>::LayerSetUp(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/inner_product_layer.hpp(23): note: 参见“caffe::InnerProductLayer<double>::LayerSetUp”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(22): warning C4661: “void caffe::InnerProductLayer<double>::Reshape(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/inner_product_layer.hpp(25): note: 参见“caffe::InnerProductLayer<double>::Reshape”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(22): warning C4661: “void caffe::InnerProductLayer<double>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/inner_product_layer.hpp(33): note: 参见“caffe::InnerProductLayer<double>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(22): warning C4661: “void caffe::InnerProductLayer<double>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/inner_product_layer.hpp(35): note: 参见“caffe::InnerProductLayer<double>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(22): warning C4661: “void caffe::InnerProductLayer<double>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/inner_product_layer.hpp(37): note: 参见“caffe::InnerProductLayer<double>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(22): warning C4661: “void caffe::InnerProductLayer<double>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/inner_product_layer.hpp(39): note: 参见“caffe::InnerProductLayer<double>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(23): warning C4661: “void caffe::DropoutLayer<float>::LayerSetUp(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/dropout_layer.hpp(36): note: 参见“caffe::DropoutLayer<float>::LayerSetUp”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(23): warning C4661: “void caffe::DropoutLayer<float>::Reshape(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/dropout_layer.hpp(38): note: 参见“caffe::DropoutLayer<float>::Reshape”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(23): warning C4661: “void caffe::DropoutLayer<float>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/dropout_layer.hpp(60): note: 参见“caffe::DropoutLayer<float>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(23): warning C4661: “void caffe::DropoutLayer<float>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/dropout_layer.hpp(62): note: 参见“caffe::DropoutLayer<float>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(23): warning C4661: “void caffe::DropoutLayer<float>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/dropout_layer.hpp(64): note: 参见“caffe::DropoutLayer<float>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(23): warning C4661: “void caffe::DropoutLayer<float>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/dropout_layer.hpp(66): note: 参见“caffe::DropoutLayer<float>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(23): warning C4661: “void caffe::DropoutLayer<double>::LayerSetUp(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/dropout_layer.hpp(36): note: 参见“caffe::DropoutLayer<double>::LayerSetUp”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(23): warning C4661: “void caffe::DropoutLayer<double>::Reshape(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/dropout_layer.hpp(38): note: 参见“caffe::DropoutLayer<double>::Reshape”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(23): warning C4661: “void caffe::DropoutLayer<double>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/dropout_layer.hpp(60): note: 参见“caffe::DropoutLayer<double>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(23): warning C4661: “void caffe::DropoutLayer<double>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/dropout_layer.hpp(62): note: 参见“caffe::DropoutLayer<double>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(23): warning C4661: “void caffe::DropoutLayer<double>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/dropout_layer.hpp(64): note: 参见“caffe::DropoutLayer<double>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(23): warning C4661: “void caffe::DropoutLayer<double>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/dropout_layer.hpp(66): note: 参见“caffe::DropoutLayer<double>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(24): warning C4661: “void caffe::ConvolutionLayer<float>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/conv_layer.hpp(70): note: 参见“caffe::ConvolutionLayer<float>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(24): warning C4661: “void caffe::ConvolutionLayer<float>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/conv_layer.hpp(72): note: 参见“caffe::ConvolutionLayer<float>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(24): warning C4661: “void caffe::ConvolutionLayer<float>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/conv_layer.hpp(74): note: 参见“caffe::ConvolutionLayer<float>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(24): warning C4661: “void caffe::ConvolutionLayer<float>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/conv_layer.hpp(76): note: 参见“caffe::ConvolutionLayer<float>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(24): warning C4661: “void caffe::ConvolutionLayer<float>::compute_output_shape(void)”: 没有为显式模板实例化请求提供适当的定义
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/conv_layer.hpp(79): note: 参见“caffe::ConvolutionLayer<float>::compute_output_shape”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(24): warning C4661: “void caffe::ConvolutionLayer<double>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/conv_layer.hpp(70): note: 参见“caffe::ConvolutionLayer<double>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(24): warning C4661: “void caffe::ConvolutionLayer<double>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/conv_layer.hpp(72): note: 参见“caffe::ConvolutionLayer<double>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(24): warning C4661: “void caffe::ConvolutionLayer<double>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/conv_layer.hpp(74): note: 参见“caffe::ConvolutionLayer<double>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(24): warning C4661: “void caffe::ConvolutionLayer<double>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/conv_layer.hpp(76): note: 参见“caffe::ConvolutionLayer<double>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(24): warning C4661: “void caffe::ConvolutionLayer<double>::compute_output_shape(void)”: 没有为显式模板实例化请求提供适当的定义
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/conv_layer.hpp(79): note: 参见“caffe::ConvolutionLayer<double>::compute_output_shape”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(26): warning C4661: “void caffe::ReLULayer<float>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/relu_layer.hpp(44): note: 参见“caffe::ReLULayer<float>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(26): warning C4661: “void caffe::ReLULayer<float>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/relu_layer.hpp(46): note: 参见“caffe::ReLULayer<float>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(26): warning C4661: “void caffe::ReLULayer<float>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/relu_layer.hpp(77): note: 参见“caffe::ReLULayer<float>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(26): warning C4661: “void caffe::ReLULayer<float>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/relu_layer.hpp(79): note: 参见“caffe::ReLULayer<float>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(26): warning C4661: “void caffe::ReLULayer<double>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/relu_layer.hpp(44): note: 参见“caffe::ReLULayer<double>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(26): warning C4661: “void caffe::ReLULayer<double>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/relu_layer.hpp(46): note: 参见“caffe::ReLULayer<double>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(26): warning C4661: “void caffe::ReLULayer<double>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/relu_layer.hpp(77): note: 参见“caffe::ReLULayer<double>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(26): warning C4661: “void caffe::ReLULayer<double>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/relu_layer.hpp(79): note: 参见“caffe::ReLULayer<double>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(28): warning C4661: “void caffe::PoolingLayer<float>::LayerSetUp(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(25): note: 参见“caffe::PoolingLayer<float>::LayerSetUp”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(28): warning C4661: “void caffe::PoolingLayer<float>::Reshape(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(27): note: 参见“caffe::PoolingLayer<float>::Reshape”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(28): warning C4661: “void caffe::PoolingLayer<float>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(41): note: 参见“caffe::PoolingLayer<float>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(28): warning C4661: “void caffe::PoolingLayer<float>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(43): note: 参见“caffe::PoolingLayer<float>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(28): warning C4661: “void caffe::PoolingLayer<float>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(45): note: 参见“caffe::PoolingLayer<float>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(28): warning C4661: “void caffe::PoolingLayer<float>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(47): note: 参见“caffe::PoolingLayer<float>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(28): warning C4661: “void caffe::PoolingLayer<float>::dt(int,int,const Dtype *,Dtype,Dtype,Dtype,Dtype,int,int)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(61): note: 参见“caffe::PoolingLayer<float>::dt”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(28): warning C4661: “void caffe::PoolingLayer<float>::reduce1dtran(Dtype *,int,Dtype *,int,int,int)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(67): note: 参见“caffe::PoolingLayer<float>::reduce1dtran”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(28): warning C4661: “void caffe::PoolingLayer<float>::reduce1dtran(const Dtype *,int,Dtype *,int,int,int)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(64): note: 参见“caffe::PoolingLayer<float>::reduce1dtran”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(28): warning C4661: “void caffe::PoolingLayer<double>::LayerSetUp(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(25): note: 参见“caffe::PoolingLayer<double>::LayerSetUp”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(28): warning C4661: “void caffe::PoolingLayer<double>::Reshape(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(27): note: 参见“caffe::PoolingLayer<double>::Reshape”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(28): warning C4661: “void caffe::PoolingLayer<double>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(41): note: 参见“caffe::PoolingLayer<double>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(28): warning C4661: “void caffe::PoolingLayer<double>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(43): note: 参见“caffe::PoolingLayer<double>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(28): warning C4661: “void caffe::PoolingLayer<double>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(45): note: 参见“caffe::PoolingLayer<double>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(28): warning C4661: “void caffe::PoolingLayer<double>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(47): note: 参见“caffe::PoolingLayer<double>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(28): warning C4661: “void caffe::PoolingLayer<double>::dt(int,int,const Dtype *,Dtype,Dtype,Dtype,Dtype,int,int)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(61): note: 参见“caffe::PoolingLayer<double>::dt”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(28): warning C4661: “void caffe::PoolingLayer<double>::reduce1dtran(Dtype *,int,Dtype *,int,int,int)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(67): note: 参见“caffe::PoolingLayer<double>::reduce1dtran”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(28): warning C4661: “void caffe::PoolingLayer<double>::reduce1dtran(const Dtype *,int,Dtype *,int,int,int)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(64): note: 参见“caffe::PoolingLayer<double>::reduce1dtran”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(30): warning C4661: “void caffe::LRNLayer<float>::LayerSetUp(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(27): note: 参见“caffe::LRNLayer<float>::LayerSetUp”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(30): warning C4661: “void caffe::LRNLayer<float>::Reshape(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(29): note: 参见“caffe::LRNLayer<float>::Reshape”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(30): warning C4661: “void caffe::LRNLayer<float>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(37): note: 参见“caffe::LRNLayer<float>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(30): warning C4661: “void caffe::LRNLayer<float>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(39): note: 参见“caffe::LRNLayer<float>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(30): warning C4661: “void caffe::LRNLayer<float>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(41): note: 参见“caffe::LRNLayer<float>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(30): warning C4661: “void caffe::LRNLayer<float>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(43): note: 参见“caffe::LRNLayer<float>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(30): warning C4661: “void caffe::LRNLayer<float>::CrossChannelForward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(46): note: 参见“caffe::LRNLayer<float>::CrossChannelForward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(30): warning C4661: “void caffe::LRNLayer<float>::CrossChannelForward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(48): note: 参见“caffe::LRNLayer<float>::CrossChannelForward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(30): warning C4661: “void caffe::LRNLayer<float>::WithinChannelForward(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(50): note: 参见“caffe::LRNLayer<float>::WithinChannelForward”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(30): warning C4661: “void caffe::LRNLayer<float>::CrossChannelBackward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(52): note: 参见“caffe::LRNLayer<float>::CrossChannelBackward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(30): warning C4661: “void caffe::LRNLayer<float>::CrossChannelBackward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(54): note: 参见“caffe::LRNLayer<float>::CrossChannelBackward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(30): warning C4661: “void caffe::LRNLayer<float>::WithinChannelBackward(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(56): note: 参见“caffe::LRNLayer<float>::WithinChannelBackward”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(30): warning C4661: “void caffe::LRNLayer<double>::LayerSetUp(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(27): note: 参见“caffe::LRNLayer<double>::LayerSetUp”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(30): warning C4661: “void caffe::LRNLayer<double>::Reshape(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(29): note: 参见“caffe::LRNLayer<double>::Reshape”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(30): warning C4661: “void caffe::LRNLayer<double>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(37): note: 参见“caffe::LRNLayer<double>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(30): warning C4661: “void caffe::LRNLayer<double>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(39): note: 参见“caffe::LRNLayer<double>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(30): warning C4661: “void caffe::LRNLayer<double>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(41): note: 参见“caffe::LRNLayer<double>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(30): warning C4661: “void caffe::LRNLayer<double>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(43): note: 参见“caffe::LRNLayer<double>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(30): warning C4661: “void caffe::LRNLayer<double>::CrossChannelForward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(46): note: 参见“caffe::LRNLayer<double>::CrossChannelForward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(30): warning C4661: “void caffe::LRNLayer<double>::CrossChannelForward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(48): note: 参见“caffe::LRNLayer<double>::CrossChannelForward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(30): warning C4661: “void caffe::LRNLayer<double>::WithinChannelForward(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(50): note: 参见“caffe::LRNLayer<double>::WithinChannelForward”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(30): warning C4661: “void caffe::LRNLayer<double>::CrossChannelBackward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(52): note: 参见“caffe::LRNLayer<double>::CrossChannelBackward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(30): warning C4661: “void caffe::LRNLayer<double>::CrossChannelBackward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(54): note: 参见“caffe::LRNLayer<double>::CrossChannelBackward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(30): warning C4661: “void caffe::LRNLayer<double>::WithinChannelBackward(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(56): note: 参见“caffe::LRNLayer<double>::WithinChannelBackward”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(32): warning C4661: “void caffe::SoftmaxLayer<float>::Reshape(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/softmax_layer.hpp(22): note: 参见“caffe::SoftmaxLayer<float>::Reshape”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(32): warning C4661: “void caffe::SoftmaxLayer<float>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/softmax_layer.hpp(30): note: 参见“caffe::SoftmaxLayer<float>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(32): warning C4661: “void caffe::SoftmaxLayer<float>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/softmax_layer.hpp(32): note: 参见“caffe::SoftmaxLayer<float>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(32): warning C4661: “void caffe::SoftmaxLayer<float>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/softmax_layer.hpp(34): note: 参见“caffe::SoftmaxLayer<float>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(32): warning C4661: “void caffe::SoftmaxLayer<float>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/softmax_layer.hpp(36): note: 参见“caffe::SoftmaxLayer<float>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(32): warning C4661: “void caffe::SoftmaxLayer<double>::Reshape(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/softmax_layer.hpp(22): note: 参见“caffe::SoftmaxLayer<double>::Reshape”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(32): warning C4661: “void caffe::SoftmaxLayer<double>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/softmax_layer.hpp(30): note: 参见“caffe::SoftmaxLayer<double>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(32): warning C4661: “void caffe::SoftmaxLayer<double>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/softmax_layer.hpp(32): note: 参见“caffe::SoftmaxLayer<double>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(32): warning C4661: “void caffe::SoftmaxLayer<double>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/softmax_layer.hpp(34): note: 参见“caffe::SoftmaxLayer<double>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(32): warning C4661: “void caffe::SoftmaxLayer<double>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/softmax_layer.hpp(36): note: 参见“caffe::SoftmaxLayer<double>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(34): warning C4661: “void caffe::DeconvolutionLayer<float>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/deconv_layer.hpp(37): note: 参见“caffe::DeconvolutionLayer<float>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(34): warning C4661: “void caffe::DeconvolutionLayer<float>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/deconv_layer.hpp(39): note: 参见“caffe::DeconvolutionLayer<float>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(34): warning C4661: “void caffe::DeconvolutionLayer<float>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/deconv_layer.hpp(41): note: 参见“caffe::DeconvolutionLayer<float>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(34): warning C4661: “void caffe::DeconvolutionLayer<float>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/deconv_layer.hpp(43): note: 参见“caffe::DeconvolutionLayer<float>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(34): warning C4661: “void caffe::DeconvolutionLayer<float>::compute_output_shape(void)”: 没有为显式模板实例化请求提供适当的定义
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/deconv_layer.hpp(46): note: 参见“caffe::DeconvolutionLayer<float>::compute_output_shape”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(34): warning C4661: “void caffe::DeconvolutionLayer<double>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/deconv_layer.hpp(37): note: 参见“caffe::DeconvolutionLayer<double>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(34): warning C4661: “void caffe::DeconvolutionLayer<double>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/deconv_layer.hpp(39): note: 参见“caffe::DeconvolutionLayer<double>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(34): warning C4661: “void caffe::DeconvolutionLayer<double>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/deconv_layer.hpp(41): note: 参见“caffe::DeconvolutionLayer<double>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(34): warning C4661: “void caffe::DeconvolutionLayer<double>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/deconv_layer.hpp(43): note: 参见“caffe::DeconvolutionLayer<double>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(34): warning C4661: “void caffe::DeconvolutionLayer<double>::compute_output_shape(void)”: 没有为显式模板实例化请求提供适当的定义
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/deconv_layer.hpp(46): note: 参见“caffe::DeconvolutionLayer<double>::compute_output_shape”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(35): warning C4661: “void caffe::SliceLayer<float>::LayerSetUp(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/slice_layer.hpp(23): note: 参见“caffe::SliceLayer<float>::LayerSetUp”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(35): warning C4661: “void caffe::SliceLayer<float>::Reshape(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/slice_layer.hpp(25): note: 参见“caffe::SliceLayer<float>::Reshape”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(35): warning C4661: “void caffe::SliceLayer<float>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/slice_layer.hpp(33): note: 参见“caffe::SliceLayer<float>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(35): warning C4661: “void caffe::SliceLayer<float>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/slice_layer.hpp(35): note: 参见“caffe::SliceLayer<float>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(35): warning C4661: “void caffe::SliceLayer<float>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/slice_layer.hpp(37): note: 参见“caffe::SliceLayer<float>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(35): warning C4661: “void caffe::SliceLayer<float>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/slice_layer.hpp(39): note: 参见“caffe::SliceLayer<float>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(35): warning C4661: “void caffe::SliceLayer<double>::LayerSetUp(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/slice_layer.hpp(23): note: 参见“caffe::SliceLayer<double>::LayerSetUp”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(35): warning C4661: “void caffe::SliceLayer<double>::Reshape(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/slice_layer.hpp(25): note: 参见“caffe::SliceLayer<double>::Reshape”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(35): warning C4661: “void caffe::SliceLayer<double>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/slice_layer.hpp(33): note: 参见“caffe::SliceLayer<double>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(35): warning C4661: “void caffe::SliceLayer<double>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/slice_layer.hpp(35): note: 参见“caffe::SliceLayer<double>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(35): warning C4661: “void caffe::SliceLayer<double>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/slice_layer.hpp(37): note: 参见“caffe::SliceLayer<double>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(35): warning C4661: “void caffe::SliceLayer<double>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/slice_layer.hpp(39): note: 参见“caffe::SliceLayer<double>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(36): warning C4661: “void caffe::BatchNormLayer<float>::LayerSetUp(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/batch_norm_layer.hpp(44): note: 参见“caffe::BatchNormLayer<float>::LayerSetUp”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(36): warning C4661: “void caffe::BatchNormLayer<float>::Reshape(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/batch_norm_layer.hpp(46): note: 参见“caffe::BatchNormLayer<float>::Reshape”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(36): warning C4661: “void caffe::BatchNormLayer<float>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/batch_norm_layer.hpp(54): note: 参见“caffe::BatchNormLayer<float>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(36): warning C4661: “void caffe::BatchNormLayer<float>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/batch_norm_layer.hpp(56): note: 参见“caffe::BatchNormLayer<float>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(36): warning C4661: “void caffe::BatchNormLayer<float>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/batch_norm_layer.hpp(58): note: 参见“caffe::BatchNormLayer<float>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(36): warning C4661: “void caffe::BatchNormLayer<float>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/batch_norm_layer.hpp(60): note: 参见“caffe::BatchNormLayer<float>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(36): warning C4661: “void caffe::BatchNormLayer<double>::LayerSetUp(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/batch_norm_layer.hpp(44): note: 参见“caffe::BatchNormLayer<double>::LayerSetUp”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(36): warning C4661: “void caffe::BatchNormLayer<double>::Reshape(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/batch_norm_layer.hpp(46): note: 参见“caffe::BatchNormLayer<double>::Reshape”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(36): warning C4661: “void caffe::BatchNormLayer<double>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/batch_norm_layer.hpp(54): note: 参见“caffe::BatchNormLayer<double>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(36): warning C4661: “void caffe::BatchNormLayer<double>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/batch_norm_layer.hpp(56): note: 参见“caffe::BatchNormLayer<double>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(36): warning C4661: “void caffe::BatchNormLayer<double>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/batch_norm_layer.hpp(58): note: 参见“caffe::BatchNormLayer<double>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(36): warning C4661: “void caffe::BatchNormLayer<double>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/batch_norm_layer.hpp(60): note: 参见“caffe::BatchNormLayer<double>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(37): warning C4661: “void caffe::ScaleLayer<float>::LayerSetUp(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/scale_layer.hpp(30): note: 参见“caffe::ScaleLayer<float>::LayerSetUp”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(37): warning C4661: “void caffe::ScaleLayer<float>::Reshape(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/scale_layer.hpp(32): note: 参见“caffe::ScaleLayer<float>::Reshape”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(37): warning C4661: “void caffe::ScaleLayer<float>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/scale_layer.hpp(61): note: 参见“caffe::ScaleLayer<float>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(37): warning C4661: “void caffe::ScaleLayer<float>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/scale_layer.hpp(63): note: 参见“caffe::ScaleLayer<float>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(37): warning C4661: “void caffe::ScaleLayer<float>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/scale_layer.hpp(65): note: 参见“caffe::ScaleLayer<float>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(37): warning C4661: “void caffe::ScaleLayer<float>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/scale_layer.hpp(67): note: 参见“caffe::ScaleLayer<float>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(37): warning C4661: “void caffe::ScaleLayer<double>::LayerSetUp(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/scale_layer.hpp(30): note: 参见“caffe::ScaleLayer<double>::LayerSetUp”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(37): warning C4661: “void caffe::ScaleLayer<double>::Reshape(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/scale_layer.hpp(32): note: 参见“caffe::ScaleLayer<double>::Reshape”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(37): warning C4661: “void caffe::ScaleLayer<double>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/scale_layer.hpp(61): note: 参见“caffe::ScaleLayer<double>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(37): warning C4661: “void caffe::ScaleLayer<double>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/scale_layer.hpp(63): note: 参见“caffe::ScaleLayer<double>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(37): warning C4661: “void caffe::ScaleLayer<double>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/scale_layer.hpp(65): note: 参见“caffe::ScaleLayer<double>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(37): warning C4661: “void caffe::ScaleLayer<double>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/scale_layer.hpp(67): note: 参见“caffe::ScaleLayer<double>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(38): warning C4661: “void caffe::BiasLayer<float>::LayerSetUp(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/bias_layer.hpp(26): note: 参见“caffe::BiasLayer<float>::LayerSetUp”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(38): warning C4661: “void caffe::BiasLayer<float>::Reshape(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/bias_layer.hpp(28): note: 参见“caffe::BiasLayer<float>::Reshape”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(38): warning C4661: “void caffe::BiasLayer<float>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/bias_layer.hpp(36): note: 参见“caffe::BiasLayer<float>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(38): warning C4661: “void caffe::BiasLayer<float>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/bias_layer.hpp(38): note: 参见“caffe::BiasLayer<float>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(38): warning C4661: “void caffe::BiasLayer<float>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/bias_layer.hpp(40): note: 参见“caffe::BiasLayer<float>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(38): warning C4661: “void caffe::BiasLayer<float>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/bias_layer.hpp(42): note: 参见“caffe::BiasLayer<float>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(38): warning C4661: “void caffe::BiasLayer<double>::LayerSetUp(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/bias_layer.hpp(26): note: 参见“caffe::BiasLayer<double>::LayerSetUp”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(38): warning C4661: “void caffe::BiasLayer<double>::Reshape(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/bias_layer.hpp(28): note: 参见“caffe::BiasLayer<double>::Reshape”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(38): warning C4661: “void caffe::BiasLayer<double>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/bias_layer.hpp(36): note: 参见“caffe::BiasLayer<double>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(38): warning C4661: “void caffe::BiasLayer<double>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/bias_layer.hpp(38): note: 参见“caffe::BiasLayer<double>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(38): warning C4661: “void caffe::BiasLayer<double>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/bias_layer.hpp(40): note: 参见“caffe::BiasLayer<double>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(38): warning C4661: “void caffe::BiasLayer<double>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/bias_layer.hpp(42): note: 参见“caffe::BiasLayer<double>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(39): warning C4661: “void caffe::ConcatLayer<float>::LayerSetUp(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/concat_layer.hpp(21): note: 参见“caffe::ConcatLayer<float>::LayerSetUp”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(39): warning C4661: “void caffe::ConcatLayer<float>::Reshape(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/concat_layer.hpp(23): note: 参见“caffe::ConcatLayer<float>::Reshape”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(39): warning C4661: “void caffe::ConcatLayer<float>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/concat_layer.hpp(47): note: 参见“caffe::ConcatLayer<float>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(39): warning C4661: “void caffe::ConcatLayer<float>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/concat_layer.hpp(49): note: 参见“caffe::ConcatLayer<float>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(39): warning C4661: “void caffe::ConcatLayer<float>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/concat_layer.hpp(74): note: 参见“caffe::ConcatLayer<float>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(39): warning C4661: “void caffe::ConcatLayer<float>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/concat_layer.hpp(76): note: 参见“caffe::ConcatLayer<float>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(39): warning C4661: “void caffe::ConcatLayer<double>::LayerSetUp(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/concat_layer.hpp(21): note: 参见“caffe::ConcatLayer<double>::LayerSetUp”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(39): warning C4661: “void caffe::ConcatLayer<double>::Reshape(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/concat_layer.hpp(23): note: 参见“caffe::ConcatLayer<double>::Reshape”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(39): warning C4661: “void caffe::ConcatLayer<double>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/concat_layer.hpp(47): note: 参见“caffe::ConcatLayer<double>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(39): warning C4661: “void caffe::ConcatLayer<double>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/concat_layer.hpp(49): note: 参见“caffe::ConcatLayer<double>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(39): warning C4661: “void caffe::ConcatLayer<double>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/concat_layer.hpp(74): note: 参见“caffe::ConcatLayer<double>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(39): warning C4661: “void caffe::ConcatLayer<double>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/concat_layer.hpp(76): note: 参见“caffe::ConcatLayer<double>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(25): warning C4661: “void caffe::ConvolutionLayer<float>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/conv_layer.hpp(70): note: 参见“caffe::ConvolutionLayer<float>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(25): warning C4661: “void caffe::ConvolutionLayer<float>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/conv_layer.hpp(72): note: 参见“caffe::ConvolutionLayer<float>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(25): warning C4661: “void caffe::ConvolutionLayer<float>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/conv_layer.hpp(74): note: 参见“caffe::ConvolutionLayer<float>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(25): warning C4661: “void caffe::ConvolutionLayer<float>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/conv_layer.hpp(76): note: 参见“caffe::ConvolutionLayer<float>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(25): warning C4661: “void caffe::ConvolutionLayer<float>::compute_output_shape(void)”: 没有为显式模板实例化请求提供适当的定义
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/conv_layer.hpp(79): note: 参见“caffe::ConvolutionLayer<float>::compute_output_shape”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(25): warning C4661: “void caffe::ConvolutionLayer<double>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/conv_layer.hpp(70): note: 参见“caffe::ConvolutionLayer<double>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(25): warning C4661: “void caffe::ConvolutionLayer<double>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/conv_layer.hpp(72): note: 参见“caffe::ConvolutionLayer<double>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(25): warning C4661: “void caffe::ConvolutionLayer<double>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/conv_layer.hpp(74): note: 参见“caffe::ConvolutionLayer<double>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(25): warning C4661: “void caffe::ConvolutionLayer<double>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/conv_layer.hpp(76): note: 参见“caffe::ConvolutionLayer<double>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(25): warning C4661: “void caffe::ConvolutionLayer<double>::compute_output_shape(void)”: 没有为显式模板实例化请求提供适当的定义
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/conv_layer.hpp(79): note: 参见“caffe::ConvolutionLayer<double>::compute_output_shape”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(27): warning C4661: “void caffe::ReLULayer<float>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/relu_layer.hpp(44): note: 参见“caffe::ReLULayer<float>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(27): warning C4661: “void caffe::ReLULayer<float>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/relu_layer.hpp(46): note: 参见“caffe::ReLULayer<float>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(27): warning C4661: “void caffe::ReLULayer<float>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/relu_layer.hpp(77): note: 参见“caffe::ReLULayer<float>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(27): warning C4661: “void caffe::ReLULayer<float>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/relu_layer.hpp(79): note: 参见“caffe::ReLULayer<float>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(27): warning C4661: “void caffe::ReLULayer<double>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/relu_layer.hpp(44): note: 参见“caffe::ReLULayer<double>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(27): warning C4661: “void caffe::ReLULayer<double>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/relu_layer.hpp(46): note: 参见“caffe::ReLULayer<double>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(27): warning C4661: “void caffe::ReLULayer<double>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/relu_layer.hpp(77): note: 参见“caffe::ReLULayer<double>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(27): warning C4661: “void caffe::ReLULayer<double>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/relu_layer.hpp(79): note: 参见“caffe::ReLULayer<double>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(29): warning C4661: “void caffe::PoolingLayer<float>::LayerSetUp(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(25): note: 参见“caffe::PoolingLayer<float>::LayerSetUp”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(29): warning C4661: “void caffe::PoolingLayer<float>::Reshape(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(27): note: 参见“caffe::PoolingLayer<float>::Reshape”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(29): warning C4661: “void caffe::PoolingLayer<float>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(41): note: 参见“caffe::PoolingLayer<float>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(29): warning C4661: “void caffe::PoolingLayer<float>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(43): note: 参见“caffe::PoolingLayer<float>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(29): warning C4661: “void caffe::PoolingLayer<float>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(45): note: 参见“caffe::PoolingLayer<float>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(29): warning C4661: “void caffe::PoolingLayer<float>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(47): note: 参见“caffe::PoolingLayer<float>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(29): warning C4661: “void caffe::PoolingLayer<float>::dt(int,int,const Dtype *,Dtype,Dtype,Dtype,Dtype,int,int)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(61): note: 参见“caffe::PoolingLayer<float>::dt”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(29): warning C4661: “void caffe::PoolingLayer<float>::reduce1dtran(Dtype *,int,Dtype *,int,int,int)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(67): note: 参见“caffe::PoolingLayer<float>::reduce1dtran”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(29): warning C4661: “void caffe::PoolingLayer<float>::reduce1dtran(const Dtype *,int,Dtype *,int,int,int)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(64): note: 参见“caffe::PoolingLayer<float>::reduce1dtran”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(29): warning C4661: “void caffe::PoolingLayer<double>::LayerSetUp(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(25): note: 参见“caffe::PoolingLayer<double>::LayerSetUp”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(29): warning C4661: “void caffe::PoolingLayer<double>::Reshape(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(27): note: 参见“caffe::PoolingLayer<double>::Reshape”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(29): warning C4661: “void caffe::PoolingLayer<double>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(41): note: 参见“caffe::PoolingLayer<double>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(29): warning C4661: “void caffe::PoolingLayer<double>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(43): note: 参见“caffe::PoolingLayer<double>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(29): warning C4661: “void caffe::PoolingLayer<double>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(45): note: 参见“caffe::PoolingLayer<double>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(29): warning C4661: “void caffe::PoolingLayer<double>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(47): note: 参见“caffe::PoolingLayer<double>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(29): warning C4661: “void caffe::PoolingLayer<double>::dt(int,int,const Dtype *,Dtype,Dtype,Dtype,Dtype,int,int)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(61): note: 参见“caffe::PoolingLayer<double>::dt”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(29): warning C4661: “void caffe::PoolingLayer<double>::reduce1dtran(Dtype *,int,Dtype *,int,int,int)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(67): note: 参见“caffe::PoolingLayer<double>::reduce1dtran”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(29): warning C4661: “void caffe::PoolingLayer<double>::reduce1dtran(const Dtype *,int,Dtype *,int,int,int)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(64): note: 参见“caffe::PoolingLayer<double>::reduce1dtran”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(31): warning C4661: “void caffe::LRNLayer<float>::LayerSetUp(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(27): note: 参见“caffe::LRNLayer<float>::LayerSetUp”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(31): warning C4661: “void caffe::LRNLayer<float>::Reshape(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(29): note: 参见“caffe::LRNLayer<float>::Reshape”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(31): warning C4661: “void caffe::LRNLayer<float>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(37): note: 参见“caffe::LRNLayer<float>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(31): warning C4661: “void caffe::LRNLayer<float>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(39): note: 参见“caffe::LRNLayer<float>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(31): warning C4661: “void caffe::LRNLayer<float>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(41): note: 参见“caffe::LRNLayer<float>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(31): warning C4661: “void caffe::LRNLayer<float>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(43): note: 参见“caffe::LRNLayer<float>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(31): warning C4661: “void caffe::LRNLayer<float>::CrossChannelForward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(46): note: 参见“caffe::LRNLayer<float>::CrossChannelForward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(31): warning C4661: “void caffe::LRNLayer<float>::CrossChannelForward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(48): note: 参见“caffe::LRNLayer<float>::CrossChannelForward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(31): warning C4661: “void caffe::LRNLayer<float>::WithinChannelForward(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(50): note: 参见“caffe::LRNLayer<float>::WithinChannelForward”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(31): warning C4661: “void caffe::LRNLayer<float>::CrossChannelBackward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(52): note: 参见“caffe::LRNLayer<float>::CrossChannelBackward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(31): warning C4661: “void caffe::LRNLayer<float>::CrossChannelBackward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(54): note: 参见“caffe::LRNLayer<float>::CrossChannelBackward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(31): warning C4661: “void caffe::LRNLayer<float>::WithinChannelBackward(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(56): note: 参见“caffe::LRNLayer<float>::WithinChannelBackward”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(31): warning C4661: “void caffe::LRNLayer<double>::LayerSetUp(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(27): note: 参见“caffe::LRNLayer<double>::LayerSetUp”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(31): warning C4661: “void caffe::LRNLayer<double>::Reshape(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(29): note: 参见“caffe::LRNLayer<double>::Reshape”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(31): warning C4661: “void caffe::LRNLayer<double>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(37): note: 参见“caffe::LRNLayer<double>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(31): warning C4661: “void caffe::LRNLayer<double>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(39): note: 参见“caffe::LRNLayer<double>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(31): warning C4661: “void caffe::LRNLayer<double>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(41): note: 参见“caffe::LRNLayer<double>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(31): warning C4661: “void caffe::LRNLayer<double>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(43): note: 参见“caffe::LRNLayer<double>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(31): warning C4661: “void caffe::LRNLayer<double>::CrossChannelForward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(46): note: 参见“caffe::LRNLayer<double>::CrossChannelForward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(31): warning C4661: “void caffe::LRNLayer<double>::CrossChannelForward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(48): note: 参见“caffe::LRNLayer<double>::CrossChannelForward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(31): warning C4661: “void caffe::LRNLayer<double>::WithinChannelForward(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(50): note: 参见“caffe::LRNLayer<double>::WithinChannelForward”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(31): warning C4661: “void caffe::LRNLayer<double>::CrossChannelBackward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(52): note: 参见“caffe::LRNLayer<double>::CrossChannelBackward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(31): warning C4661: “void caffe::LRNLayer<double>::CrossChannelBackward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(54): note: 参见“caffe::LRNLayer<double>::CrossChannelBackward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(31): warning C4661: “void caffe::LRNLayer<double>::WithinChannelBackward(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(56): note: 参见“caffe::LRNLayer<double>::WithinChannelBackward”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(33): warning C4661: “void caffe::SoftmaxLayer<float>::Reshape(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/softmax_layer.hpp(22): note: 参见“caffe::SoftmaxLayer<float>::Reshape”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(33): warning C4661: “void caffe::SoftmaxLayer<float>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/softmax_layer.hpp(30): note: 参见“caffe::SoftmaxLayer<float>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(33): warning C4661: “void caffe::SoftmaxLayer<float>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/softmax_layer.hpp(32): note: 参见“caffe::SoftmaxLayer<float>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(33): warning C4661: “void caffe::SoftmaxLayer<float>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/softmax_layer.hpp(34): note: 参见“caffe::SoftmaxLayer<float>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(33): warning C4661: “void caffe::SoftmaxLayer<float>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/softmax_layer.hpp(36): note: 参见“caffe::SoftmaxLayer<float>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(33): warning C4661: “void caffe::SoftmaxLayer<double>::Reshape(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/softmax_layer.hpp(22): note: 参见“caffe::SoftmaxLayer<double>::Reshape”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(33): warning C4661: “void caffe::SoftmaxLayer<double>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/softmax_layer.hpp(30): note: 参见“caffe::SoftmaxLayer<double>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(33): warning C4661: “void caffe::SoftmaxLayer<double>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/softmax_layer.hpp(32): note: 参见“caffe::SoftmaxLayer<double>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(33): warning C4661: “void caffe::SoftmaxLayer<double>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/softmax_layer.hpp(34): note: 参见“caffe::SoftmaxLayer<double>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\vnect_lib\include\head.h(33): warning C4661: “void caffe::SoftmaxLayer<double>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/softmax_layer.hpp(36): note: 参见“caffe::SoftmaxLayer<double>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::ConvolutionLayer<float>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/conv_layer.hpp(70): note: 参见“caffe::ConvolutionLayer<float>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::ConvolutionLayer<float>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/conv_layer.hpp(72): note: 参见“caffe::ConvolutionLayer<float>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::ConvolutionLayer<float>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/conv_layer.hpp(74): note: 参见“caffe::ConvolutionLayer<float>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::ConvolutionLayer<float>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/conv_layer.hpp(76): note: 参见“caffe::ConvolutionLayer<float>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::ConvolutionLayer<float>::compute_output_shape(void)”: 没有为显式模板实例化请求提供适当的定义
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/conv_layer.hpp(79): note: 参见“caffe::ConvolutionLayer<float>::compute_output_shape”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::ConvolutionLayer<double>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/conv_layer.hpp(70): note: 参见“caffe::ConvolutionLayer<double>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::ConvolutionLayer<double>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/conv_layer.hpp(72): note: 参见“caffe::ConvolutionLayer<double>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::ConvolutionLayer<double>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/conv_layer.hpp(74): note: 参见“caffe::ConvolutionLayer<double>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::ConvolutionLayer<double>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/conv_layer.hpp(76): note: 参见“caffe::ConvolutionLayer<double>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::ConvolutionLayer<double>::compute_output_shape(void)”: 没有为显式模板实例化请求提供适当的定义
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/conv_layer.hpp(79): note: 参见“caffe::ConvolutionLayer<double>::compute_output_shape”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::ReLULayer<float>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/relu_layer.hpp(44): note: 参见“caffe::ReLULayer<float>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::ReLULayer<float>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/relu_layer.hpp(46): note: 参见“caffe::ReLULayer<float>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::ReLULayer<float>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/relu_layer.hpp(77): note: 参见“caffe::ReLULayer<float>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::ReLULayer<float>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/relu_layer.hpp(79): note: 参见“caffe::ReLULayer<float>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::ReLULayer<double>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/relu_layer.hpp(44): note: 参见“caffe::ReLULayer<double>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::ReLULayer<double>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/relu_layer.hpp(46): note: 参见“caffe::ReLULayer<double>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::ReLULayer<double>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/relu_layer.hpp(77): note: 参见“caffe::ReLULayer<double>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::ReLULayer<double>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/relu_layer.hpp(79): note: 参见“caffe::ReLULayer<double>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::PoolingLayer<float>::LayerSetUp(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(25): note: 参见“caffe::PoolingLayer<float>::LayerSetUp”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::PoolingLayer<float>::Reshape(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(27): note: 参见“caffe::PoolingLayer<float>::Reshape”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::PoolingLayer<float>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(41): note: 参见“caffe::PoolingLayer<float>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::PoolingLayer<float>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(43): note: 参见“caffe::PoolingLayer<float>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::PoolingLayer<float>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(45): note: 参见“caffe::PoolingLayer<float>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::PoolingLayer<float>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(47): note: 参见“caffe::PoolingLayer<float>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::PoolingLayer<float>::dt(int,int,const Dtype *,Dtype,Dtype,Dtype,Dtype,int,int)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(61): note: 参见“caffe::PoolingLayer<float>::dt”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::PoolingLayer<float>::reduce1dtran(Dtype *,int,Dtype *,int,int,int)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(67): note: 参见“caffe::PoolingLayer<float>::reduce1dtran”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::PoolingLayer<float>::reduce1dtran(const Dtype *,int,Dtype *,int,int,int)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(64): note: 参见“caffe::PoolingLayer<float>::reduce1dtran”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::PoolingLayer<double>::LayerSetUp(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(25): note: 参见“caffe::PoolingLayer<double>::LayerSetUp”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::PoolingLayer<double>::Reshape(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(27): note: 参见“caffe::PoolingLayer<double>::Reshape”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::PoolingLayer<double>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(41): note: 参见“caffe::PoolingLayer<double>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::PoolingLayer<double>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(43): note: 参见“caffe::PoolingLayer<double>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::PoolingLayer<double>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(45): note: 参见“caffe::PoolingLayer<double>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::PoolingLayer<double>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(47): note: 参见“caffe::PoolingLayer<double>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::PoolingLayer<double>::dt(int,int,const Dtype *,Dtype,Dtype,Dtype,Dtype,int,int)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(61): note: 参见“caffe::PoolingLayer<double>::dt”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::PoolingLayer<double>::reduce1dtran(Dtype *,int,Dtype *,int,int,int)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(67): note: 参见“caffe::PoolingLayer<double>::reduce1dtran”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::PoolingLayer<double>::reduce1dtran(const Dtype *,int,Dtype *,int,int,int)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/pooling_layer.hpp(64): note: 参见“caffe::PoolingLayer<double>::reduce1dtran”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::LRNLayer<float>::LayerSetUp(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(27): note: 参见“caffe::LRNLayer<float>::LayerSetUp”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::LRNLayer<float>::Reshape(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(29): note: 参见“caffe::LRNLayer<float>::Reshape”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::LRNLayer<float>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(37): note: 参见“caffe::LRNLayer<float>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::LRNLayer<float>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(39): note: 参见“caffe::LRNLayer<float>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::LRNLayer<float>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(41): note: 参见“caffe::LRNLayer<float>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::LRNLayer<float>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(43): note: 参见“caffe::LRNLayer<float>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::LRNLayer<float>::CrossChannelForward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(46): note: 参见“caffe::LRNLayer<float>::CrossChannelForward_cpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::LRNLayer<float>::CrossChannelForward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(48): note: 参见“caffe::LRNLayer<float>::CrossChannelForward_gpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::LRNLayer<float>::WithinChannelForward(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(50): note: 参见“caffe::LRNLayer<float>::WithinChannelForward”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::LRNLayer<float>::CrossChannelBackward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(52): note: 参见“caffe::LRNLayer<float>::CrossChannelBackward_cpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::LRNLayer<float>::CrossChannelBackward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(54): note: 参见“caffe::LRNLayer<float>::CrossChannelBackward_gpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::LRNLayer<float>::WithinChannelBackward(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(56): note: 参见“caffe::LRNLayer<float>::WithinChannelBackward”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::LRNLayer<double>::LayerSetUp(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(27): note: 参见“caffe::LRNLayer<double>::LayerSetUp”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::LRNLayer<double>::Reshape(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(29): note: 参见“caffe::LRNLayer<double>::Reshape”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::LRNLayer<double>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(37): note: 参见“caffe::LRNLayer<double>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::LRNLayer<double>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(39): note: 参见“caffe::LRNLayer<double>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::LRNLayer<double>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(41): note: 参见“caffe::LRNLayer<double>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::LRNLayer<double>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(43): note: 参见“caffe::LRNLayer<double>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::LRNLayer<double>::CrossChannelForward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(46): note: 参见“caffe::LRNLayer<double>::CrossChannelForward_cpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::LRNLayer<double>::CrossChannelForward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(48): note: 参见“caffe::LRNLayer<double>::CrossChannelForward_gpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::LRNLayer<double>::WithinChannelForward(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(50): note: 参见“caffe::LRNLayer<double>::WithinChannelForward”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::LRNLayer<double>::CrossChannelBackward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(52): note: 参见“caffe::LRNLayer<double>::CrossChannelBackward_cpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::LRNLayer<double>::CrossChannelBackward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(54): note: 参见“caffe::LRNLayer<double>::CrossChannelBackward_gpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::LRNLayer<double>::WithinChannelBackward(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/lrn_layer.hpp(56): note: 参见“caffe::LRNLayer<double>::WithinChannelBackward”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::SoftmaxLayer<float>::Reshape(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/softmax_layer.hpp(22): note: 参见“caffe::SoftmaxLayer<float>::Reshape”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::SoftmaxLayer<float>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/softmax_layer.hpp(30): note: 参见“caffe::SoftmaxLayer<float>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::SoftmaxLayer<float>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/softmax_layer.hpp(32): note: 参见“caffe::SoftmaxLayer<float>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::SoftmaxLayer<float>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/softmax_layer.hpp(34): note: 参见“caffe::SoftmaxLayer<float>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::SoftmaxLayer<float>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=float,
+              _Ty=caffe::Blob<float> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/softmax_layer.hpp(36): note: 参见“caffe::SoftmaxLayer<float>::Backward_gpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::SoftmaxLayer<double>::Reshape(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/softmax_layer.hpp(22): note: 参见“caffe::SoftmaxLayer<double>::Reshape”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::SoftmaxLayer<double>::Forward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/softmax_layer.hpp(30): note: 参见“caffe::SoftmaxLayer<double>::Forward_cpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::SoftmaxLayer<double>::Forward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/softmax_layer.hpp(32): note: 参见“caffe::SoftmaxLayer<double>::Forward_gpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::SoftmaxLayer<double>::Backward_cpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/softmax_layer.hpp(34): note: 参见“caffe::SoftmaxLayer<double>::Backward_cpu”的声明
+D:\Code\C++\vnect_lib\3rdparty\include\boost\include\boost/core/checked_delete.hpp(34): warning C4661: “void caffe::SoftmaxLayer<double>::Backward_gpu(const std::vector<caffe::Blob<Dtype> *,std::allocator<_Ty>> &,const std::vector<bool,std::allocator<bool>> &,const std::vector<_Ty,std::allocator<_Ty>> &)”: 没有为显式模板实例化请求提供适当的定义
+          with
+          [
+              Dtype=double,
+              _Ty=caffe::Blob<double> *
+          ]
+  D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/layers/softmax_layer.hpp(36): note: 参见“caffe::SoftmaxLayer<double>::Backward_gpu”的声明
+  vnect_lib.cpp
+    正在创建库 D:\Code\C++\vnect_lib\x64\Release\vnect_lib.lib 和对象 D:\Code\C++\vnect_lib\x64\Release\vnect_lib.exp
+  正在生成代码
+d:\code\c++\vnect_lib\vnect_lib\src\videoposepredictor3d.cpp(39): warning C4717: “mVideoPosePredictor3D::writeToJson”: 如递归所有控件路径，函数将导致运行时堆栈溢出
+  All 13464 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  已完成代码的生成
+  vnect_lib.vcxproj -> D:\Code\C++\vnect_lib\x64\Release\vnect_lib.dll
