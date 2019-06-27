@@ -63,6 +63,20 @@ private:
 	QVector3D gVecR_Calf;
 	QVector3D gVecR_Foot;
 
+	//
+	QQuaternion gRotationQuaternion;
+	//
+	QQuaternion gSpineRotate;
+	QQuaternion gL_ThighRotate;
+	QQuaternion gSpine1Rotate;
+	QQuaternion gR_ThighRotate;
+	QQuaternion gL_CalfRotate;
+	QQuaternion gL_ClavicleRotate;
+	QQuaternion gR_ClavicleRotate;
+	QQuaternion gL_UpperArmRotate;
+	QQuaternion gR_UpperArmRotate;
+	QQuaternion gR_CalfRotate;
+
 	//QVector3D gVecSpine(0, 0.006, 7.166);
 	//QVector3D gVecL_Thigh(0, 0, 1);
 	//QVector3D gVecSpine1(0, 0.002, 7.166);
@@ -121,6 +135,8 @@ private:
 	void ProcessR_Forearm(QVector3D lPos);
 	void ProcessR_Calf(QVector3D lPos);
 	void ProcessR_Foot(QVector3D lPos);
+	//统一坐标系,输入为四元数
+	void ModifyCoordinate();
 
 public:
 	//构造函数，包括3D坐标文件读取，FBXSKD的初始化.
