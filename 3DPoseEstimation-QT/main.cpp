@@ -1,9 +1,21 @@
-#include "mainwindow.h"
+#include "dialogmenu.h"
 #include <QApplication>
 #include <QFile>
+#include <QFrame>
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    /*
+    QFrame *frame = new QFrame;
+    frame->resize(400,700);
+    QPixmap pixmap(":/Buttons/timg.jpg");
+    QPalette   palette;
+    palette.setBrush(frame->backgroundRole(),QBrush(pixmap));
+    frame->setPalette(palette);
+
+    frame->setAutoFillBackground(true);
+    frame->show();
+    */
     QFile qss(":/stylesheet.qss");
     if(qss.open(QFile::ReadOnly))
     {
@@ -15,7 +27,7 @@ int main(int argc, char *argv[])
     else {
         qDebug("open failed");
     }
-    MainWindow w;
-    w.show();
+    DialogMenu d;
+    d.show();
     return a.exec();
 }

@@ -25,20 +25,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-        custompushbutton.cpp \
+        dialogmenu.cpp \
         main.cpp \
-        mainwindow.cpp \
-        shadoweffectwidget.cpp \
-        title.cpp
+        trackingWindow.cpp
 
 HEADERS += \
-        custompushbutton.h \
-        mainwindow.h \
-        shadoweffectwidget.h \
-        title.h
+        dialogmenu.h \
+        trackingWindow.h
 
 FORMS += \
-        mainwindow.ui
+        dialogmenu.ui \
+        trackingWindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -46,4 +43,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
+    background.qrc \
     resource.qrc
+
+
