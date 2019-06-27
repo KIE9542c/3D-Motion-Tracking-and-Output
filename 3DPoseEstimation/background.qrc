@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/new/prefix2">
+        <file alias="fucc">back.jpg</file>
+        <file>Buttons/min.png</file>
+        <file>Buttons/close.png</file>
+        <file>Buttons/close_hover.png</file>
+        <file>Buttons/min_hover.png</file>
+        <file>welcome.png</file>
+        <file>timg.jpg</file>
+        <file>logo.png</file>
+        <file>track.jpg</file>
+    </qresource>
+</RCC>
