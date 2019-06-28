@@ -440,22 +440,3 @@ void FbxAPI::ProcessFrameOpenMMD() {
 	}
 }
 
-
-int main(int /*argc*/, char** /*argv*/)
-{
-	//const char* lFilename = "C:\\Users\\9\\Desktop\\3.FBX";
-	const char* inputFBX = "C:\\Users\\9\\Desktop\\biped_2Spine.FBX";
-
-	const char* inputPosition = "C:\\Users\\9\\Desktop\\3d_posititon_all.json";
-
-	const char* outputFBX = "C:\\Users\\9\\Desktop\\biped08.FBX";
-		
-	FbxAPI test(inputPosition);
-	//test.ProcessFrameOpenMMD();
-	test.ProcessFrameVnect();
-	test.Export(outputFBX);
-	test.Destory();
-
-//	system("pause");
-	return 0;
-}

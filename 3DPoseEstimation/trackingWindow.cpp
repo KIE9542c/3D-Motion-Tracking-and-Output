@@ -92,7 +92,7 @@ void TrackingWindow::on_pushButton_clicked()
     //处理视频的代码api
 	mVideoPosePredictor3D predictor("./vnect_model.caffemodel", "./vnect_net.prototxt");
 	std::vector<std::vector<float>> output;
-	predictor.predict(inputFileName.toStdString(), output, false);
+	predictor.predict(inputFileName.toStdString(),"./shader","./model", output, false,true);
 	std::string stdOutputFileString = outputFileName.toStdString();
 	std::string dir = stdOutputFileString.substr(0, stdOutputFileString.rfind(".FBX"));
 	predictor.writePositionToJson(dir+".json",output);
