@@ -47,7 +47,8 @@ private:
 	const char * inputFBX;
 
 	//rotation(0,0,0) bone vector
-	QVector3D gVecSpine;
+	QVector3D gVecSpine_Global;
+	QVector3D gVecSpine_Local;
 	QVector3D gVecL_Thigh;
 	QVector3D gVecSpine1;
 	QVector3D gVecR_Thigh;
