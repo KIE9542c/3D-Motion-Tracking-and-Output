@@ -39,39 +39,16 @@ TrackingWindow::~TrackingWindow()
 
 void TrackingWindow::on_pushButton_3_clicked()
 {
-    //QString fileName;
-    //fileName=QFileDialog::getOpenFileName(this, "打开视频或图像" ,"","Videos or Images (*.avi *.mp4 *.mpg *.png *.jpg)");
-	fileName=QFileDialog::getOpenFileName(this, tr("") ,"",tr(""));
+	inputFileName=QFileDialog::getOpenFileName(this, tr("Open video or image") ,"",tr("Videos or Images (*.avi *.mp4 *.mpg *.png *.jpg)"));
 
-    ui->lineEdit->setText(fileName);
+    ui->lineEdit->setText(inputFileName);
 }
 
 void TrackingWindow::on_pushButton_4_clicked()
 {
 
-    QString dirPath;//创建文件夹路径
-    QString filePath;//存储保存路径
-    QString saveName="output";//保存图片名字
-    QDateTime time = QDateTime::currentDateTime();//获取系统现在的时间
-    QString str = time.toString("yyyyMMdd_hhmmss"); //设置显示格式
-    filePath = QFileDialog::getExistingDirectory(this,"");//获取文件夹路径
-    ui->lineEdit_3->setText(filePath);
-    if(filePath.isEmpty())
-    {
-        QMessageBox::information(this,"信息","保存失败");
-    }
-    else
-    {
-        //存储文件
-        QImage image(QSize(this->width(),this->height()),QImage::Format_ARGB32);
-            image.fill("white");
-
-        //将图片重新命名并保存至刚刚创建的文件夹里
-        QString savePath=QString("%1//%2.jpg").arg(filePath).arg(saveName);
-        image.save(savePath);//QImage保存方法
-        QMessageBox::information(this,"信息","保存成功");
-    }
-
+	outputFileName = QFileDialog::getOpenFileName(this, tr("Output File"), "", tr("fbx or vmd (*.fbx *.vmd)"));
+	ui->lineEdit_3->setText(inputFileName);
 
 }
 void TrackingWindow::sendSlot()
@@ -113,13 +90,15 @@ void TrackingWindow::mouseReleaseEvent(QMouseEvent *event)
 void TrackingWindow::on_pushButton_clicked()
 {
     //处理视频的代码api
-	mVideoPosePredictor3D predictor("D:\\Code\\C++\\vnect_lib\\caffemodel\\vnect_model.caffemodel", "D:\\Code\\C++\\vnect_lib\\caffemodel\\vnect_net.prototxt");
+	mVideoPosePredictor3D predictor("./vnect_model.caffemodel", "./vnect_net.prototxt");
 	std::vector<std::vector<float>> output;
-	predictor.predict(fileName.toStdString(), output, false);
-	predictor.writePositionToJson("D:\\Dataset\\20190625154359.json",output);
-	FbxAPI test("D:\\Dataset\\20190625154359.json");
+	predictor.predict(inputFileName.toStdString(), output, false);
+	std::string stdOutputFileString = outputFileName.toStdString();
+	std::string dir = stdOutputFileString.substr(0, stdOutputFileString.rfind(".FBX"));
+	predictor.writePositionToJson(dir+".json",output);
+	FbxAPI test((dir+".json").c_str());
 	test.ProcessFrameVnect();
-	test.Export("D:\\Dataset\\1.FBX");
+	test.Export(stdOutputFileString.c_str());
 	test.Destory();
 		 
 }

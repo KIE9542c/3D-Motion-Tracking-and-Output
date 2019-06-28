@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'trackingWindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.0
+** Created by: Qt User Interface Compiler version 5.13.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -219,18 +219,18 @@ public:
 
     void retranslateUi(QMainWindow *TrackingWindow)
     {
-        TrackingWindow->setWindowTitle(QApplication::translate("TrackingWindow", "MainWindow", nullptr));
-        pushButton->setText(QApplication::translate("TrackingWindow", "\345\244\204\347\220\206", nullptr));
-        pushButton_2->setText(QApplication::translate("TrackingWindow", "\350\277\224\345\233\236\350\217\234\345\215\225", nullptr));
-        label->setText(QApplication::translate("TrackingWindow", "\350\276\223\345\205\245\350\247\206\351\242\221\346\210\226\345\233\276\345\203\217", nullptr));
-        pushButton_3->setText(QApplication::translate("TrackingWindow", "\346\211\223\345\274\200\346\226\207\344\273\266", nullptr));
-        label_2->setText(QApplication::translate("TrackingWindow", "\351\200\211\346\213\251\350\276\223\345\207\272\346\240\274\345\274\217", nullptr));
-        comboBox->setItemText(0, QApplication::translate("TrackingWindow", ".fbx", nullptr));
-        comboBox->setItemText(1, QApplication::translate("TrackingWindow", ".vmd", nullptr));
-        comboBox->setItemText(2, QApplication::translate("TrackingWindow", ".fbx\345\222\214.vmd\346\226\207\344\273\266", nullptr));
+        TrackingWindow->setWindowTitle(QCoreApplication::translate("TrackingWindow", "MainWindow", nullptr));
+        pushButton->setText(QCoreApplication::translate("TrackingWindow", "\345\244\204\347\220\206", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("TrackingWindow", "\350\277\224\345\233\236\350\217\234\345\215\225", nullptr));
+        label->setText(QCoreApplication::translate("TrackingWindow", "\350\276\223\345\205\245\350\247\206\351\242\221\346\210\226\345\233\276\345\203\217", nullptr));
+        pushButton_3->setText(QCoreApplication::translate("TrackingWindow", "\346\211\223\345\274\200\346\226\207\344\273\266", nullptr));
+        label_2->setText(QCoreApplication::translate("TrackingWindow", "\351\200\211\346\213\251\350\276\223\345\207\272\346\240\274\345\274\217", nullptr));
+        comboBox->setItemText(0, QCoreApplication::translate("TrackingWindow", ".fbx", nullptr));
+        comboBox->setItemText(1, QCoreApplication::translate("TrackingWindow", ".vmd", nullptr));
+        comboBox->setItemText(2, QCoreApplication::translate("TrackingWindow", ".fbx\345\222\214.vmd\346\226\207\344\273\266", nullptr));
 
-        label_3->setText(QApplication::translate("TrackingWindow", "\350\276\223\345\207\272\350\267\257\345\276\204", nullptr));
-        pushButton_4->setText(QApplication::translate("TrackingWindow", "\346\211\223\345\274\200\346\226\207\344\273\266\345\244\271", nullptr));
+        label_3->setText(QCoreApplication::translate("TrackingWindow", "\350\276\223\345\207\272\350\267\257\345\276\204", nullptr));
+        pushButton_4->setText(QCoreApplication::translate("TrackingWindow", "\346\211\223\345\274\200\346\226\207\344\273\266\345\244\271", nullptr));
         pushButton_6->setText(QString());
         pushButton_7->setText(QString());
     } // retranslateUi

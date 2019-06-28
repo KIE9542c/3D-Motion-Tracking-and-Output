@@ -72,7 +72,8 @@ void FbxAPI::Initialize(const char* lFilename) {
 	//gVecR_Calf = QVector3D(0, 0, 1);
 	//gVecR_Foot = QVector3D(0, -3.368, 3.917);
 
-	gVecSpine = QVector3D(7.166, -0.006, 0);
+	gVecSpine_Global = QVector3D(0, 0.006, 7.166);
+	gVecSpine_Local = QVector3D(7.166, -0.006, 0);
 	gVecL_Thigh = QVector3D(1, 0, 0);
 	gVecSpine1 = QVector3D(7.166, -0.002,0);
 	gVecR_Thigh = QVector3D(1, 0, 0);
@@ -287,91 +288,103 @@ void FbxAPI::ProcessRotation(FbxNode* lNode, QVector3D eulerAngles) {
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessSpine(QVector3D lPos) {
-	gSpineRotate = QQuaternion::rotationTo(gVecSpine, lPos);
+	gSpineRotate = QQuaternion::rotationTo(gVecSpine_Local, lPos);
 	ProcessRotation(gNodeSpine, gSpineRotate.toEulerAngles());
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessL_Thigh(QVector3D lPos) {
+	if (lPos.x() > 0) {
+		lPos.setX(-lPos.x());
+	}
 	gL_ThighRotate = QQuaternion::rotationTo(gVecL_Thigh, lPos);
-	gL_ThighRotate *= gSpineRotate.inverted();
+	gL_ThighRotate = gL_ThighRotate * gSpineRotate.inverted();
 	ProcessRotation(gNodeL_Thigh, gL_ThighRotate.toEulerAngles());
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessSpine1(QVector3D lPos) {
 	gSpine1Rotate = QQuaternion::rotationTo(gVecSpine1, lPos);
-	gSpine1Rotate *= gSpineRotate.inverted();
+	gSpine1Rotate = gSpine1Rotate * gSpineRotate.inverted();
 	ProcessRotation(gNodeSpine1, gSpine1Rotate.toEulerAngles());
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessR_Thigh(QVector3D lPos) {
+	if (lPos.x() > 0) {
+		lPos.setX(-lPos.x());
+	}
 	gR_ThighRotate = QQuaternion::rotationTo(gVecR_Thigh, lPos);
-	gR_ThighRotate *= gSpineRotate.inverted();
+	gR_ThighRotate = gR_ThighRotate * gSpineRotate.inverted();
 	ProcessRotation(gNodeR_Thigh, gR_ThighRotate.toEulerAngles());
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessL_Calf(QVector3D lPos) {
+	if (lPos.x() > 0) {
+		lPos.setX(-lPos.x());
+	}
 	gL_CalfRotate = QQuaternion::rotationTo(gVecL_Calf, lPos);
-	gL_CalfRotate *= gL_ThighRotate.inverted() * gSpineRotate.inverted();
+	gL_CalfRotate = gL_CalfRotate * gSpineRotate.inverted() * gL_ThighRotate.inverted();
 	ProcessRotation(gNodeL_Calf, gL_CalfRotate.toEulerAngles());
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessL_Foot(QVector3D lPos) {
 	QQuaternion lRotate = QQuaternion::rotationTo(gVecL_Foot, lPos);
-	lRotate *= gL_CalfRotate.inverted() * gL_ThighRotate.inverted() * gSpineRotate.inverted();
+	lRotate = lRotate * gSpineRotate.inverted() * gL_ThighRotate.inverted() * gL_CalfRotate.inverted();
 	ProcessRotation(gNodeL_Foot, lRotate.toEulerAngles());
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessHead(QVector3D lPos) {
 	QQuaternion lRotate = QQuaternion::rotationTo(gVecHead, lPos);
-	lRotate *= gSpine1Rotate.inverted() * gSpineRotate.inverted();
+	lRotate = lRotate * gSpineRotate.inverted() * gSpine1Rotate.inverted();
 	ProcessRotation(gNodeHead, lRotate.toEulerAngles());
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessL_Clavicle(QVector3D lPos) {
 	gL_ClavicleRotate = QQuaternion::rotationTo(gVecL_Clavicle, lPos);
-	gL_ClavicleRotate *= gSpine1Rotate.inverted() * gSpineRotate.inverted();
+	gL_ClavicleRotate = gL_ClavicleRotate * gSpineRotate.inverted() * gSpine1Rotate.inverted();
 	ProcessRotation(gNodeL_Clavicle, gL_ClavicleRotate.toEulerAngles());
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessR_Clavicle(QVector3D lPos) {
 	gR_ClavicleRotate = QQuaternion::rotationTo(gVecR_Clavicle, lPos);
-	gR_ClavicleRotate *= gSpine1Rotate.inverted() * gSpineRotate.inverted();
+	gR_ClavicleRotate = gR_ClavicleRotate * gSpineRotate.inverted() * gSpine1Rotate.inverted();
 	ProcessRotation(gNodeR_Clavicle, gR_ClavicleRotate.toEulerAngles());
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessL_UpperArm(QVector3D lPos) {
 	gL_UpperArmRotate = QQuaternion::rotationTo(gVecL_UpperArm, lPos);;
-	gL_UpperArmRotate *= gL_ClavicleRotate.inverted() * gSpine1Rotate.inverted() * gSpineRotate.inverted();
+	gL_UpperArmRotate = gL_UpperArmRotate * gSpineRotate.inverted() * gSpine1Rotate.inverted() * gL_ClavicleRotate.inverted();
 	ProcessRotation(gNodeL_UpperArm, gL_UpperArmRotate.toEulerAngles());
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessL_Forearm(QVector3D lPos) {
 	QQuaternion lRotate = QQuaternion::rotationTo(gVecL_Forearm, lPos);
-	lRotate *= gL_UpperArmRotate.inverted() * gL_ClavicleRotate.inverted() * gSpine1Rotate.inverted() * gSpineRotate.inverted();
+	lRotate = lRotate * gSpineRotate.inverted() * gSpine1Rotate.inverted() * gL_ClavicleRotate.inverted()  * gL_UpperArmRotate.inverted()   ;
 	ProcessRotation(gNodeL_Forearm, lRotate.toEulerAngles());
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessR_UpperArm(QVector3D lPos) {
 	gR_UpperArmRotate = QQuaternion::rotationTo(gVecR_UpperArm, lPos);
-	gR_UpperArmRotate *= gR_ClavicleRotate.inverted() * gSpine1Rotate.inverted() * gSpineRotate.inverted();
+	gR_UpperArmRotate = gR_UpperArmRotate * gSpineRotate.inverted()* gSpine1Rotate.inverted() * gR_ClavicleRotate.inverted() ;
 	ProcessRotation(gNodeR_UpperArm, gR_UpperArmRotate.toEulerAngles());
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessR_Forearm(QVector3D lPos) {
 	QQuaternion lRotate = QQuaternion::rotationTo(gVecR_Forearm, lPos);
-	lRotate *= gR_UpperArmRotate.inverted() * gR_ClavicleRotate.inverted() * gSpine1Rotate.inverted() * gSpineRotate.inverted();
+	lRotate = lRotate * gSpineRotate.inverted()* gSpine1Rotate.inverted()* gR_ClavicleRotate.inverted() * gR_UpperArmRotate.inverted();
 	ProcessRotation(gNodeR_Forearm, lRotate.toEulerAngles());
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessR_Calf(QVector3D lPos) {
+	if (lPos.x() > 0) {
+		lPos.setX(-lPos.x());
+	}
 	gR_CalfRotate = QQuaternion::rotationTo(gVecR_Calf, lPos);
-	gR_CalfRotate *= gR_ThighRotate.inverted() * gSpineRotate.inverted();
+	gR_CalfRotate = gR_CalfRotate * gSpineRotate.inverted() * gR_ThighRotate.inverted();
 	ProcessRotation(gNodeR_Calf, gR_CalfRotate.toEulerAngles());
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessR_Foot(QVector3D lPos) {
 	QQuaternion lRotate = QQuaternion::rotationTo(gVecR_Foot, lPos);
-	lRotate *= gR_CalfRotate.inverted() * gR_ThighRotate.inverted() * gSpineRotate.inverted();
+	lRotate = lRotate * gSpineRotate.inverted() * gR_ThighRotate.inverted() * gR_CalfRotate.inverted();
 	ProcessRotation(gNodeR_Foot, lRotate.toEulerAngles());
 }
 //-----------------------------------------------------------------------
@@ -392,8 +405,8 @@ void FbxAPI::ModifyCoordinate() {
 //-----------------------------------------------------------------------
 FbxAPI::FbxAPI(const char * lFilename) {
 	if (ReadPosition(lFilename)) {
-		
-		inputFBX = "./biped_2Spine.FBX";
+		//TODO: 设置为相对路径
+		inputFBX = "C:\\Users\\9\\Desktop\\biped_2Spine.FBX";
 
 		Initialize(inputFBX);
 
@@ -405,7 +418,7 @@ FbxAPI::FbxAPI(const char * lFilename) {
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessFrameVnect() {
 
-	gRotationQuaternion = QQuaternion::rotationTo(gPosition[0][15], gVecSpine);
+	gRotationQuaternion = QQuaternion::rotationTo(gPosition[0][15]-gPosition[0][14], gVecSpine_Global);
 
 	ModifyCoordinate();
 
@@ -417,7 +430,7 @@ void FbxAPI::ProcessFrameVnect() {
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessFrameOpenMMD() {
 
-	gRotationQuaternion = QQuaternion::rotationTo(gPosition[0][7]- gPosition[0][0], gVecSpine);
+	gRotationQuaternion = QQuaternion::rotationTo(gPosition[0][7]- gPosition[0][0], gVecSpine_Global);
 
 	ModifyCoordinate();
 
@@ -428,51 +441,21 @@ void FbxAPI::ProcessFrameOpenMMD() {
 }
 
 
-//int main(int /*argc*/, char** /*argv*/)
-//{
-//	//const char* lFilename = "C:\\Users\\9\\Desktop\\3.FBX";
-//	const char* inputFBX = "C:\\Users\\9\\Desktop\\biped_2Spine.FBX";
-//
-//	const char* inputPosition = "C:\\Users\\9\\Desktop\\test.json";
-//
-//	const char* outputFBX = "C:\\Users\\9\\Desktop\\biped09.FBX";
-//		
-//	FbxAPI test(inputPosition);
-//	test.ProcessFrameOpenMMD();
-//	//test.ProcessFrameVnect();
-//	test.Export(outputFBX);
-//	test.Destory();
-//
-//	//Initialize(inputFBX);
-//	//gFrame = 5;
-//	//ProcessRotation(gNodeL_Thigh, QVector3D(90, 0, 0));
-//	//Export(outputFBX);
-//	//Destory();
-//	//FbxAnimCurve* lCurve = NULL;
-//	//FbxTime lTime;
-//	//int lKeyIndex = 0;
-//
-//	//lCurve = gNodeL_UpperArm->LclRotation.GetCurve(gAnimLayer, FBXSDK_CURVENODE_COMPONENT_X, true);
-//
-//	//if (lCurve)
-//	//{
-//	//	lCurve->KeyModifyBegin();
-//
-//	//	lTime.SetSecondDouble(0.0);
-//	//	lKeyIndex = lCurve->KeyAdd(lTime);
-//	//	lCurve->KeySet(lKeyIndex, lTime, 0, FbxAnimCurveDef::eInterpolationLinear);
-//
-//	//	lTime.SetSecondDouble(2.0);
-//	//	lKeyIndex = lCurve->KeyAdd(lTime);
-//	//	lCurve->KeySet(lKeyIndex, lTime, 180, FbxAnimCurveDef::eInterpolationLinear);
-//
-//	//	lCurve->KeyModifyEnd();
-//	//}
-//
-//	//const char* lExportFilename = "C:\\Users\\9\\Desktop\\biped03.FBX";
-//	//Export(lExportFilename);
-//
-//
-////	system("pause");
-//	return 0;
-//}
+int main(int /*argc*/, char** /*argv*/)
+{
+	//const char* lFilename = "C:\\Users\\9\\Desktop\\3.FBX";
+	const char* inputFBX = "C:\\Users\\9\\Desktop\\biped_2Spine.FBX";
+
+	const char* inputPosition = "C:\\Users\\9\\Desktop\\3d_posititon_all.json";
+
+	const char* outputFBX = "C:\\Users\\9\\Desktop\\biped08.FBX";
+		
+	FbxAPI test(inputPosition);
+	//test.ProcessFrameOpenMMD();
+	test.ProcessFrameVnect();
+	test.Export(outputFBX);
+	test.Destory();
+
+//	system("pause");
+	return 0;
+}

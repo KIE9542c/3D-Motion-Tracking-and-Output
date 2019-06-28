@@ -37,7 +37,8 @@ private:
     bool m_move;
     QPoint m_startPoint;
     QPoint m_windowPoint;
-	QString fileName;
+	QString inputFileName;
+	QString outputFileName;
 };
 
 #endif // MAINWINDOW_H
