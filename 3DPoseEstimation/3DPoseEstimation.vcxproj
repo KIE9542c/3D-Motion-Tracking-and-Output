@@ -65,8 +65,8 @@
     <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</IgnoreImportLibrary>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>D:\Code\C++\vnect_lib\vnect_lib\include;D:\Code\C++\vnect_lib\3rdparty\include\boost\include;D:\Code\C++\vnect_lib\3rdparty\include\caffe\include;D:\Code\C++\vnect_lib\3rdparty\include\cuda\include;D:\Code\C++\vnect_lib\3rdparty\include\GFlags\Include;D:\Code\C++\vnect_lib\3rdparty\include\GLog\include;D:\Code\C++\vnect_lib\3rdparty\include\JSONCPP\include;D:\Code\C++\vnect_lib\3rdparty\include\OpenBLAS\include;D:\Code\C++\vnect_lib\3rdparty\include\opencv\include\opencv;D:\Code\C++\vnect_lib\3rdparty\include\opencv\include\opencv2;D:\Code\C++\vnect_lib\3rdparty\include\Protobuf\include;D:\Code\C++\vnect_lib\3rdparty\include\opencv\include\;D:\Software\FBXSDK\include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\Code\C++\vnect_lib\3rdparty\lib;D:\Code\C++\vnect_lib\x64\Release;D:\Software\FBXSDK\lib\vs2017\x64\release;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\3rdparty\include\VNect\include;..\3rdparty\include\boost\include;..\3rdparty\include\caffe\include;..\3rdparty\include\cuda\include;..\3rdparty\include\GFlags\Include;..\3rdparty\include\GLog\include;..\3rdparty\include\JSONCPP\include;..\3rdparty\include\OpenBLAS\include;..\3rdparty\include\opencv\include\opencv;..\3rdparty\include\opencv\include\opencv2;..\3rdparty\include\Protobuf\include;..\3rdparty\include\opencv\include\;..\3rdparty\include\FBXSDK\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\3rdparty\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -115,7 +115,7 @@
       <OutputFile>$(Configuration)\moc_%(Filename).cpp</OutputFile>
       <Define>UNICODE;_UNICODE;WIN32;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;QT_DEPRECATED_WARNINGS;QT_NO_DEBUG;QT_WIDGETS_LIB;QT_GUI_LIB;QT_CORE_LIB</Define>
       <CompilerFlavor>msvc</CompilerFlavor>
-      <Include>D:/Code/C++/3D-Motion-Tracking-and-Output/3DPoseEstimation-QT/$(Configuration)/moc_predefs.h</Include>
+      <Include>./$(Configuration)/moc_predefs.h</Include>
       <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
       <InputFile>%(FullPath)</InputFile>
       <DynamicSource>output</DynamicSource>
