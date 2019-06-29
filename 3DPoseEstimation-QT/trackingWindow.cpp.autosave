@@ -167,3 +167,8 @@ void TrackingWindow::fromVMD(QStandardItemModel *vmodel)
     model->setItem(row, 0, new QStandardItem(str1));
     row++;
 }
+
+void TrackingWindow::on_pushButton_start_clicked()
+{
+    //TODO：依次处理视频
+}

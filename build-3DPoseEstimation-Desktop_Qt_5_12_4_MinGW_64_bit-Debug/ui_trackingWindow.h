@@ -55,6 +55,8 @@ public:
     QPushButton *pushButton_4;
     QPushButton *pushButton_6;
     QPushButton *pushButton_7;
+    QLabel *label_4;
+    QLabel *label_5;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *TrackingWindow)
@@ -71,7 +73,8 @@ public:
         frame = new QFrame(centralWidget);
         frame->setObjectName(QString::fromUtf8("frame"));
         frame->setGeometry(QRect(10, 10, 1081, 681));
-        frame->setStyleSheet(QString::fromUtf8("#frame{border-image: url(:/new/prefix2/track.jpg);}"));
+        frame->setStyleSheet(QString::fromUtf8("#frame{background-color: rgb(255, 255, 255);}\n"
+""));
         frame->setFrameShape(QFrame::StyledPanel);
         frame->setFrameShadow(QFrame::Raised);
         horizontalLayoutWidget_4 = new QWidget(frame);
@@ -98,7 +101,7 @@ public:
 
         verticalLayoutWidget = new QWidget(frame);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(170, 120, 561, 131));
+        verticalLayoutWidget->setGeometry(QRect(230, 200, 561, 131));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
@@ -201,11 +204,31 @@ public:
         pushButton_7 = new QPushButton(frame);
         pushButton_7->setObjectName(QString::fromUtf8("pushButton_7"));
         pushButton_7->setGeometry(QRect(1020, 0, 61, 41));
-        pushButton_7->setStyleSheet(QString::fromUtf8("#pushButton_7:hover{background-color: rgb(255, 0, 0);}"));
+        pushButton_7->setStyleSheet(QString::fromUtf8("#pushButton_7{background-color: transparent;\n"
+"border-color: transparent;}\n"
+"#pushButton_7:hover\n"
+"{\n"
+"    background-color: red;\n"
+"}"));
         QIcon icon1;
         icon1.addFile(QString::fromUtf8(":/new/prefix2/Buttons/close.png"), QSize(), QIcon::Normal, QIcon::Off);
         pushButton_7->setIcon(icon1);
         pushButton_7->setIconSize(QSize(30, 30));
+        label_4 = new QLabel(frame);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+        label_4->setGeometry(QRect(0, 45, 301, 91));
+        label_4->setStyleSheet(QString::fromUtf8("border-image: url(:/new/prefix2/logo3.png);"));
+        label_5 = new QLabel(frame);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+        label_5->setGeometry(QRect(0, 0, 1081, 41));
+        label_5->setStyleSheet(QString::fromUtf8("\n"
+"background-image: url(:/new/prefix2/frame.jpg);"));
+        label_5->raise();
+        horizontalLayoutWidget_4->raise();
+        verticalLayoutWidget->raise();
+        label_4->raise();
+        pushButton_6->raise();
+        pushButton_7->raise();
         TrackingWindow->setCentralWidget(centralWidget);
         statusBar = new QStatusBar(TrackingWindow);
         statusBar->setObjectName(QString::fromUtf8("statusBar"));
@@ -233,6 +256,8 @@ public:
         pushButton_4->setText(QApplication::translate("TrackingWindow", "\346\211\223\345\274\200\346\226\207\344\273\266\345\244\271", nullptr));
         pushButton_6->setText(QString());
         pushButton_7->setText(QString());
+        label_4->setText(QString());
+        label_5->setText(QString());
     } // retranslateUi
 
 };

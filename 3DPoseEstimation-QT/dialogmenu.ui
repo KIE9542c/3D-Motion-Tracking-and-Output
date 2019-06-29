@@ -33,7 +33,8 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">#frame{border-image: url(:/new/prefix2/fucc);}
+    <string notr="true">#frame{border-image: url(:/new/prefix2//back.jpg);}
+
 </string>
    </property>
    <property name="frameShape">

@@ -1,4 +1,4 @@
-QTabWidget::pane {/* The tab widget frame */
+﻿QTabWidget::pane {/* The tab widget frame */
 border-top:2px solid #C2C7CB;
 }
 QDialog
@@ -113,6 +113,7 @@ left:1px;
 
 QPushButton {
 border: none;/* no border for a flat push button */
+background-color:red;
 }
 
 
