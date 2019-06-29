@@ -72,7 +72,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>..\3rdparty\include\opencv\include;..\3rdparty\include\opencv\include\opencv;..\3rdparty\include\opencv\include\opencv2;..\3rdparty\include\caffe\include;..\3rdparty\include\boost\include;..\3rdparty\include\GFlags\include;..\3rdparty\include\GLog\include;..\3rdparty\include\cuda\include;..\3rdparty\include\Protobuf\include;..\3rdparty\include\OpenBLAS\include;..\3rdparty\include\JSONCPP\include;..\vnect_lib\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\3rdparty\include\opencv\include;..\3rdparty\include\opencv\include\opencv;..\3rdparty\include\opencv\include\opencv2;..\3rdparty\include\caffe\include;..\3rdparty\include\boost\include;..\3rdparty\include\GFlags\include;..\3rdparty\include\GLog\include;..\3rdparty\include\cuda\include;..\3rdparty\include\Protobuf\include;..\3rdparty\include\OpenBLAS\include;..\3rdparty\include\JSONCPP\include;..\vnect_lib\include;..\3rdparty\include\assimp\include;..\3rdparty\include\glew\include;..\3rdparty\include\GLFW\include;..\3rdparty\include\glm\include;..\3rdparty\include\glut\include;..\3rdparty\include\assimp\include;$(IncludePath)</IncludePath>
     <LibraryPath>..\3rdparty\lib;..\x64\Release;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -101,7 +101,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>vnect_lib.lib;cublas.lib;cuda.lib;cudart.lib;curand.lib;gflags.lib;glog.lib;libboost_date_time-vc140-mt-1_61.lib;libboost_filesystem-vc140-mt-1_61.lib;libboost_system-vc140-mt-1_61.lib;libboost_thread-vc140-mt-1_61.lib;libboost_chrono-vc140-mt-1_61.lib;libcaffe.lib;libopenblas.dll.a;libprotobuf.lib;libprotobuf-lite.lib;libprotoc.lib;opencv_world340.lib;jsoncpp.lib;hdf5.lib;hdf5_hl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>vnect_lib.lib;cublas.lib;cuda.lib;cudart.lib;curand.lib;gflags.lib;glog.lib;libboost_date_time-vc140-mt-1_61.lib;libboost_filesystem-vc140-mt-1_61.lib;libboost_system-vc140-mt-1_61.lib;libboost_thread-vc140-mt-1_61.lib;libboost_chrono-vc140-mt-1_61.lib;libcaffe.lib;libopenblas.dll.a;libprotobuf.lib;libprotobuf-lite.lib;libprotoc.lib;opencv_world340.lib;jsoncpp.lib;hdf5.lib;hdf5_hl.lib;opengl32.lib;glew32.lib;glfw3.lib;assimp-vc140-mt.lib;glut.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
