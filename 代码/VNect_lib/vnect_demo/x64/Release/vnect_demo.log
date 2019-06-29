@@ -1,32 +1,7 @@
-﻿  vnect_demo.cpp
-D:\Code\C++\vnect_lib\3rdparty\include\Protobuf\include\google/protobuf/message_lite.h(247): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
-D:\Code\C++\vnect_lib\3rdparty\include\caffe\include\caffe/util/io.hpp(53): warning C4244: “参数”: 从“uint64_t”转换到“int”，可能丢失数据
-d:\code\c++\vnect_lib\vnect_lib\include\mCaffePredictor.hpp(25): warning C4251: “mCaffePredictor::_net”: class“boost::shared_ptr<caffe::Net<float>>”需要有 dll 接口由 class“mCaffePredictor”的客户端使用
-d:\code\c++\vnect_lib\vnect_lib\include\mCaffePredictor.hpp(26): warning C4251: “mCaffePredictor::_mean”: class“cv::Mat”需要有 dll 接口由 class“mCaffePredictor”的客户端使用
-  D:\Code\C++\vnect_lib\3rdparty\include\opencv\include\opencv2/core/mat.hpp(780): note: 参见“cv::Mat”的声明
-d:\code\c++\vnect_lib\vnect_lib\include\mCaffePredictor.hpp(28): warning C4251: “mCaffePredictor::_input_size”: class“cv::Size_<int>”需要有 dll 接口由 class“mCaffePredictor”的客户端使用
-D:\Code\C++\vnect_lib\vnect_lib\include\vnectUtils.hpp(22): warning C4251: “mVNectUtils::_scales”: class“std::vector<float,std::allocator<_Ty>>”需要有 dll 接口由 class“mVNectUtils”的客户端使用
-          with
-          [
-              _Ty=float
-          ]
-D:\Code\C++\vnect_lib\vnect_lib\include\vnectUtils.hpp(23): warning C4251: “mVNectUtils::_box_size”: class“cv::Size_<int>”需要有 dll 接口由 class“mVNectUtils”的客户端使用
-D:\Code\C++\vnect_lib\vnect_lib\include\vnectUtils.hpp(25): warning C4251: “mVNectUtils::_crop_rect”: class“std::vector<int,std::allocator<_Ty>>”需要有 dll 接口由 class“mVNectUtils”的客户端使用
-          with
-          [
-              _Ty=int
-          ]
-D:\Code\C++\vnect_lib\vnect_lib\include\vnectUtils.hpp(26): warning C4251: “mVNectUtils::_pad_offset”: class“std::vector<int,std::allocator<_Ty>>”需要有 dll 接口由 class“mVNectUtils”的客户端使用
-          with
-          [
-              _Ty=int
-          ]
-D:\Code\C++\vnect_lib\vnect_lib\include\videoPosePredictor3D.h(8): warning C4251: “mVideoPosePredictor3D::model_path”: class“std::basic_string<char,std::char_traits<char>,std::allocator<char>>”需要有 dll 接口由 class“mVideoPosePredictor3D”的客户端使用
-D:\Code\C++\vnect_lib\vnect_lib\include\videoPosePredictor3D.h(9): warning C4251: “mVideoPosePredictor3D::prototxt_path”: class“std::basic_string<char,std::char_traits<char>,std::allocator<char>>”需要有 dll 接口由 class“mVideoPosePredictor3D”的客户端使用
-D:\Code\C++\vnect_lib\vnect_lib\include\videoPosePredictor3D.h(11): warning C4251: “mVideoPosePredictor3D::video”: class“cv::VideoCapture”需要有 dll 接口由 class“mVideoPosePredictor3D”的客户端使用
-  D:\Code\C++\vnect_lib\3rdparty\include\opencv\include\opencv2/videoio.hpp(602): note: 参见“cv::VideoCapture”的声明
-    正在创建库 D:\Code\C++\vnect_lib\x64\Release\vnect_demo.lib 和对象 D:\Code\C++\vnect_lib\x64\Release\vnect_demo.exp
+﻿    正在创建库 D:\Code\C++\vnect_lib\x64\Release\vnect_demo.lib 和对象 D:\Code\C++\vnect_lib\x64\Release\vnect_demo.exp
   正在生成代码
-  All 397 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  0 of 403 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   已完成代码的生成
   vnect_demo.vcxproj -> D:\Code\C++\vnect_lib\x64\Release\vnect_demo.exe

@@ -1,0 +1,14 @@
+在cmd中进入demo.py所在文件夹，
+命令举例:python demo.py --inputpath=E:\MMtesting\OpenMMD\test.mp4
+其中inputpath中输入视频路径。
+所有的输入文件与输入视频在同一路径下。
+
+需要的python库：
+h5py
+opencv-python
+matplotlib==3.0.0
+tensorflow==1.13.1
+pyqt5
+
+配置教程：
+https://www.bilibili.com/read/cv2835857

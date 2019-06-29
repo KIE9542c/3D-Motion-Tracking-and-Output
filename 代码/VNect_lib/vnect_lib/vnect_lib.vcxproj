@@ -85,7 +85,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>.\include;..\3rdparty\include\opencv\include;..\3rdparty\include\opencv\include\opencv;..\3rdparty\include\opencv\include\opencv2;..\3rdparty\include\caffe\include;..\3rdparty\include\boost\include;..\3rdparty\include\GFlags\include;..\3rdparty\include\GLog\include;..\3rdparty\include\cuda\include;..\3rdparty\include\Protobuf\include;..\3rdparty\include\OpenBLAS\include;..\3rdparty\include\JSONCPP\include;$(IncludePath)</IncludePath>
+    <IncludePath>.\include;..\3rdparty\include\opencv\include;..\3rdparty\include\opencv\include\opencv;..\3rdparty\include\opencv\include\opencv2;..\3rdparty\include\caffe\include;..\3rdparty\include\boost\include;..\3rdparty\include\GFlags\include;..\3rdparty\include\GLog\include;..\3rdparty\include\cuda\include;..\3rdparty\include\Protobuf\include;..\3rdparty\include\OpenBLAS\include;..\3rdparty\include\JSONCPP\include;..\3rdparty\include\glew\include;..\3rdparty\include\GLFW\include;..\3rdparty\include\glm\include;..\3rdparty\include\glut\include;..\3rdparty\include\assimp\include;$(IncludePath)</IncludePath>
     <LibraryPath>..\3rdparty\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -146,7 +146,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_LIB;_USE_MATH_DEFINES;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_LIB;_USE_MATH_DEFINES;USE_CUDNN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
@@ -155,7 +155,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>cublas.lib;cuda.lib;cudart.lib;curand.lib;gflags.lib;glog.lib;libboost_date_time-vc140-mt-1_61.lib;libboost_filesystem-vc140-mt-1_61.lib;libboost_system-vc140-mt-1_61.lib;libboost_thread-vc140-mt-1_61.lib;libboost_chrono-vc140-mt-1_61.lib;libcaffe.lib;libopenblas.dll.a;libprotobuf.lib;libprotobuf-lite.lib;libprotoc.lib;opencv_world340.lib;jsoncpp.lib;hdf5.lib;hdf5_hl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>cublas.lib;cuda.lib;cudart.lib;curand.lib;gflags.lib;glog.lib;libboost_date_time-vc140-mt-1_61.lib;libboost_filesystem-vc140-mt-1_61.lib;libboost_system-vc140-mt-1_61.lib;libboost_thread-vc140-mt-1_61.lib;libboost_chrono-vc140-mt-1_61.lib;libcaffe.lib;libopenblas.dll.a;libprotobuf.lib;libprotobuf-lite.lib;libprotoc.lib;opencv_world340.lib;jsoncpp.lib;hdf5.lib;hdf5_hl.lib;opengl32.lib;glew32.lib;glfw3.lib;assimp-vc140-mt.lib;glut.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -163,7 +163,10 @@
     <ClInclude Include="include\head.h" />
     <ClInclude Include="include\mCaffeHeader.hpp" />
     <ClInclude Include="include\mCaffePredictor.hpp" />
+    <ClInclude Include="include\mCamera.h" />
     <ClInclude Include="include\mDefs.h" />
+    <ClInclude Include="include\mMeshRender.h" />
+    <ClInclude Include="include\mShader.h" />
     <ClInclude Include="include\oneEuro.hpp" />
     <ClInclude Include="include\Json.h" />
     <ClInclude Include="include\videoPosePredictor3D.h" />
@@ -171,6 +174,9 @@
     <ClInclude Include="include\vnectUtils.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\mCamera.cpp" />
+    <ClCompile Include="src\mMeshRender.cpp" />
+    <ClCompile Include="src\mShader.cpp" />
     <ClCompile Include="src\videoPosePredictor3D.cpp" />
     <ClCompile Include="src\mCaffePredictor.cpp" />
     <ClCompile Include="src\Json.cpp" />
