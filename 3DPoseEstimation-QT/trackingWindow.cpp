@@ -24,6 +24,9 @@ TrackingWindow::TrackingWindow(QWidget *parent) :
     ui->setupUi(this);
     //实例阴影shadow
     QGraphicsDropShadowEffect *shadow = new QGraphicsDropShadowEffect(this);
+    QGraphicsDropShadowEffect *vshadow = new QGraphicsDropShadowEffect(this);
+    QGraphicsDropShadowEffect *fshadow = new QGraphicsDropShadowEffect(this);
+    QGraphicsDropShadowEffect *vfshadow = new QGraphicsDropShadowEffect(this);
        //设置阴影距离
     shadow->setOffset(0, 0);
        //设置阴影颜色
@@ -31,13 +34,40 @@ TrackingWindow::TrackingWindow(QWidget *parent) :
        //设置阴影圆角
     shadow->setBlurRadius(20);
        //给嵌套QWidget设置阴影
+    //设置阴影距离
+    vshadow->setOffset(0, 0);
+    //设置阴影颜色
+    vshadow->setColor(Qt::black);
+    //设置阴影圆角
+    vshadow->setBlurRadius(10);
+    //给嵌套QWidget设置阴影
+ //设置阴影距离
+    fshadow->setOffset(0, 0);
+ //设置阴影颜色
+    fshadow->setColor(Qt::black);
+ //设置阴影圆角
+    fshadow->setBlurRadius(10);
+ //给嵌套QWidget设置阴影
+//设置阴影距离
+    vfshadow->setOffset(0, 0);
+//设置阴影颜色
+    vfshadow->setColor(Qt::black);
+//设置阴影圆角
+    vfshadow->setBlurRadius(10);
+//给嵌套QWidget设置阴影
     ui->frame->setGraphicsEffect(shadow);
+    ui->pushButton_VMD->setGraphicsEffect(vshadow);
+    ui->pushButton_FBX->setGraphicsEffect(fshadow);
+    ui->pushButton_VF->setGraphicsEffect(vfshadow);
+
     //m_titleWidget = new TitleBar(this);
 
    // connect(m_titleWidget, SIGNAL(customShowMinWindow()), this, SLOT(showMinimized()));
     //connect(m_titleWidget, SIGNAL(customCloseWindow()), this, SLOT(close()));
      connect(ui->pushButton_2, &QPushButton::clicked, this, &TrackingWindow::sendSlot);
      connect(&vmdW,SIGNAL(toMain(QStandardItemModel*)),this,SLOT(fromVMD(QStandardItemModel*)));
+     connect(&fbxW,SIGNAL(toMain(QStandardItemModel*)),this,SLOT(fromFBX(QStandardItemModel*)));
+     connect(&vfW,SIGNAL(toMain(QStandardItemModel*)),this,SLOT(fromVF(QStandardItemModel*)));
 
      model->setHorizontalHeaderItem(0, new QStandardItem(QObject::tr("预览")));
      model->setHorizontalHeaderItem(1, new QStandardItem(QObject::tr("来源")));
@@ -95,14 +125,6 @@ void TrackingWindow::on_pushButton_7_clicked()
 {
     this->close();
 }
-
-void TrackingWindow::on_pushButton_add_clicked()
-{
-
-    model->setItem(row, 0, new QStandardItem("张三"));
-    row++;
-}
-
 void TrackingWindow::on_pushButton_del_clicked()
 {
     QItemSelectionModel *selections = ui->tableView->selectionModel();
@@ -157,6 +179,8 @@ void TrackingWindow::on_pushButton_path_clicked()
     else
     {
         vmdW.fileData(filePath);
+        fbxW.fileData(filePath);
+        vfW.fileData(filePath);
     }
 }
 //需重写
@@ -166,4 +190,27 @@ void TrackingWindow::fromVMD(QStandardItemModel *vmodel)
     QString str1= index.data().toString();
     model->setItem(row, 0, new QStandardItem(str1));
     row++;
+}
+void TrackingWindow::fromFBX(QStandardItemModel *fmodel)
+{
+    QModelIndex index=fmodel->index(0,0,QModelIndex());
+    QString str1= index.data().toString();
+    model->setItem(row, 0, new QStandardItem(str1));
+    row++;
+}
+void TrackingWindow::fromVF(QStandardItemModel *vfmodel)
+{
+    QModelIndex index=vfmodel->index(0,0,QModelIndex());
+    QString str1= index.data().toString();
+    model->setItem(row, 0, new QStandardItem(str1));
+    row++;
+}
+void TrackingWindow::on_pushButton_start_clicked()
+{
+    //TODO：依次处理视频
+}
+
+void TrackingWindow::on_pushButton_stop_clicked()
+{
+
 }

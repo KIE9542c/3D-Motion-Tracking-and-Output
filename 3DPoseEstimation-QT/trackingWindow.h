@@ -31,8 +31,6 @@ private slots:
 
     void on_pushButton_7_clicked();
 
-    void on_pushButton_add_clicked();
-
     void on_pushButton_del_clicked();
 
     void on_pushButton_delAll_clicked();
@@ -46,6 +44,12 @@ private slots:
     void on_pushButton_path_clicked();
 
     void fromVMD(QStandardItemModel *vmodel);
+    void fromFBX(QStandardItemModel *fmodel);
+    void fromVF(QStandardItemModel *vfmodel);
+    void on_pushButton_start_clicked();
+
+    void on_pushButton_stop_clicked();
+
 signals:
     void mySignal();
     void mySignalParm(int, QString);

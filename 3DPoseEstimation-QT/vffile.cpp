@@ -82,3 +82,11 @@ void vfFile::on_pushButton_change_clicked()
         ui->lineEdit->setText(filePath);
     }
 }
+
+void vfFile::on_pushButton_conf_clicked()
+{
+    emit toMain(vfmodel);
+    vfmodel->removeRows(0,vfmodel->rowCount());
+    row=0;
+    this->close();
+}

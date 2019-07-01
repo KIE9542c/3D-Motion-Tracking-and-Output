@@ -134,49 +134,91 @@ background-image: url(:/new/prefix2/frame.jpg);</string>
     <widget class="QPushButton" name="pushButton_VMD">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>130</y>
-       <width>93</width>
-       <height>28</height>
+       <x>50</x>
+       <y>210</y>
+       <width>103</width>
+       <height>121</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">#pushButton_VMD:hover
+{
+	border-image: url(:/new/prefix2/VMD_hover.png);
+
+}
+#pushButton_VMD{border-image: url(:/new/prefix2/VMD.png);
+}
+</string>
+     </property>
      <property name="text">
-      <string>vmd</string>
+      <string/>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>103</width>
+       <height>121</height>
+      </size>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_FBX">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>250</y>
-       <width>93</width>
-       <height>28</height>
+       <x>50</x>
+       <y>350</y>
+       <width>103</width>
+       <height>121</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">#pushButton_FBX{border-image: url(:/new/prefix2/FBX.png);}
+#pushButton_FBX:hover{border-image: url(:/new/prefix2/FBX_hover.png);}</string>
+     </property>
      <property name="text">
-      <string>fbx</string>
+      <string/>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>103</width>
+       <height>121</height>
+      </size>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_VF">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>50</x>
        <y>490</y>
-       <width>93</width>
-       <height>28</height>
+       <width>103</width>
+       <height>121</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">#pushButton_VF:hover
+{
+border-image: url(:/new/prefix2/vmdfbx_hover.png);
+}
+#pushButton_VF
+{
+border-image: url(:/new/prefix2/vmdfbx.png);
+}</string>
+     </property>
      <property name="text">
-      <string>vmd和fbx</string>
+      <string/>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>103</width>
+       <height>121</height>
+      </size>
      </property>
     </widget>
     <widget class="QTableView" name="tableView">
      <property name="geometry">
       <rect>
-       <x>355</x>
-       <y>131</y>
-       <width>701</width>
-       <height>541</height>
+       <x>200</x>
+       <y>100</y>
+       <width>881</width>
+       <height>581</height>
       </rect>
      </property>
      <attribute name="verticalHeaderCascadingSectionResizes">
@@ -186,47 +228,52 @@ background-image: url(:/new/prefix2/frame.jpg);</string>
     <widget class="QPushButton" name="pushButton_path">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>70</y>
-       <width>181</width>
-       <height>28</height>
+       <x>10</x>
+       <y>50</y>
+       <width>131</width>
+       <height>41</height>
       </rect>
      </property>
-     <property name="text">
-      <string>选择输出文件夹</string>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_add">
-     <property name="geometry">
-      <rect>
-       <x>180</x>
-       <y>590</y>
-       <width>93</width>
-       <height>28</height>
-      </rect>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/new/prefix2/output.png);</string>
      </property>
      <property name="text">
-      <string>添加</string>
+      <string/>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_del">
      <property name="geometry">
       <rect>
-       <x>220</x>
-       <y>70</y>
-       <width>93</width>
-       <height>28</height>
+       <x>200</x>
+       <y>50</y>
+       <width>71</width>
+       <height>41</height>
       </rect>
      </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/new/prefix2/delete.png);</string>
+     </property>
      <property name="text">
-      <string>删除</string>
+      <string/>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_2">
      <property name="geometry">
       <rect>
-       <x>530</x>
-       <y>70</y>
+       <x>660</x>
+       <y>60</y>
        <width>99</width>
        <height>23</height>
       </rect>
@@ -238,8 +285,8 @@ background-image: url(:/new/prefix2/frame.jpg);</string>
     <widget class="QPushButton" name="pushButton_start">
      <property name="geometry">
       <rect>
-       <x>330</x>
-       <y>70</y>
+       <x>430</x>
+       <y>60</y>
        <width>101</width>
        <height>23</height>
       </rect>
@@ -251,8 +298,8 @@ background-image: url(:/new/prefix2/frame.jpg);</string>
     <widget class="QPushButton" name="pushButton_stop">
      <property name="geometry">
       <rect>
-       <x>440</x>
-       <y>70</y>
+       <x>560</x>
+       <y>60</y>
        <width>75</width>
        <height>23</height>
       </rect>
@@ -264,14 +311,17 @@ background-image: url(:/new/prefix2/frame.jpg);</string>
     <widget class="QPushButton" name="pushButton_delAll">
      <property name="geometry">
       <rect>
-       <x>220</x>
-       <y>110</y>
-       <width>75</width>
-       <height>23</height>
+       <x>300</x>
+       <y>50</y>
+       <width>91</width>
+       <height>41</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/new/prefix2/deleteAll.png);</string>
+     </property>
      <property name="text">
-      <string>清空列表</string>
+      <string/>
      </property>
     </widget>
     <zorder>label_5</zorder>
@@ -282,7 +332,6 @@ background-image: url(:/new/prefix2/frame.jpg);</string>
     <zorder>pushButton_VF</zorder>
     <zorder>tableView</zorder>
     <zorder>pushButton_path</zorder>
-    <zorder>pushButton_add</zorder>
     <zorder>pushButton_del</zorder>
     <zorder>pushButton_2</zorder>
     <zorder>pushButton_start</zorder>
