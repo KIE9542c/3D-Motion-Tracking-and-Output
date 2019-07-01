@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/new/prefix2">
-        <file alias="fucc">back.jpg</file>
         <file>Buttons/min.png</file>
         <file>Buttons/close.png</file>
         <file>Buttons/close_hover.png</file>
@@ -9,5 +8,17 @@
         <file>timg.jpg</file>
         <file>logo.png</file>
         <file>track.jpg</file>
+        <file>logo3.png</file>
+        <file>frame.jpg</file>
+        <file>back.jpg</file>
+        <file>FBX.png</file>
+        <file>VMD.png</file>
+        <file>vmdfbx.png</file>
+        <file>FBX_hover.png</file>
+        <file>VMD_hover.png</file>
+        <file>vmdfbx_hover.png</file>
+        <file>delete.png</file>
+        <file>deleteAll.png</file>
+        <file>output.png</file>
     </qresource>
 </RCC>

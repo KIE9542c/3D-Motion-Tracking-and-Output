@@ -50,16 +50,19 @@
     <ClCompile Include="dialogmenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="fbxfile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="trackingWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Common.cxx">
+    <ClCompile Include="vffile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FbxAPI.cpp">
+    <ClCompile Include="vmdfile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -67,21 +70,53 @@
     <QtMoc Include="dialogmenu.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="fbxfile.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
     <QtMoc Include="trackingWindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="vffile.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="vmdfile.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
+    
+    
+    
+    
     <CustomBuild Include="debug\moc_predefs.h.cbt">
       <Filter>Generated Files</Filter>
     </CustomBuild>
     <CustomBuild Include="release\moc_predefs.h.cbt">
       <Filter>Generated Files</Filter>
     </CustomBuild>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <ClInclude Include="ui_dialogmenu.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="ui_fbxfile.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
     <ClInclude Include="ui_trackingWindow.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_vffile.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_vmdfile.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -89,11 +124,32 @@
     <QtUic Include="dialogmenu.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="fbxfile.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
     <QtUic Include="trackingWindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="vffile.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="vmdfile.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
   <ItemGroup>
+    <None Include="FBX.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="FBX_hover.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="VMD.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="VMD_hover.png">
+      <Filter>Resource Files</Filter>
+    </None>
     <None Include="back.jpg">
       <Filter>Resource Files</Filter>
     </None>
@@ -106,13 +162,28 @@
     <None Include="Buttons\close_hover.png">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="delete.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="deleteAll.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="frame.jpg">
+      <Filter>Resource Files</Filter>
+    </None>
     <None Include="logo.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="logo3.png">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Buttons\min.png">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="Buttons\min_hover.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="output.png">
       <Filter>Resource Files</Filter>
     </None>
     <QtRcc Include="resource.qrc">
@@ -127,16 +198,14 @@
     <None Include="track.jpg">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="vmdfbx.png">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="vmdfbx_hover.png">
+      <Filter>Resource Files</Filter>
+    </None>
     <None Include="welcome.png">
       <Filter>Resource Files</Filter>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="FbxAPI.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Common.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

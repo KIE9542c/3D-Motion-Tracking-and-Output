@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'dialogmenu.ui'
 **
-** Created by: Qt User Interface Compiler version 5.13.0
+** Created by: Qt User Interface Compiler version 5.12.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -53,7 +53,8 @@ public:
         frame = new QFrame(DialogMenu);
         frame->setObjectName(QString::fromUtf8("frame"));
         frame->setGeometry(QRect(10, 10, 701, 451));
-        frame->setStyleSheet(QString::fromUtf8("#frame{border-image: url(:/new/prefix2/fucc);}\n"
+        frame->setStyleSheet(QString::fromUtf8("#frame{border-image: url(:/new/prefix2//back.jpg);}\n"
+"\n"
 ""));
         frame->setFrameShape(QFrame::StyledPanel);
         frame->setFrameShadow(QFrame::Raised);
@@ -216,7 +217,7 @@ public:
 
     void retranslateUi(QDialog *DialogMenu)
     {
-        DialogMenu->setWindowTitle(QCoreApplication::translate("DialogMenu", "Dialog", nullptr));
+        DialogMenu->setWindowTitle(QApplication::translate("DialogMenu", "Dialog", nullptr));
         pushButton_3->setText(QString());
         pushButton_4->setText(QString());
         label_2->setText(QString());
@@ -224,8 +225,8 @@ public:
         label_4->setText(QString());
         label_3->setText(QString());
         label_5->setText(QString());
-        pushButton->setText(QCoreApplication::translate("DialogMenu", "\345\212\250\344\275\234\346\215\225\346\215\211", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("DialogMenu", "\345\247\277\346\200\201\345\257\271\346\257\224", nullptr));
+        pushButton->setText(QApplication::translate("DialogMenu", "\345\212\250\344\275\234\346\215\225\346\215\211", nullptr));
+        pushButton_2->setText(QApplication::translate("DialogMenu", "\345\247\277\346\200\201\345\257\271\346\257\224", nullptr));
     } // retranslateUi
 
 };

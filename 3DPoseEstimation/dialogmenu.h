@@ -37,7 +37,6 @@ private:
     bool m_move;
     QPoint m_startPoint;
     QPoint m_windowPoint;
-	
 };
 
 #endif // DIALOGMENU_H

@@ -26,16 +26,25 @@ CONFIG += c++11
 
 SOURCES += \
         dialogmenu.cpp \
+        fbxfile.cpp \
         main.cpp \
-        trackingWindow.cpp
+        trackingWindow.cpp \
+        vffile.cpp \
+        vmdfile.cpp
 
 HEADERS += \
         dialogmenu.h \
-        trackingWindow.h
+        fbxfile.h \
+        trackingWindow.h \
+        vffile.h \
+        vmdfile.h
 
 FORMS += \
         dialogmenu.ui \
-        trackingWindow.ui
+        fbxfile.ui \
+        trackingWindow.ui \
+        vffile.ui \
+        vmdfile.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

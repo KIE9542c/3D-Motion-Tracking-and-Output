@@ -1,21 +1,7 @@
-QMAKE_CXX.INCDIRS = \
-    D:/Software/MinGW/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ \
-    D:/Software/MinGW/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 \
-    D:/Software/MinGW/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward \
-    D:/Software/MinGW/lib/gcc/x86_64-w64-mingw32/8.1.0/include \
-    D:/Software/MinGW/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed \
-    D:/Software/MinGW/x86_64-w64-mingw32/include
-QMAKE_CXX.LIBDIRS = \
-    D:/Software/MinGW/lib/gcc/x86_64-w64-mingw32/8.1.0 \
-    D:/Software/MinGW/lib/gcc \
-    D:/Software/MinGW/x86_64-w64-mingw32/lib \
-    D:/Software/MinGW/lib
-QMAKE_CXX.QT_COMPILER_STDCXX = 201402L
-QMAKE_CXX.QMAKE_GCC_MAJOR_VERSION = 8
-QMAKE_CXX.QMAKE_GCC_MINOR_VERSION = 1
-QMAKE_CXX.QMAKE_GCC_PATCH_VERSION = 0
+QMAKE_CXX.QT_COMPILER_STDCXX = 199711L
+QMAKE_CXX.QMAKE_MSC_VER = 1900
+QMAKE_CXX.QMAKE_MSC_FULL_VER = 190023026
 QMAKE_CXX.COMPILER_MACROS = \
     QT_COMPILER_STDCXX \
-    QMAKE_GCC_MAJOR_VERSION \
-    QMAKE_GCC_MINOR_VERSION \
-    QMAKE_GCC_PATCH_VERSION
+    QMAKE_MSC_VER \
+    QMAKE_MSC_FULL_VER

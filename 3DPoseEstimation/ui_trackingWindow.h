@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'trackingWindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.13.0
+** Created by: Qt User Interface Compiler version 5.12.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -12,16 +12,13 @@
 #include <QtCore/QVariant>
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QComboBox>
 #include <QtWidgets/QFrame>
-#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QTableView>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -31,32 +28,19 @@ class Ui_TrackingWindow
 public:
     QWidget *centralWidget;
     QFrame *frame;
-    QWidget *horizontalLayoutWidget_4;
-    QHBoxLayout *horizontalLayout_5;
-    QPushButton *pushButton;
-    QSpacerItem *horizontalSpacer_2;
-    QPushButton *pushButton_2;
-    QWidget *verticalLayoutWidget;
-    QVBoxLayout *verticalLayout;
-    QHBoxLayout *horizontalLayout_8;
-    QLabel *label;
-    QSpacerItem *horizontalSpacer;
-    QLineEdit *lineEdit;
-    QPushButton *pushButton_3;
-    QHBoxLayout *horizontalLayout_6;
-    QLabel *label_2;
-    QSpacerItem *horizontalSpacer_4;
-    QComboBox *comboBox;
-    QSpacerItem *horizontalSpacer_5;
-    QHBoxLayout *horizontalLayout_7;
-    QLabel *label_3;
-    QSpacerItem *horizontalSpacer_3;
-    QLineEdit *lineEdit_3;
-    QPushButton *pushButton_4;
     QPushButton *pushButton_6;
     QPushButton *pushButton_7;
-    QLabel *label_4;
     QLabel *label_5;
+    QPushButton *pushButton_VMD;
+    QPushButton *pushButton_FBX;
+    QPushButton *pushButton_VF;
+    QTableView *tableView;
+    QPushButton *pushButton_path;
+    QPushButton *pushButton_del;
+    QPushButton *pushButton_2;
+    QPushButton *pushButton_start;
+    QPushButton *pushButton_stop;
+    QPushButton *pushButton_delAll;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *TrackingWindow)
@@ -77,122 +61,12 @@ public:
 ""));
         frame->setFrameShape(QFrame::StyledPanel);
         frame->setFrameShadow(QFrame::Raised);
-        horizontalLayoutWidget_4 = new QWidget(frame);
-        horizontalLayoutWidget_4->setObjectName(QString::fromUtf8("horizontalLayoutWidget_4"));
-        horizontalLayoutWidget_4->setGeometry(QRect(340, 370, 252, 80));
-        horizontalLayout_5 = new QHBoxLayout(horizontalLayoutWidget_4);
-        horizontalLayout_5->setSpacing(6);
-        horizontalLayout_5->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
-        horizontalLayout_5->setContentsMargins(0, 0, 0, 0);
-        pushButton = new QPushButton(horizontalLayoutWidget_4);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-
-        horizontalLayout_5->addWidget(pushButton);
-
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
-
-        horizontalLayout_5->addItem(horizontalSpacer_2);
-
-        pushButton_2 = new QPushButton(horizontalLayoutWidget_4);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-
-        horizontalLayout_5->addWidget(pushButton_2);
-
-        verticalLayoutWidget = new QWidget(frame);
-        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(230, 200, 561, 131));
-        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
-        verticalLayout->setSpacing(6);
-        verticalLayout->setContentsMargins(11, 11, 11, 11);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
-        horizontalLayout_8 = new QHBoxLayout();
-        horizontalLayout_8->setSpacing(6);
-        horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
-        label = new QLabel(verticalLayoutWidget);
-        label->setObjectName(QString::fromUtf8("label"));
-
-        horizontalLayout_8->addWidget(label);
-
-        horizontalSpacer = new QSpacerItem(30, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
-
-        horizontalLayout_8->addItem(horizontalSpacer);
-
-        lineEdit = new QLineEdit(verticalLayoutWidget);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-
-        horizontalLayout_8->addWidget(lineEdit);
-
-        pushButton_3 = new QPushButton(verticalLayoutWidget);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-
-        horizontalLayout_8->addWidget(pushButton_3);
-
-
-        verticalLayout->addLayout(horizontalLayout_8);
-
-        horizontalLayout_6 = new QHBoxLayout();
-        horizontalLayout_6->setSpacing(6);
-        horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
-        label_2 = new QLabel(verticalLayoutWidget);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
-        label_2->setSizePolicy(sizePolicy);
-
-        horizontalLayout_6->addWidget(label_2);
-
-        horizontalSpacer_4 = new QSpacerItem(46, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
-
-        horizontalLayout_6->addItem(horizontalSpacer_4);
-
-        comboBox = new QComboBox(verticalLayoutWidget);
-        comboBox->addItem(QString());
-        comboBox->addItem(QString());
-        comboBox->addItem(QString());
-        comboBox->setObjectName(QString::fromUtf8("comboBox"));
-
-        horizontalLayout_6->addWidget(comboBox);
-
-        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_6->addItem(horizontalSpacer_5);
-
-
-        verticalLayout->addLayout(horizontalLayout_6);
-
-        horizontalLayout_7 = new QHBoxLayout();
-        horizontalLayout_7->setSpacing(6);
-        horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
-        label_3 = new QLabel(verticalLayoutWidget);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-
-        horizontalLayout_7->addWidget(label_3);
-
-        horizontalSpacer_3 = new QSpacerItem(75, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
-
-        horizontalLayout_7->addItem(horizontalSpacer_3);
-
-        lineEdit_3 = new QLineEdit(verticalLayoutWidget);
-        lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
-
-        horizontalLayout_7->addWidget(lineEdit_3);
-
-        pushButton_4 = new QPushButton(verticalLayoutWidget);
-        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
-
-        horizontalLayout_7->addWidget(pushButton_4);
-
-
-        verticalLayout->addLayout(horizontalLayout_7);
-
         pushButton_6 = new QPushButton(frame);
         pushButton_6->setObjectName(QString::fromUtf8("pushButton_6"));
         pushButton_6->setGeometry(QRect(960, 0, 61, 41));
-        pushButton_6->setStyleSheet(QString::fromUtf8("#pushButton_6:hover\n"
+        pushButton_6->setStyleSheet(QString::fromUtf8("#pushButton_6{background-color: transparent;\n"
+"border-color: transparent;}\n"
+"#pushButton_6:hover\n"
 "{\n"
 "    background-color: rgb(255, 0, 0);\n"
 "}\n"
@@ -214,21 +88,89 @@ public:
         icon1.addFile(QString::fromUtf8(":/new/prefix2/Buttons/close.png"), QSize(), QIcon::Normal, QIcon::Off);
         pushButton_7->setIcon(icon1);
         pushButton_7->setIconSize(QSize(30, 30));
-        label_4 = new QLabel(frame);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setGeometry(QRect(0, 45, 301, 91));
-        label_4->setStyleSheet(QString::fromUtf8("border-image: url(:/new/prefix2/logo3.png);"));
         label_5 = new QLabel(frame);
         label_5->setObjectName(QString::fromUtf8("label_5"));
         label_5->setGeometry(QRect(0, 0, 1081, 41));
         label_5->setStyleSheet(QString::fromUtf8("\n"
 "background-image: url(:/new/prefix2/frame.jpg);"));
+        pushButton_VMD = new QPushButton(frame);
+        pushButton_VMD->setObjectName(QString::fromUtf8("pushButton_VMD"));
+        pushButton_VMD->setGeometry(QRect(50, 210, 103, 121));
+        pushButton_VMD->setStyleSheet(QString::fromUtf8("#pushButton_VMD:hover\n"
+"{\n"
+"	border-image: url(:/new/prefix2/VMD_hover.png);\n"
+"\n"
+"}\n"
+"#pushButton_VMD{border-image: url(:/new/prefix2/VMD.png);\n"
+"}\n"
+""));
+        pushButton_VMD->setIconSize(QSize(103, 121));
+        pushButton_FBX = new QPushButton(frame);
+        pushButton_FBX->setObjectName(QString::fromUtf8("pushButton_FBX"));
+        pushButton_FBX->setGeometry(QRect(50, 350, 103, 121));
+        pushButton_FBX->setStyleSheet(QString::fromUtf8("#pushButton_FBX{border-image: url(:/new/prefix2/FBX.png);}\n"
+"#pushButton_FBX:hover{border-image: url(:/new/prefix2/FBX_hover.png);}"));
+        pushButton_FBX->setIconSize(QSize(103, 121));
+        pushButton_VF = new QPushButton(frame);
+        pushButton_VF->setObjectName(QString::fromUtf8("pushButton_VF"));
+        pushButton_VF->setGeometry(QRect(50, 490, 103, 121));
+        pushButton_VF->setStyleSheet(QString::fromUtf8("#pushButton_VF:hover\n"
+"{\n"
+"border-image: url(:/new/prefix2/vmdfbx_hover.png);\n"
+"}\n"
+"#pushButton_VF\n"
+"{\n"
+"border-image: url(:/new/prefix2/vmdfbx.png);\n"
+"}"));
+        pushButton_VF->setIconSize(QSize(103, 121));
+        tableView = new QTableView(frame);
+        tableView->setObjectName(QString::fromUtf8("tableView"));
+        tableView->setGeometry(QRect(200, 100, 881, 581));
+        tableView->verticalHeader()->setCascadingSectionResizes(false);
+        pushButton_path = new QPushButton(frame);
+        pushButton_path->setObjectName(QString::fromUtf8("pushButton_path"));
+        pushButton_path->setGeometry(QRect(10, 50, 131, 41));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(pushButton_path->sizePolicy().hasHeightForWidth());
+        pushButton_path->setSizePolicy(sizePolicy);
+        pushButton_path->setStyleSheet(QString::fromUtf8("border-image: url(:/new/prefix2/output.png);"));
+        pushButton_del = new QPushButton(frame);
+        pushButton_del->setObjectName(QString::fromUtf8("pushButton_del"));
+        pushButton_del->setGeometry(QRect(200, 50, 71, 41));
+        QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(pushButton_del->sizePolicy().hasHeightForWidth());
+        pushButton_del->setSizePolicy(sizePolicy1);
+        pushButton_del->setStyleSheet(QString::fromUtf8("border-image: url(:/new/prefix2/delete.png);"));
+        pushButton_2 = new QPushButton(frame);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        pushButton_2->setGeometry(QRect(660, 60, 99, 23));
+        pushButton_start = new QPushButton(frame);
+        pushButton_start->setObjectName(QString::fromUtf8("pushButton_start"));
+        pushButton_start->setGeometry(QRect(430, 60, 101, 23));
+        pushButton_stop = new QPushButton(frame);
+        pushButton_stop->setObjectName(QString::fromUtf8("pushButton_stop"));
+        pushButton_stop->setGeometry(QRect(560, 60, 75, 23));
+        pushButton_delAll = new QPushButton(frame);
+        pushButton_delAll->setObjectName(QString::fromUtf8("pushButton_delAll"));
+        pushButton_delAll->setGeometry(QRect(300, 50, 91, 41));
+        pushButton_delAll->setStyleSheet(QString::fromUtf8("border-image: url(:/new/prefix2/deleteAll.png);"));
         label_5->raise();
-        horizontalLayoutWidget_4->raise();
-        verticalLayoutWidget->raise();
-        label_4->raise();
         pushButton_6->raise();
         pushButton_7->raise();
+        pushButton_VMD->raise();
+        pushButton_FBX->raise();
+        pushButton_VF->raise();
+        tableView->raise();
+        pushButton_path->raise();
+        pushButton_del->raise();
+        pushButton_2->raise();
+        pushButton_start->raise();
+        pushButton_stop->raise();
+        pushButton_delAll->raise();
         TrackingWindow->setCentralWidget(centralWidget);
         statusBar = new QStatusBar(TrackingWindow);
         statusBar->setObjectName(QString::fromUtf8("statusBar"));
@@ -242,22 +184,19 @@ public:
 
     void retranslateUi(QMainWindow *TrackingWindow)
     {
-        TrackingWindow->setWindowTitle(QCoreApplication::translate("TrackingWindow", "MainWindow", nullptr));
-        pushButton->setText(QCoreApplication::translate("TrackingWindow", "\345\244\204\347\220\206", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("TrackingWindow", "\350\277\224\345\233\236\350\217\234\345\215\225", nullptr));
-        label->setText(QCoreApplication::translate("TrackingWindow", "\350\276\223\345\205\245\350\247\206\351\242\221\346\210\226\345\233\276\345\203\217", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("TrackingWindow", "\346\211\223\345\274\200\346\226\207\344\273\266", nullptr));
-        label_2->setText(QCoreApplication::translate("TrackingWindow", "\351\200\211\346\213\251\350\276\223\345\207\272\346\240\274\345\274\217", nullptr));
-        comboBox->setItemText(0, QCoreApplication::translate("TrackingWindow", ".fbx", nullptr));
-        comboBox->setItemText(1, QCoreApplication::translate("TrackingWindow", ".vmd", nullptr));
-        comboBox->setItemText(2, QCoreApplication::translate("TrackingWindow", ".fbx\345\222\214.vmd\346\226\207\344\273\266", nullptr));
-
-        label_3->setText(QCoreApplication::translate("TrackingWindow", "\350\276\223\345\207\272\350\267\257\345\276\204", nullptr));
-        pushButton_4->setText(QCoreApplication::translate("TrackingWindow", "\346\211\223\345\274\200\346\226\207\344\273\266\345\244\271", nullptr));
+        TrackingWindow->setWindowTitle(QApplication::translate("TrackingWindow", "MainWindow", nullptr));
         pushButton_6->setText(QString());
         pushButton_7->setText(QString());
-        label_4->setText(QString());
         label_5->setText(QString());
+        pushButton_VMD->setText(QString());
+        pushButton_FBX->setText(QString());
+        pushButton_VF->setText(QString());
+        pushButton_path->setText(QString());
+        pushButton_del->setText(QString());
+        pushButton_2->setText(QApplication::translate("TrackingWindow", "\350\277\224\345\233\236\350\217\234\345\215\225", nullptr));
+        pushButton_start->setText(QApplication::translate("TrackingWindow", "\345\274\200\345\247\213\345\244\204\347\220\206", nullptr));
+        pushButton_stop->setText(QApplication::translate("TrackingWindow", "\345\201\234\346\255\242", nullptr));
+        pushButton_delAll->setText(QString());
     } // retranslateUi
 
 };
