@@ -44,7 +44,7 @@ private:
 	//记录当前处理帧
 	int gFrame;
 	//记录默认输入FBX文件位置
-	const char * inputFBX;
+	const char * modelPath;
 
 	//rotation(0,0,0) bone vector
 	QVector3D gVecSpine_Global;
@@ -72,11 +72,16 @@ private:
 	QQuaternion gSpine1Rotate;
 	QQuaternion gR_ThighRotate;
 	QQuaternion gL_CalfRotate;
+	QQuaternion gL_FootRotate;
+	QQuaternion gHeadRotate;
 	QQuaternion gL_ClavicleRotate;
 	QQuaternion gR_ClavicleRotate;
 	QQuaternion gL_UpperArmRotate;
+	QQuaternion gL_ForearmRotate;
 	QQuaternion gR_UpperArmRotate;
+	QQuaternion gR_ForearmRotate;
 	QQuaternion gR_CalfRotate;
+	QQuaternion gR_FootRotate;
 
 	//QVector3D gVecSpine(0, 0.006, 7.166);
 	//QVector3D gVecL_Thigh(0, 0, 1);
@@ -138,6 +143,8 @@ private:
 	void ProcessR_Foot(QVector3D lPos);
 	//统一坐标系,输入为四元数
 	void ModifyCoordinate();
+	//处理约束，约定每一帧比上一帧的欧拉角xyz不超过10°
+	void processConstraints(QQuaternion &last, QQuaternion &current);
 
 public:
 	//构造函数，包括3D坐标文件读取，FBXSKD的初始化.
@@ -150,4 +157,8 @@ public:
 	void Export(const char* lExportFilename);
 	//释放FBXSDK
 	void Destory();
+	//设置模型路径
+	void setModelPath(const char * lModelPath);
+	//获取模型路径
+	const char * getModelPath();
 };
