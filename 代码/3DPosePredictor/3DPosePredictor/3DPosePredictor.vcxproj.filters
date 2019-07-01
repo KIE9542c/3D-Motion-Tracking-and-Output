@@ -15,34 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\mDefs.h">
+    <ClInclude Include="include\AlphaBaseLine.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="include\oneEuro.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="include\vnectJointsInfo.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="include\vnectUtils.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="include\head.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="include\mCaffeHeader.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="include\mCaffePredictor.hpp">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Json.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="include\videoPosePredictor3D.h">
+    <ClInclude Include="include\Darknet.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="include\mCamera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\mDefs.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="include\mMeshRender.h">
@@ -51,18 +33,15 @@
     <ClInclude Include="include\mShader.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="include\Json.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="include\oneEuro.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\mCaffePredictor.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="src\vnectUtils.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Json.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="src\videoPosePredictor3D.cpp">
+    <ClCompile Include="src\Darknet.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\mCamera.cpp">
@@ -72,6 +51,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\mShader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AlphaBaseLine.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Json.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

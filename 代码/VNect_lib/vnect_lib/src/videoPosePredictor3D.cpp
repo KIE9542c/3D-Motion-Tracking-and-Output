@@ -5,11 +5,12 @@ mVideoPosePredictor3D::mVideoPosePredictor3D(const std::string& model_path, cons
 	
 }
 
-void mVideoPosePredictor3D::predict(const std::string& video_path, const string& shader_dir, const string& mesh_dir,  std::vector<std::vector<float>>& output_postition, const bool& is_relative,const bool& is_show)
+void mVideoPosePredictor3D::predict(const std::string& video_path, const string& shader_dir, const string& mesh_dir,  std::vector<std::vector<float>>& output_postition, const bool& is_relative)
 {
+
 	GLFWwindow* window;
 
-	video= cv::VideoCapture(video_path);
+	cv::VideoCapture video = cv::VideoCapture(video_path);
 	std::vector<float> tmp;
 	std::vector<float> tmp3d;
 	int frameHeight = (int)video.get(CV_CAP_PROP_FRAME_HEIGHT);
@@ -28,10 +29,7 @@ void mVideoPosePredictor3D::predict(const std::string& video_path, const string&
 		}
 	}
 
-	video.set(CV_CAP_PROP_FRAME_WIDTH, frameWidth);
-	video.set(CV_CAP_PROP_FRAME_HEIGHT, frameHeight);
-
-	if ((window = InitWindow(frameWidth, frameHeight)) == nullptr && is_show) {
+	if ((window = InitWindow(frameWidth, frameHeight)) == nullptr) {
 		return ;
 	}
 	SetOpenGLState();
@@ -42,13 +40,18 @@ void mVideoPosePredictor3D::predict(const std::string& video_path, const string&
 	glm::mat4 projection = glm::perspective(glm::radians(base_vof), frameWidth * 1.0f / frameHeight, 0.1f, 100.0f);
 	glm::mat4 view = glm::lookAt(glm::vec3(0, 0, 5), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 	mMeshRender meshes(view, projection, &objShader);
-	std::cout << mesh_dir + "/sphere2.ply" << std::endl;
+
 	meshes.addMesh(mesh_dir+"/sphere2.ply");
 	meshes.addMesh(mesh_dir + "/cylinder2.ply");
 	glm::mat4 MVP = projection * view * model;
 	if (false == mcam.init()) {
 		return ;
 	}
+
+	clock_t start;
+
+	start = clock();
+
 	if (video.isOpened())
 	{
 		int current_frame_id = 0;
@@ -72,13 +75,272 @@ void mVideoPosePredictor3D::predict(const std::string& video_path, const string&
 			joints_scale_3d(tmp3d, vertexs);
 			output_postition.push_back(vertexs);
 
+				
+			glm::mat4 curModel;
+			if (isMousePressed && (initX != curX || initY != curY)) {
+				float tmpZ2;
+				float tmpinitX = ((float)(frameWidth - initX - 1) / (float)frameHeight - 0.5) * 2;
+				float tmpinitY = ((float)initY / (float)frameHeight - 0.5) * 2;
+				tmpZ2 = 1 - tmpinitX * tmpinitX - tmpinitY * tmpinitY;
+				glm::vec3 initVec(1.0);
+				if (tmpZ2 < 0) {
+					float tLen = sqrt(tmpinitY * tmpinitY + tmpinitX * tmpinitX);
+					glm::vec4 from(tmpinitX / tLen, tmpinitY / tLen, 0, 1.0);
+					glm::mat4 rmat = glm::rotate(glm::mat4(1.0), 1 - tLen, glm::cross(glm::vec3(tmpinitX, tmpinitY, 0), glm::vec3(0, 0, 1)));
+
+					glm::vec4 tmpm = rmat * from;
+					initVec.x = tmpm.x;
+					initVec.y = tmpm.y;
+					initVec.z = tmpm.z;
+				}
+				else {
+					initVec = glm::normalize(glm::vec3(tmpinitX, tmpinitY, sqrt(tmpZ2)));
+				}
+
+				float tmpcurX = ((float)(frameWidth - curX - 1) / (float)frameHeight - 0.5) * 2;
+				float tmpcurY = ((float)curY / (float)frameHeight - 0.5) * 2;
+				glm::vec3 curVec;
+				tmpZ2 = 1 - tmpcurX * tmpcurX - tmpcurY * tmpcurY;
+				if (tmpZ2 < 0) {
+					float tLen = sqrt(tmpcurY * tmpcurY + tmpcurX * tmpcurX);
+					glm::vec4 from(tmpcurX / tLen, tmpcurY / tLen, 0, 1.0);
+					glm::mat4 rmat = glm::rotate(glm::mat4(1.0), 1 - tLen, glm::cross(glm::vec3(tmpcurX, tmpcurY, 0), glm::vec3(0, 0, 1)));
+					glm::vec4 tmpm = rmat * from;
+					curVec.x = tmpm.x;
+					curVec.y = tmpm.y;
+					curVec.z = tmpm.z;
+				}
+				else {
+					curVec = glm::normalize(glm::vec3(tmpcurX, tmpcurY, sqrt(tmpZ2)));
+				}
+
+				rotateMat = glm::rotate(glm::mat4(1.0), glm::acos(glm::dot(initVec, curVec)), glm::cross(curVec, initVec));
+				curModel = rotateMat * model;
+			}
+			else {
+				curModel = model;
+			}
+
+			drawPoint(frame, tmp);
+			sprintf_s(txt_buffer, "%.1f", (1.0 / (-start + clock()) * 1000));
+			drawText(frame, "FPS:" + string(txt_buffer));
+			start = clock();
+			cv::flip(frame, frame, 1);
+			mcam.drawFrame(frame);
+
+			meshes.render(vertexs, joint_indics, curModel);
+				
+			glfwSwapBuffers(window);
+			glfwPollEvents();
 			
+		}
+		while (current_frame_id < total_frame&& glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(window) == 0);
+		OutputDebugString(L"输出调DD试信息123");
+		OutputDebugString(L"\n");
+	}
+	glfwDestroyWindow(window);
+	glfwTerminate();
+}
+
+void mVideoPosePredictor3D::writePositionToJson(const std::string& path, const std::vector<std::vector<float>>& output_postition)
+{
+	OutputDebugString(L"write json");
+	OutputDebugString(L"\n");
+	writeToJson(path, output_postition);
+	OutputDebugString(L"write finish");
+	OutputDebugString(L"\n");
+}
+
+void mVideoPosePredictor3D::predict_t(const string& video_path, const string& shader_dir, const string& mesh_dir, std::vector<std::vector<float>> output, const bool& is_relative, const bool& is_show)
+{
+	HANDLE hThread;
+	DWORD dwThreadId;
+	param_t* param=new param_t{ &is_relative,&is_show,shader_dir.c_str() ,mesh_dir.c_str() ,video_path.c_str() ,&predictor,&output };
+
+	hThread = CreateThread(NULL	// 默认安全属性
+		, NULL		// 默认堆栈大小
+		, ThreadProFunc // 线程入口地址
+		, param	//传递给线程函数的参数
+		, 0		// 指定线程立即运行
+		, &dwThreadId	//线程ID号
+	);
+	WaitForSingleObject(hThread, INFINITE);
+
+}
+
+void mVideoPosePredictor3D::predict_notShow(const std::string& video_path, const string& shader_dir, const string& mesh_dir, std::vector<std::vector<float>>& output_postition, const bool& is_relative)
+{
+	cv::VideoCapture video = cv::VideoCapture(video_path);
+	std::vector<float> tmp;
+	std::vector<float> tmp3d;
+	int frameHeight = (int)video.get(CV_CAP_PROP_FRAME_HEIGHT);
+	int frameWidth = (int)video.get(CV_CAP_PROP_FRAME_WIDTH);
+	int tH = frameHeight, tW = frameWidth;
+	for (int i = 2; i * i <= frameHeight; )
+	{
+		if (tH % i == 0 && tW % i == 0)
+		{
+			tH /= i;
+			tW /= i;
+		}
+		else
+		{
+			++i;
+		}
+	}
+
+
+	clock_t start;
+
+	start = clock();
+
+	if (video.isOpened())
+	{
+		int current_frame_id = 0;
+		int total_frame = (int)video.get(CV_CAP_PROP_FRAME_COUNT);
+		cv::Mat frame;
+		do
+		{
+			if (!video.read(frame))
+			{
+				break;
+			}
+			current_frame_id++;
+			char c[8];
+			int length = sprintf_s(c, "%d", current_frame_id);
+			USES_CONVERSION;
+			OutputDebugString(A2W(c));
+			OutputDebugString(L"\n");
+			predictor.predict(frame, tmp, tmp3d, is_relative);
+			std::vector<float> vertexs;
+			joints_scale_3d(tmp3d, vertexs);
+			output_postition.push_back(vertexs);
+
+			start = clock();
+
+
+		} while (current_frame_id);
+		OutputDebugString(L"输出调DD试信息123");
+		OutputDebugString(L"\n");
+	}
+}
+
+
+void joints_scale_3d(const std::vector<float>& joints3d, std::vector<float>& result)
+{
+	result.clear();
+	int scale_size = 1;
+	for (int i = 0; i < joint_num; ++i)
+	{
+		// here I need to normalize them
+		//
+
+		result.push_back(scale_size * static_cast<float>(joints3d[i * 3]));
+		result.push_back(scale_size * static_cast<float>(joints3d[i * 3 + 1]));
+		result.push_back(scale_size * static_cast<float>(joints3d[i * 3 + 2]));
+		
+		char c[20];
+		int length = sprintf_s(c, "%f", joints3d[i * 3]);
+		USES_CONVERSION;
+		OutputDebugString(A2W(c));
+		length = sprintf_s(c, "%f", joints3d[i * 3+1]);
+		OutputDebugString(A2W(c));
+		length = sprintf_s(c, "%f", joints3d[i * 3+2]);
+		OutputDebugString(A2W(c));
+		OutputDebugString(L"\n");
+	}
+}
+
+void SetOpenGLState()
+{
+	// enable depth test and accept fragment if it closer to the camera than the former one
+	glEnable(GL_DEPTH_TEST);
+	glDepthFunc(GL_LESS);
+}
+
+
+DWORD WINAPI ThreadProFunc(LPVOID lpParam)
+{
+	caffe::Caffe::set_mode(caffe::Caffe::GPU);
+	caffe::Caffe::SetDevice(0);
+	param_t* param = (param_t*)lpParam;
+	string video_path = string(param->video_path);
+	bool is_show = *(param->is_show), is_relative=*(param->is_relative);
+	string shader_dir = string(param->shader_dir);
+	string mesh_dir = string(param->mesh_dir);
+	vector<vector<float>> output_postition = (*param->positions);
+	mVNectUtils* predictor=param->predictor;
+	GLFWwindow* window;
+
+	cv::VideoCapture video = cv::VideoCapture(video_path);
+	std::vector<float> tmp;
+	std::vector<float> tmp3d;
+	int frameHeight = (int)video.get(CV_CAP_PROP_FRAME_HEIGHT);
+	int frameWidth = (int)video.get(CV_CAP_PROP_FRAME_WIDTH);
+	int tH = frameHeight, tW = frameWidth;
+	for (int i = 2; i * i <= frameHeight; )
+	{
+		if (tH % i == 0 && tW % i == 0)
+		{
+			tH /= i;
+			tW /= i;
+		}
+		else
+		{
+			++i;
+		}
+	}
+	if ((window = InitWindow(frameWidth, frameHeight)) == nullptr && is_show) {
+		return -1;
+	}
+	SetOpenGLState();
+	mShader camShader = mShader(shader_dir + "/v.shader", shader_dir + "/f.shader");
+	mShader objShader = mShader(shader_dir + "/v2.shader", shader_dir + "/f2.shader");
+	mCamera mcam(frameWidth, frameHeight, tW, tH, &camShader, false);
+
+	glm::mat4 projection = glm::perspective(glm::radians(base_vof), frameWidth * 1.0f / frameHeight, 0.1f, 100.0f);
+	glm::mat4 view = glm::lookAt(glm::vec3(0, 0, 5), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
+	mMeshRender meshes(view, projection, &objShader);
+
+	meshes.addMesh(mesh_dir + "/sphere2.ply");
+	meshes.addMesh(mesh_dir + "/cylinder2.ply");
+	glm::mat4 MVP = projection * view * model;
+	if (false == mcam.init()) {
+		return -1;
+	}
+
+	clock_t start;
+
+	start = clock();
+
+	if (video.isOpened())
+	{
+		int current_frame_id = 0;
+		int total_frame = (int)video.get(CV_CAP_PROP_FRAME_COUNT);
+		cv::Mat frame;
+		do
+		{
+			if (!video.read(frame))
+			{
+				break;
+			}
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+			current_frame_id++;
+			char c[8];
+			int length = sprintf_s(c, "%d", current_frame_id);
+			USES_CONVERSION;
+			OutputDebugString(A2W(c));
+			OutputDebugString(L"\n");
+			predictor->predict(frame, tmp, tmp3d, is_relative);
+			std::vector<float> vertexs;
+			joints_scale_3d(tmp3d, vertexs);
+			output_postition.push_back(vertexs);
+
+
 
 			if (is_show)
 			{
-				drawPoint(frame, tmp);
-				cv::flip(frame, frame, 1);
-				mcam.drawFrame(frame);
+
 
 				glm::mat4 curModel;
 				if (isMousePressed && (initX != curX || initY != curY)) {
@@ -124,62 +386,30 @@ void mVideoPosePredictor3D::predict(const std::string& video_path, const string&
 				else {
 					curModel = model;
 				}
+
+				drawPoint(frame, tmp);
+				sprintf_s(txt_buffer, "%.1f", (1.0 / (-start + clock()) * 1000));
+				drawText(frame, "FPS:" + string(txt_buffer));
+				start = clock();
+				cv::flip(frame, frame, 1);
+				mcam.drawFrame(frame);
+
 				meshes.render(vertexs, joint_indics, curModel);
-				
+
 				glfwSwapBuffers(window);
 				glfwPollEvents();
 			}
-		}
-		while (current_frame_id < total_frame&& glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(window) == 0);
+		} while (current_frame_id < total_frame && glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(window) == 0);
 		OutputDebugString(L"输出调DD试信息123");
 		OutputDebugString(L"\n");
 	}
+	glfwDestroyWindow(window);
 	glfwTerminate();
-}
-
-void mVideoPosePredictor3D::writePositionToJson(const std::string& path, const std::vector<std::vector<float>>& output_postition)
-{
-	OutputDebugString(L"write json");
-	OutputDebugString(L"\n");
-	writeToJson(path, output_postition);
-	OutputDebugString(L"write finish");
-	OutputDebugString(L"\n");
+	return 0;
 }
 
 
-void mVideoPosePredictor3D::joints_scale_3d(const std::vector<float>& joints3d, std::vector<float>& result)
-{
-	result.clear();
-	int scale_size = 1;
-	for (int i = 0; i < joint_num; ++i)
-	{
-		// here I need to normalize them
-		//
-
-		result.push_back(scale_size * static_cast<float>(joints3d[i * 3]));
-		result.push_back(scale_size * static_cast<float>(joints3d[i * 3 + 1]));
-		result.push_back(scale_size * static_cast<float>(joints3d[i * 3 + 2]));
-		
-		char c[20];
-		int length = sprintf_s(c, "%f", joints3d[i * 3]);
-		USES_CONVERSION;
-		OutputDebugString(A2W(c));
-		length = sprintf_s(c, "%f", joints3d[i * 3+1]);
-		OutputDebugString(A2W(c));
-		length = sprintf_s(c, "%f", joints3d[i * 3+2]);
-		OutputDebugString(A2W(c));
-		OutputDebugString(L"\n");
-	}
-}
-
-void SetOpenGLState()
-{
-	// enable depth test and accept fragment if it closer to the camera than the former one
-	glEnable(GL_DEPTH_TEST);
-	glDepthFunc(GL_LESS);
-}
-
-GLFWwindow* InitWindow(float, float)
+GLFWwindow* InitWindow(float wndWidth, float wndHeight)
 {
 	glfwSetErrorCallback(error_callback);
 	if (false == glfwInit()) {
@@ -242,6 +472,13 @@ void drawPoint(cv::Mat& img, const std::vector<float>& pos)
 		}
 
 	}
+}
+
+void drawText(cv::Mat& img, const string& text)
+{
+	cv::Size txt_size = cv::getTextSize(text, font_face, font_scale, thickness, &text_line);
+	cv::Point origin(0, txt_size.height);
+	cv::putText(img, text, origin, font_face, font_scale, cv::Scalar(0, 0, 255));
 }
 
 void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
