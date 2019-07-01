@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'trackingWindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.0
+** Created by: Qt User Interface Compiler version 5.13.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -184,7 +184,7 @@ public:
 
     void retranslateUi(QMainWindow *TrackingWindow)
     {
-        TrackingWindow->setWindowTitle(QApplication::translate("TrackingWindow", "MainWindow", nullptr));
+        TrackingWindow->setWindowTitle(QCoreApplication::translate("TrackingWindow", "MainWindow", nullptr));
         pushButton_6->setText(QString());
         pushButton_7->setText(QString());
         label_5->setText(QString());
@@ -193,9 +193,9 @@ public:
         pushButton_VF->setText(QString());
         pushButton_path->setText(QString());
         pushButton_del->setText(QString());
-        pushButton_2->setText(QApplication::translate("TrackingWindow", "\350\277\224\345\233\236\350\217\234\345\215\225", nullptr));
-        pushButton_start->setText(QApplication::translate("TrackingWindow", "\345\274\200\345\247\213\345\244\204\347\220\206", nullptr));
-        pushButton_stop->setText(QApplication::translate("TrackingWindow", "\345\201\234\346\255\242", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("TrackingWindow", "\350\277\224\345\233\236\350\217\234\345\215\225", nullptr));
+        pushButton_start->setText(QCoreApplication::translate("TrackingWindow", "\345\274\200\345\247\213\345\244\204\347\220\206", nullptr));
+        pushButton_stop->setText(QCoreApplication::translate("TrackingWindow", "\345\201\234\346\255\242", nullptr));
         pushButton_delAll->setText(QString());
     } // retranslateUi
 

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'vffile.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.0
+** Created by: Qt User Interface Compiler version 5.13.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -77,13 +77,13 @@ public:
 
     void retranslateUi(QDialog *vfFile)
     {
-        vfFile->setWindowTitle(QApplication::translate("vfFile", "Dialog", nullptr));
-        pushButton_del->setText(QApplication::translate("vfFile", "\345\210\240\351\231\244", nullptr));
-        pushButton_openfile->setText(QApplication::translate("vfFile", "\346\211\223\345\274\200\346\226\207\344\273\266", nullptr));
-        label->setText(QApplication::translate("vfFile", "\350\276\223\345\207\272\350\267\257\345\276\204", nullptr));
-        pushButton_conf->setText(QApplication::translate("vfFile", "\347\241\256\345\256\232", nullptr));
-        pushButton_delAll->setText(QApplication::translate("vfFile", "\346\270\205\347\251\272\345\210\227\350\241\250", nullptr));
-        pushButton_change->setText(QApplication::translate("vfFile", "\346\233\264\346\224\271", nullptr));
+        vfFile->setWindowTitle(QCoreApplication::translate("vfFile", "Dialog", nullptr));
+        pushButton_del->setText(QCoreApplication::translate("vfFile", "\345\210\240\351\231\244", nullptr));
+        pushButton_openfile->setText(QCoreApplication::translate("vfFile", "\346\211\223\345\274\200\346\226\207\344\273\266", nullptr));
+        label->setText(QCoreApplication::translate("vfFile", "\350\276\223\345\207\272\350\267\257\345\276\204", nullptr));
+        pushButton_conf->setText(QCoreApplication::translate("vfFile", "\347\241\256\345\256\232", nullptr));
+        pushButton_delAll->setText(QCoreApplication::translate("vfFile", "\346\270\205\347\251\272\345\210\227\350\241\250", nullptr));
+        pushButton_change->setText(QCoreApplication::translate("vfFile", "\346\233\264\346\224\271", nullptr));
         pushButton_close->setText(QString());
     } // retranslateUi
 

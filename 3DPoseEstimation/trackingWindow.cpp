@@ -214,14 +214,15 @@ void TrackingWindow::on_pushButton_start_clicked()
 
 	mVideoPosePredictor3D predictor("./vnect_model.caffemodel", "./vnect_net.prototxt");
 	std::vector<std::vector<float>> output;
-	predictor.predict("D:\\Dataset\\20190625154359.mp4", "./shader", "./model", output, false, true);
-	std::string stdOutputFileString = "D:\\Dataset\\a.json";
+	//TODO：全集变量记录路径
+	predictor.predict("C:\\Users\\9\\Desktop\\1.mp4", "./shader", "./model", output, false, true);
+	std::string stdOutputFileString = "C:\\Users\\9\\Desktop\\ppap.FBX";
 	std::string dir = stdOutputFileString.substr(0, stdOutputFileString.rfind(".FBX"));
 	predictor.writePositionToJson(dir + ".json", output);
-	//FbxAPI test((dir + ".json").c_str());
-	//test.ProcessFrameVnect();
-	//test.Export(stdOutputFileString.c_str());
-	//test.Destory();
+	FbxAPI test((dir + ".json").c_str());
+	test.ProcessFrameVnect();
+	test.Export(stdOutputFileString.c_str());
+	test.Destory();
 }
 
 void TrackingWindow::on_pushButton_stop_clicked()
