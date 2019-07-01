@@ -1,7 +1,8 @@
 在cmd中进入demo.py所在文件夹，
-命令举例:python demo.py --inputpath=E:\MMtesting\OpenMMD\test.mp4
-其中inputpath中输入视频路径。
-所有的输入文件与输入视频在同一路径下。
+命令举例:python demo.py --inputpath=E:\MMtesting\OpenMMD\test.mp4 --outputpath=E:\MMtesting --jsonpath=E:\MMtesting\abc.json
+其中inputpath中输入视频路径;
+outputpath中输入输出文件路径；
+jsonpath中输入输出json文件路径。
 
 需要的python库：
 h5py

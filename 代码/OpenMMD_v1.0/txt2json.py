@@ -3,9 +3,10 @@ import os
 import json
 import tensorflow as tf
 
-tf.app.flags.DEFINE_string('inputpath',None,'the path of 3d')
+tf.app.flags.DEFINE_string('inputpath',None,'the path of txt')
+tf.app.flags.DEFINE_string('outputpath',None,'the path of json')
 FLAGS=tf.app.flags.FLAGS
-OUTPUT_3D_JSON='{0}/OpenMMD_3d.json.txt'.format(os.path.dirname(FLAGS.inputpath))
+OUTPUT_3D_JSON=FLAGS.outputpath
 data=[[]]
 joints=[[]]
 
