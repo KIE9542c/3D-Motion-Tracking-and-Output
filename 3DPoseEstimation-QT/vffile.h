@@ -30,7 +30,10 @@ private slots:
     void on_pushButton_delAll_clicked();
 
     void on_pushButton_change_clicked();
+    void on_pushButton_conf_clicked();
 
+signals:
+    void toMain(QStandardItemModel*);
 private:
     Ui::vfFile *ui;
     QStandardItemModel *vfmodel= new QStandardItemModel();

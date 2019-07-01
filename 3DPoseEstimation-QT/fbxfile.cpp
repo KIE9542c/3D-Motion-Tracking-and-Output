@@ -82,3 +82,11 @@ void fbxFile::on_pushButton_change_clicked()
         ui->lineEdit->setText(filePath);
     }
 }
+
+void fbxFile::on_pushButton_conf_clicked()
+{
+    emit toMain(fmodel);
+    fmodel->removeRows(0,fmodel->rowCount());
+    row=0;
+    this->close();
+}
