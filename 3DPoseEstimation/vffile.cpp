@@ -38,6 +38,8 @@ void vfFile::on_pushButton_openfile_clicked()
         QString fileName;
         fileName=QFileDialog::getOpenFileName(this,tr("open video files"),"",tr("Videos Or Images (*.avi *.mp4 *.mpg *.png *.jpg)"));
         //ui->lineEdit->setText(fileName);
+		fbxInputPath.push_back(fileName);
+		vmdInputPath.push_back(fileName);
 
         vfmodel->setItem(row, 0, new QStandardItem(fileName));
         row++;
@@ -59,6 +61,12 @@ void vfFile::on_pushButton_del_clicked()
     while (r.hasPrevious()) {
            r.previous();
        vfmodel->removeRow(r.key());
+	   std::vector<QString>::iterator fbxtemp = fbxInputPath.begin();
+	   std::vector<QString>::iterator vmdtemp = vmdInputPath.begin();
+	   *fbxtemp += r.key();
+	   *vmdtemp += r.key();
+	   fbxInputPath.erase(fbxtemp);
+	   vmdInputPath.erase(vmdtemp);
     }
     row--;
 }
@@ -67,6 +75,8 @@ void vfFile::on_pushButton_delAll_clicked()
 {
      vfmodel->removeRows(0,vfmodel->rowCount());
      row=0;
+	 fbxInputPath.clear();
+	 vmdInputPath.clear();
 }
 void vfFile::on_pushButton_change_clicked()
 {

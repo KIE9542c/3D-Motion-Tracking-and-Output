@@ -1,3 +1,4 @@
+#pragma once
 #ifndef DIALOGMENU_H
 #define DIALOGMENU_H
 

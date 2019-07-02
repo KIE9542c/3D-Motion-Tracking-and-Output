@@ -1,4 +1,5 @@
-﻿#ifndef VFFILE_H
+﻿#pragma once
+#ifndef VFFILE_H
 #define VFFILE_H
 #if _MSC_VER >= 1600
 
@@ -8,6 +9,9 @@
 #include <QDialog>
 #include <QFileDialog>
 #include <QStandardItemModel>
+#include "fbxfile.h"
+#include "vmdfile.h"
+
 namespace Ui {
 class vfFile;
 }

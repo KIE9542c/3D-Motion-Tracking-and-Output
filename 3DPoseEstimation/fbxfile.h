@@ -1,4 +1,5 @@
-﻿#ifndef FBXFILE_H
+﻿#pragma once
+#ifndef FBXFILE_H
 #define FBXFILE_H
 #if _MSC_VER >= 1600
 
@@ -8,6 +9,10 @@
 #include <QDialog>
 #include <QFileDialog>
 #include <QStandardItemModel>
+#include <vector>
+
+
+extern std::vector<QString> fbxInputPath;
 namespace Ui {
 class fbxFile;
 }

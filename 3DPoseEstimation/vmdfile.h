@@ -1,4 +1,5 @@
-﻿#ifndef VMDFILE_H
+﻿#pragma once
+#ifndef VMDFILE_H
 #define VMDFILE_H
 #if _MSC_VER >= 1600
 
@@ -8,6 +9,9 @@
 #include <QDialog>
 #include <QFileDialog>
 #include <QStandardItemModel>
+#include <vector>
+
+extern std::vector<QString> vmdInputPath;
 namespace Ui {
 class vmdfile;
 }

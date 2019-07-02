@@ -5,6 +5,9 @@
 #pragma execution_character_set("utf-8")
 
 #endif
+
+std::vector<QString> vmdInputPath;
+
 vmdfile::vmdfile(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::vmdfile)
@@ -40,7 +43,7 @@ void vmdfile::on_pushButton_openfile_clicked()
         QString fileName;
         fileName=QFileDialog::getOpenFileName(this,tr("open video files"),"",tr("Videos Or Images (*.avi *.mp4 *.mpg *.png *.jpg)"));
         //ui->lineEdit->setText(fileName);
-
+		vmdInputPath.push_back(fileName);
         vmodel->setItem(row, 0, new QStandardItem(fileName));
         row++;
 
@@ -58,6 +61,9 @@ void vmdfile::on_pushButton_del_clicked()
     while (r.hasPrevious()) {
            r.previous();
        vmodel->removeRow(r.key());
+	   std::vector<QString>::iterator temp = vmdInputPath.begin();
+	   *temp += r.key();
+	   vmdInputPath.erase(temp);
     }
     row--;
 }
@@ -66,6 +72,7 @@ void vmdfile::on_pushButton_delAll_clicked()
 {
      vmodel->removeRows(0,vmodel->rowCount());
      row=0;
+	 vmdInputPath.clear();
 }
 void vmdfile::fileData(QString fname)
 {

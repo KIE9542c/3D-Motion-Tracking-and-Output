@@ -5,6 +5,9 @@
 #pragma execution_character_set("utf-8")
 
 #endif
+
+std::vector<QString> fbxInputPath;
+
 fbxFile::fbxFile(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::fbxFile)
@@ -41,7 +44,7 @@ void fbxFile::on_pushButton_openfile_clicked()
         QString fileName;
         fileName=QFileDialog::getOpenFileName(this,tr("open video files"),"",tr("Videos Or Images (*.avi *.mp4 *.mpg *.png *.jpg)"));
         //ui->lineEdit->setText(fileName);
-
+		fbxInputPath.push_back(fileName);
         fmodel->setItem(row, 0, new QStandardItem(fileName));
         row++;
 
@@ -59,6 +62,9 @@ void fbxFile::on_pushButton_del_clicked()
     while (r.hasPrevious()) {
            r.previous();
        fmodel->removeRow(r.key());
+	   std::vector<QString>::iterator temp = fbxInputPath.begin();
+	   *temp += r.key();
+	   fbxInputPath.erase(temp);
     }
     row--;
 }
@@ -67,6 +73,7 @@ void fbxFile::on_pushButton_delAll_clicked()
 {
      fmodel->removeRows(0,fmodel->rowCount());
      row=0;
+	 fbxInputPath.clear();
 }
 void fbxFile::on_pushButton_change_clicked()
 {

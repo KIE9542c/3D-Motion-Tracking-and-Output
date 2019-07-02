@@ -1,4 +1,5 @@
-﻿#ifndef TRACKINGWINDOW_H
+﻿#pragma once
+#ifndef TRACKINGWINDOW_H
 #define TRACKINGWINDOW_H
 
 #include <QMainWindow>
@@ -67,7 +68,7 @@ private:
     QPoint m_startPoint;
     QPoint m_windowPoint;
     QStandardItemModel *model = new QStandardItemModel();
-    QString filePath;//存储保存路径
+    QString outputFilePath;//存储保存路径
     int row=0;//插入的行数
 };
 

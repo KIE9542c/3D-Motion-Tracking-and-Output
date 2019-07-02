@@ -5,6 +5,7 @@
 #include <QMessageBox>
 #include <QDateTime>
 #include "FbxAPI.h"
+#include <string>
 
 #if _MSC_VER >= 1600
 
@@ -130,6 +131,7 @@ void TrackingWindow::on_pushButton_7_clicked()
 }
 void TrackingWindow::on_pushButton_del_clicked()
 {
+	//TODO:: 
     QItemSelectionModel *selections = ui->tableView->selectionModel();
         QModelIndexList selected = selections->selectedIndexes();
         QMap<int, int> rows;
@@ -173,17 +175,17 @@ void TrackingWindow::on_pushButton_path_clicked()
     QString saveName="output";//保存图片名字
     QDateTime time = QDateTime::currentDateTime();//获取系统现在的时间
     QString str = time.toString("yyyyMMdd_hhmmss"); //设置显示格式
-    filePath = QFileDialog::getExistingDirectory(this,"");//获取文件夹路径
+    outputFilePath = QFileDialog::getExistingDirectory(this,"");//获取文件夹路径
    // ui->lineEdit_3->setText(filePath);
-    if(filePath.isEmpty())
+    if(outputFilePath.isEmpty())
     {
         QMessageBox::information(this,"信息","保存失败");
     }
     else
     {
-        vmdW.fileData(filePath);
-        fbxW.fileData(filePath);
-        vfW.fileData(filePath);
+        vmdW.fileData(outputFilePath);
+        fbxW.fileData(outputFilePath);
+        vfW.fileData(outputFilePath);
     }
 }
 //需重写
@@ -211,18 +213,36 @@ void TrackingWindow::fromVF(QStandardItemModel *vfmodel)
 void TrackingWindow::on_pushButton_start_clicked()
 {
     //TODO：依次处理视频
-
-	mVideoPosePredictor3D predictor("./vnect_model.caffemodel", "./vnect_net.prototxt");
-	std::vector<std::vector<float>> output;
-	//TODO：全集变量记录路径
-	predictor.predict("C:\\Users\\9\\Desktop\\1.mp4", "./shader", "./model", output, false, true);
-	std::string stdOutputFileString = "C:\\Users\\9\\Desktop\\ppap.FBX";
-	std::string dir = stdOutputFileString.substr(0, stdOutputFileString.rfind(".FBX"));
-	predictor.writePositionToJson(dir + ".json", output);
-	FbxAPI test((dir + ".json").c_str());
-	test.ProcessFrameVnect();
-	test.Export(stdOutputFileString.c_str());
-	test.Destory();
+	if (!fbxInputPath.empty()) {
+		mVideoPosePredictor3D predictor("./vnect_model.caffemodel", "./vnect_net.prototxt");
+		for (size_t i = 0; i < fbxInputPath.size(); i++)
+		{
+			std::vector<std::vector<float>> output;
+			std::string stdInputFileString = fbxInputPath[i].toStdString();
+			predictor.predict(stdInputFileString, "./shader", "./model", output, false);
+			std::string outputFileName = stdInputFileString.substr(stdInputFileString.rfind("/") + 1, stdInputFileString.rfind(".") - stdInputFileString.rfind("/")-1);
+			predictor.writePositionToJson(outputFilePath.toStdString()+"/" + outputFileName+ ".json", output);
+			FbxAPI test((outputFilePath.toStdString()+"/" + outputFileName + ".json").c_str());
+			test.ProcessFrameVnect();
+			test.Export((outputFilePath.toStdString()+"/" + outputFileName + ".FBX").c_str());
+			test.Destory();
+		}
+	}
+	if (!vmdInputPath.empty())
+	{
+		for (size_t i = 0; i < vmdInputPath.size(); i++)
+		{
+			std::string stdInputFileString = vmdInputPath[i].toStdString();
+			std::string outputFileName = stdInputFileString.substr(stdInputFileString.rfind("/") + 1, stdInputFileString.rfind(".") - stdInputFileString.rfind("/")-1);
+			std::string fullCommand = "python demo.py --inputpath=" + stdInputFileString + " --outputpath=" + outputFilePath.toStdString() + " --jsonpath=" + outputFilePath.toStdString() + "/" + outputFileName + ".json";
+			system(fullCommand.c_str());
+			FbxAPI test((outputFilePath.toStdString() + "/" + outputFileName + ".json").c_str());
+			test.ProcessFrameVnect();
+			test.Export((outputFilePath.toStdString() + "/" + outputFileName + ".FBX").c_str());
+			test.Destory();
+		}
+		
+	}
 }
 
 void TrackingWindow::on_pushButton_stop_clicked()
