@@ -31,18 +31,6 @@ namespace alphaBaseline
 		torch::NoGradGuard no_grad;
 		net.eval();
 
-
-
-		for (int i = 0; i < 17; ++i) {
-			mFilters_3d[3 * i] = new OneEuroFilter<double>(one_euro_filter_frequency, 0.8, 0.4, 1);
-			mFilters_3d[3 * i + 1] = new OneEuroFilter<double>(one_euro_filter_frequency, 0.8, 0.4, 1);
-			mFilters_3d[3 * i + 2] = new OneEuroFilter<double>(one_euro_filter_frequency, 0.8, 0.4, 1);
-			
-		}
-		for (int i = 0; i < 16; ++i) {
-			mFilters[2 * i] = new OneEuroFilter<double>(one_euro_filter_frequency, 1.7, 0.3, 1);
-			mFilters[2 * i + 1] = new OneEuroFilter<double>(one_euro_filter_frequency, 1.7, 0.3, 1);
-		}
 	}
 
 	int AlphaBaseline::predict(const string& video_path, const string& shader_dir, const string& mesh_dir, std::vector<std::vector<float>> position_3d)

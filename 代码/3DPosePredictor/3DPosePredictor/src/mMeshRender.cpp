@@ -1,6 +1,6 @@
 #include "mMeshRender.h"
 #include <string.h>
-
+using namespace alphaBaseline;
 MeshEntry::~MeshEntry() {
     glBindVertexArray(VAO);
     if (VBO[VERTEX_BUFFER]) {

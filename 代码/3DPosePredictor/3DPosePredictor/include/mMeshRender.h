@@ -12,34 +12,36 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 #include "mShader.h"
+namespace alphaBaseline
+{
+	class MeshEntry {
+	public:
+		enum BUFFERS {
+			VERTEX_BUFFER, TEXCOORD_BUFFER, NORMAL_BUFFER, INDEX_BUFFER
+		};
+		GLuint VAO;
+		GLuint VBO[4];
+		unsigned int elmNum;
 
-class MeshEntry {
-public:
-    enum BUFFERS {
-        VERTEX_BUFFER, TEXCOORD_BUFFER, NORMAL_BUFFER,INDEX_BUFFER
-    };
-    GLuint VAO;
-    GLuint VBO[4];
-    unsigned int elmNum;
+		MeshEntry(aiMesh* mesh, GLuint vao);
+		~MeshEntry();
 
-    MeshEntry(aiMesh * mesh, GLuint vao);
-    ~MeshEntry();
+		void render();
+	};
 
-    void render();
-};
+	class mMeshRender {
+	public:
 
-class mMeshRender {
-public:
-
-    std::vector<MeshEntry *> meshEntries;
+		std::vector<MeshEntry*> meshEntries;
 
 
-    mMeshRender(glm::mat4 &view, glm::mat4 &proj, mShader * shader);
-    ~mMeshRender();
-    void addMesh(std::string mesh_path);
-    void render(std::vector<float> vertexs, std::vector<unsigned int> indices, glm::mat4  &model);
-private:
-    GLuint VAO;
-    glm::mat4 VP; 
-    mShader * shader;
-};
+		mMeshRender(glm::mat4& view, glm::mat4& proj, mShader* shader);
+		~mMeshRender();
+		void addMesh(std::string mesh_path);
+		void render(std::vector<float> vertexs, std::vector<unsigned int> indices, glm::mat4& model);
+	private:
+		GLuint VAO;
+		glm::mat4 VP;
+		mShader* shader;
+	};
+}

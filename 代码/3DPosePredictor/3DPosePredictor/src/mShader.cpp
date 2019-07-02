@@ -5,7 +5,7 @@
 #include <iostream>
 #include <vector>
 
-
+using namespace alphaBaseline;
 mShader::~mShader() {
     glDeleteProgram(ID);
 }

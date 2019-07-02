@@ -20,7 +20,6 @@
 #include "mMeshRender.h"
 #include <3d_baseLine_predictor.h>
 #include <Json.h>
-#include <oneEuro.hpp>
 namespace alphaBaseline
 {
 	class __declspec(dllexport) AlphaBaseline
@@ -100,9 +99,6 @@ private:
 	std::shared_ptr<torch::jit::script::Module> module;
 	BaseLinePredictor baseline;
 	torch::DeviceType device_type;
-
-	OneEuroFilter<double>* mFilters[16 * 2];
-	OneEuroFilter<double>* mFilters_3d[17 * 3];
 
 public:
 	AlphaBaseline(const string& yolo_cfg, const string& yolo_weight, const string& alpahaPose_path, const string& baseline_path);
