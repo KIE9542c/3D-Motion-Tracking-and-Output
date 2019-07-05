@@ -2,7 +2,7 @@
 #include "mDefs.h"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-#include <GL/glew.h>
+#include <glad/glad.h>
 
 mCamera::~mCamera() {
     glDeleteBuffers(1, &vertexBuffer);

@@ -5,7 +5,7 @@
 #include <Windows.h>
 #include <atlconv.h>
 
-#include <GL/glew.h>
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -16,7 +16,10 @@
 #include "mCamera.h"
 #include "mDefs.h"
 #include "mMeshRender.h"
-
+struct coordpoint
+{
+	int x, y, z;
+};
 struct param_t
 {
 	const bool* is_relative;

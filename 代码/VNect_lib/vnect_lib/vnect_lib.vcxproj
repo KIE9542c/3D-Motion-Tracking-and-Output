@@ -85,7 +85,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>.\include;..\..\..\3rdparty\include\opencv\include;..\..\..\3rdparty\include\opencv\include\opencv;..\..\..\3rdparty\include\opencv\include\opencv2;..\..\..\3rdparty\include\caffe\include;..\..\..\3rdparty\include\boost\include;..\..\..\3rdparty\include\GFlags\include;..\..\..\3rdparty\include\GLog\include;..\..\..\3rdparty\include\cuda\include;..\..\..\3rdparty\include\Protobuf\include;..\..\..\3rdparty\include\OpenBLAS\include;..\..\..\3rdparty\include\JSONCPP\include;..\..\..\3rdparty\include\glew\include;..\..\..\3rdparty\include\GLFW\include;..\..\..\3rdparty\include\glm\include;..\..\..\3rdparty\include\glut\include;..\..\..\3rdparty\include\assimp\include;$(IncludePath)</IncludePath>
+    <IncludePath>.\include;..\..\..\3rdparty\include\opencv\include;..\..\..\3rdparty\include\opencv\include\opencv;..\..\..\3rdparty\include\opencv\include\opencv2;..\..\..\3rdparty\include\caffe\include;..\..\..\3rdparty\include\boost\include;..\..\..\3rdparty\include\GFlags\include;..\..\..\3rdparty\include\GLog\include;..\..\..\3rdparty\include\cuda\include;..\..\..\3rdparty\include\Protobuf\include;..\..\..\3rdparty\include\OpenBLAS\include;..\..\..\3rdparty\include\JSONCPP\include;..\..\..\3rdparty\include\glad\include;..\..\..\3rdparty\include\GLFW\include;..\..\..\3rdparty\include\glm\include;..\..\..\3rdparty\include\glut\include;..\..\..\3rdparty\include\assimp\include;$(IncludePath)</IncludePath>
     <LibraryPath>..\..\..\3rdparty\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -173,6 +173,7 @@
     <ClInclude Include="include\vnectUtils.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\mCamera.cpp" />
     <ClCompile Include="src\mMeshRender.cpp" />
     <ClCompile Include="src\mShader.cpp" />

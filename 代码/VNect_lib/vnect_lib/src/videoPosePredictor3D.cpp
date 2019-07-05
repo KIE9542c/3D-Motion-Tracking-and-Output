@@ -435,7 +435,7 @@ GLFWwindow* InitWindow(float wndWidth, float wndHeight)
 	glfwSetCursorPosCallback(window, mouse_move_callback);
 	glfwSwapInterval(0);
 
-	if (glewInit() != GLEW_OK) {
+	if (!gladLoadGL()) {
 		std::cout << "Failed to initialize GLEW\n" << std::endl;
 		glfwTerminate();
 		return nullptr;
