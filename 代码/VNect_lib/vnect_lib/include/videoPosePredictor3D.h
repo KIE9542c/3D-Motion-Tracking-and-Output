@@ -71,6 +71,7 @@ public:
 	void predict_notShow(const std::string& video_path, const string& shader_dir, const string& mesh_dir, std::vector<std::vector<float>>& output_postition, const bool& is_relative = false);
 
 private:
+	float resize_ratio(const float& picture_width, const float& picture_height, const float& default_width, const float& default_height);
 
 
 };
@@ -78,6 +79,7 @@ private:
 void SetOpenGLState();
 GLFWwindow* InitWindow(float, float);
 void drawPoint(cv::Mat& img, const std::vector<float>& pos);
+void drawPoint(cv::Mat& img, const std::vector<float>& pos, cv::Rect r, float scale);
 void drawText(cv::Mat& img, const string& text);
 void error_callback(int error, const char* description);
 void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);

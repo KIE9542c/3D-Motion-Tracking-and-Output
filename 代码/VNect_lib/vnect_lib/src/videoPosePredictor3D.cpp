@@ -1,11 +1,11 @@
 #include "videoPosePredictor3D.h"
 
-mVideoPosePredictor3D::mVideoPosePredictor3D(const std::string& model_path, const std::string& prototxt_path):model_path(model_path),prototxt_path(prototxt_path),predictor(model_path,prototxt_path)
+mVideoPosePredictor3D::mVideoPosePredictor3D(const std::string& model_path, const std::string& prototxt_path) :model_path(model_path), prototxt_path(prototxt_path), predictor(model_path, prototxt_path)
 {
-	
+
 }
 
-void mVideoPosePredictor3D::predict(const std::string& video_path, const string& shader_dir, const string& mesh_dir,  std::vector<std::vector<float>>& output_postition, const bool& is_relative)
+void mVideoPosePredictor3D::predict(const std::string& video_path, const string& shader_dir, const string& mesh_dir, std::vector<std::vector<float>>& output_postition, const bool& is_relative)
 {
 
 	GLFWwindow* window;
@@ -30,22 +30,22 @@ void mVideoPosePredictor3D::predict(const std::string& video_path, const string&
 	}
 
 	if ((window = InitWindow(frameWidth, frameHeight)) == nullptr) {
-		return ;
+		return;
 	}
 	SetOpenGLState();
-	mShader camShader = mShader(shader_dir+"/v.shader", shader_dir+"/f.shader");
-	mShader objShader = mShader(shader_dir+"/v2.shader", shader_dir+"/f2.shader");
+	mShader camShader = mShader(shader_dir + "/v.shader", shader_dir + "/f.shader");
+	mShader objShader = mShader(shader_dir + "/v2.shader", shader_dir + "/f2.shader");
 	mCamera mcam(frameWidth, frameHeight, tW, tH, &camShader, false);
 
 	glm::mat4 projection = glm::perspective(glm::radians(base_vof), frameWidth * 1.0f / frameHeight, 0.1f, 100.0f);
 	glm::mat4 view = glm::lookAt(glm::vec3(0, 0, 5), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 	mMeshRender meshes(view, projection, &objShader);
 
-	meshes.addMesh(mesh_dir+"/sphere2.ply");
+	meshes.addMesh(mesh_dir + "/sphere2.ply");
 	meshes.addMesh(mesh_dir + "/cylinder2.ply");
 	glm::mat4 MVP = projection * view * model;
 	if (false == mcam.init()) {
-		return ;
+		return;
 	}
 
 	clock_t start;
@@ -57,12 +57,26 @@ void mVideoPosePredictor3D::predict(const std::string& video_path, const string&
 		int current_frame_id = 0;
 		int total_frame = (int)video.get(CV_CAP_PROP_FRAME_COUNT);
 		cv::Mat frame;
+		float scale = resize_ratio(frameWidth, frameHeight, det_width, det_height);
+		float resize_height = frameHeight * scale;
+		float resize_width = frameWidth * scale;
+		int center_point_x = det_width / 2;
+		int center_point_y = det_height / 2;
+		cv::Rect det_box(center_point_x - resize_width / 2, center_point_y - resize_height / 2, resize_width, resize_height);
+
 		do
 		{
 			if (!video.read(frame))
 			{
 				break;
 			}
+
+			cv::Mat detect_mat(det_height, det_width, CV_8UC3, cv::Scalar(0, 0, 0));
+			cv::Mat detect_roi = detect_mat(det_box);
+			cv::Mat image_roi = frame.clone();
+			cv::resize(image_roi, image_roi, cv::Size(resize_width, resize_height));
+			image_roi.copyTo(detect_roi);
+
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 			current_frame_id++;
 			char c[8];
@@ -70,12 +84,12 @@ void mVideoPosePredictor3D::predict(const std::string& video_path, const string&
 			USES_CONVERSION;
 			OutputDebugString(A2W(c));
 			OutputDebugString(L"\n");
-			predictor.predict(frame, tmp, tmp3d,is_relative);
+			predictor.predict(detect_mat, tmp, tmp3d, is_relative);
 			std::vector<float> vertexs;
 			joints_scale_3d(tmp3d, vertexs);
 			output_postition.push_back(vertexs);
 
-				
+
 			glm::mat4 curModel;
 			if (isMousePressed && (initX != curX || initY != curY)) {
 				float tmpZ2;
@@ -121,7 +135,7 @@ void mVideoPosePredictor3D::predict(const std::string& video_path, const string&
 				curModel = model;
 			}
 
-			drawPoint(frame, tmp);
+			drawPoint(frame, tmp, det_box, scale);
 			sprintf_s(txt_buffer, "%.1f", (1.0 / (-start + clock()) * 1000));
 			drawText(frame, "FPS:" + string(txt_buffer));
 			start = clock();
@@ -129,12 +143,11 @@ void mVideoPosePredictor3D::predict(const std::string& video_path, const string&
 			mcam.drawFrame(frame);
 
 			meshes.render(vertexs, joint_indics, curModel);
-				
+
 			glfwSwapBuffers(window);
 			glfwPollEvents();
-			
-		}
-		while (current_frame_id < total_frame&& glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(window) == 0);
+
+		} while (current_frame_id < total_frame && glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(window) == 0);
 		OutputDebugString(L"输出调DD试信息123");
 		OutputDebugString(L"\n");
 	}
@@ -155,7 +168,7 @@ void mVideoPosePredictor3D::predict_t(const string& video_path, const string& sh
 {
 	HANDLE hThread;
 	DWORD dwThreadId;
-	param_t* param=new param_t{ &is_relative,&is_show,shader_dir.c_str() ,mesh_dir.c_str() ,video_path.c_str() ,&predictor,&output };
+	param_t* param = new param_t{ &is_relative,&is_show,shader_dir.c_str() ,mesh_dir.c_str() ,video_path.c_str() ,&predictor,&output };
 
 	hThread = CreateThread(NULL	// 默认安全属性
 		, NULL		// 默认堆栈大小
@@ -225,6 +238,15 @@ void mVideoPosePredictor3D::predict_notShow(const std::string& video_path, const
 	}
 }
 
+float mVideoPosePredictor3D::resize_ratio(const float& picture_width, const float& picture_height, const float& default_width, const float& default_height)
+{
+	float widthRatio = default_width / picture_width;
+	float heightRatio = default_height / picture_height;
+	float ratio = 0;
+	widthRatio < heightRatio ? ratio = widthRatio : ratio = heightRatio;
+	return ratio;
+}
+
 
 void joints_scale_3d(const std::vector<float>& joints3d, std::vector<float>& result)
 {
@@ -238,14 +260,14 @@ void joints_scale_3d(const std::vector<float>& joints3d, std::vector<float>& res
 		result.push_back(scale_size * static_cast<float>(joints3d[i * 3]));
 		result.push_back(scale_size * static_cast<float>(joints3d[i * 3 + 1]));
 		result.push_back(scale_size * static_cast<float>(joints3d[i * 3 + 2]));
-		
+
 		char c[20];
 		int length = sprintf_s(c, "%f", joints3d[i * 3]);
 		USES_CONVERSION;
 		OutputDebugString(A2W(c));
-		length = sprintf_s(c, "%f", joints3d[i * 3+1]);
+		length = sprintf_s(c, "%f", joints3d[i * 3 + 1]);
 		OutputDebugString(A2W(c));
-		length = sprintf_s(c, "%f", joints3d[i * 3+2]);
+		length = sprintf_s(c, "%f", joints3d[i * 3 + 2]);
 		OutputDebugString(A2W(c));
 		OutputDebugString(L"\n");
 	}
@@ -265,11 +287,11 @@ DWORD WINAPI ThreadProFunc(LPVOID lpParam)
 	caffe::Caffe::SetDevice(0);
 	param_t* param = (param_t*)lpParam;
 	string video_path = string(param->video_path);
-	bool is_show = *(param->is_show), is_relative=*(param->is_relative);
+	bool is_show = *(param->is_show), is_relative = *(param->is_relative);
 	string shader_dir = string(param->shader_dir);
 	string mesh_dir = string(param->mesh_dir);
 	vector<vector<float>> output_postition = (*param->positions);
-	mVNectUtils* predictor=param->predictor;
+	mVNectUtils* predictor = param->predictor;
 	GLFWwindow* window;
 
 	cv::VideoCapture video = cv::VideoCapture(video_path);
@@ -450,16 +472,16 @@ GLFWwindow* InitWindow(float wndWidth, float wndHeight)
 
 void drawPoint(cv::Mat& img, const std::vector<float>& pos)
 {
-	for (int i = 0; i < joint_num; ++i) 
+	for (int i = 0; i < joint_num; ++i)
 	{
 
 		int x = (pos[i * 2 + 0] + 0.5) * img.size().height;
 		int y = (pos[i * 2 + 1] + 0.5) * img.size().width;
-		for (int j = -2; j < 3; ++j) 
+		for (int j = -2; j < 3; ++j)
 		{
-			for (int k = -2; k < 3; ++k) 
+			for (int k = -2; k < 3; ++k)
 			{
-				if (x + j < 0 || x + j >= img.size().height || y + k >= img.size().width || y + k < 0) 
+				if (x + j < 0 || x + j >= img.size().height || y + k >= img.size().width || y + k < 0)
 				{
 					std::cout << "out of range" << std::endl;
 					continue;
@@ -468,6 +490,32 @@ void drawPoint(cv::Mat& img, const std::vector<float>& pos)
 				//      access the data in the mat.
 				img.at<float>(x + j, y + k, 0) = 1;
 				//img.at<char>(pos[i][0]+j, pos[i][1]+k, 2) = 1;
+			}
+		}
+
+	}
+}
+
+void drawPoint(cv::Mat& img, const std::vector<float>& pos, cv::Rect r, float scale)
+{
+	for (int i = 0; i < joint_num; ++i)
+	{
+
+		int x = (pos[i * 2 + 0] + 0.5) * det_height;
+		int y = (pos[i * 2 + 1] + 0.5) * det_width;
+		x = 1.0 * (x - r.y) / scale;
+		y = 1.0 * (y - r.x) / scale;
+
+		for (int j = -2; j < 3; ++j)
+		{
+			for (int k = -2; k < 3; ++k)
+			{
+				if (x + j < 0 || x + j >= img.size().height || y + k >= img.size().width || y + k < 0)
+				{
+					std::cout << "out of range" << std::endl;
+					continue;
+				}
+				img.at<float>(x + j, y + k, 0) = 1;
 			}
 		}
 

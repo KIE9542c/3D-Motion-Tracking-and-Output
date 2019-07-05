@@ -5,6 +5,8 @@
 //const int wndHeight = 720;
 //const float ratio_w = 16.0;
 //const float ratio_h = 9.0;
+const int det_width = 960;
+const int det_height = 540;
 const int vnect_resize_width = 560;
 const int vnect_resize_height = 315;
 const float base_vof = 45.0;
