@@ -143,8 +143,6 @@ private:
 	void ProcessR_Foot(QVector3D lPos);
 	//统一坐标系,输入为四元数
 	void ModifyCoordinate();
-	//处理约束，约定每一帧比上一帧的欧拉角xyz不超过10°
-	void processConstraints(QQuaternion &last, QQuaternion &current);
 
 public:
 	//构造函数，包括3D坐标文件读取，FBXSKD的初始化.

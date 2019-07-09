@@ -95,13 +95,8 @@ void FbxAPI::Initialize(const char* lFilename) {
 }
 //-----------------------------------------------------------------------
 void FbxAPI::Destory() {
-
-
 	//gPosition.clear();
 	DestroySdkObjects(gSdkManager, true);
-
-
-
 }
 //-----------------------------------------------------------------------
 bool FbxAPI::ReadPosition(const char* lFilename) {
@@ -290,163 +285,103 @@ void FbxAPI::ProcessRotation(FbxNode* lNode, QVector3D eulerAngles) {
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessSpine(QVector3D lPos) {
-	//记录上一帧的四元数
-	QQuaternion last = gSpineRotate;
 	//计算这一帧的四元数
 	gSpineRotate = QQuaternion::rotationTo(gVecSpine_Local, lPos);
-	//处理约束
-	processConstraints(last, gSpineRotate);
 	//写入动画曲线
 	ProcessRotation(gNodeSpine, gSpineRotate.toEulerAngles());
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessL_Thigh(QVector3D lPos) {
-	QQuaternion last = gL_ThighRotate;
 	lPos = gSpineRotate.inverted() * lPos;
 	gL_ThighRotate = QQuaternion::rotationTo(gVecL_Thigh, lPos);
-	if (gFrame >= 1) {
-		processConstraints(last, gL_ThighRotate);
-	}
 	ProcessRotation(gNodeL_Thigh, gL_ThighRotate.toEulerAngles());
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessSpine1(QVector3D lPos) {
-	QQuaternion last = gSpine1Rotate;
 	lPos = gSpineRotate.inverted() * lPos;
 	gSpine1Rotate = QQuaternion::rotationTo(gVecSpine1, lPos);
-	if (gFrame >= 1) {
-		processConstraints(last, gSpine1Rotate);
-	}
 	ProcessRotation(gNodeSpine1, gSpine1Rotate.toEulerAngles());
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessR_Thigh(QVector3D lPos) {
-	QQuaternion last = gR_ThighRotate;
 	lPos = gSpineRotate.inverted() * lPos;
 	gR_ThighRotate = QQuaternion::rotationTo(gVecR_Thigh, lPos);
-	if (gFrame >= 1) {
-		processConstraints(last, gR_ThighRotate);
-	}
 	ProcessRotation(gNodeR_Thigh, gR_ThighRotate.toEulerAngles());
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessL_Calf(QVector3D lPos) {
-	QQuaternion last = gL_CalfRotate;
 	lPos = gL_ThighRotate.inverted() * gSpineRotate.inverted() * lPos;
 	gL_CalfRotate = QQuaternion::rotationTo(gVecL_Calf, lPos);
-	QVector3D temp = gL_CalfRotate.toEulerAngles();
-	if (temp.x() < 150 && temp.x() > -150) {
-		temp.setX(temp.x() + 180);
-		gL_CalfRotate = QQuaternion::fromEulerAngles(temp);
-	}
-	if (gFrame >= 1) {
-		processConstraints(last, gL_CalfRotate);
-	}
+	//QVector3D temp = gL_CalfRotate.toEulerAngles();
+	//if (temp.x() < 150 && temp.x() > -150) {
+	//	temp.setX(temp.x() + 180);
+	//	gL_CalfRotate = QQuaternion::fromEulerAngles(temp);
+	//}
 	ProcessRotation(gNodeL_Calf, gL_CalfRotate.toEulerAngles());
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessL_Foot(QVector3D lPos) {
-	QQuaternion last = gL_FootRotate;
 	lPos = gL_CalfRotate.inverted() * gL_ThighRotate.inverted() * gSpineRotate.inverted() * lPos;
 	gL_FootRotate = QQuaternion::rotationTo(gVecL_Foot, lPos);
-	if (gFrame >= 1) {
-		processConstraints(last, gL_FootRotate);
-	}
 	ProcessRotation(gNodeL_Foot, gL_FootRotate.toEulerAngles());
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessHead(QVector3D lPos) {
-	QQuaternion last = gHeadRotate;
 	lPos = gSpine1Rotate.inverted() * gSpineRotate.inverted() * lPos;
 	gHeadRotate = QQuaternion::rotationTo(gVecHead, lPos);
-	if (gFrame >= 1) {
-		processConstraints(last, gHeadRotate);
-	}
 	ProcessRotation(gNodeHead, gHeadRotate.toEulerAngles());
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessL_Clavicle(QVector3D lPos) {
-	QQuaternion last = gL_ClavicleRotate;
 	lPos = gSpine1Rotate.inverted() * gSpineRotate.inverted() * lPos;
 	gL_ClavicleRotate = QQuaternion::rotationTo(gVecL_Clavicle, lPos);
-	if (gFrame >= 1) {
-		processConstraints(last, gL_ClavicleRotate);
-	}
 	ProcessRotation(gNodeL_Clavicle, gL_ClavicleRotate.toEulerAngles());
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessR_Clavicle(QVector3D lPos) {
-	QQuaternion last = gR_ClavicleRotate;
 	lPos = gSpine1Rotate.inverted() * gSpineRotate.inverted() * lPos;
 	gR_ClavicleRotate = QQuaternion::rotationTo(gVecR_Clavicle, lPos);
-	if (gFrame >= 1) {
-		processConstraints(last, gR_ClavicleRotate);
-	}
 	ProcessRotation(gNodeR_Clavicle, gR_ClavicleRotate.toEulerAngles());
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessL_UpperArm(QVector3D lPos) {
-	QQuaternion last = gL_UpperArmRotate;
 	lPos = gL_ClavicleRotate.inverted() * gSpine1Rotate.inverted() * gSpineRotate.inverted() * lPos;
 	gL_UpperArmRotate = QQuaternion::rotationTo(gVecL_UpperArm, lPos);
-	if (gFrame >= 1) {
-		processConstraints(last, gL_UpperArmRotate);
-	}
 	ProcessRotation(gNodeL_UpperArm, gL_UpperArmRotate.toEulerAngles());
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessL_Forearm(QVector3D lPos) {
-	QQuaternion last = gL_ForearmRotate;
 	lPos = gL_UpperArmRotate.inverted() * gL_ClavicleRotate.inverted() * gSpine1Rotate.inverted() * gSpineRotate.inverted() * lPos;
 	gL_ForearmRotate = QQuaternion::rotationTo(gVecL_Forearm, lPos);
-	if (gFrame >= 1) {
-		processConstraints(last, gL_ForearmRotate);
-	}
 	ProcessRotation(gNodeL_Forearm, gL_ForearmRotate.toEulerAngles());
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessR_UpperArm(QVector3D lPos) {
-	QQuaternion last = gR_UpperArmRotate;
 	lPos = gR_ClavicleRotate.inverted() * gSpine1Rotate.inverted() * gSpineRotate.inverted() * lPos;
 	gR_UpperArmRotate = QQuaternion::rotationTo(gVecR_UpperArm, lPos);
-	if (gFrame >= 1) {
-		processConstraints(last, gR_UpperArmRotate);
-	}
 	ProcessRotation(gNodeR_UpperArm, gR_UpperArmRotate.toEulerAngles());
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessR_Forearm(QVector3D lPos) {
-	QQuaternion last = gR_ForearmRotate;
 	lPos = gR_UpperArmRotate.inverted() * gR_ClavicleRotate.inverted() * gSpine1Rotate.inverted() * gSpineRotate.inverted() * lPos;
 	gR_ForearmRotate = QQuaternion::rotationTo(gVecR_Forearm, lPos);
-	if (gFrame >= 1) {
-		processConstraints(last, gR_ForearmRotate);
-	}
 	ProcessRotation(gNodeR_Forearm, gR_ForearmRotate.toEulerAngles());
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessR_Calf(QVector3D lPos) {
-	QQuaternion last = gR_CalfRotate;
 	lPos = gR_ThighRotate.inverted() * gSpineRotate.inverted() * lPos;
 	gR_CalfRotate = QQuaternion::rotationTo(gVecR_Calf, lPos);
-	QVector3D temp = gR_CalfRotate.toEulerAngles();
-	if (temp.x() < 150 && temp.x() > -150) {
-		temp.setX(temp.x() + 180);
-		gR_CalfRotate = QQuaternion::fromEulerAngles(temp);
-	}
-	if (gFrame >= 1) {
-		processConstraints(last, gR_CalfRotate);
-	}
+	//QVector3D temp = gR_CalfRotate.toEulerAngles();
+	//if (temp.x() < 150 && temp.x() > -150) {
+	//	temp.setX(temp.x() + 180);
+	//	gR_CalfRotate = QQuaternion::fromEulerAngles(temp);
+	//}
 	ProcessRotation(gNodeR_Calf, gR_CalfRotate.toEulerAngles());
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessR_Foot(QVector3D lPos) {
-	QQuaternion last = gR_FootRotate;
 	lPos = gR_CalfRotate.inverted() * gR_ThighRotate.inverted() * gSpineRotate.inverted() * lPos;
 	gR_FootRotate = QQuaternion::rotationTo(gVecR_Foot, lPos);
-	if (gFrame >= 1) {
-		processConstraints(last, gR_FootRotate);
-	}
 	ProcessRotation(gNodeR_Foot, gR_FootRotate.toEulerAngles());
 }
 //-----------------------------------------------------------------------
@@ -463,77 +398,6 @@ void FbxAPI::ModifyCoordinate() {
 			gPosition[i][n].setZ(temp.x());
 		}
 	}
-}
-//-----------------------------------------------------------------------
-void FbxAPI::processConstraints(QQuaternion &last, QQuaternion &current) {
-	QVector3D eulerLast = last.toEulerAngles();
-	QVector3D eulerCurrent = current.toEulerAngles();
-	//setX
-	//-180~180
-	//处理边界情况
-	if (eulerCurrent.x() > eulerLast.x()) {
-		if ((eulerCurrent.x() - eulerLast.x()) <= (180 - eulerCurrent.x() + eulerLast.x() + 180)) {
-			if (eulerCurrent.x() - eulerLast.x() > 10)
-				eulerCurrent.setX(eulerLast.x() + 10);
-		}
-		else {
-			if ((180 - eulerCurrent.x() + eulerLast.x() + 180) > 10)
-				eulerCurrent.setX(eulerLast.x() - 10);
-		}
-	}
-	else {
-		if ((eulerLast.x() - eulerCurrent.x()) <= (180 - eulerLast.x() + eulerCurrent.x() + 180)) {
-			if (eulerLast.x() - eulerCurrent.x() > 10) 
-				eulerCurrent.setX(eulerLast.x() - 10);
-		}
-		else {
-			if ((180 - eulerLast.x() + eulerCurrent.x() + 180) > 10)
-				eulerCurrent.setX(eulerLast.x() + 10);
-		}
-	}	
-	//setY
-	if (eulerCurrent.y() > eulerLast.y()) {
-		if ((eulerCurrent.y() - eulerLast.y()) <= (180 - eulerCurrent.y() + eulerLast.y() + 180)) {
-			if (eulerCurrent.y() - eulerLast.y() > 10)
-				eulerCurrent.setY(eulerLast.y() + 10);
-		}
-		else {
-			if ((180 - eulerCurrent.y() + eulerLast.y() + 180) > 10)
-				eulerCurrent.setY(eulerLast.y() - 10);
-		}
-	}
-	else {
-		if ((eulerLast.y() - eulerCurrent.y()) <= (180 - eulerLast.y() + eulerCurrent.y() + 180)) {
-			if (eulerLast.y() - eulerCurrent.y() > 10)
-				eulerCurrent.setY(eulerLast.y() - 10);
-		}
-		else {
-			if ((180 - eulerLast.y() + eulerCurrent.y() + 180) > 10)
-				eulerCurrent.setY(eulerLast.y() + 10);
-		}
-	}
-	//setZ
-	if (eulerCurrent.z() > eulerLast.z()) {
-		if ((eulerCurrent.z() - eulerLast.z()) <= (180 - eulerCurrent.z() + eulerLast.z() + 180)) {
-			if (eulerCurrent.z() - eulerLast.z() > 10)
-				eulerCurrent.setZ(eulerLast.z() + 10);
-		}
-		else {
-			if ((180 - eulerCurrent.z() + eulerLast.z() + 180) > 10)
-				eulerCurrent.setZ(eulerLast.z() - 10);
-		}
-	}
-	else {
-		if ((eulerLast.z() - eulerCurrent.z()) <= (180 - eulerLast.z() + eulerCurrent.z() + 180)) {
-			if (eulerLast.z() - eulerCurrent.z() > 10)
-				eulerCurrent.setZ(eulerLast.z() - 10);
-		}
-		else {
-			if ((180 - eulerLast.z() + eulerCurrent.z() + 180) > 10)
-				eulerCurrent.setZ(eulerLast.z() + 10);
-		}
-	}
-	current = QQuaternion::fromEulerAngles(eulerCurrent);
 }
 //-----------------------------------------------------------------------
 FbxAPI::FbxAPI(const char * lFilename) {
@@ -577,4 +441,3 @@ void FbxAPI::setModelPath(const char * lModelPath) {
 const char * FbxAPI::getModelPath() {
 	return modelPath;
 }
-
