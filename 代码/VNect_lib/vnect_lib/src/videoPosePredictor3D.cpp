@@ -159,6 +159,7 @@ void mVideoPosePredictor3D::predict(const std::string& video_path, const string&
 		} while (current_frame_id < total_frame && glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(window) == 0);
 		OutputDebugString(L"输出调DD试信息123");
 		OutputDebugString(L"\n");
+		avformat_close_input(&fmt_ctx);
 	}
 	glfwDestroyWindow(window);
 	glfwTerminate();
