@@ -1,5 +1,6 @@
 #include "OpenGLAPI.h"
 #include <math.h>
+#include <atlconv.h>
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -15,7 +16,7 @@ bool firstMouse = true;
 
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
-
+//-----------------------------------------------------------------------
 bool OpenGLAPI::ReadPosition(const char* lFilename, std::vector<std::vector<QVector3D>>& lpos) {
 	Json::CharReaderBuilder rbuilder;
 	rbuilder["collectComments"] = false;
@@ -62,14 +63,13 @@ bool OpenGLAPI::ReadPosition(const char* lFilename, std::vector<std::vector<QVec
 	f.close();
 	return true;
 }
-
-void OpenGLAPI::processVertice(std::vector<glm::vec3> &vertices, QVector3D base, QVector3D front) {
+//-----------------------------------------------------------------------
+void OpenGLAPI::processVertice(std::vector<Vertex> &vertices, QVector3D base, QVector3D front) {
 	glm::vec3 lbase = glm::vec3(base.x(), base.y(), base.z());
 	glm::vec3 lfront = glm::vec3(front.x(), front.y(), front.z());
 	glm::vec3 dir = lfront - lbase;
 	glm::mat4 trans = glm::mat4(1.0f);
-	trans = glm::rotate(trans, glm::radians(90.0f), dir);
-	vertices.push_back(lfront);
+	trans = glm::rotate(trans, glm::radians(30.0f), dir);
 	glm::vec3 temp1;
 	if (dir.z == 0) {
 		temp1 = glm::vec3(1, -dir.x/dir.y, 0);
@@ -77,21 +77,40 @@ void OpenGLAPI::processVertice(std::vector<glm::vec3> &vertices, QVector3D base,
 	else {
 		temp1 = glm::vec3(1, 1, (-dir.x - dir.y) / dir.z);
 	}
-	float scale = sqrt((pow(dir.x,2)+ pow(dir.y, 2) + pow(dir.z, 2)) /(pow(temp1.x,2)+ pow(temp1.y, 2)+ pow(temp1.z, 2)));
+	//float scale = sqrt((pow(dir.x,2)+ pow(dir.y, 2) + pow(dir.z, 2)) /(pow(temp1.x,2)+ pow(temp1.y, 2)+ pow(temp1.z, 2)));
+	float scale = sqrt(0.005 / (pow(temp1.x, 2) + pow(temp1.y, 2) + pow(temp1.z, 2)));
+
 	glm::mat4 transscale = glm::mat4(1.0f);
 	transscale = glm::scale(transscale, glm::vec3(scale/5, scale/5, scale/5));
 	temp1 = transscale * glm::vec4(temp1,1);
-	vertices.push_back(lbase + temp1);
-	temp1 = (trans * glm::vec4(temp1,1));
-	vertices.push_back(lbase + temp1);
-	temp1 = (trans * glm::vec4(temp1, 1));
-	vertices.push_back(lbase + temp1);
-	temp1 = (trans * glm::vec4(temp1, 1));
-	vertices.push_back(lbase + temp1);
+	Vertex temp;
+	temp.Position = lbase + temp1;
+	temp.Normal = temp1;
+	vertices.push_back(temp);
+	for (size_t i = 0; i < 11; i++)
+	{
+		temp1 = (trans * glm::vec4(temp1, 1));
+		temp.Position = lbase + temp1;
+		temp.Normal = temp1;
+		vertices.push_back(temp);
+	}
+	for (size_t i = 0; i < 12; i++)
+	{
+		temp1 = (trans * glm::vec4(temp1, 1));
+		temp.Position = lfront + temp1;
+		temp.Normal = temp1;
+		vertices.push_back(temp);
+	}
+	temp.Position = lbase;
+	temp.Normal = -dir;
+	vertices.push_back(temp);
+	temp.Position = lfront;
+	temp.Normal = dir;
+	vertices.push_back(temp);
 	return;
 }
-
-void OpenGLAPI::processVertice_Vnect(std::vector<glm::vec3> &vertices, std::vector<std::vector<QVector3D>>& lpos) {
+//-----------------------------------------------------------------------
+void OpenGLAPI::processVertice_Vnect(std::vector<Vertex> &vertices, std::vector<std::vector<QVector3D>>& lpos) {
 	processVertice(vertices, lpos[gFrame][1], lpos[gFrame][2]);
 	processVertice(vertices, lpos[gFrame][2], lpos[gFrame][3]);
 	processVertice(vertices, lpos[gFrame][3], lpos[gFrame][4]);
@@ -113,8 +132,8 @@ void OpenGLAPI::processVertice_Vnect(std::vector<glm::vec3> &vertices, std::vect
 	processVertice(vertices, lpos[gFrame][14], lpos[gFrame][15]);
 	processVertice(vertices, lpos[gFrame][15], lpos[gFrame][1]);
 }
-
-void OpenGLAPI::processVertice_OpenMMD(std::vector<glm::vec3> &vertices, std::vector<std::vector<QVector3D>>& lpos) {
+//-----------------------------------------------------------------------
+void OpenGLAPI::processVertice_OpenMMD(std::vector<Vertex> &vertices, std::vector<std::vector<QVector3D>>& lpos) {
 	processVertice(vertices, lpos[gFrame][8], lpos[gFrame][14]);
 	processVertice(vertices, lpos[gFrame][14], lpos[gFrame][15]);
 	processVertice(vertices, lpos[gFrame][15], lpos[gFrame][16]);
@@ -132,9 +151,10 @@ void OpenGLAPI::processVertice_OpenMMD(std::vector<glm::vec3> &vertices, std::ve
 	processVertice(vertices, lpos[gFrame][0], lpos[gFrame][7]);
 	processVertice(vertices, lpos[gFrame][7], lpos[gFrame][8]);
 }
-
+//-----------------------------------------------------------------------
 void OpenGLAPI::initialize() {
 
+	camera = Camera(glm::vec3(0, 0, 3));
 	gFrame = 0;
 
 }
@@ -145,7 +165,9 @@ void OpenGLAPI::singleVideo_Vnect(){
 	{
 		for (size_t n = 0; n < gPosition1[i].size(); n++)
 		{
-			gPosition1[i][n] = (gPosition1[i][n])*scale;
+			gPosition1[i][n] = (gPosition1[i][n]-gPosition1[0][14])*scale;
+			gPosition1[i][n].setY(-gPosition1[i][n].y());
+			gPosition1[i][n].setZ(-gPosition1[i][n].z());
 		}
 	}
 
@@ -153,6 +175,7 @@ void OpenGLAPI::singleVideo_Vnect(){
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	glfwWindowHint(GLFW_FOCUSED, GLFW_FALSE);
 
 	GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "OpenGL", NULL, NULL);
 	if (window == NULL) {
@@ -179,26 +202,41 @@ void OpenGLAPI::singleVideo_Vnect(){
 	ourShader = Shader("./shader/shader.vs", "./shader/shader.fs");
 
 	std::vector<unsigned int> indices;
+	indices.push_back(0);
+	indices.push_back(1);
+	indices.push_back(2);
+	indices.push_back(0);
+	indices.push_back(2);
+	indices.push_back(3);
 	for (size_t i = 0; i < 20; i++)
 	{
-		indices.push_back(5 * i);
-		indices.push_back(5 * i + 1);
-		indices.push_back(5 * i +2 );
-		indices.push_back(5 * i);
-		indices.push_back(5 * i+2);
-		indices.push_back(5 * i+3);
-		indices.push_back(5 * i);
-		indices.push_back(5 * i+3);
-		indices.push_back(5 * i+4);
-		indices.push_back(5 * i);
-		indices.push_back(5 * i+4);
-		indices.push_back(5 * i+1);
-		indices.push_back(5 * i+1);
-		indices.push_back(5 * i+2);
-		indices.push_back(5 * i+3);
-		indices.push_back(5 * i+3);
-		indices.push_back(5 * i+4);
-		indices.push_back(5 * i+1);
+		for (size_t n = 0; n < 11; n++)
+		{
+			indices.push_back(4 + 26 * i + n);
+			indices.push_back(4 + 26 * i + n + 1);
+			indices.push_back(4 + 26 * i + n + 13);
+			indices.push_back(4 + 26 * i + n);
+			indices.push_back(4 + 26 * i + n + 12);
+			indices.push_back(4 + 26 * i + n + 13);
+			indices.push_back(4 + 26 * i + 24);
+			indices.push_back(4 + 26 * i + n);
+			indices.push_back(4 + 26 * i + n + 1);
+			indices.push_back(4 + 26 * i + 25);
+			indices.push_back(4 + 26 * i + n + 12);
+			indices.push_back(4 + 26 * i + n + 13);
+		}
+		indices.push_back(4+ 26 * i + 11);
+		indices.push_back(4+ 26 * i);
+		indices.push_back(4+ 26 * i + 12);
+		indices.push_back(4+ 26 * i + 11);
+		indices.push_back(4+ 26 * i + 23);
+		indices.push_back(4+ 26 * i + 12);
+		indices.push_back(4+ 26 * i + 24);
+		indices.push_back(4+ 26 * i + 11);
+		indices.push_back(4+ 26 * i);
+		indices.push_back(4+ 26 * i + 25);
+		indices.push_back(4+ 26 * i + 23);
+		indices.push_back(4+ 26 * i + 12);
 	}
 	unsigned int VBO, VAO, EBO;
 	glGenVertexArrays(1, &VAO);
@@ -213,45 +251,68 @@ void OpenGLAPI::singleVideo_Vnect(){
 	while (!glfwWindowShouldClose(window)) {
 		float currentFrame = glfwGetTime();
 		deltaTime = currentFrame - lastFrame;
-		lastFrame = currentFrame;
-		std::cout<<"+1s"<<std::endl;
-		processInput(window);
+		if (deltaTime > (1.0f / 30.0f)) {
+			lastFrame = currentFrame;
+			processInput(window);
 
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+			glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		std::vector<glm::vec3> vertices;
-		processVertice_Vnect(vertices, gPosition1);
+			std::vector<Vertex> vertices;
+			Vertex temp;
+			temp.Position = glm::vec3(-10, -1, -10);
+			temp.Normal = glm::vec3(0, 1, 0);
+			vertices.push_back(temp);
+			temp.Position = glm::vec3(10, -1, -10);
+			temp.Normal = glm::vec3(0, 1, 0);
+			vertices.push_back(temp);
+			temp.Position = glm::vec3(10, -1, 10);
+			temp.Normal = glm::vec3(0, 1, 0);
+			vertices.push_back(temp);
+			temp.Position = glm::vec3(-10, -1, 10);
+			temp.Normal = glm::vec3(0, 1, 0);
+			vertices.push_back(temp);
+			processVertice_Vnect(vertices, gPosition1);
 
-		glBindBuffer(GL_ARRAY_BUFFER, VBO);
-		glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(glm::vec3), &vertices[0], GL_DYNAMIC_DRAW);
+			glBindBuffer(GL_ARRAY_BUFFER, VBO);
+			glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), &vertices[0], GL_DYNAMIC_DRAW);
 
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(glm::vec3), (void*)0);
-		
-		glBindVertexArray(0);
+			glEnableVertexAttribArray(0);
+			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
 
-		ourShader.use();
-		ourShader.setVec3("color", 1.0f, 1.0f, 1.0f);
+			//顶点法线
+			glEnableVertexAttribArray(1);
+			glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Normal));
 
-		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-		glm::mat4 view = camera.GetViewMatrix();
-		ourShader.setMat4("projection", glm::value_ptr(projection));
-		ourShader.setMat4("view", glm::value_ptr(view));
+			glBindVertexArray(0);
 
-		glm::mat4 model;
-		ourShader.setMat4("model", glm::value_ptr(model));
+			ourShader.use();
+			ourShader.setVec3("color", 1.0f, 1.0f, 1.0f);
+			ourShader.setVec3("lightColor1", 1.0f, 1.0f, 1.0f);
+			ourShader.setVec3("lightPos1", 0.0f, 0.0f, 3.0f);
+			//ourShader.setVec3("lightColor2", 1.0f, 1.0f, 1.0f);
+			//ourShader.setVec3("lightPos2", -1.0f, -3.0f, 0.0f);
+			ourShader.setVec3("eyePos", camera.Position);
 
-		glBindVertexArray(VAO);
-		glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
-		glBindVertexArray(0);
+			glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+			glm::mat4 view = camera.GetViewMatrix();
+			ourShader.setMat4("projection", glm::value_ptr(projection));
+			ourShader.setMat4("view", glm::value_ptr(view));
 
-		glfwSwapBuffers(window);
-		glfwPollEvents();
+			glm::mat4 model;
+			ourShader.setMat4("model", glm::value_ptr(model));
 
-		gFrame++;
-		if (gFrame >= gPosition1.size())
-			gFrame = 0;
+			glBindVertexArray(VAO);
+			glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
+			glBindVertexArray(0);
+
+			glfwSwapBuffers(window);
+			glfwPollEvents();
+
+			gFrame++;
+			if (gFrame >= gPosition1.size())
+				glfwSetWindowShouldClose(window, true);
+		}
 	}
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
@@ -260,7 +321,7 @@ void OpenGLAPI::singleVideo_Vnect(){
 	gFrame = 0;
 	return ;
 }
-
+//-----------------------------------------------------------------------
 void OpenGLAPI::singleVideo_OpenMMD() {
 
 	float scale =0.2/(gPosition1[0][7] - gPosition1[0][0]).length();
@@ -268,7 +329,7 @@ void OpenGLAPI::singleVideo_OpenMMD() {
 	{
 		for (size_t n = 0; n < gPosition1[i].size(); n++)
 		{
-			gPosition1[i][n] = (gPosition1[i][n])*scale;
+			gPosition1[i][n] = (gPosition1[i][n]-gPosition1[0][0])*scale;
 		}
 	}
 
@@ -276,6 +337,7 @@ void OpenGLAPI::singleVideo_OpenMMD() {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	glfwWindowHint(GLFW_FOCUSED, GLFW_FALSE);
 
 	GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "OpenGL", NULL, NULL);
 	if (window == NULL) {
@@ -302,26 +364,41 @@ void OpenGLAPI::singleVideo_OpenMMD() {
 	ourShader = Shader("./shader/shader.vs", "./shader/shader.fs");
 
 	std::vector<unsigned int> indices;
+	indices.push_back(0);
+	indices.push_back(1);
+	indices.push_back(2);
+	indices.push_back(0);
+	indices.push_back(2);
+	indices.push_back(3);
 	for (size_t i = 0; i < 16; i++)
 	{
-		indices.push_back(5 * i);
-		indices.push_back(5 * i + 1);
-		indices.push_back(5 * i + 2);
-		indices.push_back(5 * i);
-		indices.push_back(5 * i + 2);
-		indices.push_back(5 * i + 3);
-		indices.push_back(5 * i);
-		indices.push_back(5 * i + 3);
-		indices.push_back(5 * i + 4);
-		indices.push_back(5 * i);
-		indices.push_back(5 * i + 4);
-		indices.push_back(5 * i + 1);
-		indices.push_back(5 * i + 1);
-		indices.push_back(5 * i + 2);
-		indices.push_back(5 * i + 3);
-		indices.push_back(5 * i + 3);
-		indices.push_back(5 * i + 4);
-		indices.push_back(5 * i + 1);
+		for (size_t n = 0; n < 11; n++)
+		{
+			indices.push_back(4 + 26 * i + n);
+			indices.push_back(4 + 26 * i + n + 1);
+			indices.push_back(4 + 26 * i + n + 13);
+			indices.push_back(4 + 26 * i + n);
+			indices.push_back(4 + 26 * i + n + 12);
+			indices.push_back(4 + 26 * i + n + 13);
+			indices.push_back(4 + 26 * i + 24);
+			indices.push_back(4 + 26 * i + n);
+			indices.push_back(4 + 26 * i + n + 1);
+			indices.push_back(4 + 26 * i + 25);
+			indices.push_back(4 + 26 * i + n + 12);
+			indices.push_back(4 + 26 * i + n + 13);
+		}
+		indices.push_back(4 + 26 * i + 11);
+		indices.push_back(4 + 26 * i);
+		indices.push_back(4 + 26 * i + 12);
+		indices.push_back(4 + 26 * i + 11);
+		indices.push_back(4 + 26 * i + 23);
+		indices.push_back(4 + 26 * i + 12);
+		indices.push_back(4 + 26 * i + 24);
+		indices.push_back(4 + 26 * i + 11);
+		indices.push_back(4 + 26 * i);
+		indices.push_back(4 + 26 * i + 25);
+		indices.push_back(4 + 26 * i + 23);
+		indices.push_back(4 + 26 * i + 12);
 	}
 	unsigned int VBO, VAO, EBO;
 	glGenVertexArrays(1, &VAO);
@@ -336,47 +413,70 @@ void OpenGLAPI::singleVideo_OpenMMD() {
 	while (!glfwWindowShouldClose(window)) {
 		float currentFrame = glfwGetTime();
 		deltaTime = currentFrame - lastFrame;
-		lastFrame = currentFrame;
-		std::cout << "+1s" << std::endl;
-		processInput(window);
+		if (deltaTime > (1.0f / 30.0f)) {
+			lastFrame = currentFrame;
+			processInput(window);
 
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+			glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		std::vector<glm::vec3> vertices;
-		processVertice_OpenMMD(vertices, gPosition1);
+			std::vector<Vertex> vertices;
+			Vertex temp;
+			temp.Position = glm::vec3(-10, -1, -10);
+			temp.Normal = glm::vec3(0, 1, 0);
+			vertices.push_back(temp);
+			temp.Position = glm::vec3(10, -1, -10);
+			temp.Normal = glm::vec3(0, 1, 0);
+			vertices.push_back(temp);
+			temp.Position = glm::vec3(10, -1, 10);
+			temp.Normal = glm::vec3(0, 1, 0);
+			vertices.push_back(temp);
+			temp.Position = glm::vec3(-10, -1, 10);
+			temp.Normal = glm::vec3(0, 1, 0);
+			vertices.push_back(temp);
+			processVertice_OpenMMD(vertices, gPosition1);
 
-		glBindBuffer(GL_ARRAY_BUFFER, VBO);
-		glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(glm::vec3), &vertices[0], GL_DYNAMIC_DRAW);
+			glBindBuffer(GL_ARRAY_BUFFER, VBO);
+			glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), &vertices[0], GL_DYNAMIC_DRAW);
 
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(glm::vec3), (void*)0);
+			glEnableVertexAttribArray(0);
+			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
 
-		glBindVertexArray(0);
+			//顶点法线
+			glEnableVertexAttribArray(1);
+			glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Normal));
 
-		ourShader.use();
-		ourShader.setVec3("color", 1.0f, 1.0f, 1.0f);
+			glBindVertexArray(0);
 
-		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-		glm::mat4 view = camera.GetViewMatrix();
-		ourShader.setMat4("projection", glm::value_ptr(projection));
-		ourShader.setMat4("view", glm::value_ptr(view));
+			ourShader.use();
+			ourShader.setVec3("color", 1.0f, 1.0f, 1.0f);
+			ourShader.setVec3("lightColor1", 1.0f, 1.0f, 1.0f);
+			ourShader.setVec3("lightPos1", 0.0f, -3.0f, 0.0f);
+			//ourShader.setVec3("lightColor2", 1.0f, 1.0f, 1.0f);
+			//ourShader.setVec3("lightPos2", -1.0f, -3.0f, 0.0f);
+			ourShader.setVec3("eyePos", camera.Position);
 
-		glm::mat4 model;
-		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(1, 0, 0));
-//		model = glm::scale(model, glm::vec3(0.003, 0.003, 0.003));
-		ourShader.setMat4("model", glm::value_ptr(model));
+			glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+			glm::mat4 view = camera.GetViewMatrix();
+			ourShader.setMat4("projection", glm::value_ptr(projection));
+			ourShader.setMat4("view", glm::value_ptr(view));
 
-		glBindVertexArray(VAO);
-		glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
-		glBindVertexArray(0);
+			glm::mat4 model;
+			model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(1, 0, 0));
+			//		model = glm::scale(model, glm::vec3(0.003, 0.003, 0.003));
+			ourShader.setMat4("model", glm::value_ptr(model));
 
-		glfwSwapBuffers(window);
-		glfwPollEvents();
+			glBindVertexArray(VAO);
+			glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
+			glBindVertexArray(0);
 
-		gFrame++;
-		if (gFrame >= gPosition1.size())
-			gFrame = 0;
+			glfwSwapBuffers(window);
+			glfwPollEvents();
+
+			gFrame++;
+			if (gFrame >= gPosition1.size())
+				glfwSetWindowShouldClose(window, true);
+		}
 	}
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
@@ -385,14 +485,16 @@ void OpenGLAPI::singleVideo_OpenMMD() {
 	gFrame = 0;
 	return;
 }
-
+//-----------------------------------------------------------------------
 void OpenGLAPI::doubleVideo_Vnect() {
 	float scale = 0.2 / (gPosition1[0][15] - gPosition1[0][14]).length();
 	for (size_t i = 0; i < gPosition1.size(); i++)
 	{
 		for (size_t n = 0; n < gPosition1[i].size(); n++)
 		{
-			gPosition1[i][n] = gPosition1[i][n]*scale;
+			gPosition1[i][n] = (gPosition1[i][n] - gPosition1[0][14])*scale;
+			gPosition1[i][n].setY(-gPosition1[i][n].y());
+			gPosition1[i][n].setZ(-gPosition1[i][n].z());
 		}
 	}
 
@@ -401,7 +503,10 @@ void OpenGLAPI::doubleVideo_Vnect() {
 	{
 		for (size_t n = 0; n < gPosition2[i].size(); n++)
 		{
-			gPosition2[i][n] = gPosition2[i][n] * scale + QVector3D(1, 0, 0);
+			gPosition2[i][n] = (gPosition2[i][n] - gPosition2[0][14]) * scale;
+			gPosition2[i][n].setY(-gPosition2[i][n].y());
+			gPosition2[i][n].setZ(-gPosition2[i][n].z());
+			gPosition2[i][n] += QVector3D(1, 0, 0);
 		}
 	}
 
@@ -409,6 +514,7 @@ void OpenGLAPI::doubleVideo_Vnect() {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	glfwWindowHint(GLFW_FOCUSED, GLFW_FALSE);
 
 	GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "OpenGL", NULL, NULL);
 	if (window == NULL) {
@@ -435,26 +541,41 @@ void OpenGLAPI::doubleVideo_Vnect() {
 	ourShader = Shader("./shader/shader.vs", "./shader/shader.fs");
 
 	std::vector<unsigned int> indices;
+	indices.push_back(0);
+	indices.push_back(1);
+	indices.push_back(2);
+	indices.push_back(0);
+	indices.push_back(2);
+	indices.push_back(3);
 	for (size_t i = 0; i < 40; i++)
 	{
-		indices.push_back(5 * i);
-		indices.push_back(5 * i + 1);
-		indices.push_back(5 * i + 2);
-		indices.push_back(5 * i);
-		indices.push_back(5 * i + 2);
-		indices.push_back(5 * i + 3);
-		indices.push_back(5 * i);
-		indices.push_back(5 * i + 3);
-		indices.push_back(5 * i + 4);
-		indices.push_back(5 * i);
-		indices.push_back(5 * i + 4);
-		indices.push_back(5 * i + 1);
-		indices.push_back(5 * i + 1);
-		indices.push_back(5 * i + 2);
-		indices.push_back(5 * i + 3);
-		indices.push_back(5 * i + 3);
-		indices.push_back(5 * i + 4);
-		indices.push_back(5 * i + 1);
+		for (size_t n = 0; n < 11; n++)
+		{
+			indices.push_back(4 + 26 * i + n);
+			indices.push_back(4 + 26 * i + n + 1);
+			indices.push_back(4 + 26 * i + n + 13);
+			indices.push_back(4 + 26 * i + n);
+			indices.push_back(4 + 26 * i + n + 12);
+			indices.push_back(4 + 26 * i + n + 13);
+			indices.push_back(4 + 26 * i + 24);
+			indices.push_back(4 + 26 * i + n);
+			indices.push_back(4 + 26 * i + n + 1);
+			indices.push_back(4 + 26 * i + 25);
+			indices.push_back(4 + 26 * i + n + 12);
+			indices.push_back(4 + 26 * i + n + 13);
+		}
+		indices.push_back(4 + 26 * i + 11);
+		indices.push_back(4 + 26 * i);
+		indices.push_back(4 + 26 * i + 12);
+		indices.push_back(4 + 26 * i + 11);
+		indices.push_back(4 + 26 * i + 23);
+		indices.push_back(4 + 26 * i + 12);
+		indices.push_back(4 + 26 * i + 24);
+		indices.push_back(4 + 26 * i + 11);
+		indices.push_back(4 + 26 * i);
+		indices.push_back(4 + 26 * i + 25);
+		indices.push_back(4 + 26 * i + 23);
+		indices.push_back(4 + 26 * i + 12);
 	}
 	unsigned int VBO, VAO, EBO;
 	glGenVertexArrays(1, &VAO);
@@ -466,49 +587,73 @@ void OpenGLAPI::doubleVideo_Vnect() {
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), &indices[0], GL_DYNAMIC_DRAW);
 
+
 	while (!glfwWindowShouldClose(window)) {
 		float currentFrame = glfwGetTime();
 		deltaTime = currentFrame - lastFrame;
-		lastFrame = currentFrame;
-		std::cout << "+1s" << std::endl;
-		processInput(window);
+		if (deltaTime > (1.0f / 30.0f)) {
+			lastFrame = currentFrame;
+			processInput(window);
 
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+			glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		std::vector<glm::vec3> vertices;
-		processVertice_Vnect(vertices, gPosition1);
-		processVertice_Vnect(vertices, gPosition2);
+			std::vector<Vertex> vertices;
+			Vertex temp;
+			temp.Position = glm::vec3(-10, -1, -10);
+			temp.Normal = glm::vec3(0, 1, 0);
+			vertices.push_back(temp);
+			temp.Position = glm::vec3(10, -1, -10);
+			temp.Normal = glm::vec3(0, 1, 0);
+			vertices.push_back(temp);
+			temp.Position = glm::vec3(10, -1, 10);
+			temp.Normal = glm::vec3(0, 1, 0);
+			vertices.push_back(temp);
+			temp.Position = glm::vec3(-10, -1, 10);
+			temp.Normal = glm::vec3(0, 1, 0);
+			vertices.push_back(temp);
+			processVertice_Vnect(vertices, gPosition1);
+			processVertice_Vnect(vertices, gPosition2);
 
-		glBindBuffer(GL_ARRAY_BUFFER, VBO);
-		glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(glm::vec3), &vertices[0], GL_DYNAMIC_DRAW);
+			glBindBuffer(GL_ARRAY_BUFFER, VBO);
+			glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), &vertices[0], GL_DYNAMIC_DRAW);
 
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(glm::vec3), (void*)0);
+			glEnableVertexAttribArray(0);
+			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
 
-		glBindVertexArray(0);
+			//顶点法线
+			glEnableVertexAttribArray(1);
+			glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Normal));
 
-		ourShader.use();
-		ourShader.setVec3("color", 1.0f, 1.0f, 1.0f);
+			glBindVertexArray(0);
 
-		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-		glm::mat4 view = camera.GetViewMatrix();
-		ourShader.setMat4("projection", glm::value_ptr(projection));
-		ourShader.setMat4("view", glm::value_ptr(view));
+			ourShader.use();
+			ourShader.setVec3("color", 1.0f, 1.0f, 1.0f);
+			ourShader.setVec3("lightColor1", 1.0f, 1.0f, 1.0f);
+			ourShader.setVec3("lightPos1", 0.5f, 0.0f, 3.0f);
+			//ourShader.setVec3("lightColor2", 1.0f, 1.0f, 1.0f);
+			//ourShader.setVec3("lightPos2", -1.0f, -3.0f, 0.0f);
+			ourShader.setVec3("eyePos", camera.Position);
 
-		glm::mat4 model;
-		ourShader.setMat4("model", glm::value_ptr(model));
+			glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+			glm::mat4 view = camera.GetViewMatrix();
+			ourShader.setMat4("projection", glm::value_ptr(projection));
+			ourShader.setMat4("view", glm::value_ptr(view));
 
-		glBindVertexArray(VAO);
-		glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
-		glBindVertexArray(0);
+			glm::mat4 model;
+			ourShader.setMat4("model", glm::value_ptr(model));
 
-		glfwSwapBuffers(window);
-		glfwPollEvents();
+			glBindVertexArray(VAO);
+			glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
+			glBindVertexArray(0);
 
-		gFrame++;
-		if (gFrame >= gPosition1.size() || gFrame >= gPosition2.size())
-			gFrame = 0;
+			glfwSwapBuffers(window);
+			glfwPollEvents();
+
+			gFrame++;
+			if (gFrame >= gPosition1.size() || gFrame >= gPosition2.size())
+				glfwSetWindowShouldClose(window, true);
+		}
 	}
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
@@ -517,14 +662,14 @@ void OpenGLAPI::doubleVideo_Vnect() {
 	gFrame = 0;
 	return;
 }
-
+//-----------------------------------------------------------------------
 void OpenGLAPI::doubleVideo_OpenMMD() {
 	float scale = 0.2 / (gPosition1[0][7] - gPosition1[0][0]).length();
 	for (size_t i = 0; i < gPosition1.size(); i++)
 	{
 		for (size_t n = 0; n < gPosition1[i].size(); n++)
 		{
-			gPosition1[i][n] = gPosition1[i][n] * scale;
+			gPosition1[i][n] = (gPosition1[i][n]- gPosition1[0][0]) * scale;
 		}
 	}
 
@@ -533,7 +678,7 @@ void OpenGLAPI::doubleVideo_OpenMMD() {
 	{
 		for (size_t n = 0; n < gPosition2[i].size(); n++)
 		{
-			gPosition2[i][n] = gPosition2[i][n] * scale + QVector3D(1, 0, 0);
+			gPosition2[i][n] = (gPosition2[i][n]- gPosition2[0][0]) * scale + QVector3D(1, 0, 0);
 		}
 	}
 
@@ -541,6 +686,7 @@ void OpenGLAPI::doubleVideo_OpenMMD() {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	glfwWindowHint(GLFW_FOCUSED, GLFW_FALSE);
 
 	GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "OpenGL", NULL, NULL);
 	if (window == NULL) {
@@ -567,26 +713,41 @@ void OpenGLAPI::doubleVideo_OpenMMD() {
 	ourShader = Shader("./shader/shader.vs", "./shader/shader.fs");
 
 	std::vector<unsigned int> indices;
+	indices.push_back(0);
+	indices.push_back(1);
+	indices.push_back(2);
+	indices.push_back(0);
+	indices.push_back(2);
+	indices.push_back(3);
 	for (size_t i = 0; i < 32; i++)
 	{
-		indices.push_back(5 * i);
-		indices.push_back(5 * i + 1);
-		indices.push_back(5 * i + 2);
-		indices.push_back(5 * i);
-		indices.push_back(5 * i + 2);
-		indices.push_back(5 * i + 3);
-		indices.push_back(5 * i);
-		indices.push_back(5 * i + 3);
-		indices.push_back(5 * i + 4);
-		indices.push_back(5 * i);
-		indices.push_back(5 * i + 4);
-		indices.push_back(5 * i + 1);
-		indices.push_back(5 * i + 1);
-		indices.push_back(5 * i + 2);
-		indices.push_back(5 * i + 3);
-		indices.push_back(5 * i + 3);
-		indices.push_back(5 * i + 4);
-		indices.push_back(5 * i + 1);
+		for (size_t n = 0; n < 11; n++)
+		{
+			indices.push_back(4 + 26 * i + n);
+			indices.push_back(4 + 26 * i + n + 1);
+			indices.push_back(4 + 26 * i + n + 13);
+			indices.push_back(4 + 26 * i + n);
+			indices.push_back(4 + 26 * i + n + 12);
+			indices.push_back(4 + 26 * i + n + 13);
+			indices.push_back(4 + 26 * i + 24);
+			indices.push_back(4 + 26 * i + n);
+			indices.push_back(4 + 26 * i + n + 1);
+			indices.push_back(4 + 26 * i + 25);
+			indices.push_back(4 + 26 * i + n + 12);
+			indices.push_back(4 + 26 * i + n + 13);
+		}
+		indices.push_back(4 + 26 * i + 11);
+		indices.push_back(4 + 26 * i);
+		indices.push_back(4 + 26 * i + 12);
+		indices.push_back(4 + 26 * i + 11);
+		indices.push_back(4 + 26 * i + 23);
+		indices.push_back(4 + 26 * i + 12);
+		indices.push_back(4 + 26 * i + 24);
+		indices.push_back(4 + 26 * i + 11);
+		indices.push_back(4 + 26 * i);
+		indices.push_back(4 + 26 * i + 25);
+		indices.push_back(4 + 26 * i + 23);
+		indices.push_back(4 + 26 * i + 12);
 	}
 	unsigned int VBO, VAO, EBO;
 	glGenVertexArrays(1, &VAO);
@@ -601,46 +762,72 @@ void OpenGLAPI::doubleVideo_OpenMMD() {
 	while (!glfwWindowShouldClose(window)) {
 		float currentFrame = glfwGetTime();
 		deltaTime = currentFrame - lastFrame;
-		lastFrame = currentFrame;
-		std::cout << "+1s" << std::endl;
-		processInput(window);
 
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		if (deltaTime > (1.0f / 30.0f)) {
+			lastFrame = currentFrame;
 
-		std::vector<glm::vec3> vertices;
-		processVertice_OpenMMD(vertices, gPosition1);
-		processVertice_OpenMMD(vertices, gPosition2);
+			processInput(window);
 
-		glBindBuffer(GL_ARRAY_BUFFER, VBO);
-		glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(glm::vec3), &vertices[0], GL_DYNAMIC_DRAW);
+			glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(glm::vec3), (void*)0);
+			std::vector<Vertex> vertices;
+			Vertex temp;
+			temp.Position = glm::vec3(-10, -1, -10);
+			temp.Normal = glm::vec3(0, 1, 0);
+			vertices.push_back(temp);
+			temp.Position = glm::vec3(10, -1, -10);
+			temp.Normal = glm::vec3(0, 1, 0);
+			vertices.push_back(temp);
+			temp.Position = glm::vec3(10, -1, 10);
+			temp.Normal = glm::vec3(0, 1, 0);
+			vertices.push_back(temp);
+			temp.Position = glm::vec3(-10, -1, 10);
+			temp.Normal = glm::vec3(0, 1, 0);
+			vertices.push_back(temp);
+			processVertice_OpenMMD(vertices, gPosition1);
+			processVertice_OpenMMD(vertices, gPosition2);
 
-		glBindVertexArray(0);
+			glBindBuffer(GL_ARRAY_BUFFER, VBO);
+			glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), &vertices[0], GL_DYNAMIC_DRAW);
 
-		ourShader.use();
-		ourShader.setVec3("color", 1.0f, 1.0f, 1.0f);
+			glEnableVertexAttribArray(0);
+			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
 
-		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-		glm::mat4 view = camera.GetViewMatrix();
-		ourShader.setMat4("projection", glm::value_ptr(projection));
-		ourShader.setMat4("view", glm::value_ptr(view));
+			//顶点法线
+			glEnableVertexAttribArray(1);
+			glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Normal));
 
-		glm::mat4 model;
-		ourShader.setMat4("model", glm::value_ptr(model));
+			glBindVertexArray(0);
 
-		glBindVertexArray(VAO);
-		glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
-		glBindVertexArray(0);
+			ourShader.use();
+			ourShader.setVec3("color", 1.0f, 1.0f, 1.0f);
+			ourShader.setVec3("lightColor1", 1.0f, 1.0f, 1.0f);
+			ourShader.setVec3("lightPos1", 0.5f, -3.0f, 0.0f);
+			//ourShader.setVec3("lightColor2", 1.0f, 1.0f, 1.0f);
+			//ourShader.setVec3("lightPos2", -1.0f, -3.0f, 0.0f);
+			ourShader.setVec3("eyePos", camera.Position);
 
-		glfwSwapBuffers(window);
-		glfwPollEvents();
+			glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+			glm::mat4 view = camera.GetViewMatrix();
+			ourShader.setMat4("projection", glm::value_ptr(projection));
+			ourShader.setMat4("view", glm::value_ptr(view));
 
-		gFrame++;
-		if (gFrame >= gPosition1.size()||gFrame>=gPosition2.size())
-			gFrame = 0;
+			glm::mat4 model;
+			model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(1, 0, 0));
+			ourShader.setMat4("model", glm::value_ptr(model));
+
+			glBindVertexArray(VAO);
+			glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
+			glBindVertexArray(0);
+
+			glfwSwapBuffers(window);
+			glfwPollEvents();
+
+			gFrame++;
+			if (gFrame >= gPosition1.size() || gFrame >= gPosition2.size())
+				glfwSetWindowShouldClose(window, true);
+		}
 	}
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
@@ -650,7 +837,7 @@ void OpenGLAPI::doubleVideo_OpenMMD() {
 	return;
 }
 
-
+//-----------------------------------------------------------------------
 void OpenGLAPI::processInput(GLFWwindow *window) {
 	
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
@@ -670,11 +857,11 @@ void OpenGLAPI::processInput(GLFWwindow *window) {
 		camera.ProcessKeyboard(DOWN, deltaTime);
 	
 }
-
+//-----------------------------------------------------------------------
 void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
 	glViewport(0, 0, width, height);
 }
-
+//-----------------------------------------------------------------------
 void mouse_callback(GLFWwindow* window, double xPos, double yPos) {
 	if (firstMouse) {
 		lastX = xPos;
@@ -690,12 +877,17 @@ void mouse_callback(GLFWwindow* window, double xPos, double yPos) {
 	camera.ProcessMouseMovement(xoffset, yoffset);
 
 }
-
+//-----------------------------------------------------------------------
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset) {
 	camera.ProcessMouseScroll(yoffset);
 }
 
 int main() {
-	OpenGLAPI test("C:\\Users\\9\\Desktop\\3d_posititon.json");
+	//OpenGLAPI test("C:\\Users\\9\\Desktop\\ttt\\test1_640360_openmmd.json");
+	OpenGLAPI test("C:\\Users\\9\\Desktop\\ttt\\test1_640360_vnect.json");
+	//OpenGLAPI test("C:\\Users\\9\\Desktop\\ttt\\test1_640360_openmmd.json", "C:\\Users\\9\\Desktop\\ttt\\test2_640360_openmmd.json");
+	//OpenGLAPI test("C:\\Users\\9\\Desktop\\ttt\\test1_640360_vnect.json", "C:\\Users\\9\\Desktop\\ttt\\test2_640360_vnect.json");
+
 	test.singleVideo_Vnect();
+	//test.singleVideo_OpenMMD();
 }
