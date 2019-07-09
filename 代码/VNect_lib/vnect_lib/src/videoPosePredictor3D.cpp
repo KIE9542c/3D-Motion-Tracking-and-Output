@@ -161,6 +161,7 @@ void mVideoPosePredictor3D::predict(const std::string& video_path, const string&
 		OutputDebugString(L"\n");
 		avformat_close_input(&fmt_ctx);
 	}
+	video.release();
 	glfwDestroyWindow(window);
 	glfwTerminate();
 }
