@@ -16,6 +16,10 @@
 #include "mCamera.h"
 #include "mDefs.h"
 #include "mMeshRender.h"
+extern "C"
+{
+#include <libavformat\avformat.h>
+};
 struct coordpoint
 {
 	int x, y, z;
@@ -86,4 +90,4 @@ void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 void mouse_move_callback(GLFWwindow* window, double x, double y);
 DWORD WINAPI ThreadProFunc(LPVOID lpParam);
 void joints_scale_3d(const std::vector<float>& joints3d, std::vector<float>& result);
-
+double get_rotation(AVStream* st);

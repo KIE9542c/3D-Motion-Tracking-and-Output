@@ -64,13 +64,22 @@ void mVideoPosePredictor3D::predict(const std::string& video_path, const string&
 		int center_point_y = det_height / 2;
 		cv::Rect det_box(center_point_x - resize_width / 2, center_point_y - resize_height / 2, resize_width, resize_height);
 
+		AVFormatContext* fmt_ctx = nullptr;
+		avformat_open_input(&fmt_ctx, video_path.c_str(), nullptr, nullptr);//打开一个视频
+		avformat_find_stream_info(fmt_ctx, nullptr);//读取视频，然后得到流和码率等信息
+		AVStream* stream = fmt_ctx->streams[0];
+		double rotation = get_rotation(stream);
+
 		do
 		{
 			if (!video.read(frame))
 			{
 				break;
 			}
-
+			if (fabs(rotation - 180) < 1.0 || fabs(rotation + 180) < 1.0)
+			{
+				cv::flip(frame, frame, 0);
+			}
 			cv::Mat detect_mat(det_height, det_width, CV_8UC3, cv::Scalar(0, 0, 0));
 			cv::Mat detect_roi = detect_mat(det_box);
 			cv::Mat image_roi = frame.clone();
@@ -271,6 +280,24 @@ void joints_scale_3d(const std::vector<float>& joints3d, std::vector<float>& res
 		OutputDebugString(A2W(c));
 		OutputDebugString(L"\n");
 	}
+}
+
+double get_rotation(AVStream* st)
+{
+	AVDictionaryEntry* rotate_tag = av_dict_get(st->metadata, "rotate", NULL, 0);
+	double theta = 0;
+
+	if (rotate_tag && *rotate_tag->value && strcmp(rotate_tag->value, "0")) {
+		//char *tail;
+		//theta = av_strtod(rotate_tag->value, &tail);
+		theta = atof(rotate_tag->value);
+		// if (*tail)
+			// theta = 0;
+	}
+
+	theta -= 360 * floor(theta / 360 + 0.9 / 360);
+
+	return theta;
 }
 
 void SetOpenGLState()
