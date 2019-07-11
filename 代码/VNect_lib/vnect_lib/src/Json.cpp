@@ -107,7 +107,7 @@ __declspec(dllexport) void writeToJson(const string& path, const std::vector<vec
 	Json::StreamWriterBuilder  builder;
 	std::unique_ptr<Json::StreamWriter> writer(builder.newStreamWriter());
 	std::ofstream ofs;
-	ofs.open(path, std::ios::app);
+	ofs.open(path, std::ios::out);
 	writer->write(root, &ofs);
 }
 
