@@ -70,7 +70,6 @@ void mVideoPosePredictor3D::predict(const std::string& video_path, const string&
 		avformat_find_stream_info(fmt_ctx, nullptr);//读取视频，然后得到流和码率等信息
 		AVStream* stream = fmt_ctx->streams[0];
 		double rotation = get_rotation(stream);
-		cout << rotation << endl;
 		do
 		{
 			if (!video.read(frame))
