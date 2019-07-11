@@ -1,10 +1,10 @@
 #ifndef MYDEFS
 #define MYDEFS
 #define M_PI           3.14159265358979323846  /* pi */
-//const int wndWidth = 1280;
-//const int wndHeight = 720;
-//const float ratio_w = 16.0;
-//const float ratio_h = 9.0;
+const int wndWidth = 1280;
+const int wndHeight = 720;
+const float ratio_w = 16.0;
+const float ratio_h = 9.0;
 const int det_width = 960;
 const int det_height = 540;
 const int vnect_resize_width = 560;

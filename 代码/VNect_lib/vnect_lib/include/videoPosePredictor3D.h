@@ -83,7 +83,7 @@ private:
 void SetOpenGLState();
 GLFWwindow* InitWindow(float, float);
 void drawPoint(cv::Mat& img, const std::vector<float>& pos);
-void drawPoint(cv::Mat& img, const std::vector<float>& pos, cv::Rect r, float scale);
+void drawPoint(cv::Mat& img, const std::vector<float>& pos, cv::Rect r);
 void drawText(cv::Mat& img, const string& text);
 void error_callback(int error, const char* description);
 void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);

@@ -29,15 +29,15 @@ void mVideoPosePredictor3D::predict(const std::string& video_path, const string&
 		}
 	}
 
-	if ((window = InitWindow(frameWidth, frameHeight)) == nullptr) {
+	if ((window = InitWindow(wndWidth, wndHeight)) == nullptr) {
 		return;
 	}
 	SetOpenGLState();
 	mShader camShader = mShader(shader_dir + "/v.shader", shader_dir + "/f.shader");
 	mShader objShader = mShader(shader_dir + "/v2.shader", shader_dir + "/f2.shader");
-	mCamera mcam(frameWidth, frameHeight, tW, tH, &camShader, false);
+	mCamera mcam(wndWidth, wndHeight, tW, tH, &camShader, false);
 
-	glm::mat4 projection = glm::perspective(glm::radians(base_vof), frameWidth * 1.0f / frameHeight, 0.1f, 100.0f);
+	glm::mat4 projection = glm::perspective(glm::radians(base_vof), wndWidth * 1.0f / wndHeight, 0.1f, 100.0f);
 	glm::mat4 view = glm::lookAt(glm::vec3(0, 0, 5), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 	mMeshRender meshes(view, projection, &objShader);
 
@@ -64,22 +64,25 @@ void mVideoPosePredictor3D::predict(const std::string& video_path, const string&
 		int center_point_y = det_height / 2;
 		cv::Rect det_box(center_point_x - resize_width / 2, center_point_y - resize_height / 2, resize_width, resize_height);
 
+
 		AVFormatContext* fmt_ctx = nullptr;
 		avformat_open_input(&fmt_ctx, video_path.c_str(), nullptr, nullptr);//打开一个视频
 		avformat_find_stream_info(fmt_ctx, nullptr);//读取视频，然后得到流和码率等信息
 		AVStream* stream = fmt_ctx->streams[0];
 		double rotation = get_rotation(stream);
-
+		cout << rotation << endl;
 		do
 		{
 			if (!video.read(frame))
 			{
 				break;
 			}
+
 			if (fabs(rotation - 180) < 1.0 || fabs(rotation + 180) < 1.0)
 			{
 				cv::flip(frame, frame, 0);
 			}
+
 			cv::Mat detect_mat(det_height, det_width, CV_8UC3, cv::Scalar(0, 0, 0));
 			cv::Mat detect_roi = detect_mat(det_box);
 			cv::Mat image_roi = frame.clone();
@@ -102,8 +105,8 @@ void mVideoPosePredictor3D::predict(const std::string& video_path, const string&
 			glm::mat4 curModel;
 			if (isMousePressed && (initX != curX || initY != curY)) {
 				float tmpZ2;
-				float tmpinitX = ((float)(frameWidth - initX - 1) / (float)frameHeight - 0.5) * 2;
-				float tmpinitY = ((float)initY / (float)frameHeight - 0.5) * 2;
+				float tmpinitX = ((float)(wndWidth - initX - 1) / (float)wndHeight - 0.5) * 2;
+				float tmpinitY = ((float)initY / (float)wndHeight - 0.5) * 2;
 				tmpZ2 = 1 - tmpinitX * tmpinitX - tmpinitY * tmpinitY;
 				glm::vec3 initVec(1.0);
 				if (tmpZ2 < 0) {
@@ -120,8 +123,8 @@ void mVideoPosePredictor3D::predict(const std::string& video_path, const string&
 					initVec = glm::normalize(glm::vec3(tmpinitX, tmpinitY, sqrt(tmpZ2)));
 				}
 
-				float tmpcurX = ((float)(frameWidth - curX - 1) / (float)frameHeight - 0.5) * 2;
-				float tmpcurY = ((float)curY / (float)frameHeight - 0.5) * 2;
+				float tmpcurX = ((float)(wndWidth - curX - 1) / (float)wndHeight - 0.5) * 2;
+				float tmpcurY = ((float)curY / (float)wndHeight - 0.5) * 2;
 				glm::vec3 curVec;
 				tmpZ2 = 1 - tmpcurX * tmpcurX - tmpcurY * tmpcurY;
 				if (tmpZ2 < 0) {
@@ -144,7 +147,8 @@ void mVideoPosePredictor3D::predict(const std::string& video_path, const string&
 				curModel = model;
 			}
 
-			drawPoint(frame, tmp, det_box, scale);
+			cv::resize(frame, frame, cv::Size(wndWidth, wndHeight));
+			drawPoint(frame, tmp, det_box);
 			sprintf_s(txt_buffer, "%.1f", (1.0 / (-start + clock()) * 1000));
 			drawText(frame, "FPS:" + string(txt_buffer));
 			start = clock();
@@ -525,15 +529,15 @@ void drawPoint(cv::Mat& img, const std::vector<float>& pos)
 	}
 }
 
-void drawPoint(cv::Mat& img, const std::vector<float>& pos, cv::Rect r, float scale)
+void drawPoint(cv::Mat& img, const std::vector<float>& pos, cv::Rect r)
 {
 	for (int i = 0; i < joint_num; ++i)
 	{
 
 		int x = (pos[i * 2 + 0] + 0.5) * det_height;
 		int y = (pos[i * 2 + 1] + 0.5) * det_width;
-		x = 1.0 * (x - r.y) / scale;
-		y = 1.0 * (y - r.x) / scale;
+		x = 1.0 * (x - r.y) * img.cols / det_width;
+		y = 1.0 * (y - r.x) * img.rows / det_height;
 
 		for (int j = -2; j < 3; ++j)
 		{
