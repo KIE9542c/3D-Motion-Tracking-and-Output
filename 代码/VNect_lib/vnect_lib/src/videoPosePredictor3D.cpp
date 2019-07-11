@@ -149,7 +149,7 @@ void mVideoPosePredictor3D::predict(const std::string& video_path, const string&
 			cv::resize(frame, frame, cv::Size(wndWidth, wndHeight));
 			drawPoint(frame, tmp, det_box);
 			sprintf_s(txt_buffer, "%.1f", (1.0 / (-start + clock()) * 1000));
-			drawText(frame, "FPS:" + string(txt_buffer));
+			drawText(frame, "FPS:" + string(txt_buffer) + "           press Esc to exit");
 			start = clock();
 			cv::flip(frame, frame, 1);
 			mcam.drawFrame(frame);
@@ -558,7 +558,7 @@ void drawText(cv::Mat& img, const string& text)
 {
 	cv::Size txt_size = cv::getTextSize(text, font_face, font_scale, thickness, &text_line);
 	cv::Point origin(0, txt_size.height);
-	cv::putText(img, text, origin, font_face, font_scale, cv::Scalar(0, 0, 255));
+	cv::putText(img, text, origin, font_face, font_scale, cv::Scalar(255, 255, 255));
 }
 
 void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
