@@ -98,7 +98,7 @@ private:
 	//QVector3D gVecR_Forearm(0, 0, 1);
 	//QVector3D gVecR_Calf(0, 0, 1);
 	//QVector3D gVecR_Foot(0, -3.368, 3.917);
-	
+
 	//QVector3D gVecSpine(7.167, -0.005, 0);
 	//QVector3D gVecL_Thigh(1, 0, 0);
 	//QVector3D gVecSpine1(7.166, -0.002, 0);
@@ -143,6 +143,8 @@ private:
 	void ProcessR_Foot(QVector3D lPos);
 	//统一坐标系,输入为四元数
 	void ModifyCoordinate();
+	QQuaternion rotateTo(QVector3D from, QVector3D to,float& w);
+	QVector3D toEulerAngles(QQuaternion xyz, float w);
 
 public:
 	//构造函数，包括3D坐标文件读取，FBXSKD的初始化.
