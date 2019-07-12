@@ -13,6 +13,9 @@ Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
+bool pause = false;
+bool idle = false;
+int idleInterval;
 
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
@@ -155,8 +158,10 @@ void OpenGLAPI::processVertice_OpenMMD(std::vector<Vertex> &vertices, std::vecto
 void OpenGLAPI::initialize() {
 
 	camera = Camera(glm::vec3(0, 0, 3));
+	pause = false;
 	gFrame = 0;
-
+	idleInterval = 0;
+	
 }
 void OpenGLAPI::singleVideo_Vnect(){
 
@@ -177,7 +182,7 @@ void OpenGLAPI::singleVideo_Vnect(){
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	glfwWindowHint(GLFW_FOCUSED, GLFW_FALSE);
 
-	GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "OpenGL", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "ESC:exit,  SPACE:pasue,  WSAD+UP+DOWN:camera position,  mouse:lookAt", NULL, NULL);
 	if (window == NULL) {
 		std::cout << "Failed to create GLFW window" << std::endl;
 		glfwTerminate();
@@ -309,7 +314,13 @@ void OpenGLAPI::singleVideo_Vnect(){
 			glfwSwapBuffers(window);
 			glfwPollEvents();
 
-			gFrame++;
+			idleInterval++;
+			if (15 <= idleInterval) {
+				idle = false;
+				idleInterval = 0;
+			}
+			if (pause == false)
+				gFrame++;
 			if (gFrame >= gPosition1.size())
 				glfwSetWindowShouldClose(window, true);
 		}
@@ -339,7 +350,7 @@ void OpenGLAPI::singleVideo_OpenMMD() {
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	glfwWindowHint(GLFW_FOCUSED, GLFW_FALSE);
 
-	GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "OpenGL", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "ESC:exit,  SPACE:pasue,  WSAD+UP+DOWN:camera position,  mouse:lookAt", NULL, NULL);
 	if (window == NULL) {
 		std::cout << "Failed to create GLFW window" << std::endl;
 		glfwTerminate();
@@ -422,17 +433,17 @@ void OpenGLAPI::singleVideo_OpenMMD() {
 
 			std::vector<Vertex> vertices;
 			Vertex temp;
-			temp.Position = glm::vec3(-10, -1, -10);
-			temp.Normal = glm::vec3(0, 1, 0);
+			temp.Position = glm::vec3(-10, -10, -1);
+			temp.Normal = glm::vec3(0, -1, 0);
 			vertices.push_back(temp);
-			temp.Position = glm::vec3(10, -1, -10);
-			temp.Normal = glm::vec3(0, 1, 0);
+			temp.Position = glm::vec3(-10, 10, -1);
+			temp.Normal = glm::vec3(0, -1, 0);
 			vertices.push_back(temp);
-			temp.Position = glm::vec3(10, -1, 10);
-			temp.Normal = glm::vec3(0, 1, 0);
+			temp.Position = glm::vec3(10, 10, -1);
+			temp.Normal = glm::vec3(0, -1, 0);
 			vertices.push_back(temp);
-			temp.Position = glm::vec3(-10, -1, 10);
-			temp.Normal = glm::vec3(0, 1, 0);
+			temp.Position = glm::vec3(10, -10, -1);
+			temp.Normal = glm::vec3(0, -1, 0);
 			vertices.push_back(temp);
 			processVertice_OpenMMD(vertices, gPosition1);
 
@@ -447,6 +458,8 @@ void OpenGLAPI::singleVideo_OpenMMD() {
 			glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Normal));
 
 			glBindVertexArray(0);
+
+			
 
 			ourShader.use();
 			ourShader.setVec3("color", 1.0f, 1.0f, 1.0f);
@@ -473,7 +486,13 @@ void OpenGLAPI::singleVideo_OpenMMD() {
 			glfwSwapBuffers(window);
 			glfwPollEvents();
 
-			gFrame++;
+			idleInterval++;
+			if (15 <= idleInterval) {
+				idle = false;
+				idleInterval = 0;
+			}
+			if(pause == false)
+				gFrame++;
 			if (gFrame >= gPosition1.size())
 				glfwSetWindowShouldClose(window, true);
 		}
@@ -516,7 +535,7 @@ void OpenGLAPI::doubleVideo_Vnect() {
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	glfwWindowHint(GLFW_FOCUSED, GLFW_FALSE);
 
-	GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "OpenGL", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "ESC:exit,  SPACE:pasue,  WSAD+UP+DOWN:camera position,  mouse:lookAt", NULL, NULL);
 	if (window == NULL) {
 		std::cout << "Failed to create GLFW window" << std::endl;
 		glfwTerminate();
@@ -650,7 +669,13 @@ void OpenGLAPI::doubleVideo_Vnect() {
 			glfwSwapBuffers(window);
 			glfwPollEvents();
 
-			gFrame++;
+			idleInterval++;
+			if (15 <= idleInterval) {
+				idle = false;
+				idleInterval = 0;
+			}
+			if (pause == false)
+				gFrame++;
 			if (gFrame >= gPosition1.size() || gFrame >= gPosition2.size())
 				glfwSetWindowShouldClose(window, true);
 		}
@@ -688,7 +713,7 @@ void OpenGLAPI::doubleVideo_OpenMMD() {
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	glfwWindowHint(GLFW_FOCUSED, GLFW_FALSE);
 
-	GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "OpenGL", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "ESC:exit,  SPACE:pasue,  WSAD+UP+DOWN:camera position,  mouse:lookAt", NULL, NULL);
 	if (window == NULL) {
 		std::cout << "Failed to create GLFW window" << std::endl;
 		glfwTerminate();
@@ -773,17 +798,17 @@ void OpenGLAPI::doubleVideo_OpenMMD() {
 
 			std::vector<Vertex> vertices;
 			Vertex temp;
-			temp.Position = glm::vec3(-10, -1, -10);
-			temp.Normal = glm::vec3(0, 1, 0);
+			temp.Position = glm::vec3(-10, -10, -1);
+			temp.Normal = glm::vec3(0, -1, 0);
 			vertices.push_back(temp);
-			temp.Position = glm::vec3(10, -1, -10);
-			temp.Normal = glm::vec3(0, 1, 0);
+			temp.Position = glm::vec3(-10, 10, -1);
+			temp.Normal = glm::vec3(0, -1, 0);
 			vertices.push_back(temp);
-			temp.Position = glm::vec3(10, -1, 10);
-			temp.Normal = glm::vec3(0, 1, 0);
+			temp.Position = glm::vec3(10, 10, -1);
+			temp.Normal = glm::vec3(0, -1, 0);
 			vertices.push_back(temp);
-			temp.Position = glm::vec3(-10, -1, 10);
-			temp.Normal = glm::vec3(0, 1, 0);
+			temp.Position = glm::vec3(10, -10, -1);
+			temp.Normal = glm::vec3(0, -1, 0);
 			vertices.push_back(temp);
 			processVertice_OpenMMD(vertices, gPosition1);
 			processVertice_OpenMMD(vertices, gPosition2);
@@ -799,6 +824,7 @@ void OpenGLAPI::doubleVideo_OpenMMD() {
 			glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Normal));
 
 			glBindVertexArray(0);
+
 
 			ourShader.use();
 			ourShader.setVec3("color", 1.0f, 1.0f, 1.0f);
@@ -824,7 +850,13 @@ void OpenGLAPI::doubleVideo_OpenMMD() {
 			glfwSwapBuffers(window);
 			glfwPollEvents();
 
-			gFrame++;
+			idleInterval++;
+			if (15 <= idleInterval) {
+				idle = false;
+				idleInterval = 0;
+			}
+			if (pause == false)
+				gFrame++;
 			if (gFrame >= gPosition1.size() || gFrame >= gPosition2.size())
 				glfwSetWindowShouldClose(window, true);
 		}
@@ -855,6 +887,15 @@ void OpenGLAPI::processInput(GLFWwindow *window) {
 		camera.ProcessKeyboard(UP, deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
 		camera.ProcessKeyboard(DOWN, deltaTime);
+	if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
+		if (!idle) {
+			if (pause == false)
+				pause = true;
+			else
+				pause = false;
+			idle = true;
+		}
+	}
 	
 }
 //-----------------------------------------------------------------------
@@ -880,4 +921,16 @@ void mouse_callback(GLFWwindow* window, double xPos, double yPos) {
 //-----------------------------------------------------------------------
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset) {
 	camera.ProcessMouseScroll(yoffset);
+}
+
+int main() {
+	//OpenGLAPI test("C:\\Users\\9\\Desktop\\ttt\\test1_640360_openmmd.json");
+	//OpenGLAPI test("C:\\Users\\9\\Desktop\\ttt\\test1_640360_vnect.json");
+	//OpenGLAPI test("C:\\Users\\9\\Desktop\\ttt\\test1_640360_openmmd.json", "C:\\Users\\9\\Desktop\\ttt\\test2_640360_openmmd.json");
+	OpenGLAPI test("C:\\Users\\9\\Desktop\\ttt\\test1_640360_vnect.json", "C:\\Users\\9\\Desktop\\ttt\\test2_640360_vnect.json");
+
+	//test.singleVideo_Vnect();
+	//test.singleVideo_OpenMMD();
+	//test.doubleVideo_OpenMMD();
+	test.doubleVideo_Vnect();
 }
