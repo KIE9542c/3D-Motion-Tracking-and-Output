@@ -155,6 +155,100 @@ void OpenGLAPI::processVertice_OpenMMD(std::vector<Vertex> &vertices, std::vecto
 	processVertice(vertices, lpos[gFrame][7], lpos[gFrame][8]);
 }
 //-----------------------------------------------------------------------
+void OpenGLAPI::processVertice2(std::vector<Vertex2> &vertices, QVector3D base, QVector3D front,glm::vec3 color) {
+	glm::vec3 lbase = glm::vec3(base.x(), base.y(), base.z());
+	glm::vec3 lfront = glm::vec3(front.x(), front.y(), front.z());
+	glm::vec3 dir = lfront - lbase;
+	glm::mat4 trans = glm::mat4(1.0f);
+	trans = glm::rotate(trans, glm::radians(30.0f), dir);
+	glm::vec3 temp1;
+	if (dir.z == 0) {
+		temp1 = glm::vec3(1, -dir.x / dir.y, 0);
+	}
+	else {
+		temp1 = glm::vec3(1, 1, (-dir.x - dir.y) / dir.z);
+	}
+	//float scale = sqrt((pow(dir.x,2)+ pow(dir.y, 2) + pow(dir.z, 2)) /(pow(temp1.x,2)+ pow(temp1.y, 2)+ pow(temp1.z, 2)));
+	float scale = sqrt(0.005 / (pow(temp1.x, 2) + pow(temp1.y, 2) + pow(temp1.z, 2)));
+
+	glm::mat4 transscale = glm::mat4(1.0f);
+	transscale = glm::scale(transscale, glm::vec3(scale / 5, scale / 5, scale / 5));
+	temp1 = transscale * glm::vec4(temp1, 1);
+	Vertex2 temp;
+	temp.Position = lbase + temp1;
+	temp.Normal = temp1;
+	temp.Color = color;
+	vertices.push_back(temp);
+	for (size_t i = 0; i < 11; i++)
+	{
+		temp1 = (trans * glm::vec4(temp1, 1));
+		temp.Position = lbase + temp1;
+		temp.Normal = temp1;
+		temp.Color = color;
+		vertices.push_back(temp);
+	}
+	for (size_t i = 0; i < 12; i++)
+	{
+		temp1 = (trans * glm::vec4(temp1, 1));
+		temp.Position = lfront + temp1;
+		temp.Normal = temp1;
+		temp.Color = color;
+		vertices.push_back(temp);
+	}
+	temp.Position = lbase;
+	temp.Normal = -dir;
+	temp.Color = color;
+	vertices.push_back(temp);
+	temp.Position = lfront;
+	temp.Normal = dir;
+	temp.Color = color;
+	vertices.push_back(temp);
+	return;
+}
+
+//-----------------------------------------------------------------------
+void OpenGLAPI::processVertice_Vnect2(std::vector<Vertex2> &vertices, std::vector<std::vector<QVector3D>>& lpos,int frame, std::vector<glm::vec3>color) {
+	processVertice2(vertices, lpos[frame][1], lpos[frame][2], glm::vec3(1.0f, 1.0f, 1.0f));
+	processVertice2(vertices, lpos[frame][2], lpos[frame][3], color[0]);
+	processVertice2(vertices, lpos[frame][3], lpos[frame][4], color[1]);
+	processVertice2(vertices, lpos[frame][4], lpos[frame][17], glm::vec3(1.0f, 1.0f, 1.0f));
+	processVertice2(vertices, lpos[frame][1], lpos[frame][5], glm::vec3(1.0f, 1.0f, 1.0f));
+	processVertice2(vertices, lpos[frame][5], lpos[frame][6],color[2]);
+	processVertice2(vertices, lpos[frame][6], lpos[frame][7], color[3]);
+	processVertice2(vertices, lpos[frame][7], lpos[frame][18], glm::vec3(1.0f, 1.0f, 1.0f));
+	processVertice2(vertices, lpos[frame][1], lpos[frame][16], glm::vec3(1.0f, 1.0f, 1.0f));
+	processVertice2(vertices, lpos[frame][16], lpos[frame][0], glm::vec3(1.0f, 1.0f, 1.0f));
+	processVertice2(vertices, lpos[frame][14], lpos[frame][8], glm::vec3(1.0f, 1.0f, 1.0f));
+	processVertice2(vertices, lpos[frame][8], lpos[frame][9], color[4]);
+	processVertice2(vertices, lpos[frame][9], lpos[frame][10], color[5]);
+	processVertice2(vertices, lpos[frame][10], lpos[frame][19], glm::vec3(1.0f, 1.0f, 1.0f));
+	processVertice2(vertices, lpos[frame][14], lpos[frame][11], glm::vec3(1.0f, 1.0f, 1.0f));
+	processVertice2(vertices, lpos[frame][11], lpos[frame][12], color[6]);
+	processVertice2(vertices, lpos[frame][12], lpos[frame][13], color[7]);
+	processVertice2(vertices, lpos[frame][13], lpos[frame][20], glm::vec3(1.0f, 1.0f, 1.0f));
+	processVertice2(vertices, lpos[frame][14], lpos[frame][15], glm::vec3(1.0f, 1.0f, 1.0f));
+	processVertice2(vertices, lpos[frame][15], lpos[frame][1], glm::vec3(1.0f, 1.0f, 1.0f));
+}
+//-----------------------------------------------------------------------
+void OpenGLAPI::processVertice_OpenMMD2(std::vector<Vertex2> &vertices, std::vector<std::vector<QVector3D>>& lpos, int frame, std::vector<glm::vec3>color) {
+	processVertice2(vertices, lpos[frame][8], lpos[frame][14], glm::vec3(1.0f, 1.0f, 1.0f));
+	processVertice2(vertices, lpos[frame][14], lpos[frame][15],color[0]);
+	processVertice2(vertices, lpos[frame][15], lpos[frame][16],color[1]);
+	processVertice2(vertices, lpos[frame][8], lpos[frame][11], glm::vec3(1.0f, 1.0f, 1.0f));
+	processVertice2(vertices, lpos[frame][11], lpos[frame][12],color[2]);
+	processVertice2(vertices, lpos[frame][12], lpos[frame][13],color[3]);
+	processVertice2(vertices, lpos[frame][8], lpos[frame][9], glm::vec3(1.0f, 1.0f, 1.0f));
+	processVertice2(vertices, lpos[frame][9], lpos[frame][10], glm::vec3(1.0f, 1.0f, 1.0f));
+	processVertice2(vertices, lpos[frame][0], lpos[frame][1], glm::vec3(1.0f, 1.0f, 1.0f));
+	processVertice2(vertices, lpos[frame][1], lpos[frame][2],color[4]);
+	processVertice2(vertices, lpos[frame][2], lpos[frame][3],color[5]);
+	processVertice2(vertices, lpos[frame][0], lpos[frame][4], glm::vec3(1.0f, 1.0f, 1.0f));
+	processVertice2(vertices, lpos[frame][4], lpos[frame][5],color[6]);
+	processVertice2(vertices, lpos[frame][5], lpos[frame][6],color[7]);
+	processVertice2(vertices, lpos[frame][0], lpos[frame][7], glm::vec3(1.0f, 1.0f, 1.0f));
+	processVertice2(vertices, lpos[frame][7], lpos[frame][8], glm::vec3(1.0f, 1.0f, 1.0f));
+}
+//-----------------------------------------------------------------------
 void OpenGLAPI::initialize() {
 
 	camera = Camera(glm::vec3(0, 0, 3));
@@ -171,7 +265,6 @@ void OpenGLAPI::singleVideo_Vnect(){
 		for (size_t n = 0; n < gPosition1[i].size(); n++)
 		{
 			gPosition1[i][n] = (gPosition1[i][n]-gPosition1[0][14])*scale;
-			gPosition1[i][n].setY(-gPosition1[i][n].y());
 			gPosition1[i][n].setZ(-gPosition1[i][n].z());
 		}
 	}
@@ -506,13 +599,15 @@ void OpenGLAPI::singleVideo_OpenMMD() {
 }
 //-----------------------------------------------------------------------
 void OpenGLAPI::doubleVideo_Vnect() {
+	motionContrastor.contrastVnect(filename1, filename2);
+	gPosition1 = motionContrastor.getPos1();
+	gPosition2 = motionContrastor.getPos2();
 	float scale = 0.2 / (gPosition1[0][15] - gPosition1[0][14]).length();
 	for (size_t i = 0; i < gPosition1.size(); i++)
 	{
 		for (size_t n = 0; n < gPosition1[i].size(); n++)
 		{
 			gPosition1[i][n] = (gPosition1[i][n] - gPosition1[0][14])*scale;
-			gPosition1[i][n].setY(-gPosition1[i][n].y());
 			gPosition1[i][n].setZ(-gPosition1[i][n].z());
 		}
 	}
@@ -523,7 +618,6 @@ void OpenGLAPI::doubleVideo_Vnect() {
 		for (size_t n = 0; n < gPosition2[i].size(); n++)
 		{
 			gPosition2[i][n] = (gPosition2[i][n] - gPosition2[0][14]) * scale;
-			gPosition2[i][n].setY(-gPosition2[i][n].y());
 			gPosition2[i][n].setZ(-gPosition2[i][n].z());
 			gPosition2[i][n] += QVector3D(1, 0, 0);
 		}
@@ -557,7 +651,7 @@ void OpenGLAPI::doubleVideo_Vnect() {
 
 	glEnable(GL_DEPTH_TEST);
 
-	ourShader = Shader("./shader/shader.vs", "./shader/shader.fs");
+	ourShader = Shader("./shader/shader2.vs", "./shader/shader2.fs");
 
 	std::vector<unsigned int> indices;
 	indices.push_back(0);
@@ -606,19 +700,26 @@ void OpenGLAPI::doubleVideo_Vnect() {
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), &indices[0], GL_DYNAMIC_DRAW);
 
+	int frame1 = 0;
+	int frame1match = 0;
+	int frame2 = 0;
 
 	while (!glfwWindowShouldClose(window)) {
 		float currentFrame = glfwGetTime();
 		deltaTime = currentFrame - lastFrame;
 		if (deltaTime > (1.0f / 30.0f)) {
+			
 			lastFrame = currentFrame;
 			processInput(window);
 
 			glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-			std::vector<Vertex> vertices;
-			Vertex temp;
+			frame2 = motionContrastor.match[frame1][frame1match];
+			std::vector<Vertex2> vertices;
+			Vertex2 temp;
+			temp.Color = glm::vec3(1.0f, 1.0f, 1.0f);
+
 			temp.Position = glm::vec3(-10, -1, -10);
 			temp.Normal = glm::vec3(0, 1, 0);
 			vertices.push_back(temp);
@@ -631,23 +732,34 @@ void OpenGLAPI::doubleVideo_Vnect() {
 			temp.Position = glm::vec3(-10, -1, 10);
 			temp.Normal = glm::vec3(0, 1, 0);
 			vertices.push_back(temp);
-			processVertice_Vnect(vertices, gPosition1);
-			processVertice_Vnect(vertices, gPosition2);
+
+			std::vector<glm::vec3> color;
+			for (size_t i = 0; i < 8; i++)
+			{
+				if (motionContrastor.Pear[frame1][frame1match][i] == 1)
+					color.push_back(glm::vec3(0.0f, 1.0f, 0.0f));
+				else
+					color.push_back(glm::vec3(1.0f, 0.0f, 0.0f));
+			}
+			processVertice_Vnect2(vertices, gPosition1,frame1,color);
+			processVertice_Vnect2(vertices, gPosition2,frame2,color);
 
 			glBindBuffer(GL_ARRAY_BUFFER, VBO);
-			glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), &vertices[0], GL_DYNAMIC_DRAW);
+			glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex2), &vertices[0], GL_DYNAMIC_DRAW);
 
 			glEnableVertexAttribArray(0);
-			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
+			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex2), (void*)0);
 
 			//顶点法线
 			glEnableVertexAttribArray(1);
-			glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Normal));
+			glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex2), (void*)offsetof(Vertex2, Normal));
+
+			glEnableVertexAttribArray(2);
+			glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex2), (void*)offsetof(Vertex2, Color));
 
 			glBindVertexArray(0);
 
 			ourShader.use();
-			ourShader.setVec3("color", 1.0f, 1.0f, 1.0f);
 			ourShader.setVec3("lightColor1", 1.0f, 1.0f, 1.0f);
 			ourShader.setVec3("lightPos1", 0.5f, 0.0f, 3.0f);
 			//ourShader.setVec3("lightColor2", 1.0f, 1.0f, 1.0f);
@@ -675,8 +787,12 @@ void OpenGLAPI::doubleVideo_Vnect() {
 				idleInterval = 0;
 			}
 			if (pause == false)
-				gFrame++;
-			if (gFrame >= gPosition1.size() || gFrame >= gPosition2.size())
+				frame1match++;
+			if (frame1match >= motionContrastor.match[frame1].size()) {
+				frame1match = 0;
+				frame1++;
+			}
+			if(frame1>=motionContrastor.match.size())
 				glfwSetWindowShouldClose(window, true);
 		}
 	}
@@ -689,6 +805,10 @@ void OpenGLAPI::doubleVideo_Vnect() {
 }
 //-----------------------------------------------------------------------
 void OpenGLAPI::doubleVideo_OpenMMD() {
+	motionContrastor.contrastOpenMMD(filename1, filename2);
+	gPosition1 = motionContrastor.getPos1();
+	gPosition2 = motionContrastor.getPos2();
+
 	float scale = 0.2 / (gPosition1[0][7] - gPosition1[0][0]).length();
 	for (size_t i = 0; i < gPosition1.size(); i++)
 	{
@@ -735,7 +855,7 @@ void OpenGLAPI::doubleVideo_OpenMMD() {
 
 	glEnable(GL_DEPTH_TEST);
 
-	ourShader = Shader("./shader/shader.vs", "./shader/shader.fs");
+	ourShader = Shader("./shader/shader2.vs", "./shader/shader2.fs");
 
 	std::vector<unsigned int> indices;
 	indices.push_back(0);
@@ -784,6 +904,10 @@ void OpenGLAPI::doubleVideo_OpenMMD() {
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), &indices[0], GL_DYNAMIC_DRAW);
 
+	int frame1 = 0;
+	int frame1match = 0;
+	int frame2 = 0;
+
 	while (!glfwWindowShouldClose(window)) {
 		float currentFrame = glfwGetTime();
 		deltaTime = currentFrame - lastFrame;
@@ -796,8 +920,10 @@ void OpenGLAPI::doubleVideo_OpenMMD() {
 			glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-			std::vector<Vertex> vertices;
-			Vertex temp;
+			frame2 = motionContrastor.match[frame1][frame1match];
+			std::vector<Vertex2> vertices;
+			Vertex2 temp;
+			temp.Color = glm::vec3(1.0f, 1.0f, 1.0f);
 			temp.Position = glm::vec3(-10, -10, -1);
 			temp.Normal = glm::vec3(0, -1, 0);
 			vertices.push_back(temp);
@@ -810,18 +936,30 @@ void OpenGLAPI::doubleVideo_OpenMMD() {
 			temp.Position = glm::vec3(10, -10, -1);
 			temp.Normal = glm::vec3(0, -1, 0);
 			vertices.push_back(temp);
-			processVertice_OpenMMD(vertices, gPosition1);
-			processVertice_OpenMMD(vertices, gPosition2);
+
+			std::vector<glm::vec3> color;
+			for (size_t i = 0; i < 8; i++)
+			{
+				if (motionContrastor.Pear[frame1][frame1match][i] == 1)
+					color.push_back(glm::vec3(0.0f, 1.0f, 0.0f));
+				else
+					color.push_back(glm::vec3(1.0f, 0.0f, 0.0f));
+			}
+			processVertice_OpenMMD2(vertices, gPosition1, frame1, color);
+			processVertice_OpenMMD2(vertices, gPosition2, frame2, color);
 
 			glBindBuffer(GL_ARRAY_BUFFER, VBO);
-			glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), &vertices[0], GL_DYNAMIC_DRAW);
+			glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex2), &vertices[0], GL_DYNAMIC_DRAW);
 
 			glEnableVertexAttribArray(0);
-			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
+			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex2), (void*)0);
 
 			//顶点法线
 			glEnableVertexAttribArray(1);
-			glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Normal));
+			glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex2), (void*)offsetof(Vertex2, Normal));
+
+			glEnableVertexAttribArray(2);
+			glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex2), (void*)offsetof(Vertex2, Color));
 
 			glBindVertexArray(0);
 
@@ -856,8 +994,12 @@ void OpenGLAPI::doubleVideo_OpenMMD() {
 				idleInterval = 0;
 			}
 			if (pause == false)
-				gFrame++;
-			if (gFrame >= gPosition1.size() || gFrame >= gPosition2.size())
+				frame1match++;
+			if (frame1match >= motionContrastor.match[frame1].size()) {
+				frame1match = 0;
+				frame1++;
+			}
+			if (frame1 >= motionContrastor.match.size())
 				glfwSetWindowShouldClose(window, true);
 		}
 	}
@@ -924,13 +1066,13 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset) {
 }
 
 int main() {
-	//OpenGLAPI test("C:\\Users\\9\\Desktop\\ttt\\test1_640360_openmmd.json");
-	//OpenGLAPI test("C:\\Users\\9\\Desktop\\ttt\\test1_640360_vnect.json");
+	//OpenGLAPI test("C:\\Users\\9\\Desktop\\cxk_openmmd.json");
+	//OpenGLAPI test("C:\\Users\\9\\Desktop\\test2.json");
 	//OpenGLAPI test("C:\\Users\\9\\Desktop\\ttt\\test1_640360_openmmd.json", "C:\\Users\\9\\Desktop\\ttt\\test2_640360_openmmd.json");
-	OpenGLAPI test("C:\\Users\\9\\Desktop\\ttt\\test1_640360_vnect.json", "C:\\Users\\9\\Desktop\\ttt\\test2_640360_vnect.json");
+	//OpenGLAPI test("C:\\Users\\9\\Desktop\\ttt\\test3_vnect.json", "C:\\Users\\9\\Desktop\\ttt\\test4_vnect.json");
 
 	//test.singleVideo_Vnect();
 	//test.singleVideo_OpenMMD();
 	//test.doubleVideo_OpenMMD();
-	test.doubleVideo_Vnect();
+	//test.doubleVideo_Vnect();
 }
