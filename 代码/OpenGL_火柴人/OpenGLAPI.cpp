@@ -1065,14 +1065,3 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset) {
 	camera.ProcessMouseScroll(yoffset);
 }
 
-int main() {
-	//OpenGLAPI test("C:\\Users\\9\\Desktop\\cxk_openmmd.json");
-	//OpenGLAPI test("C:\\Users\\9\\Desktop\\test2.json");
-	//OpenGLAPI test("C:\\Users\\9\\Desktop\\ttt\\test1_640360_openmmd.json", "C:\\Users\\9\\Desktop\\ttt\\test2_640360_openmmd.json");
-	//OpenGLAPI test("C:\\Users\\9\\Desktop\\ttt\\test3_vnect.json", "C:\\Users\\9\\Desktop\\ttt\\test4_vnect.json");
-
-	//test.singleVideo_Vnect();
-	//test.singleVideo_OpenMMD();
-	//test.doubleVideo_OpenMMD();
-	//test.doubleVideo_Vnect();
-}
