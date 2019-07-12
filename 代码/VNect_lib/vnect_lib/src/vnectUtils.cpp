@@ -417,8 +417,8 @@ void mVNectUtils::predict(const cv::Mat &img, std::vector<float>& joint2d, std::
 		else
 		{
 			joints_3d[0][3 * i + 0] = (*mFilters_3d[i * 3 + 0])((joints_3d[0][3 * i + 0]), _time_stamp);
-			joints_3d[0][3 * i + 1] = (*mFilters_3d[i * 3 + 1])((joints_3d[0][3 * i + 1]), _time_stamp);
-			joints_3d[0][3 * i + 2] = (*mFilters_3d[i * 3 + 2])((joints_3d[0][3 * i + 2]), _time_stamp);
+			joints_3d[0][3 * i + 1] = (*mFilters_3d[i * 3 + 1])(-(joints_3d[0][3 * i + 1]), _time_stamp);
+			joints_3d[0][3 * i + 2] = (*mFilters_3d[i * 3 + 2])(-(joints_3d[0][3 * i + 2]), _time_stamp);
 		}
 	
 	}
