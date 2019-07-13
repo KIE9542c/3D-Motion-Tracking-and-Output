@@ -1,4 +1,4 @@
-#include "dialogmenu.h"
+﻿#include "dialogmenu.h"
 #include "ui_dialogmenu.h"
 #include <QGraphicsDropShadowEffect>
 DialogMenu::DialogMenu(QWidget *parent) :
@@ -30,6 +30,12 @@ DialogMenu::DialogMenu(QWidget *parent) :
        //void (DialogMenu::*funSlotParm)(int, QString) = &DialogMenu::myDealSubParm;
     connect(&mwin, mySignal, this, funSlot);
        //connect(sw, funSignalParm, this, funSlotParm);
+	void (Compara::*comSignal)() = &Compara::comSignal;
+	// void (MainWindow::*funSignalParm)(int, QString) = &MainWindow::mySignalParm;
+	void (DialogMenu::*comSlot)() = &DialogMenu::myComSub;
+	//void (DialogMenu::*funSlotParm)(int, QString) = &DialogMenu::myDealSubParm;
+	connect(&mcom, comSignal, this, comSlot);
+	//connect(sw, funSignalParm, this, funSlotParm);
 }
 DialogMenu::~DialogMenu()
 {
@@ -95,4 +101,25 @@ void DialogMenu::myDealSub()
     animation->setEndValue(1);
     animation->start();
     this->show();
+}
+void DialogMenu::myComSub()
+{
+    mcom.hide();
+    QPropertyAnimation *animation = new QPropertyAnimation(this,"windowOpacity");
+    animation->setDuration(500);
+    animation->setStartValue(0);
+    animation->setEndValue(1);
+    animation->start();
+    this->show();
+}
+
+void DialogMenu::on_pushButton_2_clicked()
+{
+    this->hide();
+    QPropertyAnimation *animation = new QPropertyAnimation(&mcom,"windowOpacity");
+    animation->setDuration(500);
+    animation->setStartValue(0);
+    animation->setEndValue(1);
+    animation->start();
+    mcom.show();
 }

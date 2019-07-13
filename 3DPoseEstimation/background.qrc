@@ -9,7 +9,6 @@
         <file>logo.png</file>
         <file>track.jpg</file>
         <file>logo3.png</file>
-        <file>frame.jpg</file>
         <file>back.jpg</file>
         <file>FBX.png</file>
         <file>VMD.png</file>
@@ -17,8 +16,24 @@
         <file>FBX_hover.png</file>
         <file>VMD_hover.png</file>
         <file>vmdfbx_hover.png</file>
-        <file>delete.png</file>
-        <file>deleteAll.png</file>
         <file>output.png</file>
+        <file>output_hover.jpg</file>
+        <file>start.png</file>
+        <file>grey.png</file>
+        <file>pause.png</file>
+        <file>openfile.png</file>
+        <file>stop.png</file>
+        <file>del.png</file>
+        <file>delAll.png</file>
+        <file>return.png</file>
+        <file>add.png</file>
+        <file>conf.png</file>
+        <file>vertical.png</file>
+        <file>red.png</file>
+        <file>frame.jpg</file>
+        <file>close_win.png</file>
+        <file>check.png</file>
+        <file>unchecked.png</file>
+        <file>downArrow.png</file>
     </qresource>
 </RCC>

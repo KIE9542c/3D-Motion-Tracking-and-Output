@@ -43,6 +43,8 @@
     </property>
     <property name="styleSheet">
      <string notr="true">#frame{background-color: rgb(255, 255, 255);}
+
+
 </string>
     </property>
     <property name="frameShape">
@@ -65,7 +67,8 @@
 border-color: transparent;}
 #pushButton_6:hover
 {
-    background-color: rgb(255, 0, 0);
+    	border-image: url(:/new/prefix2/red.png);
+
 }
 </string>
      </property>
@@ -97,7 +100,8 @@ border-color: transparent;}
 border-color: transparent;}
 #pushButton_7:hover
 {
-    background-color: red;
+    	border-image: url(:/new/prefix2/red.png);
+
 }</string>
      </property>
      <property name="text">
@@ -114,28 +118,11 @@ border-color: transparent;}
       </size>
      </property>
     </widget>
-    <widget class="QLabel" name="label_5">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>1081</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">
-background-image: url(:/new/prefix2/frame.jpg);</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
     <widget class="QPushButton" name="pushButton_VMD">
      <property name="geometry">
       <rect>
-       <x>50</x>
-       <y>210</y>
+       <x>30</x>
+       <y>230</y>
        <width>103</width>
        <height>121</height>
       </rect>
@@ -163,8 +150,8 @@ background-image: url(:/new/prefix2/frame.jpg);</string>
     <widget class="QPushButton" name="pushButton_FBX">
      <property name="geometry">
       <rect>
-       <x>50</x>
-       <y>350</y>
+       <x>30</x>
+       <y>380</y>
        <width>103</width>
        <height>121</height>
       </rect>
@@ -186,8 +173,8 @@ background-image: url(:/new/prefix2/frame.jpg);</string>
     <widget class="QPushButton" name="pushButton_VF">
      <property name="geometry">
       <rect>
-       <x>50</x>
-       <y>490</y>
+       <x>30</x>
+       <y>530</y>
        <width>103</width>
        <height>121</height>
       </rect>
@@ -215,11 +202,14 @@ border-image: url(:/new/prefix2/vmdfbx.png);
     <widget class="QTableView" name="tableView">
      <property name="geometry">
       <rect>
-       <x>200</x>
-       <y>100</y>
+       <x>170</x>
+       <y>110</y>
        <width>881</width>
-       <height>581</height>
+       <height>541</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QHeaderView::section {background-color:white; border:1px solid gray;}</string>
      </property>
      <attribute name="verticalHeaderCascadingSectionResizes">
       <bool>false</bool>
@@ -228,9 +218,9 @@ border-image: url(:/new/prefix2/vmdfbx.png);
     <widget class="QPushButton" name="pushButton_path">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>50</y>
-       <width>131</width>
+       <x>30</x>
+       <y>60</y>
+       <width>111</width>
        <height>41</height>
       </rect>
      </property>
@@ -240,18 +230,37 @@ border-image: url(:/new/prefix2/vmdfbx.png);
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="font">
+      <font>
+       <family>Microsoft YaHei UI</family>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
      <property name="styleSheet">
-      <string notr="true">border-image: url(:/new/prefix2/output.png);</string>
+      <string notr="true">#pushButton_path{background-color:transparent;}
+#pushButton_path:hover{border-image: url(:/new/prefix2/grey.png);}
+</string>
      </property>
      <property name="text">
-      <string/>
+      <string>打开文件夹</string>
+     </property>
+     <property name="icon">
+      <iconset resource="background.qrc">
+       <normaloff>:/new/prefix2/openfile.png</normaloff>:/new/prefix2/openfile.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_del">
      <property name="geometry">
       <rect>
-       <x>200</x>
-       <y>50</y>
+       <x>190</x>
+       <y>60</y>
        <width>71</width>
        <height>41</height>
       </rect>
@@ -262,69 +271,361 @@ border-image: url(:/new/prefix2/vmdfbx.png);
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="font">
+      <font>
+       <family>Microsoft YaHei UI</family>
+      </font>
+     </property>
      <property name="styleSheet">
-      <string notr="true">border-image: url(:/new/prefix2/delete.png);</string>
+      <string notr="true">#pushButton_del{background-color:transparent;}
+#pushButton_del:hover{border-image:url(:/new/prefix2/grey.png);}
+</string>
      </property>
      <property name="text">
-      <string/>
+      <string>移除</string>
+     </property>
+     <property name="icon">
+      <iconset resource="background.qrc">
+       <normaloff>:/new/prefix2/del.png</normaloff>:/new/prefix2/del.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_2">
      <property name="geometry">
       <rect>
-       <x>660</x>
+       <x>780</x>
        <y>60</y>
-       <width>99</width>
-       <height>23</height>
+       <width>101</width>
+       <height>41</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Microsoft YaHei UI</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#pushButton_2{background-color: transparent;}
+#pushButton_2:hover{border-image: url(:/new/prefix2/grey.png);}
+</string>
      </property>
      <property name="text">
       <string>返回菜单</string>
+     </property>
+     <property name="icon">
+      <iconset resource="background.qrc">
+       <normaloff>:/new/prefix2/return.png</normaloff>:/new/prefix2/return.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_start">
      <property name="geometry">
       <rect>
-       <x>430</x>
+       <x>410</x>
        <y>60</y>
        <width>101</width>
-       <height>23</height>
+       <height>41</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Microsoft YaHei UI</family>
+       <pointsize>9</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+       <underline>false</underline>
+       <strikeout>false</strikeout>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#pushButton_start{background-color:transparent;
+}
+
+
+#pushButton_start:hover{border-image: url(:/new/prefix2/grey.png);}
+</string>
      </property>
      <property name="text">
       <string>开始处理</string>
      </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_stop">
-     <property name="geometry">
-      <rect>
-       <x>560</x>
-       <y>60</y>
-       <width>75</width>
-       <height>23</height>
-      </rect>
+     <property name="icon">
+      <iconset resource="background.qrc">
+       <normaloff>:/new/prefix2/start.png</normaloff>:/new/prefix2/start.png</iconset>
      </property>
-     <property name="text">
-      <string>停止</string>
+     <property name="iconSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_delAll">
      <property name="geometry">
       <rect>
-       <x>300</x>
-       <y>50</y>
-       <width>91</width>
+       <x>270</x>
+       <y>60</y>
+       <width>101</width>
        <height>41</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>Microsoft YaHei UI</family>
+      </font>
+     </property>
      <property name="styleSheet">
-      <string notr="true">border-image: url(:/new/prefix2/deleteAll.png);</string>
+      <string notr="true">#pushButton_delAll{background-color:transparent;}
+#pushButton_delAll:hover{
+border-image: url(:/new/prefix2/grey.png)}</string>
+     </property>
+     <property name="text">
+      <string>清空列表</string>
+     </property>
+     <property name="icon">
+      <iconset resource="background.qrc">
+       <normaloff>:/new/prefix2/delAll.png</normaloff>:/new/prefix2/delAll.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>190</y>
+       <width>121</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Microsoft YaHei UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>导出动作文件格式</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>50</y>
+       <width>16</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/new/prefix2/vertical.png);</string>
      </property>
      <property name="text">
       <string/>
      </property>
     </widget>
-    <zorder>label_5</zorder>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>50</y>
+       <width>16</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/new/prefix2/vertical.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>162</x>
+       <y>50</y>
+       <width>16</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/new/prefix2/vertical.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>940</x>
+       <y>60</y>
+       <width>141</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="background.qrc">:/new/prefix2/logo3.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>1081</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="toolTipDuration">
+      <number>-5</number>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-image: url(:/new/prefix2/frame.jpg);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>150</y>
+       <width>111</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Microsoft YaHei UI</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#comboBox{
+    border: 1px solid gray;
+    border-radius: 3px;
+    padding: 1px 2px 1px 2px; 
+    min-width: 6em;   
+}
+#comboBox:drop-down {
+   
+    width: 20px;
+ 
+    border-left-width: 1px;
+    border-left-color: darkgray;
+    border-left-style: solid; /* just a single line */
+    border-top-right-radius: 3px; /* same radius as the QComboBox */
+    border-bottom-right-radius: 3px;
+}
+ 
+#comboBox:down-arrow {
+	border-image: url(:/new/prefix2/downArrow.png);
+}</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>OpenMMD</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>VNect</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QCheckBox" name="checkBox">
+     <property name="geometry">
+      <rect>
+       <x>560</x>
+       <y>65</y>
+       <width>171</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Microsoft YaHei UI</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QCheckBox::indicator { 
+    width: 26px;
+    height: 50px;
+}
+/*未选中*/
+QCheckBox::indicator::unchecked {   
+    
+	image: url(:/new/prefix2/unchecked.png);
+}
+/*选中*/
+QCheckBox::indicator::checked { 
+    
+	image: url(:/new/prefix2/check.png);
+}</string>
+     </property>
+     <property name="text">
+      <string>处理后是否显示动画</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_7">
+     <property name="geometry">
+      <rect>
+       <x>750</x>
+       <y>50</y>
+       <width>16</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/new/prefix2/vertical.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_8">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>120</y>
+       <width>121</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Microsoft YaHei UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>选择三维重建算法</string>
+     </property>
+    </widget>
+    <zorder>label_6</zorder>
     <zorder>pushButton_6</zorder>
     <zorder>pushButton_7</zorder>
     <zorder>pushButton_VMD</zorder>
@@ -335,8 +636,16 @@ border-image: url(:/new/prefix2/vmdfbx.png);
     <zorder>pushButton_del</zorder>
     <zorder>pushButton_2</zorder>
     <zorder>pushButton_start</zorder>
-    <zorder>pushButton_stop</zorder>
     <zorder>pushButton_delAll</zorder>
+    <zorder>label</zorder>
+    <zorder>label_2</zorder>
+    <zorder>label_3</zorder>
+    <zorder>label_4</zorder>
+    <zorder>label_5</zorder>
+    <zorder>comboBox</zorder>
+    <zorder>checkBox</zorder>
+    <zorder>label_7</zorder>
+    <zorder>label_8</zorder>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusBar">

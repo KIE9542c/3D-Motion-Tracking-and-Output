@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #ifndef DIALOGMENU_H
 #define DIALOGMENU_H
 
@@ -8,6 +8,7 @@
 //#include <QGraphicsDropShadowEffect>
 #include <QPainter>
 #include <QtMath>
+#include "compara.h"
 namespace Ui {
 class DialogMenu;
 }
@@ -30,11 +31,15 @@ private slots:
     void on_pushButton_3_clicked();
 
     void on_pushButton_4_clicked();
+    void on_pushButton_2_clicked();
+
 public slots:
     void myDealSub();
+    void myComSub();
 private:
     Ui::DialogMenu *ui;
     TrackingWindow mwin;
+    Compara mcom;
     bool m_move;
     QPoint m_startPoint;
     QPoint m_windowPoint;

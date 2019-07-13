@@ -71,6 +71,18 @@
     <ClCompile Include="Common.cxx">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="glad.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLAPI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="compara.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="dialogmenu.h">
@@ -86,6 +98,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="vmdfile.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="compara.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -126,6 +141,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="vmdfile.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="compara.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -206,6 +224,18 @@
     </ClInclude>
     <ClInclude Include="Common.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLAPI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui_compara.h">
+      <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

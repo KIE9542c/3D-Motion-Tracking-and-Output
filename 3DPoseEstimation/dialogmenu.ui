@@ -60,7 +60,7 @@
 }
 #pushButton_3:hover
 {
-     background-color: red;
+    	border-image: url(:/new/prefix2/red.png);
 }
 	</string>
     </property>
@@ -92,7 +92,8 @@
 border-color: transparent;}
 #pushButton_4:hover
 {
-    background-color: red;
+  	border-image: url(:/new/prefix2/red.png);
+
 }</string>
     </property>
     <property name="text">

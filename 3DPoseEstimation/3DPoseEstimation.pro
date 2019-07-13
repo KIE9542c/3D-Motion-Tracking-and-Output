@@ -25,6 +25,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        compara.cpp \
         dialogmenu.cpp \
         fbxfile.cpp \
         main.cpp \
@@ -33,6 +34,7 @@ SOURCES += \
         vmdfile.cpp
 
 HEADERS += \
+        compara.h \
         dialogmenu.h \
         fbxfile.h \
         trackingWindow.h \
@@ -40,6 +42,7 @@ HEADERS += \
         vmdfile.h
 
 FORMS += \
+        compara.ui \
         dialogmenu.ui \
         fbxfile.ui \
         trackingWindow.ui \

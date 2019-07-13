@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'vmdfile.ui'
 **
-** Created by: Qt User Interface Compiler version 5.13.0
+** Created by: Qt User Interface Compiler version 5.12.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -13,6 +13,7 @@
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -24,51 +25,113 @@ QT_BEGIN_NAMESPACE
 class Ui_vmdfile
 {
 public:
+    QTableView *tableView;
+    QFrame *frame;
     QPushButton *pushButton_del;
     QPushButton *pushButton_delAll;
-    QPushButton *pushButton_close;
-    QLineEdit *lineEdit;
     QLabel *label;
-    QPushButton *pushButton_openfile;
+    QLineEdit *lineEdit;
     QPushButton *pushButton_change;
     QPushButton *pushButton_conf;
-    QTableView *tableView;
+    QPushButton *pushButton_close;
+    QPushButton *pushButton_openfile;
 
     void setupUi(QDialog *vmdfile)
     {
         if (vmdfile->objectName().isEmpty())
             vmdfile->setObjectName(QString::fromUtf8("vmdfile"));
-        vmdfile->resize(753, 507);
-        pushButton_del = new QPushButton(vmdfile);
-        pushButton_del->setObjectName(QString::fromUtf8("pushButton_del"));
-        pushButton_del->setGeometry(QRect(30, 60, 75, 23));
-        pushButton_delAll = new QPushButton(vmdfile);
-        pushButton_delAll->setObjectName(QString::fromUtf8("pushButton_delAll"));
-        pushButton_delAll->setGeometry(QRect(140, 60, 75, 23));
-        pushButton_close = new QPushButton(vmdfile);
-        pushButton_close->setObjectName(QString::fromUtf8("pushButton_close"));
-        pushButton_close->setGeometry(QRect(640, 20, 61, 41));
-        QIcon icon;
-        icon.addFile(QString::fromUtf8(":/new/prefix2/Buttons/close.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton_close->setIcon(icon);
-        lineEdit = new QLineEdit(vmdfile);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-        lineEdit->setGeometry(QRect(130, 450, 141, 20));
-        label = new QLabel(vmdfile);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(40, 450, 54, 12));
-        pushButton_openfile = new QPushButton(vmdfile);
-        pushButton_openfile->setObjectName(QString::fromUtf8("pushButton_openfile"));
-        pushButton_openfile->setGeometry(QRect(510, 80, 75, 23));
-        pushButton_change = new QPushButton(vmdfile);
-        pushButton_change->setObjectName(QString::fromUtf8("pushButton_change"));
-        pushButton_change->setGeometry(QRect(300, 450, 75, 23));
-        pushButton_conf = new QPushButton(vmdfile);
-        pushButton_conf->setObjectName(QString::fromUtf8("pushButton_conf"));
-        pushButton_conf->setGeometry(QRect(510, 50, 75, 23));
+        vmdfile->resize(752, 507);
         tableView = new QTableView(vmdfile);
         tableView->setObjectName(QString::fromUtf8("tableView"));
-        tableView->setGeometry(QRect(170, 140, 431, 251));
+        tableView->setGeometry(QRect(25, 110, 700, 321));
+        tableView->setStyleSheet(QString::fromUtf8("QHeaderView::section {background-color:white; border:1px solid gray;}"));
+        frame = new QFrame(vmdfile);
+        frame->setObjectName(QString::fromUtf8("frame"));
+        frame->setGeometry(QRect(10, 10, 731, 491));
+        frame->setStyleSheet(QString::fromUtf8("#frame{background-color: rgb(255, 255, 255);}"));
+        frame->setFrameShape(QFrame::StyledPanel);
+        frame->setFrameShadow(QFrame::Raised);
+        pushButton_del = new QPushButton(frame);
+        pushButton_del->setObjectName(QString::fromUtf8("pushButton_del"));
+        pushButton_del->setGeometry(QRect(20, 50, 71, 41));
+        QFont font;
+        font.setFamily(QString::fromUtf8("Microsoft YaHei UI"));
+        font.setBold(false);
+        font.setWeight(50);
+        pushButton_del->setFont(font);
+        pushButton_del->setStyleSheet(QString::fromUtf8("#pushButton_del{background-color:transparent;}\n"
+"#pushButton_del:hover{border-image:url(:/new/prefix2/grey.png);}\n"
+""));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/new/prefix2/del.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_del->setIcon(icon);
+        pushButton_del->setIconSize(QSize(30, 30));
+        pushButton_delAll = new QPushButton(frame);
+        pushButton_delAll->setObjectName(QString::fromUtf8("pushButton_delAll"));
+        pushButton_delAll->setGeometry(QRect(100, 50, 91, 41));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("Microsoft YaHei UI"));
+        pushButton_delAll->setFont(font1);
+        pushButton_delAll->setStyleSheet(QString::fromUtf8("#pushButton_delAll{background-color:transparent;}\n"
+"#pushButton_delAll:hover{\n"
+"border-image: url(:/new/prefix2/grey.png)}"));
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/new/prefix2/delAll.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_delAll->setIcon(icon1);
+        pushButton_delAll->setIconSize(QSize(30, 30));
+        label = new QLabel(frame);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(20, 450, 71, 21));
+        label->setFont(font1);
+        lineEdit = new QLineEdit(frame);
+        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        lineEdit->setGeometry(QRect(90, 450, 361, 20));
+        lineEdit->setFont(font1);
+        pushButton_change = new QPushButton(frame);
+        pushButton_change->setObjectName(QString::fromUtf8("pushButton_change"));
+        pushButton_change->setGeometry(QRect(460, 445, 71, 30));
+        pushButton_change->setFont(font1);
+        pushButton_change->setStyleSheet(QString::fromUtf8("#pushButton_change{background-color:transparent;}\n"
+"#pushButton_change:hover{\n"
+"border-image: url(:/new/prefix2/grey.png)}"));
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/new/prefix2/openfile.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_change->setIcon(icon2);
+        pushButton_change->setIconSize(QSize(20, 20));
+        pushButton_conf = new QPushButton(frame);
+        pushButton_conf->setObjectName(QString::fromUtf8("pushButton_conf"));
+        pushButton_conf->setGeometry(QRect(640, 50, 71, 41));
+        pushButton_conf->setFont(font1);
+        pushButton_conf->setStyleSheet(QString::fromUtf8("#pushButton_conf{background-color:transparent;}\n"
+"#pushButton_conf:hover{\n"
+"border-image: url(:/new/prefix2/grey.png)}"));
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/new/prefix2/conf.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_conf->setIcon(icon3);
+        pushButton_conf->setIconSize(QSize(30, 30));
+        pushButton_close = new QPushButton(frame);
+        pushButton_close->setObjectName(QString::fromUtf8("pushButton_close"));
+        pushButton_close->setGeometry(QRect(680, 0, 51, 31));
+        pushButton_close->setStyleSheet(QString::fromUtf8("#pushButton_close{background-color:transparent;}\n"
+"#pushButton_close:hover{	border-image: url(:/new/prefix2/red.png);\n"
+"}"));
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8(":/new/prefix2/close_win.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_close->setIcon(icon4);
+        pushButton_close->setIconSize(QSize(10, 10));
+        pushButton_openfile = new QPushButton(frame);
+        pushButton_openfile->setObjectName(QString::fromUtf8("pushButton_openfile"));
+        pushButton_openfile->setGeometry(QRect(540, 50, 91, 41));
+        pushButton_openfile->setFont(font1);
+        pushButton_openfile->setStyleSheet(QString::fromUtf8("#pushButton_openfile{background-color:transparent;}\n"
+"#pushButton_openfile:hover{\n"
+"border-image: url(:/new/prefix2/grey.png)}"));
+        QIcon icon5;
+        icon5.addFile(QString::fromUtf8(":/new/prefix2/add.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_openfile->setIcon(icon5);
+        pushButton_openfile->setIconSize(QSize(30, 30));
+        frame->raise();
+        tableView->raise();
 
         retranslateUi(vmdfile);
 
@@ -77,15 +140,15 @@ public:
 
     void retranslateUi(QDialog *vmdfile)
     {
-        vmdfile->setWindowTitle(QCoreApplication::translate("vmdfile", "Dialog", nullptr));
-        pushButton_del->setText(QCoreApplication::translate("vmdfile", "\345\210\240\351\231\244", nullptr));
-        pushButton_delAll->setText(QCoreApplication::translate("vmdfile", "\346\270\205\347\251\272\345\210\227\350\241\250", nullptr));
+        vmdfile->setWindowTitle(QApplication::translate("vmdfile", "Dialog", nullptr));
+        pushButton_del->setText(QApplication::translate("vmdfile", "\347\247\273\351\231\244", nullptr));
+        pushButton_delAll->setText(QApplication::translate("vmdfile", "\346\270\205\347\251\272\345\210\227\350\241\250", nullptr));
+        label->setText(QApplication::translate("vmdfile", "\350\276\223\345\207\272\350\267\257\345\276\204", nullptr));
+        lineEdit->setText(QApplication::translate("vmdfile", "\346\234\252\351\200\211\346\213\251\350\276\223\345\207\272\350\267\257\345\276\204", nullptr));
+        pushButton_change->setText(QApplication::translate("vmdfile", "\346\233\264\346\224\271", nullptr));
+        pushButton_conf->setText(QApplication::translate("vmdfile", "\347\241\256\345\256\232", nullptr));
         pushButton_close->setText(QString());
-        lineEdit->setText(QCoreApplication::translate("vmdfile", "\346\234\252\351\200\211\346\213\251\350\276\223\345\207\272\350\267\257\345\276\204", nullptr));
-        label->setText(QCoreApplication::translate("vmdfile", "\350\276\223\345\207\272\350\267\257\345\276\204", nullptr));
-        pushButton_openfile->setText(QCoreApplication::translate("vmdfile", "\346\211\223\345\274\200\346\226\207\344\273\266", nullptr));
-        pushButton_change->setText(QCoreApplication::translate("vmdfile", "\346\233\264\346\224\271", nullptr));
-        pushButton_conf->setText(QCoreApplication::translate("vmdfile", "\347\241\256\345\256\232", nullptr));
+        pushButton_openfile->setText(QApplication::translate("vmdfile", "\346\267\273\345\212\240\346\226\207\344\273\266", nullptr));
     } // retranslateUi
 
 };
