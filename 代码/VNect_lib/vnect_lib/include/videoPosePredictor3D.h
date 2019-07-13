@@ -37,16 +37,16 @@ struct param_t
 
 
 
-bool isMousePressed;
-double curX, curY;
-double initX, initY;
-glm::mat4 rotateMat;
-glm::mat4 model;
-const double font_scale = 1;
-const int thickness = 1;
-const int font_face = cv::FONT_HERSHEY_COMPLEX;
-int text_line;
-char txt_buffer[10];
+static bool isMousePressed;
+static double curX, curY;
+static double initX, initY;
+static glm::mat4 rotateMat;
+static glm::mat4 model;
+static const double font_scale = 1;
+static const int thickness = 1;
+static const int font_face = cv::FONT_HERSHEY_COMPLEX;
+static int text_line;
+static char txt_buffer[10];
 
 class __declspec(dllexport) mVideoPosePredictor3D
 {
