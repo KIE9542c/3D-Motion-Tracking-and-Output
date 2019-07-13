@@ -70,6 +70,7 @@ void mVideoPosePredictor3D::predict(const std::string& video_path, const string&
 		avformat_find_stream_info(fmt_ctx, nullptr);//读取视频，然后得到流和码率等信息
 		AVStream* stream = fmt_ctx->streams[0];
 		double rotation = get_rotation(stream);
+		vector<float> tmp_joint;
 		do
 		{
 			if (!video.read(frame))
@@ -154,8 +155,19 @@ void mVideoPosePredictor3D::predict(const std::string& video_path, const string&
 			cv::flip(frame, frame, 1);
 			mcam.drawFrame(frame);
 
-			meshes.render(vertexs, joint_indics, curModel);
-
+			if (is_relative)
+			{
+				meshes.render(vertexs, joint_indics, curModel);
+			}
+			else
+			{
+				tmp_joint.assign(vertexs.begin(), vertexs.end());
+				for (int i = 0; i < tmp_joint.size(); ++i)
+				{
+					tmp_joint[i] /= 1600;
+				}
+				meshes.render(tmp_joint, joint_indics, curModel);
+			}
 			glfwSwapBuffers(window);
 			glfwPollEvents();
 
