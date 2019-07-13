@@ -7,6 +7,7 @@
 #include <QDateTime>
 #include "FbxAPI.h"
 #include "OpenGLAPI.h"
+#include "vmdWriter.h"
 #include <string>
 
 #if _MSC_VER >= 1600
@@ -17,6 +18,7 @@
 
 
 std::multimap<int, QString> TotalInputFile;
+
 
 
 TrackingWindow::TrackingWindow(QWidget *parent) :
@@ -99,9 +101,9 @@ TrackingWindow::TrackingWindow(QWidget *parent) :
 	 ui->pushButton_delAll->setDisabled(true);
 	 
 	 connect(ui->pushButton_2, &QPushButton::clicked, this, &TrackingWindow::sendSlot);
-	 connect(&vmdW, SIGNAL(toMain(QStandardItemModel*)), this, SLOT(fromVMD(QStandardItemModel*)));
-	 connect(&fbxW, SIGNAL(toMain(QStandardItemModel*)), this, SLOT(fromFBX(QStandardItemModel*)));
-	 connect(&vfW, SIGNAL(toMain(QStandardItemModel*)), this, SLOT(fromVF(QStandardItemModel*)));
+	 connect(&vmdW, SIGNAL(toMain(QStandardItemModel*,QString)), this, SLOT(fromVMD(QStandardItemModel*,QString)));
+	 connect(&fbxW, SIGNAL(toMain(QStandardItemModel*, QString)), this, SLOT(fromFBX(QStandardItemModel*, QString)));
+	 connect(&vfW, SIGNAL(toMain(QStandardItemModel*, QString)), this, SLOT(fromVF(QStandardItemModel*, QString)));
 	 connect(ui->tableView->selectionModel(), SIGNAL(currentRowChanged(const QModelIndex &,
 		 const QModelIndex &)), this, SLOT(view_select_check()));
 
@@ -232,8 +234,9 @@ void TrackingWindow::on_pushButton_path_clicked()
     }
 }
 
-void TrackingWindow::fromVMD(QStandardItemModel *vmodel)
+void TrackingWindow::fromVMD(QStandardItemModel *vmodel,QString filepath)
 {
+	outputFilePath = filepath;
 	int row = vmodel->rowCount();
 	for (int i = 0; i < row; i++)
 	{
@@ -280,8 +283,9 @@ void TrackingWindow::fromVMD(QStandardItemModel *vmodel)
 		ui->pushButton_delAll->setDisabled(false);
 	}
 }
-void TrackingWindow::fromFBX(QStandardItemModel *fmodel)
+void TrackingWindow::fromFBX(QStandardItemModel *fmodel,QString filepath)
 {
+	outputFilePath = filepath;
 	int row = fmodel->rowCount();
 	for (int i = 0; i < row; i++)
 	{
@@ -328,8 +332,9 @@ void TrackingWindow::fromFBX(QStandardItemModel *fmodel)
 		ui->pushButton_delAll->setDisabled(false);
 	}
 }
-void TrackingWindow::fromVF(QStandardItemModel *vfmodel)
+void TrackingWindow::fromVF(QStandardItemModel *vfmodel, QString filepath)
 {
+	outputFilePath = filepath;
 	int row = vfmodel->rowCount();
 	for (int i = 0; i < row; i++)
 	{
@@ -387,8 +392,8 @@ void TrackingWindow::on_pushButton_start_clicked()
 	{
 		if (ui->comboBox->currentIndex() == 1)
 		{
-			QMessageBox::information(this, "提示", "v");
 			mVideoPosePredictor3D predictor("./vnect_model.caffemodel", "./vnect_net.prototxt");
+			QMessageBox::information(this, "提示", "v");
 			for (multimap<int, QString>::iterator it = TotalInputFile.begin();
 				it != TotalInputFile.end();
 				)
@@ -401,10 +406,8 @@ void TrackingWindow::on_pushButton_start_clicked()
 					predictor.predict(stdInputFileString, "./shader", "./model", output, false);
 					std::string outputFileName = stdInputFileString.substr(stdInputFileString.rfind("/") + 1, stdInputFileString.rfind(".") - stdInputFileString.rfind("/") - 1);
 					predictor.writePositionToJson(outputFilePath.toStdString() + "/" + outputFileName + ".json", output);
-					FbxAPI test((outputFilePath.toStdString() + "/" + outputFileName + ".json").c_str());
-					test.ProcessFrameVnect();
-					test.Export((outputFilePath.toStdString() + "/" + outputFileName + ".FBX").c_str());
-					test.Destory();
+					vmdWriter writer(outputFilePath.toStdString() + "/" + outputFileName + ".json", "Hatsune Miku", false);
+					writer.writeFile(outputFilePath.toStdString() + "/" + outputFileName + ".vmd");
 
 					if (ui->checkBox->isChecked() == true)
 					{
@@ -447,6 +450,8 @@ void TrackingWindow::on_pushButton_start_clicked()
 					test.ProcessFrameVnect();
 					test.Export((outputFilePath.toStdString() + "/" + outputFileName + ".FBX").c_str());
 					test.Destory();
+					vmdWriter writer(outputFilePath.toStdString() + "/" + outputFileName + ".json", "Hatsune Miku", false);
+					writer.writeFile(outputFilePath.toStdString() + "/" + outputFileName + ".vmd");
 					if (ui->checkBox->isChecked() == true)
 					{
 						OpenGLAPI temp((outputFilePath.toStdString() + "/" + outputFileName + ".json").c_str());
@@ -472,10 +477,8 @@ void TrackingWindow::on_pushButton_start_clicked()
 					std::string outputFileName = stdInputFileString.substr(stdInputFileString.rfind("/") + 1, stdInputFileString.rfind(".") - stdInputFileString.rfind("/") - 1);
 					std::string fullCommand = "python demo.py --inputpath=" + stdInputFileString + " --outputpath=" + outputFilePath.toStdString() + " --jsonpath=" + outputFilePath.toStdString() + "/" + outputFileName + ".json";
 					system(fullCommand.c_str());
-					FbxAPI test((outputFilePath.toStdString() + "/" + outputFileName + ".json").c_str());
-					test.ProcessFrameOpenMMD();
-					test.Export((outputFilePath.toStdString() + "/" + outputFileName + ".FBX").c_str());
-					test.Destory();
+					vmdWriter writer(outputFilePath.toStdString() + "/" + outputFileName + ".json", "Hatsune Miku",true);
+					writer.writeFile(outputFilePath.toStdString() + "/" + outputFileName + ".vmd");
 					if (ui->checkBox->isChecked() == true)
 					{
 						OpenGLAPI temp((outputFilePath.toStdString() + "/" + outputFileName + ".json").c_str());
@@ -514,6 +517,8 @@ void TrackingWindow::on_pushButton_start_clicked()
 					test.ProcessFrameOpenMMD();
 					test.Export((outputFilePath.toStdString() + "/" + outputFileName + ".FBX").c_str());
 					test.Destory();
+					vmdWriter writer(outputFilePath.toStdString() + "/" + outputFileName + ".json", "Hatsune Miku", true);
+					writer.writeFile(outputFilePath.toStdString() + "/" + outputFileName + ".vmd");
 					if (ui->checkBox->isChecked() == true)
 					{
 						OpenGLAPI temp((outputFilePath.toStdString() + "/" + outputFileName + ".json").c_str());

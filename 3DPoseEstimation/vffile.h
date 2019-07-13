@@ -41,7 +41,7 @@ private slots:
 
 	void view_select_check();
 signals:
-	void toMain(QStandardItemModel*);
+	void toMain(QStandardItemModel*,QString);
 protected:
 	//拖动窗口相关
 	void mousePressEvent(QMouseEvent *event);

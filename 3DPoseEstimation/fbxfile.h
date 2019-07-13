@@ -45,7 +45,7 @@ private slots:
 
 	void view_select_check();
 signals:
-	void toMain(QStandardItemModel*);
+	void toMain(QStandardItemModel*,QString);
 protected:
 	void mousePressEvent(QMouseEvent *event);
 	void mouseMoveEvent(QMouseEvent *event);

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'vmdfile.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.4
+** Created by: Qt User Interface Compiler version 5.13.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -140,15 +140,15 @@ public:
 
     void retranslateUi(QDialog *vmdfile)
     {
-        vmdfile->setWindowTitle(QApplication::translate("vmdfile", "Dialog", nullptr));
-        pushButton_del->setText(QApplication::translate("vmdfile", "\347\247\273\351\231\244", nullptr));
-        pushButton_delAll->setText(QApplication::translate("vmdfile", "\346\270\205\347\251\272\345\210\227\350\241\250", nullptr));
-        label->setText(QApplication::translate("vmdfile", "\350\276\223\345\207\272\350\267\257\345\276\204", nullptr));
-        lineEdit->setText(QApplication::translate("vmdfile", "\346\234\252\351\200\211\346\213\251\350\276\223\345\207\272\350\267\257\345\276\204", nullptr));
-        pushButton_change->setText(QApplication::translate("vmdfile", "\346\233\264\346\224\271", nullptr));
-        pushButton_conf->setText(QApplication::translate("vmdfile", "\347\241\256\345\256\232", nullptr));
+        vmdfile->setWindowTitle(QCoreApplication::translate("vmdfile", "Dialog", nullptr));
+        pushButton_del->setText(QCoreApplication::translate("vmdfile", "\347\247\273\351\231\244", nullptr));
+        pushButton_delAll->setText(QCoreApplication::translate("vmdfile", "\346\270\205\347\251\272\345\210\227\350\241\250", nullptr));
+        label->setText(QCoreApplication::translate("vmdfile", "\350\276\223\345\207\272\350\267\257\345\276\204", nullptr));
+        lineEdit->setText(QCoreApplication::translate("vmdfile", "\346\234\252\351\200\211\346\213\251\350\276\223\345\207\272\350\267\257\345\276\204", nullptr));
+        pushButton_change->setText(QCoreApplication::translate("vmdfile", "\346\233\264\346\224\271", nullptr));
+        pushButton_conf->setText(QCoreApplication::translate("vmdfile", "\347\241\256\345\256\232", nullptr));
         pushButton_close->setText(QString());
-        pushButton_openfile->setText(QApplication::translate("vmdfile", "\346\267\273\345\212\240\346\226\207\344\273\266", nullptr));
+        pushButton_openfile->setText(QCoreApplication::translate("vmdfile", "\346\267\273\345\212\240\346\226\207\344\273\266", nullptr));
     } // retranslateUi
 
 };

@@ -56,9 +56,9 @@ private slots:
 
     void on_pushButton_path_clicked();
 
-    void fromVMD(QStandardItemModel *vmodel);
-    void fromFBX(QStandardItemModel *fmodel);
-    void fromVF(QStandardItemModel *vfmodel);
+    void fromVMD(QStandardItemModel *vmodel,QString filepath);
+    void fromFBX(QStandardItemModel *fmodel, QString filepath);
+    void fromVF(QStandardItemModel *vfmodel, QString filepath);
     void on_pushButton_start_clicked();
 
 	void view_select_check();

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'compara.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.4
+** Created by: Qt User Interface Compiler version 5.13.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -428,25 +428,25 @@ public:
 
     void retranslateUi(QDialog *Compara)
     {
-        Compara->setWindowTitle(QApplication::translate("Compara", "Dialog", nullptr));
+        Compara->setWindowTitle(QCoreApplication::translate("Compara", "Dialog", nullptr));
         pushButton_6->setText(QString());
         pushButton_7->setText(QString());
-        pushButton_path->setText(QApplication::translate("Compara", "\351\200\211\346\213\251\350\247\206\351\242\221\344\270\200", nullptr));
-        pushButton_2->setText(QApplication::translate("Compara", "\350\277\224\345\233\236\350\217\234\345\215\225", nullptr));
-        pushButton_start->setText(QApplication::translate("Compara", "\345\257\271\346\257\224", nullptr));
+        pushButton_path->setText(QCoreApplication::translate("Compara", "\351\200\211\346\213\251\350\247\206\351\242\221\344\270\200", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("Compara", "\350\277\224\345\233\236\350\217\234\345\215\225", nullptr));
+        pushButton_start->setText(QCoreApplication::translate("Compara", "\345\257\271\346\257\224", nullptr));
         label_5->setText(QString());
         label_6->setText(QString());
-        comboBox->setItemText(0, QApplication::translate("Compara", "OpenMMD", nullptr));
-        comboBox->setItemText(1, QApplication::translate("Compara", "VNect", nullptr));
+        comboBox->setItemText(0, QCoreApplication::translate("Compara", "OpenMMD", nullptr));
+        comboBox->setItemText(1, QCoreApplication::translate("Compara", "VNect", nullptr));
 
-        label_8->setText(QApplication::translate("Compara", "\351\200\211\346\213\251\344\270\211\347\273\264\351\207\215\345\273\272\347\256\227\346\263\225", nullptr));
-        pushButton_path_2->setText(QApplication::translate("Compara", "\351\200\211\346\213\251\350\247\206\351\242\221\344\272\214", nullptr));
-        label->setText(QApplication::translate("Compara", "\345\207\206\347\241\256\347\216\207\357\274\232", nullptr));
-        label_2->setText(QApplication::translate("Compara", "%", nullptr));
-        label_preview1->setText(QApplication::translate("Compara", "\351\242\204\350\247\210\345\233\276", nullptr));
-        label_path1->setText(QApplication::translate("Compara", "\350\247\206\351\242\221\346\226\207\344\273\266\350\267\257\345\276\204", nullptr));
-        label_preview2->setText(QApplication::translate("Compara", "\351\242\204\350\247\210\345\233\276", nullptr));
-        label_path2->setText(QApplication::translate("Compara", "\350\247\206\351\242\221\346\226\207\344\273\266\350\267\257\345\276\204", nullptr));
+        label_8->setText(QCoreApplication::translate("Compara", "\351\200\211\346\213\251\344\270\211\347\273\264\351\207\215\345\273\272\347\256\227\346\263\225", nullptr));
+        pushButton_path_2->setText(QCoreApplication::translate("Compara", "\351\200\211\346\213\251\350\247\206\351\242\221\344\272\214", nullptr));
+        label->setText(QCoreApplication::translate("Compara", "\345\207\206\347\241\256\347\216\207\357\274\232", nullptr));
+        label_2->setText(QCoreApplication::translate("Compara", "%", nullptr));
+        label_preview1->setText(QCoreApplication::translate("Compara", "\351\242\204\350\247\210\345\233\276", nullptr));
+        label_path1->setText(QCoreApplication::translate("Compara", "\350\247\206\351\242\221\346\226\207\344\273\266\350\267\257\345\276\204", nullptr));
+        label_preview2->setText(QCoreApplication::translate("Compara", "\351\242\204\350\247\210\345\233\276", nullptr));
+        label_path2->setText(QCoreApplication::translate("Compara", "\350\247\206\351\242\221\346\226\207\344\273\266\350\267\257\345\276\204", nullptr));
     } // retranslateUi
 
 };

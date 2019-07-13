@@ -1,5 +1,8 @@
-﻿#include "compara.h"
+﻿#include <videoPosePredictor3D.h>
+#include "compara.h"
 #include "ui_compara.h"
+#include "OpenGLAPI.h"
+
 
 Compara::Compara(QWidget *parent) :
     QDialog(parent),
@@ -79,7 +82,7 @@ void Compara::on_pushButton_path_clicked()
 {
 
 	//文件一
-	fileName1 = QFileDialog::getOpenFileName(this, tr("open video files"), "", tr("Videos Or Images (*.avi *.mp4 *.mpg *.png *.jpg)"));
+	fileName1 = QFileDialog::getOpenFileName(this, tr("open video files"), "", tr("Videos(*.avi *.mp4 *.mpg)"));
 	//ui->lineEdit->setText(fileName);
 	if (!fileName1.isEmpty())
 	{
@@ -108,7 +111,7 @@ void Compara::on_pushButton_path_clicked()
 void Compara::on_pushButton_path_2_clicked()
 {
 	//文件二
-	fileName2 = QFileDialog::getOpenFileName(this, tr("open video files"), "", tr("Videos Or Images (*.avi *.mp4 *.mpg *.png *.jpg)"));
+	fileName2 = QFileDialog::getOpenFileName(this, tr("open video files"), "", tr("Videos(*.avi *.mp4 *.mpg)"));
 	//ui->lineEdit->setText(fileName);
 	if (!fileName2.isEmpty())
 	{
@@ -135,16 +138,47 @@ void Compara::on_pushButton_path_2_clicked()
 void Compara::on_pushButton_start_clicked()
 {
 	//TODO：开始对比fileName1和fileName2
-	QString accurate;
 	if (ui->comboBox->currentIndex() == 0)
 	{
 		//openmmd
+		//fileName1
+		std::string fileName1_short = fileName1.toStdString().substr(fileName1.toStdString().rfind("/") + 1, fileName1.toStdString().rfind(".")- fileName1.toStdString().rfind("/")-1);
+		std::string jsonPath1 = "./temp/" + fileName1_short + ".json";
+		std::string fullCommand = "python demo.py --inputpath=" + fileName1.toStdString() + " --outputpath=./temp" + " --jsonpath=" + jsonPath1;
+		system(fullCommand.c_str());
+		//fileName2
+		std::string fileName2_short = fileName2.toStdString().substr(fileName2.toStdString().rfind("/") + 1, fileName2.toStdString().rfind(".") - fileName2.toStdString().rfind("/") - 1);
+		std::string jsonPath2 = "./temp/" + fileName2_short + ".json";
+		fullCommand = "python demo.py --inputpath=" + fileName2.toStdString() + " --outputpath=./temp" + " --jsonpath=" + jsonPath2;
+		system(fullCommand.c_str());
+		//opengl动画
+		OpenGLAPI openglapi(jsonPath1.c_str(), jsonPath2.c_str());
+		openglapi.doubleVideo_OpenMMD();
+		double accurate=openglapi.getMotionContrastor().getcontrastPoint();
+		ui->lineEdit->setText(QString::number(accurate, 10, 2) + QString("%"));
 	}
 	if (ui->comboBox->currentIndex() == 1)
 	{
 		//vnect
+		mVideoPosePredictor3D predictor2("./vnect_model.caffemodel", "./vnect_net.prototxt");
+		std::vector<std::vector<float>> output;
+		//fileName1
+		predictor2.predict(fileName1.toStdString(), "./shader", "./model", output, false);
+		std::string fileName1_short = fileName1.toStdString().substr(fileName1.toStdString().rfind("/") + 1, fileName1.toStdString().rfind(".") - fileName1.toStdString().rfind("/") - 1);
+		std::string jsonPath1 = "./temp/" + fileName1_short + ".json";
+		predictor2.writePositionToJson(jsonPath1, output);
+		output.clear();
+		//fileName2
+		predictor2.predict(fileName2.toStdString(), "./shader", "./model", output, false);
+		std::string fileName2_short = fileName2.toStdString().substr(fileName2.toStdString().rfind("/") + 1, fileName2.toStdString().rfind(".") - fileName2.toStdString().rfind("/") - 1);
+		std::string jsonPath2 = "./temp/" + fileName2_short + ".json";
+		predictor2.writePositionToJson(jsonPath2, output);
+		//opengl动画
+		OpenGLAPI openglapi(jsonPath1.c_str(), jsonPath2.c_str());
+		openglapi.doubleVideo_Vnect();
+		double accurate = openglapi.getMotionContrastor().getcontrastPoint();
+		ui->lineEdit->setText(QString::number(accurate, 10, 2) + QString("%"));
 	}
-	ui->lineEdit->setText(accurate);
 }
 
 void Compara::on_pushButton_6_clicked()

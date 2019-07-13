@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'trackingWindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.4
+** Created by: Qt User Interface Compiler version 5.13.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -332,29 +332,29 @@ public:
 
     void retranslateUi(QMainWindow *TrackingWindow)
     {
-        TrackingWindow->setWindowTitle(QApplication::translate("TrackingWindow", "MainWindow", nullptr));
+        TrackingWindow->setWindowTitle(QCoreApplication::translate("TrackingWindow", "MainWindow", nullptr));
         pushButton_6->setText(QString());
         pushButton_7->setText(QString());
         pushButton_VMD->setText(QString());
         pushButton_FBX->setText(QString());
         pushButton_VF->setText(QString());
-        pushButton_path->setText(QApplication::translate("TrackingWindow", "\346\211\223\345\274\200\346\226\207\344\273\266\345\244\271", nullptr));
-        pushButton_del->setText(QApplication::translate("TrackingWindow", "\347\247\273\351\231\244", nullptr));
-        pushButton_2->setText(QApplication::translate("TrackingWindow", "\350\277\224\345\233\236\350\217\234\345\215\225", nullptr));
-        pushButton_start->setText(QApplication::translate("TrackingWindow", "\345\274\200\345\247\213\345\244\204\347\220\206", nullptr));
-        pushButton_delAll->setText(QApplication::translate("TrackingWindow", "\346\270\205\347\251\272\345\210\227\350\241\250", nullptr));
-        label->setText(QApplication::translate("TrackingWindow", "\345\257\274\345\207\272\345\212\250\344\275\234\346\226\207\344\273\266\346\240\274\345\274\217", nullptr));
+        pushButton_path->setText(QCoreApplication::translate("TrackingWindow", "\346\211\223\345\274\200\346\226\207\344\273\266\345\244\271", nullptr));
+        pushButton_del->setText(QCoreApplication::translate("TrackingWindow", "\347\247\273\351\231\244", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("TrackingWindow", "\350\277\224\345\233\236\350\217\234\345\215\225", nullptr));
+        pushButton_start->setText(QCoreApplication::translate("TrackingWindow", "\345\274\200\345\247\213\345\244\204\347\220\206", nullptr));
+        pushButton_delAll->setText(QCoreApplication::translate("TrackingWindow", "\346\270\205\347\251\272\345\210\227\350\241\250", nullptr));
+        label->setText(QCoreApplication::translate("TrackingWindow", "\345\257\274\345\207\272\345\212\250\344\275\234\346\226\207\344\273\266\346\240\274\345\274\217", nullptr));
         label_2->setText(QString());
         label_3->setText(QString());
         label_4->setText(QString());
         label_5->setText(QString());
         label_6->setText(QString());
-        comboBox->setItemText(0, QApplication::translate("TrackingWindow", "OpenMMD", nullptr));
-        comboBox->setItemText(1, QApplication::translate("TrackingWindow", "VNect", nullptr));
+        comboBox->setItemText(0, QCoreApplication::translate("TrackingWindow", "OpenMMD", nullptr));
+        comboBox->setItemText(1, QCoreApplication::translate("TrackingWindow", "VNect", nullptr));
 
-        checkBox->setText(QApplication::translate("TrackingWindow", "\345\244\204\347\220\206\345\220\216\346\230\257\345\220\246\346\230\276\347\244\272\345\212\250\347\224\273", nullptr));
+        checkBox->setText(QCoreApplication::translate("TrackingWindow", "\345\244\204\347\220\206\345\220\216\346\230\257\345\220\246\346\230\276\347\244\272\345\212\250\347\224\273", nullptr));
         label_7->setText(QString());
-        label_8->setText(QApplication::translate("TrackingWindow", "\351\200\211\346\213\251\344\270\211\347\273\264\351\207\215\345\273\272\347\256\227\346\263\225", nullptr));
+        label_8->setText(QCoreApplication::translate("TrackingWindow", "\351\200\211\346\213\251\344\270\211\347\273\264\351\207\215\345\273\272\347\256\227\346\263\225", nullptr));
     } // retranslateUi
 
 };

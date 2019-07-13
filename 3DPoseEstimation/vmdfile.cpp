@@ -98,7 +98,7 @@ void vmdfile::on_pushButton_openfile_clicked()
 	
         QString fileName;
 		
-        fileName=QFileDialog::getOpenFileName(this,tr("open video files"),"",tr("Videos Or Images (*.avi *.mp4 *.mpg *.png *.jpg)"));
+        fileName=QFileDialog::getOpenFileName(this,tr("open video files"),"",tr("Videos(*.avi *.mp4 *.mpg)"));
 		if (!fileName.isEmpty())
 		{
 			//ui->lineEdit->setText(fileName);
@@ -182,7 +182,9 @@ void vmdfile::on_pushButton_change_clicked()
 
 void vmdfile::on_pushButton_conf_clicked()
 {
-    emit toMain(vmodel);
+	QString outpath;
+	outpath = ui->lineEdit->text();
+    emit toMain(vmodel, outpath);
     vmodel->removeRows(0,vmodel->rowCount());
     row=0;
     this->close();

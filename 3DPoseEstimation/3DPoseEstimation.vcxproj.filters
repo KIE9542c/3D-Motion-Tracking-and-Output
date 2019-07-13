@@ -83,6 +83,12 @@
     <ClCompile Include="compara.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MotionContrastor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vmdWriter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="dialogmenu.h">
@@ -236,6 +242,12 @@
     </ClInclude>
     <ClInclude Include="ui_compara.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MotionContrastor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vmdWriter.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

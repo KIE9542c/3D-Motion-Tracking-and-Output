@@ -1,7 +1,8 @@
 #include <fbxsdk.h>
 #include "Common.h"
 #include "FbxAPI.h"
-
+#define _USE_MATH_DEFINES
+#include <math.h>
 
 //-----------------------------------------------------------------------
 void FbxAPI::Export(const char* lExportFilename) {
@@ -26,7 +27,6 @@ void FbxAPI::Initialize(const char* lFilename) {
 
 	//Extract the animation stacks using a pointer to an instance of the FbxScene (pScene).
 	int numStacks = gScene->GetSrcObjectCount(FbxCriteria::ObjectType(FbxAnimStack::ClassId));
-	FBXSDK_printf("%d\n", numStacks);
 
 	FbxAnimStack* gAnimStack = FbxAnimStack::Create(gScene, "");
 
@@ -72,13 +72,13 @@ void FbxAPI::Initialize(const char* lFilename) {
 	//gVecR_Calf = QVector3D(0, 0, 1);
 	//gVecR_Foot = QVector3D(0, -3.368, 3.917);
 
-	gVecSpine_Global = QVector3D(0, 0.006, 7.166);
-	gVecSpine_Local = QVector3D(7.166, -0.006, 0);
+	gVecSpine_Global = QVector3D(0, 0.005, 7.166);
+	gVecSpine_Local = QVector3D(7.166, -0.005, 0);
 	gVecL_Thigh = QVector3D(1, 0, 0);
-	gVecSpine1 = QVector3D(7.166, -0.002,0);
+	gVecSpine1 = QVector3D(7.166, -0.002, 0);
 	gVecR_Thigh = QVector3D(1, 0, 0);
 	gVecL_Calf = QVector3D(1, 0, 0);
-	gVecL_Foot = QVector3D(3.169, 4.079, 0);
+	gVecL_Foot = QVector3D(3.17, 4.079, 0);
 	gVecHead = QVector3D(1, 0, 0);
 	gVecL_Clavicle = QVector3D(1, 0, 0);
 	gVecR_Clavicle = QVector3D(1, 0, 0);
@@ -87,21 +87,14 @@ void FbxAPI::Initialize(const char* lFilename) {
 	gVecR_UpperArm = QVector3D(1, 0, 0);
 	gVecR_Forearm = QVector3D(1, 0, 0);
 	gVecR_Calf = QVector3D(1, 0, 0);
-	gVecR_Foot = QVector3D(3.917, 3.368, 0);
-
-	FBXSDK_printf("%s\n", gNodeSpine1->GetName());
+	gVecR_Foot = QVector3D(3.17, 4.079, 0);
 
 	gFrame = 0;
 }
 //-----------------------------------------------------------------------
 void FbxAPI::Destory() {
-
-
 	//gPosition.clear();
 	DestroySdkObjects(gSdkManager, true);
-
-
-
 }
 //-----------------------------------------------------------------------
 bool FbxAPI::ReadPosition(const char* lFilename) {
@@ -134,8 +127,8 @@ bool FbxAPI::ReadPosition(const char* lFilename) {
 				for (int n = 0; n < root["bodies"][i]["position"].size(); n++)
 				{
 					lPosition.push_back(root["bodies"][i]["position"][n].asFloat());
-					if ((n+1) % 3 == 0) {
-						lFrame.push_back(QVector3D(lPosition[0],lPosition[1],lPosition[2]));
+					if ((n + 1) % 3 == 0) {
+						lFrame.push_back(QVector3D(lPosition[0], lPosition[1], lPosition[2]));
 						lPosition.clear();
 					}
 				}
@@ -154,8 +147,7 @@ bool FbxAPI::ReadPosition(const char* lFilename) {
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessOneFrameVnect(vector<QVector3D> lPos) {
-	cout << "Process frame " << gFrame << endl;
-	ProcessBip001(lPos[14]-gPosition[0][14]);
+	ProcessBip001(lPos[14] - gPosition[0][14]);
 	ProcessSpine(lPos[15] - lPos[14]);
 	ProcessL_Thigh(lPos[12] - lPos[11]);
 	ProcessSpine1(lPos[1] - lPos[15]);
@@ -174,16 +166,12 @@ void FbxAPI::ProcessOneFrameVnect(vector<QVector3D> lPos) {
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessOneFrameOpenMMD(vector<QVector3D> lPos) {
-	cout << "Process frame " << gFrame << endl;
-	ProcessBip001((lPos[0]-gPosition[0][0])/20);
+	ProcessBip001((lPos[0] - gPosition[0][0]) / 20);
 	ProcessSpine(lPos[7] - lPos[0]);
-	if (gFrame == 183)
-		cout << gFrame;
 	ProcessL_Thigh(lPos[5] - lPos[4]);
 	ProcessSpine1(lPos[8] - lPos[7]);
 	ProcessR_Thigh(lPos[2] - lPos[1]);
 	ProcessL_Calf(lPos[6] - lPos[5]);
-	//ProcessL_Foot(lPos[20] - lPos[13]);
 	ProcessHead(lPos[9] - lPos[8]);
 	ProcessL_Clavicle(lPos[11] - lPos[8]);
 	ProcessR_Clavicle(lPos[14] - lPos[8]);
@@ -192,7 +180,8 @@ void FbxAPI::ProcessOneFrameOpenMMD(vector<QVector3D> lPos) {
 	ProcessR_UpperArm(lPos[15] - lPos[14]);
 	ProcessR_Forearm(lPos[16] - lPos[15]);
 	ProcessR_Calf(lPos[3] - lPos[2]);
-	//ProcessR_Foot(lPos[19] - lPos[10]);
+	ProcessRotation(gNodeL_Foot, QVector3D(117,7.7,-65));
+	ProcessRotation(gNodeR_Foot, QVector3D(-45,-41,-112));
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessBip001(QVector3D lPos) {
@@ -201,7 +190,7 @@ void FbxAPI::ProcessBip001(QVector3D lPos) {
 	FbxAnimCurve* lCurveZ = NULL;
 	FbxTime lTime;
 	int lKeyIndex = 0;
-	
+
 	lCurveX = gNodeBip001->LclTranslation.GetCurve(gAnimLayer, FBXSDK_CURVENODE_COMPONENT_X, true);
 
 	if (lCurveX)
@@ -290,164 +279,145 @@ void FbxAPI::ProcessRotation(FbxNode* lNode, QVector3D eulerAngles) {
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessSpine(QVector3D lPos) {
-	//记录上一帧的四元数
-	QQuaternion last = gSpineRotate;
 	//计算这一帧的四元数
-	gSpineRotate = QQuaternion::rotationTo(gVecSpine_Local, lPos);
-	//处理约束
-	processConstraints(last, gSpineRotate);
+	float w;
+	gSpineRotate = rotateTo(gVecSpine_Local, lPos,w);
 	//写入动画曲线
-	ProcessRotation(gNodeSpine, gSpineRotate.toEulerAngles());
+	QVector3D euler = toEulerAngles(gSpineRotate, w);
+	ProcessRotation(gNodeSpine, euler);
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessL_Thigh(QVector3D lPos) {
-	QQuaternion last = gL_ThighRotate;
 	lPos = gSpineRotate.inverted() * lPos;
-	gL_ThighRotate = QQuaternion::rotationTo(gVecL_Thigh, lPos);
-	if (gFrame >= 1) {
-		processConstraints(last, gL_ThighRotate);
-	}
-	ProcessRotation(gNodeL_Thigh, gL_ThighRotate.toEulerAngles());
+	float w;
+	gL_ThighRotate = rotateTo(gVecL_Thigh, lPos,w);
+	QVector3D euler = toEulerAngles(gL_ThighRotate,w);
+	ProcessRotation(gNodeL_Thigh, euler);
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessSpine1(QVector3D lPos) {
-	QQuaternion last = gSpine1Rotate;
 	lPos = gSpineRotate.inverted() * lPos;
-	gSpine1Rotate = QQuaternion::rotationTo(gVecSpine1, lPos);
-	if (gFrame >= 1) {
-		processConstraints(last, gSpine1Rotate);
-	}
-	ProcessRotation(gNodeSpine1, gSpine1Rotate.toEulerAngles());
+	float w;
+	gSpine1Rotate = rotateTo(gVecSpine1, lPos,w);
+	QVector3D euler = toEulerAngles(gSpine1Rotate, w);
+	ProcessRotation(gNodeSpine1, euler);
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessR_Thigh(QVector3D lPos) {
-	QQuaternion last = gR_ThighRotate;
 	lPos = gSpineRotate.inverted() * lPos;
-	gR_ThighRotate = QQuaternion::rotationTo(gVecR_Thigh, lPos);
-	if (gFrame >= 1) {
-		processConstraints(last, gR_ThighRotate);
-	}
-	ProcessRotation(gNodeR_Thigh, gR_ThighRotate.toEulerAngles());
+	float w;
+	gR_ThighRotate = rotateTo(gVecR_Thigh, lPos,w);
+	QVector3D euler = toEulerAngles(gR_ThighRotate, w);
+	ProcessRotation(gNodeR_Thigh, euler);
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessL_Calf(QVector3D lPos) {
-	QQuaternion last = gL_CalfRotate;
 	lPos = gL_ThighRotate.inverted() * gSpineRotate.inverted() * lPos;
-	gL_CalfRotate = QQuaternion::rotationTo(gVecL_Calf, lPos);
-	QVector3D temp = gL_CalfRotate.toEulerAngles();
-	if (temp.x() < 150 && temp.x() > -150) {
-		temp.setX(temp.x() + 180);
-		gL_CalfRotate = QQuaternion::fromEulerAngles(temp);
-	}
-	if (gFrame >= 1) {
-		processConstraints(last, gL_CalfRotate);
-	}
-	ProcessRotation(gNodeL_Calf, gL_CalfRotate.toEulerAngles());
+	float w;
+	gL_CalfRotate = rotateTo(gVecL_Calf, lPos,w);
+	QVector3D euler = toEulerAngles(gL_CalfRotate, w);
+	ProcessRotation(gNodeL_Calf, euler);
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessL_Foot(QVector3D lPos) {
-	QQuaternion last = gL_FootRotate;
 	lPos = gL_CalfRotate.inverted() * gL_ThighRotate.inverted() * gSpineRotate.inverted() * lPos;
-	gL_FootRotate = QQuaternion::rotationTo(gVecL_Foot, lPos);
-	if (gFrame >= 1) {
-		processConstraints(last, gL_FootRotate);
-	}
-	ProcessRotation(gNodeL_Foot, gL_FootRotate.toEulerAngles());
+	float w;
+	gL_FootRotate = rotateTo(gVecL_Foot, lPos,w);
+	QVector3D euler = toEulerAngles(gL_FootRotate, w);
+	ProcessRotation(gNodeL_Foot, euler);
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessHead(QVector3D lPos) {
-	QQuaternion last = gHeadRotate;
 	lPos = gSpine1Rotate.inverted() * gSpineRotate.inverted() * lPos;
-	gHeadRotate = QQuaternion::rotationTo(gVecHead, lPos);
-	if (gFrame >= 1) {
-		processConstraints(last, gHeadRotate);
-	}
-	ProcessRotation(gNodeHead, gHeadRotate.toEulerAngles());
+	float w;
+	gHeadRotate = rotateTo(gVecHead, lPos,w);
+	QVector3D euler = toEulerAngles(gHeadRotate, w);
+	ProcessRotation(gNodeHead, euler);
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessL_Clavicle(QVector3D lPos) {
-	QQuaternion last = gL_ClavicleRotate;
 	lPos = gSpine1Rotate.inverted() * gSpineRotate.inverted() * lPos;
-	gL_ClavicleRotate = QQuaternion::rotationTo(gVecL_Clavicle, lPos);
-	if (gFrame >= 1) {
-		processConstraints(last, gL_ClavicleRotate);
-	}
-	ProcessRotation(gNodeL_Clavicle, gL_ClavicleRotate.toEulerAngles());
+	float w;
+	gL_ClavicleRotate = rotateTo(gVecL_Clavicle, lPos,w);
+	QVector3D euler = toEulerAngles(gL_ClavicleRotate, w);
+	ProcessRotation(gNodeL_Clavicle, euler);
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessR_Clavicle(QVector3D lPos) {
-	QQuaternion last = gR_ClavicleRotate;
 	lPos = gSpine1Rotate.inverted() * gSpineRotate.inverted() * lPos;
-	gR_ClavicleRotate = QQuaternion::rotationTo(gVecR_Clavicle, lPos);
-	if (gFrame >= 1) {
-		processConstraints(last, gR_ClavicleRotate);
-	}
-	ProcessRotation(gNodeR_Clavicle, gR_ClavicleRotate.toEulerAngles());
+	float w;
+	gR_ClavicleRotate = rotateTo(gVecR_Clavicle, lPos,w);
+	QVector3D euler = toEulerAngles(gR_ClavicleRotate, w);
+	ProcessRotation(gNodeR_Clavicle, euler);
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessL_UpperArm(QVector3D lPos) {
-	QQuaternion last = gL_UpperArmRotate;
 	lPos = gL_ClavicleRotate.inverted() * gSpine1Rotate.inverted() * gSpineRotate.inverted() * lPos;
-	gL_UpperArmRotate = QQuaternion::rotationTo(gVecL_UpperArm, lPos);
-	if (gFrame >= 1) {
-		processConstraints(last, gL_UpperArmRotate);
-	}
-	ProcessRotation(gNodeL_UpperArm, gL_UpperArmRotate.toEulerAngles());
+	float w;
+	gL_UpperArmRotate = rotateTo(gVecL_UpperArm, lPos,w);
+	QVector3D euler = toEulerAngles(gL_UpperArmRotate, w);
+	ProcessRotation(gNodeL_UpperArm, euler);
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessL_Forearm(QVector3D lPos) {
-	QQuaternion last = gL_ForearmRotate;
 	lPos = gL_UpperArmRotate.inverted() * gL_ClavicleRotate.inverted() * gSpine1Rotate.inverted() * gSpineRotate.inverted() * lPos;
-	gL_ForearmRotate = QQuaternion::rotationTo(gVecL_Forearm, lPos);
-	if (gFrame >= 1) {
-		processConstraints(last, gL_ForearmRotate);
-	}
-	ProcessRotation(gNodeL_Forearm, gL_ForearmRotate.toEulerAngles());
+	float w;
+	gL_ForearmRotate = rotateTo(gVecL_Forearm, lPos,w);
+	QVector3D euler = toEulerAngles(gL_ForearmRotate, w);
+	ProcessRotation(gNodeL_Forearm, euler);
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessR_UpperArm(QVector3D lPos) {
-	QQuaternion last = gR_UpperArmRotate;
 	lPos = gR_ClavicleRotate.inverted() * gSpine1Rotate.inverted() * gSpineRotate.inverted() * lPos;
-	gR_UpperArmRotate = QQuaternion::rotationTo(gVecR_UpperArm, lPos);
-	if (gFrame >= 1) {
-		processConstraints(last, gR_UpperArmRotate);
-	}
-	ProcessRotation(gNodeR_UpperArm, gR_UpperArmRotate.toEulerAngles());
+	float w;
+	gR_UpperArmRotate = rotateTo(gVecR_UpperArm, lPos,w);
+	QVector3D euler = toEulerAngles(gR_UpperArmRotate, w);
+	ProcessRotation(gNodeR_UpperArm, euler);
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessR_Forearm(QVector3D lPos) {
-	QQuaternion last = gR_ForearmRotate;
 	lPos = gR_UpperArmRotate.inverted() * gR_ClavicleRotate.inverted() * gSpine1Rotate.inverted() * gSpineRotate.inverted() * lPos;
-	gR_ForearmRotate = QQuaternion::rotationTo(gVecR_Forearm, lPos);
-	if (gFrame >= 1) {
-		processConstraints(last, gR_ForearmRotate);
-	}
-	ProcessRotation(gNodeR_Forearm, gR_ForearmRotate.toEulerAngles());
+	float w;
+	gR_ForearmRotate = rotateTo(gVecR_Forearm, lPos,w);
+	QVector3D euler = toEulerAngles(gR_ForearmRotate, w);
+	ProcessRotation(gNodeR_Forearm, euler);
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessR_Calf(QVector3D lPos) {
-	QQuaternion last = gR_CalfRotate;
 	lPos = gR_ThighRotate.inverted() * gSpineRotate.inverted() * lPos;
-	gR_CalfRotate = QQuaternion::rotationTo(gVecR_Calf, lPos);
-	QVector3D temp = gR_CalfRotate.toEulerAngles();
-	if (temp.x() < 150 && temp.x() > -150) {
-		temp.setX(temp.x() + 180);
-		gR_CalfRotate = QQuaternion::fromEulerAngles(temp);
-	}
-	if (gFrame >= 1) {
-		processConstraints(last, gR_CalfRotate);
-	}
-	ProcessRotation(gNodeR_Calf, gR_CalfRotate.toEulerAngles());
+	float w;
+	gR_CalfRotate = rotateTo(gVecR_Calf, lPos,w);
+	QVector3D euler = toEulerAngles(gR_CalfRotate, w);
+	ProcessRotation(gNodeR_Calf, euler);
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessR_Foot(QVector3D lPos) {
-	QQuaternion last = gR_FootRotate;
 	lPos = gR_CalfRotate.inverted() * gR_ThighRotate.inverted() * gSpineRotate.inverted() * lPos;
-	gR_FootRotate = QQuaternion::rotationTo(gVecR_Foot, lPos);
-	if (gFrame >= 1) {
-		processConstraints(last, gR_FootRotate);
-	}
-	ProcessRotation(gNodeR_Foot, gR_FootRotate.toEulerAngles());
+	float w;
+	gR_FootRotate = rotateTo(gVecR_Foot, lPos,w);
+	QVector3D euler = toEulerAngles(gR_FootRotate, w);
+	ProcessRotation(gNodeR_Foot, euler);
+}
+//-----------------------------------------------------------------------
+QQuaternion FbxAPI::rotateTo(QVector3D from, QVector3D to, float& w) {
+	from = from.normalized();
+	to = to.normalized();
+	QVector3D axis = QVector3D::crossProduct(from, to).normalized();
+	float cos_val = QVector3D::dotProduct(from, to);
+	float theta = acos(cos_val) * 180 / M_PI;
+	w = cos(theta * M_PI / 180 / 2);
+	QQuaternion res = QQuaternion::fromAxisAndAngle(axis, theta);
+	return res;
+}
+//-----------------------------------------------------------------------
+QVector3D FbxAPI::toEulerAngles(QQuaternion xyz, float w) {
+	float x = atan2(2 * (w*xyz.x() + xyz.y()*xyz.z()), 1 - 2 * (pow(xyz.x(), 2) + pow(xyz.y(), 2)));
+	float y = asin(2 * (w*xyz.y() - xyz.z()*xyz.x()));
+	float z = atan2(2 * (w*xyz.z() + xyz.x()*xyz.y()), 1 - 2 * (pow(xyz.y(), 2) + pow(xyz.z(), 2)));
+	x = x * 180 / M_PI;
+	y = y * 180 / M_PI;
+	z = z * 180 / M_PI;
+	return QVector3D(x, y, z);
 }
 //-----------------------------------------------------------------------
 void FbxAPI::ModifyCoordinate() {
@@ -465,77 +435,6 @@ void FbxAPI::ModifyCoordinate() {
 	}
 }
 //-----------------------------------------------------------------------
-void FbxAPI::processConstraints(QQuaternion &last, QQuaternion &current) {
-	QVector3D eulerLast = last.toEulerAngles();
-	QVector3D eulerCurrent = current.toEulerAngles();
-	//setX
-	//-180~180
-	//处理边界情况
-	if (eulerCurrent.x() > eulerLast.x()) {
-		if ((eulerCurrent.x() - eulerLast.x()) <= (180 - eulerCurrent.x() + eulerLast.x() + 180)) {
-			if (eulerCurrent.x() - eulerLast.x() > 10)
-				eulerCurrent.setX(eulerLast.x() + 10);
-		}
-		else {
-			if ((180 - eulerCurrent.x() + eulerLast.x() + 180) > 10)
-				eulerCurrent.setX(eulerLast.x() - 10);
-		}
-	}
-	else {
-		if ((eulerLast.x() - eulerCurrent.x()) <= (180 - eulerLast.x() + eulerCurrent.x() + 180)) {
-			if (eulerLast.x() - eulerCurrent.x() > 10) 
-				eulerCurrent.setX(eulerLast.x() - 10);
-		}
-		else {
-			if ((180 - eulerLast.x() + eulerCurrent.x() + 180) > 10)
-				eulerCurrent.setX(eulerLast.x() + 10);
-		}
-	}	
-	//setY
-	if (eulerCurrent.y() > eulerLast.y()) {
-		if ((eulerCurrent.y() - eulerLast.y()) <= (180 - eulerCurrent.y() + eulerLast.y() + 180)) {
-			if (eulerCurrent.y() - eulerLast.y() > 10)
-				eulerCurrent.setY(eulerLast.y() + 10);
-		}
-		else {
-			if ((180 - eulerCurrent.y() + eulerLast.y() + 180) > 10)
-				eulerCurrent.setY(eulerLast.y() - 10);
-		}
-	}
-	else {
-		if ((eulerLast.y() - eulerCurrent.y()) <= (180 - eulerLast.y() + eulerCurrent.y() + 180)) {
-			if (eulerLast.y() - eulerCurrent.y() > 10)
-				eulerCurrent.setY(eulerLast.y() - 10);
-		}
-		else {
-			if ((180 - eulerLast.y() + eulerCurrent.y() + 180) > 10)
-				eulerCurrent.setY(eulerLast.y() + 10);
-		}
-	}
-	//setZ
-	if (eulerCurrent.z() > eulerLast.z()) {
-		if ((eulerCurrent.z() - eulerLast.z()) <= (180 - eulerCurrent.z() + eulerLast.z() + 180)) {
-			if (eulerCurrent.z() - eulerLast.z() > 10)
-				eulerCurrent.setZ(eulerLast.z() + 10);
-		}
-		else {
-			if ((180 - eulerCurrent.z() + eulerLast.z() + 180) > 10)
-				eulerCurrent.setZ(eulerLast.z() - 10);
-		}
-	}
-	else {
-		if ((eulerLast.z() - eulerCurrent.z()) <= (180 - eulerLast.z() + eulerCurrent.z() + 180)) {
-			if (eulerLast.z() - eulerCurrent.z() > 10)
-				eulerCurrent.setZ(eulerLast.z() - 10);
-		}
-		else {
-			if ((180 - eulerLast.z() + eulerCurrent.z() + 180) > 10)
-				eulerCurrent.setZ(eulerLast.z() + 10);
-		}
-	}
-	current = QQuaternion::fromEulerAngles(eulerCurrent);
-}
-//-----------------------------------------------------------------------
 FbxAPI::FbxAPI(const char * lFilename) {
 	if (ReadPosition(lFilename)) {
 		modelPath = "./biped_2Spine.FBX";
@@ -548,7 +447,7 @@ FbxAPI::FbxAPI(const char * lFilename) {
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessFrameVnect() {
 
-	gRotationQuaternion = QQuaternion::rotationTo(gPosition[0][15]-gPosition[0][14], gVecSpine_Global);
+	gRotationQuaternion = QQuaternion::rotationTo(gPosition[0][15] - gPosition[0][14], gVecSpine_Global);
 
 	ModifyCoordinate();
 
@@ -560,7 +459,7 @@ void FbxAPI::ProcessFrameVnect() {
 //-----------------------------------------------------------------------
 void FbxAPI::ProcessFrameOpenMMD() {
 
-	gRotationQuaternion = QQuaternion::rotationTo(gPosition[0][7]- gPosition[0][0], gVecSpine_Global);
+	gRotationQuaternion = QQuaternion::rotationTo(gPosition[0][7] - gPosition[0][0], gVecSpine_Global);
 
 	ModifyCoordinate();
 
@@ -577,4 +476,3 @@ void FbxAPI::setModelPath(const char * lModelPath) {
 const char * FbxAPI::getModelPath() {
 	return modelPath;
 }
-

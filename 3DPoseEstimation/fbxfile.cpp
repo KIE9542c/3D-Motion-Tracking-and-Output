@@ -97,7 +97,7 @@ void fbxFile::on_pushButton_openfile_clicked()
 
 	QString fileName;
 
-	fileName = QFileDialog::getOpenFileName(this, tr("open video files"), "", tr("Videos Or Images (*.avi *.mp4 *.mpg *.png *.jpg)"));
+	fileName = QFileDialog::getOpenFileName(this, tr("open video files"), "", tr("Videos(*.avi *.mp4 *.mpg)"));
 	//ui->lineEdit->setText(fileName);
 	if (!fileName.isEmpty())
 	{
@@ -176,7 +176,9 @@ void fbxFile::on_pushButton_change_clicked()
 
 void fbxFile::on_pushButton_conf_clicked()
 {
-    emit toMain(fmodel);
+	QString outpath;
+	outpath = ui->lineEdit->text();
+	emit toMain(fmodel, outpath);
     fmodel->removeRows(0,fmodel->rowCount());
     row=0;
     this->close();
