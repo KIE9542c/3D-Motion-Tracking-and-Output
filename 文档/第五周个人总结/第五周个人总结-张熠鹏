@@ -1,0 +1,3 @@
+使用stb_image库以及OpenGL完成复杂obj模型的导入。
+尝试使用FBXAPI以及OpenGL完成对包含骨骼，蒙皮，动作信息fbx文件的导入，没有成功。
+尝试将OpenPose中所使用COCO训练模型转换为效率更高的BODY_25模型。
