@@ -11,6 +11,12 @@
 #include <opencv2/highgui.hpp>
 #include <opencv2/opencv.hpp>
 #include <string>
+#include <QMessageBox>
+#if _MSC_VER >= 1600
+
+#pragma execution_character_set("utf-8")
+
+#endif
 namespace Ui {
 class Compara;
 }
@@ -37,6 +43,8 @@ private slots:
     void on_pushButton_6_clicked();
 
     void on_pushButton_7_clicked();
+
+    void on_pushButton_help_clicked();
 
 signals:
     void comSignal();

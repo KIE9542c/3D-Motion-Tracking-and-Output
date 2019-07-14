@@ -1,5 +1,4 @@
-﻿
-#include <videoPosePredictor3D.h>
+﻿#include <videoPosePredictor3D.h>
 #include "trackingWindow.h"
 #include "ui_trackingWindow.h"
 #include <QFileDialog>
@@ -8,6 +7,7 @@
 #include "FbxAPI.h"
 #include "OpenGLAPI.h"
 #include "vmdWriter.h"
+#include <qprocess.h>
 #include <string>
 
 #if _MSC_VER >= 1600
@@ -265,12 +265,13 @@ void TrackingWindow::fromVMD(QStandardItemModel *vmodel,QString filepath)
 		QProgressBar *m_pConnectProBar = new QProgressBar;
 		
 		m_pConnectProBar->setRange(0, 100); //设置进度条最小值和最大值(取值范围)
-		m_pConnectProBar->setValue(50);  //设置当前的运行值
+		m_pConnectProBar->setValue(0);  //设置当前的运行值
 		m_pConnectProBar->setAlignment(Qt::AlignVCenter);  // 对齐方式 
 		m_pConnectProBar->setFixedSize(220, 25);   //进度条固定大小
 		
+		totalBar.push_back(m_pConnectProBar);
 		layout->addWidget(vmdLabel);
-		layout->addWidget(m_pConnectProBar);
+		layout->addWidget(totalBar[i + totalrow]);
 		layout->setContentsMargins(10, 20, 10, 20);
 		QWidget *widget = new QWidget;
 		widget->setLayout(layout);
@@ -314,12 +315,13 @@ void TrackingWindow::fromFBX(QStandardItemModel *fmodel,QString filepath)
 		QProgressBar *m_pConnectProBar = new QProgressBar;
 
 		m_pConnectProBar->setRange(0, 100); //设置进度条最小值和最大值(取值范围)
-		m_pConnectProBar->setValue(50);  //设置当前的运行值
+		m_pConnectProBar->setValue(0);  //设置当前的运行值
 		m_pConnectProBar->setAlignment(Qt::AlignVCenter);  // 对齐方式 
 		m_pConnectProBar->setFixedSize(220, 25);   //进度条固定大小
 
+		totalBar.push_back(m_pConnectProBar);
 		layout->addWidget(vmdLabel);
-		layout->addWidget(m_pConnectProBar);
+		layout->addWidget(totalBar[i + totalrow]);
 		layout->setContentsMargins(10, 20, 10, 20);
 		QWidget *widget = new QWidget;
 		widget->setLayout(layout);
@@ -363,12 +365,13 @@ void TrackingWindow::fromVF(QStandardItemModel *vfmodel, QString filepath)
 		QProgressBar *m_pConnectProBar = new QProgressBar;
 
 		m_pConnectProBar->setRange(0, 100); //设置进度条最小值和最大值(取值范围)
-		m_pConnectProBar->setValue(50);  //设置当前的运行值
+		m_pConnectProBar->setValue(0);  //设置当前的运行值
 		m_pConnectProBar->setAlignment(Qt::AlignVCenter);  // 对齐方式 
 		m_pConnectProBar->setFixedSize(220, 25);   //进度条固定大小
 
+		totalBar.push_back(m_pConnectProBar);
 		layout->addWidget(vmdLabel);
-		layout->addWidget(m_pConnectProBar);
+		layout->addWidget(totalBar[i + totalrow]);
 		layout->setContentsMargins(10, 20, 10, 20);
 		QWidget *widget = new QWidget;
 		widget->setLayout(layout);
@@ -384,7 +387,14 @@ void TrackingWindow::fromVF(QStandardItemModel *vfmodel, QString filepath)
 void TrackingWindow::on_pushButton_start_clicked()
 {
     //TODO：依次处理视频
-	if (outputFilePath == NULL)
+	ui->pushButton_start->setDisabled(true);
+	ui->pushButton_delAll->setDisabled(true);
+	ui->pushButton_VMD->setDisabled(true);
+	ui->pushButton_FBX->setDisabled(true);
+	ui->pushButton_VF->setDisabled(true);
+	ui->pushButton_path->setDisabled(true);
+	ui->pushButton_2->setDisabled(true);
+	if (outputFilePath == NULL || outputFilePath == "未选择输出路径")
 	{
 		QMessageBox::information(this, "提示", "未选择输出路径");
 	}
@@ -393,7 +403,8 @@ void TrackingWindow::on_pushButton_start_clicked()
 		if (ui->comboBox->currentIndex() == 1)
 		{
 			mVideoPosePredictor3D predictor("./vnect_model.caffemodel", "./vnect_net.prototxt");
-			QMessageBox::information(this, "提示", "v");
+			//QMessageBox::information(this, "提示", "v");
+			int i = 0;
 			for (multimap<int, QString>::iterator it = TotalInputFile.begin();
 				it != TotalInputFile.end();
 				)
@@ -401,13 +412,27 @@ void TrackingWindow::on_pushButton_start_clicked()
 				if (it->first == 0)
 				{
 					//输出vmd
+					totalBar[i]->setValue(5);
 					std::vector<std::vector<float>> output;
+					totalBar[i]->setValue(7);
+
 					std::string stdInputFileString = it->second.toStdString();
+					totalBar[i]->setValue(11);
+
 					predictor.predict(stdInputFileString, "./shader", "./model", output, false);
+					totalBar[i]->setValue(26);
+
 					std::string outputFileName = stdInputFileString.substr(stdInputFileString.rfind("/") + 1, stdInputFileString.rfind(".") - stdInputFileString.rfind("/") - 1);
+					totalBar[i]->setValue(38);
+
 					predictor.writePositionToJson(outputFilePath.toStdString() + "/" + outputFileName + ".json", output);
+					totalBar[i]->setValue(58);
+
 					vmdWriter writer(outputFilePath.toStdString() + "/" + outputFileName + ".json", "Hatsune Miku", false);
+					totalBar[i]->setValue(74);
+
 					writer.writeFile(outputFilePath.toStdString() + "/" + outputFileName + ".vmd");
+					totalBar[i++]->setValue(100);
 
 					if (ui->checkBox->isChecked() == true)
 					{
@@ -421,15 +446,33 @@ void TrackingWindow::on_pushButton_start_clicked()
 				if (it->first == 1)
 				{
 					//输出fbx
+					totalBar[i]->setValue(5);
 					std::vector<std::vector<float>> output;
+					totalBar[i]->setValue(11);
+
 					std::string stdInputFileString = it->second.toStdString();
+					totalBar[i]->setValue(18);
+
 					predictor.predict(stdInputFileString, "./shader", "./model", output, false);
+					totalBar[i]->setValue(30);
+
 					std::string outputFileName = stdInputFileString.substr(stdInputFileString.rfind("/") + 1, stdInputFileString.rfind(".") - stdInputFileString.rfind("/") - 1);
+					totalBar[i]->setValue(35);
+
 					predictor.writePositionToJson(outputFilePath.toStdString() + "/" + outputFileName + ".json", output);
+					totalBar[i]->setValue(49);
+
 					FbxAPI test((outputFilePath.toStdString() + "/" + outputFileName + ".json").c_str());
+					totalBar[i]->setValue(66);
+
 					test.ProcessFrameVnect();
+					totalBar[i]->setValue(82);
+
 					test.Export((outputFilePath.toStdString() + "/" + outputFileName + ".FBX").c_str());
+					totalBar[i]->setValue(86);
+
 					test.Destory();
+					totalBar[i++]->setValue(100);
 					if (ui->checkBox->isChecked() == true)
 					{
 						OpenGLAPI temp((outputFilePath.toStdString() + "/" + outputFileName + ".json").c_str());
@@ -441,17 +484,40 @@ void TrackingWindow::on_pushButton_start_clicked()
 				if (it->first == 2)
 				{
 					//输出vmd+fbx
+					totalBar[i]->setValue(5);
+
 					std::vector<std::vector<float>> output;
+					totalBar[i]->setValue(12);
+
 					std::string stdInputFileString = it->second.toStdString();
+					totalBar[i]->setValue(14);
+
 					predictor.predict(stdInputFileString, "./shader", "./model", output, false);
+					totalBar[i]->setValue(22);
+
 					std::string outputFileName = stdInputFileString.substr(stdInputFileString.rfind("/") + 1, stdInputFileString.rfind(".") - stdInputFileString.rfind("/") - 1);
+					totalBar[i]->setValue(26);
+
 					predictor.writePositionToJson(outputFilePath.toStdString() + "/" + outputFileName + ".json", output);
+					totalBar[i]->setValue(43);
+
 					FbxAPI test((outputFilePath.toStdString() + "/" + outputFileName + ".json").c_str());
+					totalBar[i]->setValue(46);
+
 					test.ProcessFrameVnect();
+					totalBar[i]->setValue(64);
+
 					test.Export((outputFilePath.toStdString() + "/" + outputFileName + ".FBX").c_str());
+					totalBar[i]->setValue(69);
+
 					test.Destory();
+					totalBar[i]->setValue(70);
+
 					vmdWriter writer(outputFilePath.toStdString() + "/" + outputFileName + ".json", "Hatsune Miku", false);
+					totalBar[i]->setValue(82);
+
 					writer.writeFile(outputFilePath.toStdString() + "/" + outputFileName + ".vmd");
+					totalBar[i++]->setValue(100);
 					if (ui->checkBox->isChecked() == true)
 					{
 						OpenGLAPI temp((outputFilePath.toStdString() + "/" + outputFileName + ".json").c_str());
@@ -465,7 +531,8 @@ void TrackingWindow::on_pushButton_start_clicked()
 		}
 		else
 		{
-			QMessageBox::information(this, "提示", "open");
+			int i = 0;
+			//QMessageBox::information(this, "提示", "open");
 			for (multimap<int, QString>::iterator it = TotalInputFile.begin();
 				it != TotalInputFile.end();
 				)
@@ -473,15 +540,32 @@ void TrackingWindow::on_pushButton_start_clicked()
 				if (it->first == 0)
 				{
 					//输出vmd
+					totalBar[i]->setValue(5);
+
 					std::string stdInputFileString = it->second.toStdString();
+					totalBar[i]->setValue(9);
+
 					std::string outputFileName = stdInputFileString.substr(stdInputFileString.rfind("/") + 1, stdInputFileString.rfind(".") - stdInputFileString.rfind("/") - 1);
-					std::string fullCommand = "python demo.py --inputpath=" + stdInputFileString + " --outputpath=" + outputFilePath.toStdString() + " --jsonpath=" + outputFilePath.toStdString() + "/" + outputFileName + ".json";
-					system(fullCommand.c_str());
-					vmdWriter writer(outputFilePath.toStdString() + "/" + outputFileName + ".json", "Hatsune Miku",true);
-					writer.writeFile(outputFilePath.toStdString() + "/" + outputFileName + ".vmd");
+					totalBar[i]->setValue(13);
+					
+					QDir dir(outputFilePath+ "/"+QString::fromStdString(outputFileName));
+					dir.mkdir(outputFilePath + "/" + QString::fromStdString(outputFileName));
+					QString fullpath= outputFilePath + "/" + QString::fromStdString(outputFileName);
+					std::string fullCommand = "python demo.py --inputpath=" + stdInputFileString + " --outputpath=" + fullpath.toStdString() + " --jsonpath=" + fullpath.toStdString() + "/" + outputFileName + ".json";
+					totalBar[i]->setValue(18);
+
+					QProcess::execute(QString::fromStdString(fullCommand));
+					totalBar[i]->setValue(56);
+
+					vmdWriter writer(fullpath.toStdString() + "/" + outputFileName + ".json", "Hatsune Miku",true);
+					totalBar[i]->setValue(78);
+
+					writer.writeFile(fullpath.toStdString() + "/" + outputFileName + ".vmd");
+					totalBar[i++]->setValue(100);
+
 					if (ui->checkBox->isChecked() == true)
 					{
-						OpenGLAPI temp((outputFilePath.toStdString() + "/" + outputFileName + ".json").c_str());
+						OpenGLAPI temp((fullpath.toStdString() + "/" + outputFileName + ".json").c_str());
 						temp.singleVideo_OpenMMD();
 					}
 					model->removeRow(0);
@@ -490,17 +574,39 @@ void TrackingWindow::on_pushButton_start_clicked()
 				if (it->first == 1)
 				{
 					//输出fbx
+					totalBar[i]->setValue(5);
+
 					std::string stdInputFileString = it->second.toStdString();
+					totalBar[i]->setValue(9);
+
 					std::string outputFileName = stdInputFileString.substr(stdInputFileString.rfind("/") + 1, stdInputFileString.rfind(".") - stdInputFileString.rfind("/") - 1);
-					std::string fullCommand = "python demo.py --inputpath=" + stdInputFileString + " --outputpath=" + outputFilePath.toStdString() + " --jsonpath=" + outputFilePath.toStdString() + "/" + outputFileName + ".json";
-					system(fullCommand.c_str());
-					FbxAPI test((outputFilePath.toStdString() + "/" + outputFileName + ".json").c_str());
+					totalBar[i]->setValue(14);
+
+					QString fullpath = outputFilePath + "/" + QString::fromStdString(outputFileName);
+					QDir dir(fullpath);
+					dir.mkdir(fullpath);
+
+					std::string fullCommand = "python demo.py --inputpath=" + stdInputFileString + " --outputpath=" + fullpath.toStdString() + " --jsonpath=" + fullpath.toStdString() + "/" + outputFileName + ".json";
+					totalBar[i]->setValue(19);
+
+					QProcess::execute(QString::fromStdString(fullCommand));
+					totalBar[i]->setValue(47);
+
+					FbxAPI test((fullpath.toStdString() + "/" + outputFileName + ".json").c_str());
+					totalBar[i]->setValue(66);
+
 					test.ProcessFrameOpenMMD();
-					test.Export((outputFilePath.toStdString() + "/" + outputFileName + ".FBX").c_str());
+					totalBar[i]->setValue(77);
+
+					test.Export((fullpath.toStdString() + "/" + outputFileName + ".FBX").c_str());
+					totalBar[i]->setValue(85);
+
 					test.Destory();
+					totalBar[i++]->setValue(100);
+
 					if (ui->checkBox->isChecked() == true)
 					{
-						OpenGLAPI temp((outputFilePath.toStdString() + "/" + outputFileName + ".json").c_str());
+						OpenGLAPI temp((fullpath.toStdString() + "/" + outputFileName + ".json").c_str());
 						temp.singleVideo_OpenMMD();
 					}
 					model->removeRow(0);
@@ -509,19 +615,45 @@ void TrackingWindow::on_pushButton_start_clicked()
 				if (it->first == 2)
 				{
 					//输出vmd+fbx
+					totalBar[i]->setValue(4);
+
 					std::string stdInputFileString = it->second.toStdString();
+					totalBar[i]->setValue(13);
+
 					std::string outputFileName = stdInputFileString.substr(stdInputFileString.rfind("/") + 1, stdInputFileString.rfind(".") - stdInputFileString.rfind("/") - 1);
-					std::string fullCommand = "python demo.py --inputpath=" + stdInputFileString + " --outputpath=" + outputFilePath.toStdString() + " --jsonpath=" + outputFilePath.toStdString() + "/" + outputFileName + ".json";
-					system(fullCommand.c_str());
-					FbxAPI test((outputFilePath.toStdString() + "/" + outputFileName + ".json").c_str());
+					totalBar[i]->setValue(22);
+
+					QString fullpath = outputFilePath + "/" + QString::fromStdString(outputFileName);
+					QDir dir(fullpath);
+					dir.mkdir(fullpath);
+
+					std::string fullCommand = "python demo.py --inputpath=" + stdInputFileString + " --outputpath=" + fullpath.toStdString() + " --jsonpath=" + fullpath.toStdString() + "/" + outputFileName + ".json";
+					totalBar[i]->setValue(25);
+
+					QProcess::execute(QString::fromStdString(fullCommand));
+					totalBar[i]->setValue(52);
+
+					FbxAPI test((fullpath.toStdString() + "/" + outputFileName + ".json").c_str());
+					totalBar[i]->setValue(66);
+
 					test.ProcessFrameOpenMMD();
-					test.Export((outputFilePath.toStdString() + "/" + outputFileName + ".FBX").c_str());
+					totalBar[i]->setValue(69);
+
+					test.Export((fullpath.toStdString() + "/" + outputFileName + ".FBX").c_str());
+					totalBar[i]->setValue(73);
+
 					test.Destory();
-					vmdWriter writer(outputFilePath.toStdString() + "/" + outputFileName + ".json", "Hatsune Miku", true);
-					writer.writeFile(outputFilePath.toStdString() + "/" + outputFileName + ".vmd");
+					totalBar[i]->setValue(75);
+
+					vmdWriter writer(fullpath.toStdString() + "/" + outputFileName + ".json", "Hatsune Miku", true);
+					totalBar[i]->setValue(82);
+
+					writer.writeFile(fullpath.toStdString() + "/" + outputFileName + ".vmd");
+					totalBar[i]->setValue(100);
+
 					if (ui->checkBox->isChecked() == true)
 					{
-						OpenGLAPI temp((outputFilePath.toStdString() + "/" + outputFileName + ".json").c_str());
+						OpenGLAPI temp((fullpath.toStdString() + "/" + outputFileName + ".json").c_str());
 						temp.singleVideo_OpenMMD();
 					}
 					model->removeRow(0);
@@ -537,6 +669,11 @@ void TrackingWindow::on_pushButton_start_clicked()
 		totalrow = 0;
 
 	}
+	ui->pushButton_VMD->setDisabled(false);
+	ui->pushButton_FBX->setDisabled(false);
+	ui->pushButton_VF->setDisabled(false);
+	ui->pushButton_path->setDisabled(false);
+	ui->pushButton_2->setDisabled(false);
 	/*
 	if (!fbxInputPath.empty()) {
 		mVideoPosePredictor3D predictor("./vnect_model.caffemodel", "./vnect_net.prototxt");
@@ -665,3 +802,12 @@ QVariant MyStandardItemModel::headerData(int section, Qt::Orientation orientatio
 	
 
 }*/
+
+void TrackingWindow::on_pushButton_help_clicked()
+{
+    QMessageBox::information(this, "使用帮助", QString("1. 输入视频中目标人物所占画面比例要合适，亮度要适中，画面没有严重抖动，至少要达到人物在画面中是清晰的。\n")+
+                                QString("2. 较亮灯光环境下，目标人物距离摄像头2-5米时，检测效果较好。\n")+
+                                QString("3. 视频画面中只能有目标人物一个人出现，且人物动作不能发生遮挡，目标人物需要全身出现在视频画面中。\n")+
+           QString("4.Vnect算法对于背向摄像头动作，转向动作，以及遮挡情况准确率较差。\n")+
+           QString("5.OpenMMD算法对于背向摄像头动作以及遮挡情况的准确率较差，但对于转向动作的处理较为准确。\n"));
+}

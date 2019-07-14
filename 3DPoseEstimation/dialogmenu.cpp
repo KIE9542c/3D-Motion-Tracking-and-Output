@@ -123,3 +123,13 @@ void DialogMenu::on_pushButton_2_clicked()
     animation->start();
     mcom.show();
 }
+
+void DialogMenu::on_pushButton_help_clicked()
+{
+
+	QMessageBox::information(this, "使用帮助", QString("1. 输入视频中目标人物所占画面比例要合适，亮度要适中，画面没有严重抖动，至少要达到人物在画面中是清晰的。\n") +
+		QString("2. 较亮灯光环境下，目标人物距离摄像头2-5米时，检测效果较好。\n") +
+		QString("3. 视频画面中只能有目标人物一个人出现，且人物动作不能发生遮挡，目标人物需要全身出现在视频画面中。\n") +
+		QString("4.Vnect算法对于背向摄像头动作，转向动作，以及遮挡情况准确率较差。\n") +
+		QString("5.OpenMMD算法对于背向摄像头动作以及遮挡情况的准确率较差，但对于转向动作的处理较为准确。\n"));
+}

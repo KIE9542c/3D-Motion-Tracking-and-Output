@@ -441,13 +441,14 @@ bool MotionContrastor::cut(int Bones[])
 		else break;
 	}
 	if(start<=end)gPosition1.erase(gPosition1.begin() + start, gPosition1.begin() + end);
+	length1 = gPosition1.size();
 	start = length1, end = length1 - 1;
 	for (int i = length1 - 1 - 1; i >= 0; i--) {
 		if (disFrame1[i] < MH*ave1)start = i + 1;
 		else break;
 	}
 	if (start <= end)gPosition1.erase(gPosition1.begin() + start, gPosition1.begin() + end);
-
+	length1 = gPosition1.size();
 	double ave2 = 0;
 	for (int i = 0; i < length2 - 1; i++) {
 		for (int j = 0; j < boneSize; j++) {
@@ -464,12 +465,14 @@ bool MotionContrastor::cut(int Bones[])
 		else break;
 	}
 	if (start <= end)gPosition2.erase(gPosition2.begin() + start, gPosition2.begin() + end);
+	length2 = gPosition2.size();
 	start = length2, end = length2 - 1;
 	for (int i = length2 - 1 - 1; i >= 0; i--) {
 		if (disFrame2[i] < MH*ave2)start = i + 1;
 		else break;
 	}
 	if (start <= end)gPosition2.erase(gPosition2.begin() + start, gPosition2.begin() + end);
+	length2 = gPosition2.size();
 	return true;
 }
 

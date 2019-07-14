@@ -35,5 +35,6 @@
         <file>check.png</file>
         <file>unchecked.png</file>
         <file>downArrow.png</file>
+        <file>help.png</file>
     </qresource>
 </RCC>

@@ -51,6 +51,7 @@ public:
     QCheckBox *checkBox;
     QLabel *label_7;
     QLabel *label_8;
+    QPushButton *pushButton_help;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *TrackingWindow)
@@ -298,6 +299,21 @@ public:
         label_8->setObjectName(QString::fromUtf8("label_8"));
         label_8->setGeometry(QRect(30, 120, 121, 16));
         label_8->setFont(font1);
+        pushButton_help = new QPushButton(frame);
+        pushButton_help->setObjectName(QString::fromUtf8("pushButton_help"));
+        pushButton_help->setGeometry(QRect(900, 0, 61, 41));
+        pushButton_help->setStyleSheet(QString::fromUtf8("#pushButton_help{background-color: transparent;\n"
+"border-color: transparent;}\n"
+"#pushButton_help:hover\n"
+"{\n"
+"    	border-image: url(:/new/prefix2/red.png);\n"
+"\n"
+"}\n"
+""));
+        QIcon icon7;
+        icon7.addFile(QString::fromUtf8(":/new/prefix2/help.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_help->setIcon(icon7);
+        pushButton_help->setIconSize(QSize(20, 20));
         label_6->raise();
         pushButton_6->raise();
         pushButton_7->raise();
@@ -319,6 +335,7 @@ public:
         checkBox->raise();
         label_7->raise();
         label_8->raise();
+        pushButton_help->raise();
         TrackingWindow->setCentralWidget(centralWidget);
         statusBar = new QStatusBar(TrackingWindow);
         statusBar->setObjectName(QString::fromUtf8("statusBar"));
@@ -355,6 +372,7 @@ public:
         checkBox->setText(QCoreApplication::translate("TrackingWindow", "\345\244\204\347\220\206\345\220\216\346\230\257\345\220\246\346\230\276\347\244\272\345\212\250\347\224\273", nullptr));
         label_7->setText(QString());
         label_8->setText(QCoreApplication::translate("TrackingWindow", "\351\200\211\346\213\251\344\270\211\347\273\264\351\207\215\345\273\272\347\256\227\346\263\225", nullptr));
+        pushButton_help->setText(QString());
     } // retranslateUi
 
 };

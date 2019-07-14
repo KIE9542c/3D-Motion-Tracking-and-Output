@@ -41,6 +41,7 @@ public:
     QPushButton *pushButton;
     QSpacerItem *verticalSpacer;
     QPushButton *pushButton_2;
+    QPushButton *pushButton_help;
 
     void setupUi(QDialog *DialogMenu)
     {
@@ -210,6 +211,23 @@ public:
 
         verticalLayout->addWidget(pushButton_2);
 
+        pushButton_help = new QPushButton(frame);
+        pushButton_help->setObjectName(QString::fromUtf8("pushButton_help"));
+        pushButton_help->setGeometry(QRect(520, 0, 61, 41));
+        pushButton_help->setStyleSheet(QString::fromUtf8("#pushButton_help\n"
+"{\n"
+"    background-color: transparent;\n"
+"	border-color: transparent;\n"
+"}\n"
+"#pushButton_help:hover\n"
+"{\n"
+"    	border-image: url(:/new/prefix2/red.png);\n"
+"}\n"
+"	"));
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/new/prefix2/help.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_help->setIcon(icon2);
+        pushButton_help->setIconSize(QSize(20, 20));
 
         retranslateUi(DialogMenu);
 
@@ -228,6 +246,7 @@ public:
         label_5->setText(QString());
         pushButton->setText(QCoreApplication::translate("DialogMenu", "\345\212\250\344\275\234\346\215\225\346\215\211", nullptr));
         pushButton_2->setText(QCoreApplication::translate("DialogMenu", "\345\247\277\346\200\201\345\257\271\346\257\224", nullptr));
+        pushButton_help->setText(QString());
     } // retranslateUi
 
 };

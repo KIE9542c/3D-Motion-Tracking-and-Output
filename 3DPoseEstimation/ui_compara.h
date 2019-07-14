@@ -65,6 +65,7 @@ public:
     QFrame *line_10;
     QFrame *line_11;
     QFrame *line_12;
+    QPushButton *pushButton_help;
 
     void setupUi(QDialog *Compara)
     {
@@ -403,6 +404,21 @@ public:
         line_12->setFrameShadow(QFrame::Plain);
         line_12->setMidLineWidth(1);
         line_12->setFrameShape(QFrame::HLine);
+        pushButton_help = new QPushButton(frame);
+        pushButton_help->setObjectName(QString::fromUtf8("pushButton_help"));
+        pushButton_help->setGeometry(QRect(900, 0, 61, 41));
+        pushButton_help->setStyleSheet(QString::fromUtf8("#pushButton_help{background-color: transparent;\n"
+"border-color: transparent;}\n"
+"#pushButton_help:hover\n"
+"{\n"
+"    	border-image: url(:/new/prefix2/red.png);\n"
+"\n"
+"}\n"
+""));
+        QIcon icon5;
+        icon5.addFile(QString::fromUtf8(":/new/prefix2/help.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_help->setIcon(icon5);
+        pushButton_help->setIconSize(QSize(20, 20));
         label_6->raise();
         pushButton_6->raise();
         pushButton_7->raise();
@@ -420,6 +436,7 @@ public:
         line_10->raise();
         line_11->raise();
         line_12->raise();
+        pushButton_help->raise();
 
         retranslateUi(Compara);
 
@@ -447,6 +464,7 @@ public:
         label_path1->setText(QCoreApplication::translate("Compara", "\350\247\206\351\242\221\346\226\207\344\273\266\350\267\257\345\276\204", nullptr));
         label_preview2->setText(QCoreApplication::translate("Compara", "\351\242\204\350\247\210\345\233\276", nullptr));
         label_path2->setText(QCoreApplication::translate("Compara", "\350\247\206\351\242\221\346\226\207\344\273\266\350\267\257\345\276\204", nullptr));
+        pushButton_help->setText(QString());
     } // retranslateUi
 
 };

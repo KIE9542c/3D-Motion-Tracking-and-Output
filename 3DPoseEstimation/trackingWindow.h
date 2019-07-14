@@ -63,6 +63,8 @@ private slots:
 
 	void view_select_check();
 
+    void on_pushButton_help_clicked();
+
 signals:
     void mySignal();
 protected:
@@ -84,6 +86,7 @@ private:
     int totalrow=0;//插入的行数
 	MyItemDelegate * delegate;//委托
 	//QItemSelectionModel * md;
+	std::vector<QProgressBar*> totalBar;
 };
 
 class MyItemDelegate :public QItemDelegate
