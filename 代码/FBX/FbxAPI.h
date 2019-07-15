@@ -64,9 +64,12 @@ private:
 	QVector3D gVecR_Calf;
 	QVector3D gVecR_Foot;
 
-	//
+	//OpenMMD/Vnect坐标系 -> FBX世界坐标系
 	QQuaternion gRotationQuaternion;
-	//
+	//设置每一帧spine为1
+	float gScale;
+
+	//记录每个骨骼的旋转
 	QQuaternion gSpineRotate;
 	QQuaternion gL_ThighRotate;
 	QQuaternion gSpine1Rotate;
@@ -83,38 +86,6 @@ private:
 	QQuaternion gR_CalfRotate;
 	QQuaternion gR_FootRotate;
 
-	//QVector3D gVecSpine(0, 0.006, 7.166);
-	//QVector3D gVecL_Thigh(0, 0, 1);
-	//QVector3D gVecSpine1(0, 0.002, 7.166);
-	//QVector3D gVecR_Thigh(0, 0, 1);
-	//QVector3D gVecL_Calf(0, 0, 1);
-	//QVector3D gVecL_Foot(0, -4.079, 3.169);
-	//QVector3D gVecHead(0, 0, 1);
-	//QVector3D gVecL_Clavicle(0, 0, 1);
-	//QVector3D gVecR_Clavicle(0, 0, 1);
-	//QVector3D gVecL_UpperArm(0, 0, 1);
-	//QVector3D gVecL_Forearm(0, 0, 1);
-	//QVector3D gVecR_UpperArm(0, 0, 1);
-	//QVector3D gVecR_Forearm(0, 0, 1);
-	//QVector3D gVecR_Calf(0, 0, 1);
-	//QVector3D gVecR_Foot(0, -3.368, 3.917);
-
-	//QVector3D gVecSpine(7.167, -0.005, 0);
-	//QVector3D gVecL_Thigh(1, 0, 0);
-	//QVector3D gVecSpine1(7.166, -0.002, 0);
-	//QVector3D gVecR_Thigh(1, 0, 0);
-	//QVector3D gVecL_Calf(1, 0, 0);
-	//QVector3D gVecL_Foot(3.169, 4.079, 0);
-	//QVector3D gVecHead(1, 0, 0);
-	//QVector3D gVecL_Clavicle(1, 0, 0);
-	//QVector3D gVecR_Clavicle(1, 0, 0);
-	//QVector3D gVecL_UpperArm(1, 0, 0);
-	//QVector3D gVecL_Forearm(1, 0, 0);
-	//QVector3D gVecR_UpperArm(1, 0, 0);
-	//QVector3D gVecR_Forearm(1, 0, 0);
-	//QVector3D gVecR_Calf(1, 0, 0);
-	//QVector3D gVecR_Foot(3.167, 4.079, 0);
-
 	//初始化
 	void Initialize(const char* lFilename);
 	//读取3D坐标
@@ -126,6 +97,7 @@ private:
 	//以下分别处理每个关节
 	void ProcessBip001(QVector3D lPos);
 	void ProcessRotation(FbxNode* lNode, QVector3D eulerAngles);
+	void ProcessTranslation(FbxNode* lNode, float translateX);
 	void ProcessSpine(QVector3D lPos);
 	void ProcessL_Thigh(QVector3D lPos);
 	void ProcessSpine1(QVector3D lPos);
@@ -141,9 +113,13 @@ private:
 	void ProcessR_Forearm(QVector3D lPos);
 	void ProcessR_Calf(QVector3D lPos);
 	void ProcessR_Foot(QVector3D lPos);
-	//统一坐标系,输入为四元数
-	void ModifyCoordinate();
+	//统一坐标系
+	void ModifyCoordinate_Vnect();
+	void ModifyCoordinate_OpenMMD();
+
+	//计算from -> to 的四元数
 	QQuaternion rotateTo(QVector3D from, QVector3D to,float& w);
+	//四元数转化为欧拉角
 	QVector3D toEulerAngles(QQuaternion xyz, float w);
 
 public:
