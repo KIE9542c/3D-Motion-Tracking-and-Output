@@ -5,8 +5,10 @@ import tensorflow as tf
 
 tf.app.flags.DEFINE_string('inputpath',None,'the path of txt')
 tf.app.flags.DEFINE_string('outputpath',None,'the path of json')
+tf.app.flags.DEFINE_string('videopath',None,'the path of video')
 FLAGS=tf.app.flags.FLAGS
 OUTPUT_3D_JSON=FLAGS.outputpath
+video_path=FLAGS.videopath
 data=[[]]
 joints=[[]]
 
@@ -25,7 +27,7 @@ for i in range(frame_number):
 		joints_array[i].append(float(joints[1]))
 		joints_array[i].append(float(joints[2]))
 		joints_array[i].append(float(joints[3]))
-output_format={'bodies' : []}
+output_format={'videopath': video_path, 'total_frame':frame_number,'bodies' : []}
 output=[]
 for i in range(frame_number):
 	output.append({'frame' : i, 
@@ -34,7 +36,7 @@ for i in range(frame_number):
 output_format['bodies']=output
 
 with open(OUTPUT_3D_JSON,'w',encoding='utf-8') as f2 :
-	json.dump(output_format,f2)
+	json.dump(output_format,f2,indent=1)
 	
 	    
 		
