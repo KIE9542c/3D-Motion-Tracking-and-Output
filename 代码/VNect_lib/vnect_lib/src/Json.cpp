@@ -89,7 +89,7 @@ void relativePose(float* origin)//change
 	}
 }
 
-__declspec(dllexport) void writeToJson(const string& path, const std::vector<vector<float>>& positions)
+__declspec(dllexport) void writeToJson(const string& path, const string& video_path, const std::vector<vector<float>>& positions)
 {
 	Json::Value root;
 	Json::Value Json_body_object;
@@ -101,9 +101,14 @@ __declspec(dllexport) void writeToJson(const string& path, const std::vector<vec
 		{
 			Json_frame_object["position"].append(positions[i][j]);
 		}
+		Json_frame_object["direction"].resize(0);
+
 		Json_body_object.append(Json_frame_object);
 	}
-	root["bodies"]=Json_body_object;
+
+	root["videopath"] = video_path;
+	root["total_frame"] = positions.size();
+	root["bodies"] = Json_body_object;
 	Json::StreamWriterBuilder  builder;
 	std::unique_ptr<Json::StreamWriter> writer(builder.newStreamWriter());
 	std::ofstream ofs;

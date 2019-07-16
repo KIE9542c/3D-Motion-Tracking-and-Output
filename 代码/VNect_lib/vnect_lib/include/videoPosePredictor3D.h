@@ -70,7 +70,7 @@ public:
 	//begin write the positions to json file
 	//path : json path
 	//output_position: the position you want to write
-	void writePositionToJson(const std::string& path, const std::vector<std::vector<float>>& output_postition);
+	void writePositionToJson(const std::string& path, const std::string& video_path, const std::vector<std::vector<float>>& output_postition);
 	void predict_t(const string& video_path, const string& shader_dir, const string& mesh_dir, std::vector<std::vector<float>> output, const bool& is_relative, const bool& is_show);
 	void predict_notShow(const std::string& video_path, const string& shader_dir, const string& mesh_dir, std::vector<std::vector<float>>& output_postition, const bool& is_relative = false);
 

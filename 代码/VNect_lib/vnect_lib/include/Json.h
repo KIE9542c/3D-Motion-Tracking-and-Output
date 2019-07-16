@@ -11,4 +11,4 @@ __declspec(dllexport) void readFromJson(string path, std::vector<float>& result)
 void relativePose(float* origin);
 //path: Êä³öÂ·¾¶
 //positions: 3d×ø±ê
-__declspec(dllexport) void writeToJson(const string& path, const std::vector<vector<float>>& positions);
+__declspec(dllexport) void writeToJson(const string& path, const string& video_path, const std::vector<vector<float>>& positions);

@@ -181,11 +181,11 @@ void mVideoPosePredictor3D::predict(const std::string& video_path, const string&
 	glfwTerminate();
 }
 
-void mVideoPosePredictor3D::writePositionToJson(const std::string& path, const std::vector<std::vector<float>>& output_postition)
+void mVideoPosePredictor3D::writePositionToJson(const std::string& path, const std::string& video_path, const std::vector<std::vector<float>>& output_postition)
 {
 	OutputDebugString(L"write json");
 	OutputDebugString(L"\n");
-	writeToJson(path, output_postition);
+	writeToJson(path,video_path, output_postition);
 	OutputDebugString(L"write finish");
 	OutputDebugString(L"\n");
 }
