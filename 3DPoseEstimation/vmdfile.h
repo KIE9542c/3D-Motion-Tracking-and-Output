@@ -15,7 +15,7 @@
 #include <opencv\highgui.h>
 #include <opencv2\highgui.hpp>
 #include <QToolTip>
-extern std::vector<QString> vmdInputPath;
+//extern std::vector<QString> vmdInputPath;
 namespace Ui {
 class vmdfile;
 }

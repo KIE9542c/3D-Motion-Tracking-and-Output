@@ -6,7 +6,7 @@
 
 #endif
 
-std::vector<QString> vmdInputPath;
+//std::vector<QString> vmdInputPath;
 
 vmdfile::vmdfile(QWidget *parent) :
     QDialog(parent),
@@ -102,7 +102,7 @@ void vmdfile::on_pushButton_openfile_clicked()
 		if (!fileName.isEmpty())
 		{
 			//ui->lineEdit->setText(fileName);
-			vmdInputPath.push_back(fileName);
+			//vmdInputPath.push_back(fileName);
 
 			QFileInfo info(fileName);
 			std::string s = fileName.toStdString();
@@ -122,8 +122,8 @@ void vmdfile::on_pushButton_openfile_clicked()
 			int totalSecond = int(fnumber / fbs);
 			vmodel->setItem(row, 3, new QStandardItem(QString::number(totalSecond / 60) + ":" + QString::number(totalSecond - totalSecond / 60 * 60)));
 			row++;
-			if (!vmdInputPath.empty())
-				ui->pushButton_delAll->setDisabled(false);
+			//if (!vmdInputPath.empty())
+			ui->pushButton_delAll->setDisabled(false);
 		}
 }
 
@@ -139,9 +139,9 @@ void vmdfile::on_pushButton_del_clicked()
     while (r.hasPrevious()) {
            r.previous();
        vmodel->removeRow(r.key());
-	   std::vector<QString>::iterator temp = vmdInputPath.begin();
-	   *temp += r.key();
-	   vmdInputPath.erase(temp);
+	   //std::vector<QString>::iterator temp = vmdInputPath.begin();
+	  // *temp += r.key();
+	   //vmdInputPath.erase(temp);
     }
 	if (vmodel->rowCount() == 0)
 	{
@@ -156,7 +156,7 @@ void vmdfile::on_pushButton_delAll_clicked()
 {
      vmodel->removeRows(0,vmodel->rowCount());
      row=0;
-	 vmdInputPath.clear();
+	// vmdInputPath.clear();
 	 ui->pushButton_del->setDisabled(true);
 	 ui->pushButton_delAll->setDisabled(true);
 }

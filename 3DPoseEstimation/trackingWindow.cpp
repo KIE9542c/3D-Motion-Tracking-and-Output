@@ -81,7 +81,7 @@ TrackingWindow::TrackingWindow(QWidget *parent) :
 	
      model->setHorizontalHeaderItem(0, new QStandardItem(QObject::tr("预览")));
      model->setHorizontalHeaderItem(1, new QStandardItem(QObject::tr("来源")));
-     model->setHorizontalHeaderItem(2, new QStandardItem(QObject::tr("输出/进度")));
+     model->setHorizontalHeaderItem(2, new QStandardItem(QObject::tr("输出")));
         //利用setModel()方法将数据模型与QTableView绑定
      ui->tableView->setModel(model);
 	 ui->tableView->setItemDelegate(delegate);
@@ -181,6 +181,13 @@ void TrackingWindow::on_pushButton_del_clicked()
 	while (r.hasPrevious()) {
 		r.previous();
 		model->removeRow(r.key());
+		std::multimap<int, QString>::iterator tempFile = TotalInputFile.begin();
+		for (int i = 0; i < r.key(); i++)
+			tempFile++;
+		TotalInputFile.erase(tempFile);
+		//std::vector<QProgressBar*>::iterator temp = totalBar.begin();
+	  // *temp += r.key();
+	   //totalBar.erase(temp);
 	}
 	if (model->rowCount() == 0)
 	{
@@ -194,7 +201,9 @@ void TrackingWindow::on_pushButton_del_clicked()
 void TrackingWindow::on_pushButton_delAll_clicked()
 {
     model->removeRows(0,model->rowCount());
+	TotalInputFile.clear();
 	totalrow =0;
+	//totalBar.clear();
 }
 
 void TrackingWindow::on_pushButton_VMD_clicked()
@@ -262,6 +271,7 @@ void TrackingWindow::fromVMD(QStandardItemModel *vmodel,QString filepath)
 		model->setItem(i+totalrow, 1, new QStandardItem(str1));
 		QVBoxLayout * layout = new QVBoxLayout();
 		QLabel *vmdLabel = new QLabel(QString("->VMD"));
+		/*
 		QProgressBar *m_pConnectProBar = new QProgressBar;
 		
 		m_pConnectProBar->setRange(0, 100); //设置进度条最小值和最大值(取值范围)
@@ -270,8 +280,9 @@ void TrackingWindow::fromVMD(QStandardItemModel *vmodel,QString filepath)
 		m_pConnectProBar->setFixedSize(220, 25);   //进度条固定大小
 		
 		totalBar.push_back(m_pConnectProBar);
+		*/
 		layout->addWidget(vmdLabel);
-		layout->addWidget(totalBar[i + totalrow]);
+		//layout->addWidget(totalBar[i + totalrow]);
 		layout->setContentsMargins(10, 20, 10, 20);
 		QWidget *widget = new QWidget;
 		widget->setLayout(layout);
@@ -312,6 +323,7 @@ void TrackingWindow::fromFBX(QStandardItemModel *fmodel,QString filepath)
 		model->setItem(i + totalrow, 1, new QStandardItem(str1));
 		QVBoxLayout * layout = new QVBoxLayout();
 		QLabel *vmdLabel = new QLabel(QString("->FBX"));
+		/*
 		QProgressBar *m_pConnectProBar = new QProgressBar;
 
 		m_pConnectProBar->setRange(0, 100); //设置进度条最小值和最大值(取值范围)
@@ -320,8 +332,9 @@ void TrackingWindow::fromFBX(QStandardItemModel *fmodel,QString filepath)
 		m_pConnectProBar->setFixedSize(220, 25);   //进度条固定大小
 
 		totalBar.push_back(m_pConnectProBar);
+		*/
 		layout->addWidget(vmdLabel);
-		layout->addWidget(totalBar[i + totalrow]);
+		//layout->addWidget(totalBar[i + totalrow]);
 		layout->setContentsMargins(10, 20, 10, 20);
 		QWidget *widget = new QWidget;
 		widget->setLayout(layout);
@@ -362,6 +375,7 @@ void TrackingWindow::fromVF(QStandardItemModel *vfmodel, QString filepath)
 		model->setItem(i + totalrow, 1, new QStandardItem(str1));
 		QVBoxLayout * layout = new QVBoxLayout();
 		QLabel *vmdLabel = new QLabel(QString("->VMD+FBX"));
+		/*
 		QProgressBar *m_pConnectProBar = new QProgressBar;
 
 		m_pConnectProBar->setRange(0, 100); //设置进度条最小值和最大值(取值范围)
@@ -370,8 +384,9 @@ void TrackingWindow::fromVF(QStandardItemModel *vfmodel, QString filepath)
 		m_pConnectProBar->setFixedSize(220, 25);   //进度条固定大小
 
 		totalBar.push_back(m_pConnectProBar);
+		*/
 		layout->addWidget(vmdLabel);
-		layout->addWidget(totalBar[i + totalrow]);
+		//layout->addWidget(totalBar[i + totalrow]);
 		layout->setContentsMargins(10, 20, 10, 20);
 		QWidget *widget = new QWidget;
 		widget->setLayout(layout);
@@ -387,19 +402,20 @@ void TrackingWindow::fromVF(QStandardItemModel *vfmodel, QString filepath)
 void TrackingWindow::on_pushButton_start_clicked()
 {
     //TODO：依次处理视频
-	ui->pushButton_start->setDisabled(true);
-	ui->pushButton_delAll->setDisabled(true);
-	ui->pushButton_VMD->setDisabled(true);
-	ui->pushButton_FBX->setDisabled(true);
-	ui->pushButton_VF->setDisabled(true);
-	ui->pushButton_path->setDisabled(true);
-	ui->pushButton_2->setDisabled(true);
+	
 	if (outputFilePath == NULL || outputFilePath == "未选择输出路径")
 	{
 		QMessageBox::information(this, "提示", "未选择输出路径");
 	}
 	else
 	{
+		ui->pushButton_start->setDisabled(true);
+		ui->pushButton_delAll->setDisabled(true);
+		ui->pushButton_VMD->setDisabled(true);
+		ui->pushButton_FBX->setDisabled(true);
+		ui->pushButton_VF->setDisabled(true);
+		ui->pushButton_path->setDisabled(true);
+		ui->pushButton_2->setDisabled(true);
 		if (ui->comboBox->currentIndex() == 1)
 		{
 			mVideoPosePredictor3D predictor("./vnect_model.caffemodel", "./vnect_net.prototxt");
@@ -409,30 +425,31 @@ void TrackingWindow::on_pushButton_start_clicked()
 				it != TotalInputFile.end();
 				)
 			{
+				ui->pushButton_del->setDisabled(true);
 				if (it->first == 0)
 				{
 					//输出vmd
-					totalBar[i]->setValue(5);
+					//totalBar[i]->setValue(5);
 					std::vector<std::vector<float>> output;
-					totalBar[i]->setValue(7);
+					//totalBar[i]->setValue(7);
 
 					std::string stdInputFileString = it->second.toStdString();
-					totalBar[i]->setValue(11);
+					//totalBar[i]->setValue(11);
 
 					predictor.predict(stdInputFileString, "./shader", "./model", output, false);
-					totalBar[i]->setValue(26);
+					//totalBar[i]->setValue(26);
 
 					std::string outputFileName = stdInputFileString.substr(stdInputFileString.rfind("/") + 1, stdInputFileString.rfind(".") - stdInputFileString.rfind("/") - 1);
-					totalBar[i]->setValue(38);
+					//totalBar[i]->setValue(38);
 
 					predictor.writePositionToJson(outputFilePath.toStdString() + "/" + outputFileName + ".json", output);
-					totalBar[i]->setValue(58);
+					//totalBar[i]->setValue(58);
 
 					vmdWriter writer(outputFilePath.toStdString() + "/" + outputFileName + ".json", "Hatsune Miku", false);
-					totalBar[i]->setValue(74);
+					//totalBar[i]->setValue(74);
 
 					writer.writeFile(outputFilePath.toStdString() + "/" + outputFileName + ".vmd");
-					totalBar[i++]->setValue(100);
+					//totalBar[i++]->setValue(100);
 
 					if (ui->checkBox->isChecked() == true)
 					{
@@ -446,33 +463,33 @@ void TrackingWindow::on_pushButton_start_clicked()
 				if (it->first == 1)
 				{
 					//输出fbx
-					totalBar[i]->setValue(5);
+					//totalBar[i]->setValue(5);
 					std::vector<std::vector<float>> output;
-					totalBar[i]->setValue(11);
+					//totalBar[i]->setValue(11);
 
 					std::string stdInputFileString = it->second.toStdString();
-					totalBar[i]->setValue(18);
+					//totalBar[i]->setValue(18);
 
 					predictor.predict(stdInputFileString, "./shader", "./model", output, false);
-					totalBar[i]->setValue(30);
+					//totalBar[i]->setValue(30);
 
 					std::string outputFileName = stdInputFileString.substr(stdInputFileString.rfind("/") + 1, stdInputFileString.rfind(".") - stdInputFileString.rfind("/") - 1);
-					totalBar[i]->setValue(35);
+					//totalBar[i]->setValue(35);
 
 					predictor.writePositionToJson(outputFilePath.toStdString() + "/" + outputFileName + ".json", output);
-					totalBar[i]->setValue(49);
+					//totalBar[i]->setValue(49);
 
 					FbxAPI test((outputFilePath.toStdString() + "/" + outputFileName + ".json").c_str());
-					totalBar[i]->setValue(66);
+					//totalBar[i]->setValue(66);
 
 					test.ProcessFrameVnect();
-					totalBar[i]->setValue(82);
+					//totalBar[i]->setValue(82);
 
 					test.Export((outputFilePath.toStdString() + "/" + outputFileName + ".FBX").c_str());
-					totalBar[i]->setValue(86);
+					//totalBar[i]->setValue(86);
 
 					test.Destory();
-					totalBar[i++]->setValue(100);
+					//totalBar[i++]->setValue(100);
 					if (ui->checkBox->isChecked() == true)
 					{
 						OpenGLAPI temp((outputFilePath.toStdString() + "/" + outputFileName + ".json").c_str());
@@ -484,40 +501,40 @@ void TrackingWindow::on_pushButton_start_clicked()
 				if (it->first == 2)
 				{
 					//输出vmd+fbx
-					totalBar[i]->setValue(5);
+					//totalBar[i]->setValue(5);
 
 					std::vector<std::vector<float>> output;
-					totalBar[i]->setValue(12);
+					//totalBar[i]->setValue(12);
 
 					std::string stdInputFileString = it->second.toStdString();
-					totalBar[i]->setValue(14);
+					//totalBar[i]->setValue(14);
 
 					predictor.predict(stdInputFileString, "./shader", "./model", output, false);
-					totalBar[i]->setValue(22);
+					//totalBar[i]->setValue(22);
 
 					std::string outputFileName = stdInputFileString.substr(stdInputFileString.rfind("/") + 1, stdInputFileString.rfind(".") - stdInputFileString.rfind("/") - 1);
-					totalBar[i]->setValue(26);
+					//totalBar[i]->setValue(26);
 
 					predictor.writePositionToJson(outputFilePath.toStdString() + "/" + outputFileName + ".json", output);
-					totalBar[i]->setValue(43);
+					//totalBar[i]->setValue(43);
 
 					FbxAPI test((outputFilePath.toStdString() + "/" + outputFileName + ".json").c_str());
-					totalBar[i]->setValue(46);
+					//totalBar[i]->setValue(46);
 
 					test.ProcessFrameVnect();
-					totalBar[i]->setValue(64);
+					//totalBar[i]->setValue(64);
 
 					test.Export((outputFilePath.toStdString() + "/" + outputFileName + ".FBX").c_str());
-					totalBar[i]->setValue(69);
+					//totalBar[i]->setValue(69);
 
 					test.Destory();
-					totalBar[i]->setValue(70);
+					//totalBar[i]->setValue(70);
 
 					vmdWriter writer(outputFilePath.toStdString() + "/" + outputFileName + ".json", "Hatsune Miku", false);
-					totalBar[i]->setValue(82);
+					//totalBar[i]->setValue(82);
 
 					writer.writeFile(outputFilePath.toStdString() + "/" + outputFileName + ".vmd");
-					totalBar[i++]->setValue(100);
+					//totalBar[i++]->setValue(100);
 					if (ui->checkBox->isChecked() == true)
 					{
 						OpenGLAPI temp((outputFilePath.toStdString() + "/" + outputFileName + ".json").c_str());
@@ -526,7 +543,7 @@ void TrackingWindow::on_pushButton_start_clicked()
 					model->removeRow(0);
 					it = TotalInputFile.erase(it);
 				}
-
+				
 			}
 		}
 		else
@@ -537,31 +554,32 @@ void TrackingWindow::on_pushButton_start_clicked()
 				it != TotalInputFile.end();
 				)
 			{
+				ui->pushButton_del->setDisabled(true);
 				if (it->first == 0)
 				{
 					//输出vmd
-					totalBar[i]->setValue(5);
+					//totalBar[i]->setValue(5);
 
 					std::string stdInputFileString = it->second.toStdString();
-					totalBar[i]->setValue(9);
+					//totalBar[i]->setValue(9);
 
 					std::string outputFileName = stdInputFileString.substr(stdInputFileString.rfind("/") + 1, stdInputFileString.rfind(".") - stdInputFileString.rfind("/") - 1);
-					totalBar[i]->setValue(13);
+					//totalBar[i]->setValue(13);
 					
 					QDir dir(outputFilePath+ "/"+QString::fromStdString(outputFileName));
 					dir.mkdir(outputFilePath + "/" + QString::fromStdString(outputFileName));
 					QString fullpath= outputFilePath + "/" + QString::fromStdString(outputFileName);
 					std::string fullCommand = "python demo.py --inputpath=" + stdInputFileString + " --outputpath=" + fullpath.toStdString() + " --jsonpath=" + fullpath.toStdString() + "/" + outputFileName + ".json";
-					totalBar[i]->setValue(18);
+					//totalBar[i]->setValue(18);
 
 					QProcess::execute(QString::fromStdString(fullCommand));
-					totalBar[i]->setValue(56);
+					//totalBar[i]->setValue(56);
 
 					vmdWriter writer(fullpath.toStdString() + "/" + outputFileName + ".json", "Hatsune Miku",true);
-					totalBar[i]->setValue(78);
+					//totalBar[i]->setValue(78);
 
 					writer.writeFile(fullpath.toStdString() + "/" + outputFileName + ".vmd");
-					totalBar[i++]->setValue(100);
+					//totalBar[i++]->setValue(100);
 
 					if (ui->checkBox->isChecked() == true)
 					{
@@ -574,35 +592,35 @@ void TrackingWindow::on_pushButton_start_clicked()
 				if (it->first == 1)
 				{
 					//输出fbx
-					totalBar[i]->setValue(5);
+					//totalBar[i]->setValue(5);
 
 					std::string stdInputFileString = it->second.toStdString();
-					totalBar[i]->setValue(9);
+					//totalBar[i]->setValue(9);
 
 					std::string outputFileName = stdInputFileString.substr(stdInputFileString.rfind("/") + 1, stdInputFileString.rfind(".") - stdInputFileString.rfind("/") - 1);
-					totalBar[i]->setValue(14);
+					//totalBar[i]->setValue(14);
 
 					QString fullpath = outputFilePath + "/" + QString::fromStdString(outputFileName);
 					QDir dir(fullpath);
 					dir.mkdir(fullpath);
 
 					std::string fullCommand = "python demo.py --inputpath=" + stdInputFileString + " --outputpath=" + fullpath.toStdString() + " --jsonpath=" + fullpath.toStdString() + "/" + outputFileName + ".json";
-					totalBar[i]->setValue(19);
+					//totalBar[i]->setValue(19);
 
 					QProcess::execute(QString::fromStdString(fullCommand));
-					totalBar[i]->setValue(47);
+					//totalBar[i]->setValue(47);
 
 					FbxAPI test((fullpath.toStdString() + "/" + outputFileName + ".json").c_str());
-					totalBar[i]->setValue(66);
+					//totalBar[i]->setValue(66);
 
 					test.ProcessFrameOpenMMD();
-					totalBar[i]->setValue(77);
+					//totalBar[i]->setValue(77);
 
 					test.Export((fullpath.toStdString() + "/" + outputFileName + ".FBX").c_str());
-					totalBar[i]->setValue(85);
+					//totalBar[i]->setValue(85);
 
 					test.Destory();
-					totalBar[i++]->setValue(100);
+					//totalBar[i++]->setValue(100);
 
 					if (ui->checkBox->isChecked() == true)
 					{
@@ -615,41 +633,41 @@ void TrackingWindow::on_pushButton_start_clicked()
 				if (it->first == 2)
 				{
 					//输出vmd+fbx
-					totalBar[i]->setValue(4);
+					//totalBar[i]->setValue(4);
 
 					std::string stdInputFileString = it->second.toStdString();
-					totalBar[i]->setValue(13);
+					//totalBar[i]->setValue(13);
 
 					std::string outputFileName = stdInputFileString.substr(stdInputFileString.rfind("/") + 1, stdInputFileString.rfind(".") - stdInputFileString.rfind("/") - 1);
-					totalBar[i]->setValue(22);
+					//totalBar[i]->setValue(22);
 
 					QString fullpath = outputFilePath + "/" + QString::fromStdString(outputFileName);
 					QDir dir(fullpath);
 					dir.mkdir(fullpath);
 
 					std::string fullCommand = "python demo.py --inputpath=" + stdInputFileString + " --outputpath=" + fullpath.toStdString() + " --jsonpath=" + fullpath.toStdString() + "/" + outputFileName + ".json";
-					totalBar[i]->setValue(25);
+					//totalBar[i]->setValue(25);
 
 					QProcess::execute(QString::fromStdString(fullCommand));
-					totalBar[i]->setValue(52);
+					//totalBar[i]->setValue(52);
 
 					FbxAPI test((fullpath.toStdString() + "/" + outputFileName + ".json").c_str());
-					totalBar[i]->setValue(66);
+					//totalBar[i]->setValue(66);
 
 					test.ProcessFrameOpenMMD();
-					totalBar[i]->setValue(69);
+					//totalBar[i]->setValue(69);
 
 					test.Export((fullpath.toStdString() + "/" + outputFileName + ".FBX").c_str());
-					totalBar[i]->setValue(73);
+					//totalBar[i]->setValue(73);
 
 					test.Destory();
-					totalBar[i]->setValue(75);
+					//totalBar[i]->setValue(75);
 
 					vmdWriter writer(fullpath.toStdString() + "/" + outputFileName + ".json", "Hatsune Miku", true);
-					totalBar[i]->setValue(82);
+					//totalBar[i]->setValue(82);
 
 					writer.writeFile(fullpath.toStdString() + "/" + outputFileName + ".vmd");
-					totalBar[i]->setValue(100);
+					//totalBar[i]->setValue(100);
 
 					if (ui->checkBox->isChecked() == true)
 					{
@@ -665,15 +683,18 @@ void TrackingWindow::on_pushButton_start_clicked()
 		{
 			ui->pushButton_start->setDisabled(true);
 			ui->pushButton_delAll->setDisabled(true);
+			totalrow = 0;
+			ui->pushButton_del->setDisabled(true);
 		}
-		totalrow = 0;
-
+		
 	}
 	ui->pushButton_VMD->setDisabled(false);
 	ui->pushButton_FBX->setDisabled(false);
 	ui->pushButton_VF->setDisabled(false);
 	ui->pushButton_path->setDisabled(false);
 	ui->pushButton_2->setDisabled(false);
+	
+
 	/*
 	if (!fbxInputPath.empty()) {
 		mVideoPosePredictor3D predictor("./vnect_model.caffemodel", "./vnect_net.prototxt");

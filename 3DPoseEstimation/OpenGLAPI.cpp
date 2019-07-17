@@ -13,7 +13,7 @@ Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
-bool pause = false;
+bool pause = true;
 bool idle = false;
 int idleInterval;
 
@@ -252,7 +252,7 @@ void OpenGLAPI::processVertice_OpenMMD2(std::vector<Vertex2> &vertices, std::vec
 void OpenGLAPI::initialize() {
 
 	camera = Camera(glm::vec3(0, 0, 3));
-	pause = false;
+	pause = true;
 	gFrame = 0;
 	idleInterval = 0;
 	
@@ -806,8 +806,11 @@ void OpenGLAPI::doubleVideo_Vnect() {
 //-----------------------------------------------------------------------
 void OpenGLAPI::doubleVideo_OpenMMD() {
 	motionContrastor.contrastOpenMMD(filename1, filename2);
+
 	gPosition1 = motionContrastor.getPos1();
 	gPosition2 = motionContrastor.getPos2();
+
+
 
 	float scale = 0.2 / (gPosition1[0][7] - gPosition1[0][0]).length();
 	for (size_t i = 0; i < gPosition1.size(); i++)
@@ -1064,4 +1067,3 @@ void mouse_callback(GLFWwindow* window, double xPos, double yPos) {
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset) {
 	camera.ProcessMouseScroll(yoffset);
 }
-

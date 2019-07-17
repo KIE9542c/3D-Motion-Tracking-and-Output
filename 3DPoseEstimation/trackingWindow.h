@@ -86,7 +86,7 @@ private:
     int totalrow=0;//插入的行数
 	MyItemDelegate * delegate;//委托
 	//QItemSelectionModel * md;
-	std::vector<QProgressBar*> totalBar;
+	//std::vector<QProgressBar*> totalBar;
 };
 
 class MyItemDelegate :public QItemDelegate
